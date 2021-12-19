@@ -75,8 +75,8 @@
     "image": "https://pisces.bbystatic.com/prescaled/499/500/image2/BestBuy_US/images/products/6202/6202106_sd.jpg",
     "description": "gran descripcion",
     "stock": "8",
-    "timestamp": 1639890486573,
-    "uuid": "210be125-769b-46f5-8bbb-c0897f6936e7",
+    "timestamp": 1639944037198,
+    "uuid": "20548193-cb8d-4a0d-bb91-b2a400086bb6",
     "id": 8
   }
 ]

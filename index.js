@@ -23,7 +23,7 @@ let acceso = {
 
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
-// app.use(express.static("./public"));
+app.use(express.static("./public"));
 
 app.get('/', async (req, res) => {
    let total= await misProductos.getAll();
