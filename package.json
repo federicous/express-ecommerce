@@ -6,11 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "nodemon index.js",
-    "start": "node index.js",
-    "hbs": "nodemon ./views/hbs.js",
-    "hbs2": "nodemon ./views/hbs/hbs2.js",
-    "pug": "nodemon ./views/pug/pug.js",
-    "ejs": "nodemon ./views/ejs/ejs.js"
+    "start": "node index.js"
   },
   "keywords": [],
   "author": "",

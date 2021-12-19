@@ -107,10 +107,20 @@
         "timestamp": 1639856289746,
         "uuid": "d9e41195-9224-4776-9744-7497db3cc9cf",
         "id": 5
+      },
+      {
+        "name": "xbox",
+        "price": 399,
+        "stock": 9,
+        "description": "A description of the product",
+        "image": "https://pisces.bbystatic.com/prescaled/499/500/image2/BestBuy_US/images/products/6009/6009679_sd.jpg",
+        "timestamp": 1639880389719,
+        "uuid": "0eae4696-6a57-4713-92f2-d00d4aa62c34",
+        "id": 7
       }
     ],
-    "timestamp": 1639857361141,
-    "uuid": "5e283282-d412-45c0-b83f-6a5698b88b5b",
-    "id": 2
+    "timestamp": 1639883388802,
+    "uuid": "2761d278-de5d-4fb2-bc80-e06f7a93e442",
+    "id": "2"
   }
 ]
