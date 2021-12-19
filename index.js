@@ -7,10 +7,8 @@ const router = Router()
 const routerProd = Router()
 const routerCart = Router()
 
-
 let misProductos = new Contenedor('./public/productos.txt')
 let misCarritos = new Contenedor('./public/carritos.txt')
-
 
 let acceso = {
    isAdmin : function (req, res, next) {
@@ -23,11 +21,6 @@ let acceso = {
    }
 };
 
-function getRandom(min, max) {
-   return Math.floor(Math.random() * (max - min)) + min;
- }
-
-
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 // app.use(express.static("./public"));
@@ -36,22 +29,7 @@ app.get('/', async (req, res) => {
    let total= await misProductos.getAll();
    res.sendFile(__dirname + '/public/index.html');
    })
-
-
    
-
-app.get('/productos', async (req, res) => {
-   let total=await misProductos.getAll();
-   // res.json(resultado)
-   res.render('ejs/pages',{productList: total, listExist: total.length, productTable: true});
-})
-
-app.get('/productoRandom', async (req, res) => {
-   let total= await misProductos.getAll();
-   let randomNum=getRandom(0,total.length);
-   let resultado= total[randomNum]
-   res.json(resultado)
-})
 
 /* ############################## Product ###################################### */
 // ----------- GET ---------------
@@ -110,20 +88,27 @@ routerCart.get('/:id', async (req, res) => {
 })
 // ----------- POST ---------------
 routerCart.post('/', async (req, res, next) => {
-   console.log(req.body)
-   let cartToSave= {
-      cartList: req.body
+   if (req.body.length) { // Si envio productos los incluyo al crear el carrito
+      let cartToSave= {
+         cartList: req.body
+      }
+      await misCarritos.save(cartToSave)
+   } else {
+      let cartToSave= {
+         cartList: []
+      }
+      await misCarritos.save(cartToSave)
    }
-   let resultado= await misCarritos.save(cartToSave)
 
-   let total= await misCarritos.getAll();
-   res.json({id: total[total.length - 1].id})
-   console.log(`Id del pedido: ${total[total.length - 1].id}`);
+      let total= await misCarritos.getAll();
+      res.json({id: total[total.length - 1].id})
+      console.log(`Id del pedido: ${total[total.length - 1].id}`);
 })
 // ----------- POST Producto---------------
 routerCart.post('/:id/product', async (req, res, next) => {
    let cart= await misCarritos.getById(parseInt(req.params.id))
    let aux=cart
+   console.log(aux);
    // traigo el producto con id = id_prod
    let productAdd = await misProductos.getById(parseInt(req.body.id_prod))
 
@@ -167,20 +152,25 @@ routerCart.delete('/:id/product/:id_prod', async (req, res, next) => {
    let aux=cart
    // console.log(`aux.cartList: ${JSON.stringify(aux.cartList)}`);
    // console.log(`aux.cartList[${req.params.id_prod}]: ${JSON.stringify(aux.cartList[req.params.id_prod])}`);
-   let indice=aux.cartList.findIndex(product=>product.id===parseInt(req.params.id_prod))
+   let indice=aux.cartList.findIndex(product=>product.id==parseInt(req.params.id_prod))
    // console.log(`indice borrar: ${indice}`);
+   if (indice!=-1) {
+      aux.cartList.splice(indice,1)
+      // borro el carrito original
+      await misCarritos.deleteById(req.params.id);
+      // guardo el carrito modificado
+      await misCarritos.save(aux, req.params.id)
 
-   aux.cartList.splice(indice,1)
-   // console.log(`nuevo carrito : ${JSON.stringify(aux)}`);
-   // borro el carrito original
-   await misCarritos.deleteById(req.params.id);
-   // guardo el carrito modificado
-   await misCarritos.save(aux, req.params.id)
-
-   res.json({
-      result:'ok',
-      id: req.params.id      
-   })
+      res.json({
+         result:'ok',
+         id: req.params.id      
+      })
+   }else{
+      res.json({
+         result:'error',
+         id: req.params.id      
+      })
+   }
 })
 /* ############################## Fin Cart ###################################### */
 
