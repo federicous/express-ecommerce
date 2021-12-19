@@ -68,5 +68,14 @@
     "timestamp": 1639880389719,
     "uuid": "0eae4696-6a57-4713-92f2-d00d4aa62c34",
     "id": 7
+  },
+  {
+    "name": "smart",
+    "price": "898",
+    "image": "https://pisces.bbystatic.com/prescaled/499/500/image2/BestBuy_US/images/products/6202/6202106_sd.jpg",
+    "description": "la descripción",
+    "timestamp": 1639889949579,
+    "uuid": "42edb938-f8d6-4ddc-a624-9aa9bff84a71",
+    "id": 8
   }
 ]

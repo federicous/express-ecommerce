@@ -12,9 +12,20 @@
     "id": "1"
   },
   {
-    "cartList": [],
-    "timestamp": 1639887295943,
-    "uuid": "fca2bc3b-b961-43c8-ab25-2ae4d8cd954f",
+    "cartList": [
+      {
+        "name": "tv",
+        "price": 199,
+        "stock": 9,
+        "description": "A description of the product",
+        "image": "https://pisces.bbystatic.com/prescaled/499/500/image2/BestBuy_US/images/products/6202/6202106_sd.jpg",
+        "timestamp": 1639856195600,
+        "uuid": "2372ce09-1af3-455b-972a-984febfcfa4c",
+        "id": 2
+      }
+    ],
+    "timestamp": 1639889426271,
+    "uuid": "d29b5bb1-927a-40a1-9b3b-ead187125fd6",
     "id": "2"
   }
 ]
