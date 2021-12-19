@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>app</title>
+</head>
+<body>
+	<h1>Ingresar producto</h1>
+	<form action="http://localhost:8088/uploadproduct" enctype="multipart/form-data" method="POST" id="formProducts">
+		<label>name: <input type="text" name="name" id="name"><br></label>
+		<label>price: <input type="text" name="price" id="price"><br></label>
+		<label>image: <input type="text" name="image" id="image"><br></label>
+		<input type="submit" value="cargar producto">
+	</form>
+	<script src="./script.js"></script>
+</body>
+</html>
