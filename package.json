@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "nodemon index.js",
-    "start": "node index.js"
+    "start": "node index.js",
+    "mysql": "nodemon mysql.js"
   },
   "keywords": [],
   "author": "",
@@ -16,7 +17,10 @@
   },
   "dependencies": {
     "express": "^4.17.1",
+    "knex": "^0.95.15",
+    "mysql": "^2.18.1",
     "socket.io": "^4.4.0",
+    "sqlite3": "^5.0.2",
     "uuidv4": "^6.2.12"
   }
 }
