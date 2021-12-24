@@ -23,7 +23,7 @@ let misProductos = new Contenedor('mysqlConfig');
 				table.float('price')
 				table.string('description')
 				table.string('image')
-				table.timestamp('created_at').defaultTo(knex.fn.now())
+				table.timestamp('timestamp').defaultTo(knex.fn.now())
 				table.uuid('uuid')
 		});	  
 		// await addProduct();

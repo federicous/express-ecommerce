@@ -16,19 +16,6 @@ class Contenedor {
 		return this;
 	}
 
-	async leerProductos(){
-		try {
-			const contenido = await fs.promises.readFile(this.url, 'utf-8') 
-			// console.log(contenido);
-			return contenido
-
-		} catch (error) {
-			throw new Error(error)
-		}
-		
-	}
-	
-
 	async save(producto,id) {
 		try {
 			if (id) {
@@ -74,17 +61,7 @@ class Contenedor {
 
 	async deleteById(id) {
 		try {
-			let lectura=await this.leerProductos() ? await this.leerProductos() : []
-			let infoArray=lectura.length ? JSON.parse(lectura) : [];
-			let aux= infoArray
-			let indice=aux.findIndex(product=>product.id==parseInt(id))
-			aux.splice(indice,1)
-			infoArray=[...aux]
-			console.log(infoArray);	
-
-			let actualizado=JSON.stringify(infoArray, null, 2)
-
-			await fs.promises.writeFile(this.url, `${actualizado}`)
+			let borrar = await knex.from('productos').where({id:`${id}`}).del();
 
 
 		} catch (error) {
