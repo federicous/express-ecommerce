@@ -1,5 +1,7 @@
 const fs = require('fs')
 const { uuid } = require('uuidv4');
+const {mysqlConfig} = require('../config/mysqlDB');
+const knex = require('knex')(mysqlConfig);
 
 class Contenedor {
 
@@ -35,12 +37,7 @@ class Contenedor {
 			producto.uuid=uuid()
 			let agregar= await knex('productos')
 			.insert(producto)
-			console.log("datos insertados")
-
-			let mostrar = await knex.from('productos').select('*');
-			for (const row of mostrar) {
-				console.log(`${row['id']} ${row['name']}`);	
-			}					
+			console.log("datos insertados")		
 
 			return producto.id
 
@@ -52,11 +49,8 @@ class Contenedor {
 
 	async getById(id) {
 		try {
-			let lectura=await this.leerProductos() ? await this.leerProductos() : []
-			let infoArray=lectura.length ? JSON.parse(lectura) : [];
-			let aux= infoArray
-			let indice=aux.findIndex(product=>product.id==parseInt(id))
-			return infoArray[indice]
+			let mostrar = await knex.from('productos').select('*').where({id:`${id}`});
+			return(mostrar)
 
 
 		} catch (error) {
@@ -67,11 +61,9 @@ class Contenedor {
 
 	async getAll() {
 		try {
-			let lectura=await this.leerProductos() ? await this.leerProductos() : []
-			let infoArray=lectura.length ? JSON.parse(lectura) : [];
-
-			return infoArray
-
+			let mostrar = await knex.from('productos').select('*');
+			console.log(mostrar);
+			return mostrar
 
 		} catch (error) {
 			console.log(`Error de lectura`, error);
