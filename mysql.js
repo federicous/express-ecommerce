@@ -98,8 +98,9 @@ res.json(total)
 })
 // ----------- PUT ---------------
 routerProd.put('/:id', acceso.isAdmin, async (req, res, next) => {
-await misProductos.deleteById(req.params.id);
-await misProductos.save(req.body, req.params.id)
+// await misProductos.deleteById(req.params.id);
+// await misProductos.save(req.body, req.params.id)
+await misProductos.modify(req.body, req.params.id)
 res.json({
 	result:'ok',
 	id: req.params.id,

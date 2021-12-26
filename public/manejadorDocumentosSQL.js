@@ -33,6 +33,18 @@ class Contenedor {
 			throw new Error(error)
 		}		
 	}
+	
+	async modify(producto,id) {
+		try {
+			let modificar = await knex.from('productos').select('*').where({id:`${id}`}).update(producto);
+			return(modificar)
+
+
+		} catch (error) {
+			console.log(`Error de lectura`, error);
+			throw new Error(error)
+		}	
+	}
 
 	async getById(id) {
 		try {
