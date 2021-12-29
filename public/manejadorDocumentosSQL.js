@@ -1,4 +1,3 @@
-const fs = require('fs')
 const { uuid } = require('uuidv4');
 const {mysqlConfig} = require('../config/mysqlDB');
 const knex = require('knex')(mysqlConfig);
@@ -7,7 +6,7 @@ class Contenedor {
 
 	constructor(mysqlConfig) {
 		this.contador=1;
-		this.knex = require('knex')(mysqlConfig);
+		// this.knex = require('knex')(mysqlConfig);
 		// Singleton:
 		if (typeof Contenedor.instance === "object") {
 			return Contenedor.instance;
