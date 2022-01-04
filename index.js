@@ -1,5 +1,6 @@
-const {mysqlConfig} = require('./config/mysqlDB');
-let Contenedor=require('./public/manejadorDocumentosSQL');
+// const {mysqlConfig} = require('./config/mysqlDB');
+let Contenedor=require('./public/manejadorSQL');
+let SQLite=require('./public/manejadorSQLite');
 // const knex = require('knex')(mysqlConfig);
 let express = require('express')
 let app = express()
@@ -9,32 +10,9 @@ const router = Router()
 const routerProd = Router()
 const routerCart = Router()
 
-/* ############################## Base de Datos ###################################### */
-let misProductos = new Contenedor('mysqlConfig');
-
-(async()=>{
-	try {
-		let exists= await knex.schema.hasTable('productos');
-		if (!exists) {
-			await knex.schema.createTable('productos', table => {
-				table.increments('id')
-				table.string('name')
-				table.integer('stock')
-				table.float('price')
-				table.string('description')
-				table.string('image')
-				table.timestamp('timestamp').defaultTo(knex.fn.now())
-				table.uuid('uuid')
-			});	  
-		} else {
-			console.log("ya existe la tabla");
-		}
-      	} catch (error){
-		console.log(error);
-	}
-})();
-/* ############################## Fin Base de Datos ###################################### */
-
+// CONECTO CON LA BASE DE DATOS
+let misProductos = new Contenedor();
+let misMensajes = new SQLite();
 
 // ACCESO DE ADMINISTRADOR
 let acceso = {

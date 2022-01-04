@@ -1,12 +1,31 @@
 const { uuid } = require('uuidv4');
-const {mysqlConfig} = require('../config/mysqlDB');
-const knex = require('knex')(mysqlConfig);
+const {sqliteConfig} = require('../config/SQLite');
+const knex = require('knex')(sqliteConfig);
+
+
+(async()=>{
+	try {
+		let exists= await knex.schema.hasTable('mensajes');
+		if (!exists) {
+			await knex.schema.createTable('mensajes', table => {
+				table.increments('id')
+				table.string('email')
+				table.string('mensaje')
+				table.timestamp('timestamp').defaultTo(knex.fn.now())
+				table.uuid('uuid')
+			});	  
+		} else {
+			console.log("ya existe la tabla");
+		}
+      	} catch (error){
+		console.log(error);
+	}
+})();
 
 class Contenedor {
 
-	constructor(mysqlConfig) {
+	constructor() {
 		this.contador=1;
-		// this.knex = require('knex')(mysqlConfig);
 		// Singleton:
 		if (typeof Contenedor.instance === "object") {
 			return Contenedor.instance;
@@ -15,17 +34,17 @@ class Contenedor {
 		return this;
 	}
 
-	async save(producto,id) {
+	async save(mensaje,id) {
 		try {
 			if (id) {
-				producto.id= id;
+				mensaje.id= id;
 			}
-			producto.uuid=uuid()
-			let agregar= await knex('productos')
-			.insert(producto)
+			mensaje.uuid=uuid()
+			let agregar= await knex('mensajes')
+			.insert(mensaje)
 			console.log("datos insertados")		
 
-			return producto.id
+			return mensaje.id
 
 		} catch (error) {
 			console.log(`Error de lectura`, error);
@@ -33,9 +52,9 @@ class Contenedor {
 		}		
 	}
 	
-	async modify(producto,id) {
+	async modify(mensaje,id) {
 		try {
-			let modificar = await knex.from('productos').select('*').where({id:`${id}`}).update(producto);
+			let modificar = await knex.from('mensajes').select('*').where({id:`${id}`}).update(mensaje);
 			return(modificar)
 
 
@@ -47,7 +66,7 @@ class Contenedor {
 
 	async getById(id) {
 		try {
-			let mostrar = await knex.from('productos').select('*').where({id:`${id}`});
+			let mostrar = await knex.from('mensajes').select('*').where({id:`${id}`});
 			return(mostrar)
 
 
@@ -59,7 +78,7 @@ class Contenedor {
 
 	async getAll() {
 		try {
-			let mostrar = await knex.from('productos').select('*');
+			let mostrar = await knex.from('mensajes').select('*');
 			console.log(mostrar);
 			return mostrar
 
@@ -72,7 +91,7 @@ class Contenedor {
 
 	async deleteById(id) {
 		try {
-			let borrar = await knex.from('productos').where({id:`${id}`}).del();
+			let borrar = await knex.from('mensajes').where({id:`${id}`}).del();
 
 
 		} catch (error) {
