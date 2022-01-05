@@ -9,6 +9,8 @@ const { Router } = express
 const router = Router()
 const routerProd = Router()
 const routerCart = Router()
+let {Server:HttpServer} = require('http')
+let {Server:SocketIO} = require('socket.io');
 
 // CONECTO CON LA BASE DE DATOS
 let misProductos = new Contenedor();
@@ -181,10 +183,34 @@ if (indice!=-1) {
 /* ############################## Fin Cart ###################################### */
 
 
+
+/* ############################## Websockets Chat ###################################### */
+let httpServer = new HttpServer(app);
+let socketIOServer = new SocketIO(httpServer);
+
+socketIOServer.on('connection', async socket =>{
+
+	console.log(`Nuevo usuario: ${socket.id}`);
+
+	// Mensajes
+	let misMensajesGuardados= await misMensajes.getAll()
+	await socketIOServer.sockets.emit('chat', misMensajesGuardados)
+	
+	await socket.on('userMsg', async data =>{
+		console.log(data);
+		await misMensajes.save(data)
+		misMensajesGuardados= await misMensajes.getAll()
+		await socketIOServer.sockets.emit('chat', misMensajesGuardados)
+	})
+})
+/* ############################## Fin Websockets Chat ###################################### */
+
+
 app.use('/api', router)
 app.use('/api/product', routerProd)
 app.use('/api/cart', routerCart)
 
-app.listen(PORT, () => {
-   console.log(`Servidor http escuchando en http://localhost:${PORT}`)
+
+httpServer.listen(PORT, ()=>{
+	console.log(`Server on!: http://localhost:${PORT}`)
 })
