@@ -1,10 +1,12 @@
+require("dotenv").config();
+
 const mysqlConfig={
 	client: 'mysql',
 	connection: {
-	  host: '127.0.0.1',
-	  user: 'fede',
-	  password: 'ppp123',
-	  database: 'fede_db'
+	  host: process.env.MARIADB_HOST,
+	  user: process.env.MARIADB_USER,
+	  password: process.env.MARIADB_PASS,
+	  database: process.env.MARIADB_DATABASE
 	}
 }
 
