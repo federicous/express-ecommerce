@@ -1,7 +1,6 @@
-// const {mysqlConfig} = require('./config/mysqlDB');
-let Contenedor=require('./public/manejadorSQL');
-let SQLite=require('./public/manejadorSQLite');
-// const knex = require('knex')(mysqlConfig);
+// let Contenedor=require('./public/manejadorSQL');
+// let SQLite=require('./public/manejadorSQLite');
+let MongoDB=require('./public/manejadorMongo')
 let express = require('express')
 let app = express()
 const PORT = 8088
@@ -13,8 +12,10 @@ let {Server:HttpServer} = require('http')
 let {Server:SocketIO} = require('socket.io');
 
 // CONECTO CON LA BASE DE DATOS
-let misProductos = new Contenedor();
-let misMensajes = new SQLite();
+// let misProductos = new Contenedor();
+// let misMensajes = new SQLite();
+let misProductos = new MongoDB("produtos");
+let misMensajes = new MongoDB("mensajes");
 
 // ACCESO DE ADMINISTRADOR
 let acceso = {
