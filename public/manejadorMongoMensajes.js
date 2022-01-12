@@ -1,4 +1,3 @@
-// const { uuid } = require('uuidv4');
 const uuidv4 = require('uuidv4').uuid;
 // const {mysqlConfig} = require('../config/mysqlDB');
 // const knex = require('knex')(mysqlConfig);
@@ -25,28 +24,22 @@ const MONGO_URI=MONGO_URL_RAIZ+DB_NAME;
 // Schema del producto
 const Joi = require("joi");
 let id = Joi.number().min(3);
-let name = Joi.string().min(3);
-let price = Joi.number().min(3);
-let stock = Joi.number().min(3);
-let description = Joi.string().min(3);
-let image = Joi.string().min(3);
+let email = Joi.string().min(3);
+let mensaje = Joi.string().min(3);
 let timestamp = Joi.string().min(3);
 let uuid = Joi.string().min(3);
 
 
 const productoSchema = {
 	id: id.required(),
-    	name: name.required(),
-    	price: price.required(),
-    	stock: stock.required(),
-    	description: description.required(),
-    	image: image.required(),
+    	email: email.required(),
+    	mensaje: mensaje.required(),
     	timestamp: timestamp.required(),
 	uuid: uuid.required()
 }
 
 let productoSchemaModel = new Schema(productoSchema);
-let ProductoModel = new model('productos', productoSchemaModel);
+let ProductoModel = new model('mensajes', productoSchemaModel);
 
 class MongoDB {
 
@@ -59,7 +52,8 @@ class MongoDB {
 			if (id) {
 				producto.id= id;
 			}
-			producto.uuid=uuidv4()
+			producto.uuid=uuidv4();
+			producto.timestamp=Date.now();
 			let agregarProductoModel= new ProductoModel(producto);
 			let agregarProducto = await agregarProductoModel.save();
 			console.log(agregarProducto);			
@@ -72,9 +66,7 @@ class MongoDB {
 	}
 	async modify(producto,id) {
 		try {
-			let modificar = await ProductoModel.updateOne({"_id": ObjectId(`${id}`)}, {
-				$set: {producto}
-			});
+			let modificar = await knex.from('productos').select('*').where({id:`${id}`}).update(producto);
 			return(modificar)
 
 
@@ -84,48 +76,61 @@ class MongoDB {
 		}	
 	}
 
-	async getById(id) {
-		try {
-			let mostrar = await ProductoModel.find({"_id": ObjectId(`${id}`)});
-			return(mostrar)
+	// async getById(id) {
+	// 	try {
+	// 		let mostrar = await knex.from('productos').select('*').where({id:`${id}`});
+	// 		return(mostrar)
 
 
-		} catch (error) {
-			console.log(`Error de lectura`, error);
-			throw new Error(error)
-		}	
-	}
+	// 	} catch (error) {
+	// 		console.log(`Error de lectura`, error);
+	// 		throw new Error(error)
+	// 	}	
+	// }
 
 	async getAll() {
 		try {
-			let allProducts = await ProductoModel.find({});
+			let allProducts = await ProductoModel.find();
 			console.log(allProducts);
 			return(allProducts)
 			
 		} catch (error) {
 			console.log(`Error de lectura`, error);
 			throw new Error(error)
-		}	
-	}
-
-	async deleteById(id) {
-		try {
-			let borrar = await ProductoModel.deleteOne({"_id": ObjectId(`${id}`)});
-
-		} catch (error) {
-			console.log(`Error de lectura`, error);
-			throw new Error(error)
-		}		
-	}
-
-	async deleteAll() {
-		try {
-			const contenido = await ProductoModel.deleteMany({});
-
-		} catch (error) {
-			throw new Error(error)
 		}
+	// 	try {
+	// 		let mostrar = await knex.from('productos').select('*');
+	// 		console.log(mostrar);
+	// 		return mostrar
+
+	// 	} catch (error) {
+	// 		console.log(`Error de lectura`, error);
+	// 		throw new Error(error)
+	// 	}	
+		
 	}
+
+	// async deleteById(id) {
+	// 	try {
+	// 		let borrar = await knex.from('productos').where({id:`${id}`}).del();
+
+
+	// 	} catch (error) {
+	// 		console.log(`Error de lectura`, error);
+	// 		throw new Error(error)
+	// 	}		
+	// }
+
+	// async deleteAll() {
+	// 	try {
+	// 		const contenido = await fs.promises.writeFile(this.url,[])
+
+	// 	} catch (error) {
+	// 		throw new Error(error)
+	// 	}
+
+
+	// }
 }
 
 
