@@ -49,7 +49,8 @@ res.json(total)
 // ----------- GET ID---------------
 routerProd.get('/:id', async (req, res) => {
 console.log(req.params.id);
-let resultado= await misProductos.getById(parseInt(req.params.id))
+// let resultado= await misProductos.getById(parseInt(req.params.id))
+let resultado= await misProductos.getById(req.params.id)
 console.log(resultado);
 	res.json(resultado)
 })

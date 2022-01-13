@@ -49,15 +49,11 @@ class MongoDB {
 
 	async save(producto,id) {
 		try {
-			if (id) {
-				producto.id= id;
-			}
-			producto.uuid=uuidv4();
+			// producto.uuid=uuidv4();
 			producto.timestamp=Date.now();
 			let agregarProductoModel= new ProductoModel(producto);
 			let agregarProducto = await agregarProductoModel.save();
 			console.log(agregarProducto);			
-
 			
 		} catch (error) {
 			console.log(`Error de lectura`, error);
@@ -66,7 +62,10 @@ class MongoDB {
 	}
 	async modify(producto,id) {
 		try {
-			let modificar = await knex.from('productos').select('*').where({id:`${id}`}).update(producto);
+			// let modificar = await ProductoModel.updateOne({_id:id}, {
+			// 	$set: producto
+			// });
+			let modificar = await ProductoModel.findByIdAndUpdate(id, producto);
 			return(modificar)
 
 
@@ -76,61 +75,47 @@ class MongoDB {
 		}	
 	}
 
-	// async getById(id) {
-	// 	try {
-	// 		let mostrar = await knex.from('productos').select('*').where({id:`${id}`});
-	// 		return(mostrar)
-
-
-	// 	} catch (error) {
-	// 		console.log(`Error de lectura`, error);
-	// 		throw new Error(error)
-	// 	}	
-	// }
+	async getById(id) {
+		try {
+			let mostrar = await ProductoModel.findById(id);
+			return(mostrar)
+		} catch (error) {
+			console.log(`Error de lectura`, error);
+			throw new Error(error)
+		}	
+	}
 
 	async getAll() {
 		try {
-			let allProducts = await ProductoModel.find();
-			console.log(allProducts);
+			let allProducts = await ProductoModel.find({});
+			// console.log(allProducts);
 			return(allProducts)
 			
 		} catch (error) {
 			console.log(`Error de lectura`, error);
 			throw new Error(error)
-		}
-	// 	try {
-	// 		let mostrar = await knex.from('productos').select('*');
-	// 		console.log(mostrar);
-	// 		return mostrar
-
-	// 	} catch (error) {
-	// 		console.log(`Error de lectura`, error);
-	// 		throw new Error(error)
-	// 	}	
-		
+		}	
 	}
 
-	// async deleteById(id) {
-	// 	try {
-	// 		let borrar = await knex.from('productos').where({id:`${id}`}).del();
+	async deleteById(id) {
+		try {
+			// let borrar = await ProductoModel.deleteOne({"_id": id});
+			let borrar = await ProductoModel.findByIdAndDelete(id);
 
+		} catch (error) {
+			console.log(`Error de lectura`, error);
+			throw new Error(error)
+		}		
+	}
 
-	// 	} catch (error) {
-	// 		console.log(`Error de lectura`, error);
-	// 		throw new Error(error)
-	// 	}		
-	// }
+	async deleteAll() {
+		try {
+			const contenido = await ProductoModel.deleteMany({});
 
-	// async deleteAll() {
-	// 	try {
-	// 		const contenido = await fs.promises.writeFile(this.url,[])
-
-	// 	} catch (error) {
-	// 		throw new Error(error)
-	// 	}
-
-
-	// }
+		} catch (error) {
+			throw new Error(error)
+		}
+	}
 }
 
 

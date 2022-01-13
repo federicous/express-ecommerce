@@ -24,7 +24,7 @@ const MONGO_URI=MONGO_URL_RAIZ+DB_NAME;
 
 // Schema del producto
 const Joi = require("joi");
-let id = Joi.number().min(3);
+let id = Joi.string().min(3);
 let name = Joi.string().min(3);
 let price = Joi.number().min(3);
 let stock = Joi.number().min(3);
@@ -54,16 +54,12 @@ class MongoDB {
 		this.tabla=tabla;
 	}
 
-	async save(producto,id) {
+	async save(producto) {
 		try {
-			if (id) {
-				producto.id= id;
-			}
-			producto.uuid=uuidv4()
+			producto.timestamp=Date.now();
 			let agregarProductoModel= new ProductoModel(producto);
 			let agregarProducto = await agregarProductoModel.save();
-			console.log(agregarProducto);			
-
+			console.log(agregarProducto);		
 			
 		} catch (error) {
 			console.log(`Error de lectura`, error);
@@ -72,9 +68,10 @@ class MongoDB {
 	}
 	async modify(producto,id) {
 		try {
-			let modificar = await ProductoModel.updateOne({"_id": ObjectId(`${id}`)}, {
-				$set: {producto}
-			});
+			// let modificar = await ProductoModel.updateOne({_id:id}, {
+			// 	$set: producto
+			// });
+			let modificar = await ProductoModel.findByIdAndUpdate(id, producto);
 			return(modificar)
 
 
@@ -86,10 +83,8 @@ class MongoDB {
 
 	async getById(id) {
 		try {
-			let mostrar = await ProductoModel.find({"_id": ObjectId(`${id}`)});
+			let mostrar = await ProductoModel.findById(id);
 			return(mostrar)
-
-
 		} catch (error) {
 			console.log(`Error de lectura`, error);
 			throw new Error(error)
@@ -99,7 +94,7 @@ class MongoDB {
 	async getAll() {
 		try {
 			let allProducts = await ProductoModel.find({});
-			console.log(allProducts);
+			// console.log(allProducts);
 			return(allProducts)
 			
 		} catch (error) {
@@ -110,7 +105,8 @@ class MongoDB {
 
 	async deleteById(id) {
 		try {
-			let borrar = await ProductoModel.deleteOne({"_id": ObjectId(`${id}`)});
+			// let borrar = await ProductoModel.deleteOne({"_id": id});
+			let borrar = await ProductoModel.findByIdAndDelete(id);
 
 		} catch (error) {
 			console.log(`Error de lectura`, error);
