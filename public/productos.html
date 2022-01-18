@@ -48,9 +48,9 @@
 				<table class="table table-dark table-hover">
 					<thead>
 						<tr>
-							<th scope="col">#</th>
 							<th scope="col"></th>
 							<th scope="col">Name</th>
+							<th scope="col">stock</th>
 							<th scope="col">Price</th>
 						</tr>
 					</thead>
@@ -108,9 +108,9 @@
 								</tr>`	 */
 							nuevaFila.innerHTML= `
 								<tr>
-									<td>${prod.id}</td>
 									<td><img class="img-thumbnail" style="height: 80px;" src=${prod.image} alt="">							</td>
 									<td>${prod.name}</td>
+									<td>${prod.stock}</td>
 									<td>${prod.price}</td>
 								</tr>`	
 							tablaProductos.appendChild(nuevaFila);

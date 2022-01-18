@@ -1,59 +1,15 @@
-const uuidv4 = require('uuidv4').uuid;
-// const {mysqlConfig} = require('../config/mysqlDB');
-// const knex = require('knex')(mysqlConfig);
-
-const mongoose = require("mongoose");
-let {Schema, model} = mongoose;
-
-let connection;
-const MONGO_URL_RAIZ="mongodb://localhost:27017/";
-const DB_NAME="ecommerce";
-const MONGO_URI=MONGO_URL_RAIZ+DB_NAME;
-
-// Conexión con MongoDB utilizando Mongoose
-(async()=>{
-	try {
-		connection= mongoose.connect(MONGO_URI, {useNewUrlParser:true,useUnifiedTopology: true });
-		console.log("-------------> conexión MongoDB OK!!");
-	} catch (error) {
-		console.log(error);
-	}
-
-})();
-
-// Schema del producto
-const Joi = require("joi");
-let id = Joi.number().min(3);
-let email = Joi.string().min(3);
-let mensaje = Joi.string().min(3);
-let timestamp = Joi.string().min(3);
-let uuid = Joi.string().min(3);
-
-
-const productoSchema = {
-	id: id.required(),
-    	email: email.required(),
-    	mensaje: mensaje.required(),
-    	timestamp: timestamp.required(),
-	uuid: uuid.required()
-}
-
-let productoSchemaModel = new Schema(productoSchema);
-let ProductoModel = new model('mensajes', productoSchemaModel);
+let {connection, mongoose} = require("../config/mongo");
+let ProductoModel = require('../schema/mensajes')
 
 class MongoDB {
 
-	constructor(tabla) {
-		this.tabla=tabla;
-	}
 
-	async save(producto,id) {
+	async save(producto) {
 		try {
-			// producto.uuid=uuidv4();
 			producto.timestamp=Date.now();
 			let agregarProductoModel= new ProductoModel(producto);
 			let agregarProducto = await agregarProductoModel.save();
-			console.log(agregarProducto);			
+			console.log(agregarProducto);		
 			
 		} catch (error) {
 			console.log(`Error de lectura`, error);
@@ -117,8 +73,6 @@ class MongoDB {
 		}
 	}
 }
-
-
 
 module.exports= MongoDB;
 

@@ -1,58 +1,8 @@
-// const { uuid } = require('uuidv4');
-const uuidv4 = require('uuidv4').uuid;
-// const {mysqlConfig} = require('../config/mysqlDB');
-// const knex = require('knex')(mysqlConfig);
-
-const mongoose = require("mongoose");
-let {Schema, model} = mongoose;
-
-let connection;
-const MONGO_URL_RAIZ="mongodb://localhost:27017/";
-const DB_NAME="ecommerce";
-const MONGO_URI=MONGO_URL_RAIZ+DB_NAME;
-
-// Conexión con MongoDB utilizando Mongoose
-(async()=>{
-	try {
-		connection= mongoose.connect(MONGO_URI, {useNewUrlParser:true,useUnifiedTopology: true });
-		console.log("-------------> conexión MongoDB OK!!");
-	} catch (error) {
-		console.log(error);
-	}
-
-})();
-
-// Schema del producto
-const Joi = require("joi");
-let id = Joi.string().min(3);
-let name = Joi.string().min(3);
-let price = Joi.number().min(3);
-let stock = Joi.number().min(3);
-let description = Joi.string().min(3);
-let image = Joi.string().min(3);
-let timestamp = Joi.string().min(3);
-let uuid = Joi.string().min(3);
-
-
-const productoSchema = {
-	id: id.required(),
-    	name: name.required(),
-    	price: price.required(),
-    	stock: stock.required(),
-    	description: description.required(),
-    	image: image.required(),
-    	timestamp: timestamp.required(),
-	uuid: uuid.required()
-}
-
-let productoSchemaModel = new Schema(productoSchema);
-let ProductoModel = new model('productos', productoSchemaModel);
+let {connection, mongoose} = require("../config/mongo");
+let ProductoModel = require('../schema/productos')
 
 class MongoDB {
 
-	constructor(tabla) {
-		this.tabla=tabla;
-	}
 
 	async save(producto) {
 		try {
@@ -123,8 +73,6 @@ class MongoDB {
 		}
 	}
 }
-
-
 
 module.exports= MongoDB;
 
