@@ -1,9 +1,3 @@
-// let Contenedor=require('./components/manejadorSQL');
-// let SQLite=require('./components/manejadorSQLite');
-let MongoDB=require('./components/manejadorMongo')
-let MongoDBMensajes=require('./components/manejadorMongoMensajes')
-let FirebaseDB= require('./components/manejadorFirebase')
-let FirebaseDBMensajes= require('./components/manejadorFirebaseMensajes')
 let express = require('express')
 let app = express()
 const PORT = 8088
@@ -15,12 +9,29 @@ let {Server:HttpServer} = require('http')
 let {Server:SocketIO} = require('socket.io');
 
 // CONECTO CON LA BASE DE DATOS
-// let misProductos = new Contenedor();
-// let misMensajes = new SQLite();
-// let misProductos = new MongoDB("productos");
-let misProductos = new FirebaseDB();
-let misMensajes = new MongoDBMensajes("mensajes");
-// let misMensajes = new FirebaseDBMensajes();
+
+let ProductosDB=null;
+let MensajesDB=null;
+
+let opcion=3;
+
+if (opcion==1) {
+	ProductosDB=require('./components/manejadorMongo')
+	MensajesDB=require('./components/manejadorMongoMensajes')
+	console.log(">>>>>>>>>>>>>> OPCION Mongo");
+} else if (opcion==2) {
+	ProductosDB=require('./components/manejadorSQL');
+	MensajesDB=require('./components/manejadorSQLite');
+	console.log(">>>>>>>>>>>>>> OPCION SQL");
+} else {
+	ProductosDB= require('./components/manejadorFirebase')
+	// MensajesDB= require('./components/manejadorFirebaseMensajes')
+	MensajesDB=require('./components/manejadorMongoMensajes')
+	console.log(">>>>>>>>>>>>>> OPCION Firebase");
+}
+
+let misProductos = new ProductosDB("productos");
+let misMensajes = new MensajesDB("mensajes");
 
 // ACCESO DE ADMINISTRADOR
 let acceso = {
