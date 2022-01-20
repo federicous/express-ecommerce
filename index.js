@@ -2,6 +2,8 @@
 // let SQLite=require('./components/manejadorSQLite');
 let MongoDB=require('./components/manejadorMongo')
 let MongoDBMensajes=require('./components/manejadorMongoMensajes')
+let FirebaseDB= require('./components/manejadorFirebase')
+let FirebaseDBMensajes= require('./components/manejadorFirebaseMensajes')
 let express = require('express')
 let app = express()
 const PORT = 8088
@@ -15,8 +17,10 @@ let {Server:SocketIO} = require('socket.io');
 // CONECTO CON LA BASE DE DATOS
 // let misProductos = new Contenedor();
 // let misMensajes = new SQLite();
-let misProductos = new MongoDB("productos");
+// let misProductos = new MongoDB("productos");
+let misProductos = new FirebaseDB();
 let misMensajes = new MongoDBMensajes("mensajes");
+// let misMensajes = new FirebaseDBMensajes();
 
 // ACCESO DE ADMINISTRADOR
 let acceso = {
