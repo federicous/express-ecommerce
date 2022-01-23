@@ -1,33 +1,26 @@
-let { firebaseDB } = require("../utils/firebase")
-
+let { firebaseDB } = require("../utils/firebase");
 let elementos= firebaseDB.collection('mensajes');
+// import { doc, getDoc } from "firebase/firestore";
+
+const { v4 } = require('uuid');
 
 class FirebaseDB {
 
 	async save(element) {
 		try {
-			let SaveElement= await elementos.doc().set(element);
-			console.log(SaveElement);
-			console.log(SaveElement.id);
-
-			// producto.timestamp=Date.now();
-			// let agregarProductoModel= new ProductoModel(producto);
-			// let agregarProducto = await agregarProductoModel.save();
-			// console.log(agregarProducto);		
+			element.id=v4();
+			element.timestamp = Date.now();    
+			await elementos.doc().set(element);
 			
 		} catch (error) {
 			console.log(`Error de lectura`, error);
 			throw new Error(error)
 		}
 	}
-	async modify(producto,id) {
+	async modify(element,id) {
 		try {
-			// let modificar = await ProductoModel.updateOne({_id:id}, {
-			// 	$set: producto
-			// });
-			let modificar = await ProductoModel.findByIdAndUpdate(id, producto);
-			return(modificar)
-
+			let modifyElement=await elementos.doc(`${id}`).update(element);
+			return(modifyElement)
 
 		} catch (error) {
 			console.log(`Error de lectura`, error);
@@ -37,8 +30,9 @@ class FirebaseDB {
 
 	async getById(id) {
 		try {
-			let mostrar = await ProductoModel.findById(id);
-			return(mostrar)
+			let getElement = await elementos.doc(`${id}`).get();
+
+			return(getElement.data())
 		} catch (error) {
 			console.log(`Error de lectura`, error);
 			throw new Error(error)
@@ -47,9 +41,11 @@ class FirebaseDB {
 
 	async getAll() {
 		try {
-			let allProducts = await ProductoModel.find({});
-			// console.log(allProducts);
-			return(allProducts)
+			let allElements= await elementos.get();
+			let docsElements = allElements.docs;
+			let dataElements = docsElements.map((documento) => documento.data());
+			console.log(dataElements);
+			return(dataElements)			
 			
 		} catch (error) {
 			console.log(`Error de lectura`, error);
@@ -59,8 +55,7 @@ class FirebaseDB {
 
 	async deleteById(id) {
 		try {
-			// let borrar = await ProductoModel.deleteOne({"_id": id});
-			let borrar = await ProductoModel.findByIdAndDelete(id);
+			let deleteElement=await elementos.doc(`${id}`).delete();
 
 		} catch (error) {
 			console.log(`Error de lectura`, error);
@@ -70,7 +65,11 @@ class FirebaseDB {
 
 	async deleteAll() {
 		try {
-			const contenido = await ProductoModel.deleteMany({});
+			let deleteAllElement=await elementos.doc().delete();
+
+			// let allElements= await elementos.get();
+			// let docsElements = allElements.docs;
+			// let dataElements = docsElements.map((documento) => documento.delete());
 
 		} catch (error) {
 			throw new Error(error)

@@ -13,20 +13,20 @@ let {Server:SocketIO} = require('socket.io');
 let ProductosDB=null;
 let MensajesDB=null;
 
-let opcion=3;
+// Elegir la base de datos, con 1: MongoDB, 2: SQL, 3:Firebase
+let opcionDB=3;
 
-if (opcion==1) {
+if (opcionDB==1) {
 	ProductosDB=require('./components/manejadorMongo')
 	MensajesDB=require('./components/manejadorMongoMensajes')
 	console.log(">>>>>>>>>>>>>> OPCION Mongo");
-} else if (opcion==2) {
+} else if (opcionDB==2) {
 	ProductosDB=require('./components/manejadorSQL');
 	MensajesDB=require('./components/manejadorSQLite');
 	console.log(">>>>>>>>>>>>>> OPCION SQL");
 } else {
 	ProductosDB= require('./components/manejadorFirebase')
-	// MensajesDB= require('./components/manejadorFirebaseMensajes')
-	MensajesDB=require('./components/manejadorMongoMensajes')
+	MensajesDB= require('./components/manejadorFirebaseMensajes')
 	console.log(">>>>>>>>>>>>>> OPCION Firebase");
 }
 
