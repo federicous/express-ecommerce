@@ -1,4 +1,4 @@
-let { firebaseDB } = require("../utils/firebase");
+let { firebaseDB } = require("../../utils/firebase");
 let elementos= firebaseDB.collection('productos');
 // import { doc, getDoc } from "firebase/firestore";
 

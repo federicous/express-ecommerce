@@ -1,5 +1,5 @@
 const { uuid } = require('uuidv4');
-const {mysqlConfig} = require('../config/mysqlDB');
+const {mysqlConfig} = require('../../config/mysqlDB');
 const knex = require('knex')(mysqlConfig);
 
 
@@ -70,7 +70,9 @@ class Contenedor {
 
 	async getById(id) {
 		try {
-			let mostrar = await knex.from('productos').select('*').where({id:`${id}`});
+			let idProduct= parseInt(id);
+			// let mostrar = await knex.from('productos').select('*').where({id:`${id}`});
+			let mostrar = await knex.from('productos').select('*').where({id:id});
 			return(mostrar)
 
 
