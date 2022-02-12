@@ -1,12 +1,16 @@
 let express = require('express')
 let app = express()
-const PORT = 8088
+const PORT = 8099
 const { Router } = express
 const router = Router()
 const routerProd = Router()
 const routerCart = Router()
+const raiz= Router()
 let {Server:HttpServer} = require('http')
 let {Server:SocketIO} = require('socket.io');
+let cookieParser= require('cookie-parser')
+let session = require("express-session"); 
+let MongoStore = require("connect-mongo")
 
 // CONECTO CON LA BASE DE DATOS
 
@@ -14,7 +18,7 @@ let ProductosDB=null;
 let MensajesDB=null;
 
 // Elegir la base de datos, con 1: MongoDB, 2: SQL, 3:Firebase
-let opcionDB=2;
+let opcionDB=3;
 
 if (opcionDB==1) {
 	ProductosDB=require('./components/productos/manejadorMongo')
@@ -49,11 +53,75 @@ app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 app.use(express.static("./public"));
 
-app.get('/', async (req, res) => {
-let total= await misProductos.getAll();
-res.sendFile(__dirname + '/public/index.html');
+app.use(cookieParser())
+
+/* ####### SESION #######  */
+let advancedOptions = {	useNewUrlParser: true,	useUnifiedTopology: true}
+app.use(session({
+/* 	store: MongoStore.create({
+		mongoUrl: 'mongodb+srv://federicous:YqBYXpLiHT3r3Db@cluster0.8yd5d.mongodb.net/ecommerce?retryWrites=true&w=majority',
+		mongoOptions: advancedOptions		
+	}), */
+	store: MongoStore.create({mongoUrl: 'mongodb://localhost:27017/sessiones3'}),
+	
+	secret: "secret123",
+/* 	cookie:{
+	    httpOnly: false,
+	    secure: false,
+	    maxAge: 60000
+	}, */
+	cookie: {maxAge: 1000*60*10},
+	resave:false,
+	saveUninitialized:false
+/* 	resave:true,
+	saveUninitialized: true */
+}))
+/* 
+	app.use(session({
+		store: MongoStore.create({mongoUrl: 'mongodb://localhost/sessiones-test2'}),
+		secret: 'hola',
+		resave: false,
+		saveUninitialized: false
+	})) */
+/* ####### FIN SESION #######  */
+app.get('/', (req, res, next)=>{
+	res.redirect('login');
+    })
+
+/* app.get('/', (req, res) => {
+	// let total = await misProductos.getAll();
+	req.session.test=7;
+	req.session.prueba={test: 7};
+	if (req.session.contador) {
+		req.session.contador++
+		console.log(`visitas: ${req.session.contador}`);
+	} else {
+		req.session.contador=1
+		console.log(`bienvenido`);
+	}
+		console.log(`Hola, bienvenido`)
+	res.sendFile(__dirname + '/public/index.html');
+}) */
+
+app.get('/login', (req, res) => {
+	// let total = await misProductos.getAll();
+	req.session.test=7;
+	req.session.prueba={test: 7};
+	if (req.session.contador) {
+		req.session.contador++
+		console.log(`visitas: ${req.session.contador}`);
+	} else {
+		req.session.contador=1
+		console.log(`bienvenido`);
+	}
+		console.log(`Hola, bienvenido`)
+	res.sendFile(__dirname + '/public/login.html');
 })
 
+
+app.get('/verProductos', async (req, res) => {
+	res.sendFile(__dirname + '/public/productos.html');
+})
 
 /* ############################## Product ###################################### */
 // ----------- GET ---------------
@@ -227,6 +295,7 @@ socketIOServer.on('connection', async socket =>{
 app.use('/api', router)
 app.use('/api/product', routerProd)
 app.use('/api/cart', routerCart)
+app.use('/', raiz)
 
 
 httpServer.listen(PORT, ()=>{
