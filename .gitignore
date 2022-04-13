@@ -1,4 +1,5 @@
 package-lock.json
 node_modules
 .env
-
+express-ecommerce-536bd-firebase-adminsdk-6eftd-c2517040e6.json
+./utils/firebase/config/express-ecommerce-536bd-firebase-adminsdk-6eftd-c2517040e6.json

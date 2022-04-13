@@ -1,6 +1,6 @@
 let express = require('express')
 let app = express()
-const PORT = 8099
+const PORT = 8088
 const { Router } = express
 const router = Router()
 const routerProd = Router()
@@ -11,7 +11,15 @@ let {Server:SocketIO} = require('socket.io');
 let cookieParser= require('cookie-parser')
 let session = require("express-session"); 
 let MongoStore = require("connect-mongo")
+let path = require("path");
+require("dotenv").config();
+const MONGO_ATLAS=process.env.MONGO_URL_ATLAS;
 
+// vistas
+// app.set("views", path.join(__dirname, 'views', 'ejs'))
+const ejs= require("ejs")
+app.set('view engine', 'ejs');
+app.set("views","./views/ejs")
 // CONECTO CON LA BASE DE DATOS
 
 let ProductosDB=null;
@@ -51,18 +59,18 @@ let acceso = {
 
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
-app.use(express.static("./public"));
+// app.use(express.static("./public"));
 
 app.use(cookieParser())
 
 /* ####### SESION #######  */
 let advancedOptions = {	useNewUrlParser: true,	useUnifiedTopology: true}
 app.use(session({
-/* 	store: MongoStore.create({
-		mongoUrl: 'mongodb+srv://federicous:YqBYXpLiHT3r3Db@cluster0.8yd5d.mongodb.net/ecommerce?retryWrites=true&w=majority',
+	store: MongoStore.create({
+		mongoUrl: MONGO_ATLAS,
 		mongoOptions: advancedOptions		
-	}), */
-	store: MongoStore.create({mongoUrl: 'mongodb://localhost:27017/sessiones3'}),
+	}),
+	// store: MongoStore.create({mongoUrl: 'mongodb://localhost:27017/sessiones3'}),
 	
 	secret: "secret123",
 /* 	cookie:{
@@ -77,33 +85,14 @@ app.use(session({
 	saveUninitialized: true */
 }))
 /* 
-	app.use(session({
-		store: MongoStore.create({mongoUrl: 'mongodb://localhost/sessiones-test2'}),
-		secret: 'hola',
-		resave: false,
-		saveUninitialized: false
-	})) */
+
 /* ####### FIN SESION #######  */
 app.get('/', (req, res, next)=>{
 	res.redirect('login');
     })
 
-/* app.get('/', (req, res) => {
-	// let total = await misProductos.getAll();
-	req.session.test=7;
-	req.session.prueba={test: 7};
-	if (req.session.contador) {
-		req.session.contador++
-		console.log(`visitas: ${req.session.contador}`);
-	} else {
-		req.session.contador=1
-		console.log(`bienvenido`);
-	}
-		console.log(`Hola, bienvenido`)
-	res.sendFile(__dirname + '/public/index.html');
-}) */
 
-app.get('/login', (req, res) => {
+app.get('/login', (req, res, next) => {
 	// let total = await misProductos.getAll();
 	req.session.test=7;
 	req.session.prueba={test: 7};
@@ -115,9 +104,24 @@ app.get('/login', (req, res) => {
 		console.log(`bienvenido`);
 	}
 		console.log(`Hola, bienvenido`)
-	res.sendFile(__dirname + '/public/login.html');
+	res.render('login',{});	
+	// res.sendFile(__dirname + '/public/login.html');
+})
+let username;
+app.post('/login', (req, res, next) => {
+	console.log(req.body)
+	username=req.body
+	// res.json(req.body)
+	return res.redirect('home'); // NO TOCARRRRRR !!!!!!!!!!!!!!!!!!!!
 })
 
+app.get('/home', (req, res, next)=>{
+	console.log('FUNCA HASTA HOME');
+	// res.render('home',{username: username});
+	res.render('home',{username: username.name});
+	console.log(username);
+	// res.json({hola: "hola"})
+    })
 
 app.get('/verProductos', async (req, res) => {
 	res.sendFile(__dirname + '/public/productos.html');
@@ -288,6 +292,7 @@ socketIOServer.on('connection', async socket =>{
 		misMensajesGuardados= await misMensajes.getAll()
 		await socketIOServer.sockets.emit('chat', misMensajesGuardados)
 	})
+
 })
 /* ############################## Fin Websockets Chat ###################################### */
 
