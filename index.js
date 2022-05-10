@@ -23,6 +23,7 @@ app.set("views","./views/ejs")
 // CONECTO CON LA BASE DE DATOS
 
 let ProductosDB=null;
+let UsuariosDB=null;
 let MensajesDB=null;
 
 // Elegir la base de datos, con 1: MongoDB, 2: SQL, 3:Firebase
@@ -30,19 +31,23 @@ let opcionDB=3;
 
 if (opcionDB==1) {
 	ProductosDB=require('./components/productos/manejadorMongo')
+	UsuariosDB=require('./components/usuarios/manejadorMongo')
 	MensajesDB=require('./components/mensajes/manejadorMongoMensajes')
 	console.log(">>>>>>>>>>>>>> OPCION Mongo");
 } else if (opcionDB==2) {
 	ProductosDB=require('./components/pruductos/manejadorSQL');
+	UsuariosDB=require('./components/usuarios/manejadorSQL');
 	MensajesDB=require('./components/mensajes/manejadorSQLite');
 	console.log(">>>>>>>>>>>>>> OPCION SQL");
 } else {
 	ProductosDB= require('./components/pruductos/manejadorFirebase')
+	UsuariosDB= require('./components/usuarios/manejadorFirebase')
 	MensajesDB= require('./components/mensajes/manejadorFirebaseMensajes')
 	console.log(">>>>>>>>>>>>>> OPCION Firebase");
 }
 
 let misProductos = new ProductosDB("productos");
+let misUsuarios = new UsuariosDB("usuarios");
 let misMensajes = new MensajesDB("mensajes");
 
 // ACCESO DE ADMINISTRADOR
