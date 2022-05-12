@@ -4,7 +4,8 @@ class Element {
 
     async createElement(req, res, next){
         try {
-            let element = req.body;
+            let element = req.body; // En el body recibe email y dirección
+            // let response = await elementService.save(element);
             let response = await elementService.save(element);
             res.json(response);
         } catch (error) {
@@ -14,8 +15,9 @@ class Element {
 
     async createSubElement(req, res, next){
         try {
-            let element = req.body;
-            let response = await elementService.save(element);
+            let id = req.params.id
+            let subElement = req.body;
+            let response = await elementService.saveSubElement(id,subElement);
             res.json(response);
         } catch (error) {
             console.log(error);
@@ -26,6 +28,16 @@ class Element {
         try {
             let id = req.params.id
             let response = await elementService.getById(id);
+            res.json(response);
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
+    async getSubElement(req, res, next){
+        try {
+            let id = req.params.id
+            let response = await elementService.getSubElementsById(id);
             res.json(response);
         } catch (error) {
             console.log(error);
@@ -73,13 +85,13 @@ class Element {
 
     async deleteSubElement(req, res, next){
         try {
-            // let { id } = req.body;
-            let id = req.params.id
-            let response = await elementService.deleteById(id);
+            let id_prod = req.params.id_prod;
+            let id = req.params.id;
+            let response = await elementService.deleteSubElementById(id, id_prod);
             // res.json(response);
             res.json({
                 result:'ok',
-                id: req.params.id      
+                id: req.params.id_prod      
             })
         } catch (error) {
             console.log(error);

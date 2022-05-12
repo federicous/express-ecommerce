@@ -1,18 +1,20 @@
+// let { firebaseDB } = require("../../utils/firebase");
 let { firebaseDB } = require("../../../utils/firebase");
-let elementos= firebaseDB.collection('productos');
+let elementos= firebaseDB.collection('carritos');
 // import { doc, getDoc } from "firebase/firestore";
 
 const { v4 } = require('uuid');
 
 class FirebaseDB {
 
-	async save(element) {
+	async save() {
 		try {
+			let element={}
 			element.id=v4();
 			element.timestamp = Date.now();    
-			await elementos.doc().set(element);
-			return(element.id)
-			
+			element.lista=[];
+			let newElement = await elementos.doc().set(element);
+			return(element)
 		} catch (error) {
 			console.log(`Error de lectura`, error);
 			throw new Error(error)
@@ -35,10 +37,9 @@ class FirebaseDB {
 			// let getElement = await elementos.where('id', '==', `${id}` ).get();
 			// let getElement = await elementos.where('id', '==', `a73c7e06-0879-4624-912b-15c646c48213` ).get()
 
-			// Utiliza el ID propio de firebase para la busqueda
 			let getElement = await elementos.doc(`${id}`).get();
 			// let modifyElement = await firebaseDB.getDoc(firebaseDB.doc(firebaseDB, 'productos',`${id}`));
-			console.log(getElement);
+
 			return(getElement.data())
 		} catch (error) {
 			console.log(`Error de lectura`, error);
@@ -85,16 +86,6 @@ class FirebaseDB {
 }
 
 module.exports= FirebaseDB;
-
-
-
-
-
-
-
-
-
-
 
 
 
