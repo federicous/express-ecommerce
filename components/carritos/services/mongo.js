@@ -101,10 +101,8 @@ class MongoDB {
 	async deleteSubElementById(id, id_prod) {
 		try {
 			let carritoActualizado = await ElementoModel.findById(id);
-			carritoActualizado.productList.filter((item) => item.id !== `${id_prod}`);
-			console.log(carritoActualizado);
-			
-			// console.log(`id: ${id}, id_prod: ${id_prod}, productList: ${carritoActualizado.productList}` );
+			let nuevaProductList = carritoActualizado.productList.filter((item) => item.id !== `${id_prod}`);
+			carritoActualizado.productList = nuevaProductList;
 			await ElementoModel.findByIdAndUpdate(id, carritoActualizado);
 			return(carritoActualizado)
 
