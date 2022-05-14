@@ -12,7 +12,7 @@ let email = Joi.string().min(3);
 let address = Joi.string().min(3);
 let phone = Joi.string().min(3);
 let avatar = Joi.string().min(3);
-let uuid = Joi.string().min(3);
+let timestamp = Joi.string().min(3);
 
 
 const usuarioSchema = {
@@ -24,7 +24,7 @@ const usuarioSchema = {
     	address: address.required(),
     	phone: phone.required(),
 	avatar: avatar.required(),
-	uuid: uuid.required()
+	timestamp: timestamp.required()
 }
 
 let usuarioSchemaModel = new Schema(usuarioSchema);
