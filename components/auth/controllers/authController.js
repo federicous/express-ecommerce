@@ -24,10 +24,9 @@ class Element {
         try {
             console.log(req.body)
             let credenciales=req.body
+            req.session.username=credenciales.name;
             console.log(credenciales)
-            // res.json(req.body)
-            // return res.redirect('home');
-            res.render('home',{username: credenciales.name});
+            return res.redirect('home');
         } catch (error) {
             console.log(error);
         }
@@ -35,17 +34,46 @@ class Element {
 
     async getHome(req, res, next){
         try {
-            console.log('FUNCA HASTA HOME');
-            // res.render('home',{username: username});
-            res.render('home',{username: username.name});
-            console.log(username);
-            // res.json({hola: "hola"})
+            res.render('home',{username: req.session.username});
         } catch (error) {
             console.log(error);
         }
     }
 
+    async postLogout(req, res, next){
+        try {
+            req.session.destroy
+            return res.redirect('login');
+        } catch (error) {
+            console.log(error);
+        }
+    }
 
+    async getRegister(req, res, next){
+        try {
+            // const { nombre, password, direccion } = req.body
+            // const yaExiste = usuarios.find(usuario => usuario.nombre == nombre)
+            // if (yaExiste) {
+            //     return res.json({ error: 'ya existe ese usuario' });
+            // }
+            // const usuario = { nombre, password, direccion }
+            // usuarios.push(usuario)
+            // const access_token = generateToken(usuario)
+            // res.json({ access_token })
+
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
+    async postRegister(req, res, next){
+        try {
+            req.session.destroy
+            return res.redirect('login');
+        } catch (error) {
+            console.log(error);
+        }
+    }
 }
 
 

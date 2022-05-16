@@ -6,6 +6,9 @@ module.exports = app => {
     authRouter.get("/login", authController.getLogin);
     authRouter.post("/login", authController.postLogin);
     authRouter.get("/home", authController.getHome);
+    authRouter.post("/logout", authController.postLogout);
+    authRouter.get("/register", authController.getRegister);
+    authRouter.post("/register", authController.postRegister);
 
     // authRouter.get("/", authController.getAllElement);
     // authRouter.get("/:id", authController.getElement);

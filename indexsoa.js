@@ -1,11 +1,11 @@
 let express = require('express')
 let app = express()
 const PORT = 8088
-const { Router } = express
-const router = Router()
-const routerProd = Router()
-const routerCart = Router()
-const raiz= Router()
+// const { Router } = express
+// const router = Router()
+// const routerProd = Router()
+// const routerCart = Router()
+// const raiz= Router()
 let {Server:HttpServer} = require('http')
 let {Server:SocketIO} = require('socket.io');
 let cookieParser= require('cookie-parser')
@@ -21,35 +21,7 @@ const serverRoutes = require("./routes");
 const ejs= require("ejs")
 app.set('view engine', 'ejs');
 app.set("views","./views/ejs")
-// CONECTO CON LA BASE DE DATOS
 
-// let ProductosDB=null;
-// let UsuariosDB=null;
-// let MensajesDB=null;
-
-// // Elegir la base de datos, con 1: MongoDB, 2: SQL, 3:Firebase
-// let opcionDB=3;
-
-// if (opcionDB==1) {
-// 	ProductosDB=require('./components/productos/manejadorMongo')
-// 	UsuariosDB=require('./components/usuarios/manejadorMongo')
-// 	MensajesDB=require('./components/mensajes/manejadorMongoMensajes')
-// 	console.log(">>>>>>>>>>>>>> OPCION Mongo");
-// } else if (opcionDB==2) {
-// 	ProductosDB=require('./components/pruductos/manejadorSQL');
-// 	UsuariosDB=require('./components/usuarios/manejadorSQL');
-// 	MensajesDB=require('./components/mensajes/manejadorSQLite');
-// 	console.log(">>>>>>>>>>>>>> OPCION SQL");
-// } else {
-// 	ProductosDB= require('./components/pruductos/manejadorFirebase')
-// 	UsuariosDB= require('./components/usuarios/manejadorFirebase')
-// 	MensajesDB= require('./components/mensajes/manejadorFirebaseMensajes')
-// 	console.log(">>>>>>>>>>>>>> OPCION Firebase");
-// }
-
-// let misProductos = new ProductosDB("productos");
-// let misUsuarios = new UsuariosDB("usuarios");
-// let misMensajes = new MensajesDB("mensajes");
 
 // ACCESO DE ADMINISTRADOR
 let acceso = {
@@ -98,47 +70,9 @@ app.use(session({
 serverRoutes(app);
 
 
-// app.get('/', (req, res, next)=>{
-// 	res.redirect('login');
-//     })
-
-
-// app.get('/login', (req, res, next) => {
-// 	// let total = await misProductos.getAll();
-// 	req.session.test=7;
-// 	req.session.prueba={test: 7};
-// 	if (req.session.contador) {
-// 		req.session.contador++
-// 		console.log(`visitas: ${req.session.contador}`);
-// 	} else {
-// 		req.session.contador=1
-// 		console.log(`bienvenido`);
-// 	}
-// 		console.log(`Hola, bienvenido`)
-// 	res.render('login',{});	
-// 	// res.sendFile(__dirname + '/public/login.html');
-// })
-// let username;
-// app.post('/login', (req, res, next) => {
-// 	console.log(req.body)
-// 	username=req.body
-// 	// res.json(req.body)
-// 	return res.redirect('home'); // NO TOCARRRRRR !!!!!!!!!!!!!!!!!!!!
-// })
-
-// app.get('/home', (req, res, next)=>{
-// 	console.log('FUNCA HASTA HOME');
-// 	// res.render('home',{username: username});
-// 	res.render('home',{username: username.name});
-// 	console.log(username);
-// 	// res.json({hola: "hola"})
-//     })
-
 // app.get('/verProductos', async (req, res) => {
 // 	res.sendFile(__dirname + '/public/productos.html');
 // })
-
-
 
 /* ############################## Websockets Chat ###################################### */
 let httpServer = new HttpServer(app);
@@ -161,13 +95,6 @@ socketIOServer.on('connection', async socket =>{
 
 })
 /* ############################## Fin Websockets Chat ###################################### */
-
-
-// app.use('/api', router)
-// app.use('/api/product', routerProd)
-// app.use('/api/cart', routerCart)
-// app.use('/', raiz)
-
 
 httpServer.listen(PORT, ()=>{
 	console.log(`Server on!: http://localhost:${PORT}`)
