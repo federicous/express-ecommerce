@@ -1,6 +1,6 @@
 let express = require('express')
 let app = express()
-const PORT = 8088
+// const PORT = process.env.PORT;
 // const { Router } = express
 // const router = Router()
 // const routerProd = Router()
@@ -13,6 +13,7 @@ let session = require("express-session");
 let MongoStore = require("connect-mongo")
 let path = require("path");
 require("dotenv").config();
+const PORT = process.env.PORT;
 const MONGO_ATLAS=process.env.MONGO_URL_ATLAS;
 const serverRoutes = require("./routes");
 
