@@ -13,7 +13,7 @@ let session = require("express-session");
 let MongoStore = require("connect-mongo")
 let path = require("path");
 require("dotenv").config();
-const PORT = process.env.PORT;
+const PORT = process.env.PORT || '8088';
 const MONGO_ATLAS=process.env.MONGO_URL_ATLAS;
 const serverRoutes = require("./routes");
 
