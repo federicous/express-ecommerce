@@ -16,7 +16,7 @@ require("dotenv").config();
 const PORT = process.env.PORT || '8088';
 const MONGO_ATLAS=process.env.MONGO_URL_ATLAS;
 const serverRoutes = require("./routes");
-const authJwt = require("./helpers/jwt");
+// const authJwt = require("./helpers/jwt");
 
 // vistas
 // app.set("views", path.join(__dirname, 'views', 'ejs'))

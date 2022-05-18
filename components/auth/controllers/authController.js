@@ -1,21 +1,22 @@
-const elementService = require('../services')
+const elementService = require('../services/authService')
 // const jwt = require("jsonwebtoken")
+const JWT = require("../../../utils/jwt/jwt")
 
 class Element {
 
     async getLogin(req, res, next){
         try {
-            req.session.test=7;
-            req.session.prueba={test: 7};
-            if (req.session.contador) {
-                req.session.contador++
-                console.log(`visitas: ${req.session.contador}`);
+            const token = req.cookies.token
+			const verification = await JWT.verify(token)
+			// if (!verification) return res.status(401).render('authError')
+            console.log(token);
+            if (!verification) {
+                console.log(`sin token`);
+                return res.status(200).render('login')
             } else {
-                req.session.contador=1
-                console.log(`bienvenido`);
+                console.log(`con token`);
+                res.status(200).redirect('/home')
             }
-                console.log(`Hola, bienvenido`)
-            res.render('login',{});	
         } catch (error) {
             console.log(error);
         }
@@ -26,7 +27,7 @@ class Element {
             let {email, password} = req.body;
             console.log(email);
             console.log(password);
-            let response = await elementService.getByEmail(email,password);
+            let response = await elementService.login(email,password);
             res.status(200)
             .cookie('token', response.token, {maxAge: 3600000})
             .redirect('/home');
@@ -40,6 +41,16 @@ class Element {
     async getHome(req, res, next){
         try {
             res.render('home',{username: req.session.username});
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
+    async getLogout(req, res, next){
+        try {
+            let response = await elementService.logout(email,password);
+            req.session.destroy
+            return res.redirect('login');
         } catch (error) {
             console.log(error);
         }
@@ -78,7 +89,7 @@ class Element {
     async postRegister(req, res, next){
         try {
             let element = req.body;
-            let response = await elementService.save(element);
+            let response = await elementService.createUser(element);
             res.status(200)
             .cookie('token', response.token, {maxAge: 3600000})
             .redirect('/login');

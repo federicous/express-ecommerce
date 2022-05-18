@@ -2,11 +2,12 @@ let {connection, mongoose} = require("../../../config/mongo");
 let UsuarioModel = require('../../../schema/usuarios');
 let bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken")
+const JWT = require("../../../utils/jwt/jwt")
 require("dotenv").config();
 
-class MongoDB {
+class AuthService {
 
-	async save(usuario) {
+	async createUser(usuario) {
 		try {
 			const passwordHash = bcrypt.hashSync(usuario.password, 10)
 			usuario.password = passwordHash;
@@ -20,31 +21,8 @@ class MongoDB {
 			throw new Error(error)
 		}
 	}
-	async modify(usuario,id) {
-		try {
-			let modificar = await UsuarioModel.findByIdAndUpdate(id, usuario);
-			return(modificar)
 
-		} catch (error) {
-			console.log(`Error de lectura`, error);
-			throw new Error(error)
-		}	
-	}
-
-	async getById(id) {
-		try {
-			let user = await UsuarioModel.findById(id);
-			return(user)
-		// console.log(allUsers);
-			return(allUsers)
-			
-		} catch (error) {
-			console.log(`Error de lectura`, error);
-			throw new Error(error)
-		}	
-	}
-
-	async getByEmail(email,password) {
+	async login(email,password) {
 		try {
 			let secret = process.env.SECRET;
 			console.log(secret);
@@ -53,10 +31,14 @@ class MongoDB {
 			if (!user) {
 				return (res.status(404).send({message:'No existe el usuario'}))
 			} else if (bcrypt.compareSync(password, user.password)){
-				const token = jwt.sign({
-					userId: user._id,
-					idAdmin: user.isAdmin,
-				}, secret,{expiresIn: '1d'});
+				// const token = jwt.sign({
+				// 	userId: user._id,
+				// 	isAdmin: user.isAdmin,
+				// }, secret,{expiresIn: '1d'});
+				const token = await JWT.generate({
+					 	userId: user._id,
+					 	isAdmin: user.isAdmin,
+					})
 				// return (res.status(200).send({email: user.email, token}))
 				return({email: user.email, token})
 			} else {
@@ -70,28 +52,10 @@ class MongoDB {
 		}	
 	}
 
-	async deleteById(id) {
-		try {
-			// let borrar = await UsuarioModel.deleteOne({"_id": id});
-			let borrar = await UsuarioModel.findByIdAndDelete(id);
 
-		} catch (error) {
-			console.log(`Error de lectura`, error);
-			throw new Error(error)
-		}		
-	}
-
-	async deleteAll() {
-		try {
-			const contenido = await UsuarioModel.deleteMany({});
-
-		} catch (error) {
-			throw new Error(error)
-		}
-	}
 }
 
-module.exports= MongoDB;
+module.exports= new AuthService;
 
 
 
