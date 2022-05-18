@@ -1,4 +1,5 @@
 const elementService = require('../services')
+// const jwt = require("jsonwebtoken")
 
 class Element {
 
@@ -14,7 +15,7 @@ class Element {
                 console.log(`bienvenido`);
             }
                 console.log(`Hola, bienvenido`)
-            res.render('login3',{});	
+            res.render('login',{});	
         } catch (error) {
             console.log(error);
         }
@@ -22,15 +23,19 @@ class Element {
 
     async postLogin(req, res, next){
         try {
-            console.log(req.body)
-            let credenciales=req.body
-            req.session.username=credenciales.name;
-            console.log(credenciales)
-            return res.redirect('home');
+            let {email, password} = req.body;
+            console.log(email);
+            console.log(password);
+            let response = await elementService.getByEmail(email,password);
+            res.status(200)
+            .cookie('token', response.token, {maxAge: 3600000})
+            .redirect('/home');
+
         } catch (error) {
             console.log(error);
         }
     }
+
 
     async getHome(req, res, next){
         try {
@@ -51,6 +56,10 @@ class Element {
 
     async getRegister(req, res, next){
         try {
+
+            res.render('register',{});	
+
+
             // const { nombre, password, direccion } = req.body
             // const yaExiste = usuarios.find(usuario => usuario.nombre == nombre)
             // if (yaExiste) {
@@ -68,13 +77,16 @@ class Element {
 
     async postRegister(req, res, next){
         try {
-            req.session.destroy
-            return res.redirect('login');
+            let element = req.body;
+            let response = await elementService.save(element);
+            res.status(200)
+            .cookie('token', response.token, {maxAge: 3600000})
+            .redirect('/login');
+            
         } catch (error) {
             console.log(error);
         }
     }
 }
-
 
 module.exports = new Element();

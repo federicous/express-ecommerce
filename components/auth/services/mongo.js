@@ -1,31 +1,29 @@
-// let {connection, mongoose} = require("../config/mongo");
 let {connection, mongoose} = require("../../../config/mongo");
-// let ProductoModel = require('../schema/productos')
-let ProductoModel = require('../../../schema/productos')
+let UsuarioModel = require('../../../schema/usuarios');
+let bcrypt = require("bcryptjs");
+const jwt = require("jsonwebtoken")
+require("dotenv").config();
 
 class MongoDB {
 
-
-	async save(producto) {
+	async save(usuario) {
 		try {
-			producto.timestamp=Date.now();
-			let agregarProductoModel= new ProductoModel(producto);
-			let agregarProducto = await agregarProductoModel.save();
-			console.log(agregarProducto);		
-			
+			const passwordHash = bcrypt.hashSync(usuario.password, 10)
+			usuario.password = passwordHash;
+			usuario.timestamp=Date.now();
+			let agregarUsuarioModel= new UsuarioModel(usuario);
+			let agregarUsuario = await agregarUsuarioModel.save();
+			console.log(agregarUsuario);		
+			return	agregarUsuario._id
 		} catch (error) {
 			console.log(`Error de lectura`, error);
 			throw new Error(error)
 		}
 	}
-	async modify(producto,id) {
+	async modify(usuario,id) {
 		try {
-			// let modificar = await ProductoModel.updateOne({_id:id}, {
-			// 	$set: producto
-			// });
-			let modificar = await ProductoModel.findByIdAndUpdate(id, producto);
+			let modificar = await UsuarioModel.findByIdAndUpdate(id, usuario);
 			return(modificar)
-
 
 		} catch (error) {
 			console.log(`Error de lectura`, error);
@@ -35,20 +33,37 @@ class MongoDB {
 
 	async getById(id) {
 		try {
-			let mostrar = await ProductoModel.findById(id);
-			return(mostrar)
+			let user = await UsuarioModel.findById(id);
+			return(user)
+		// console.log(allUsers);
+			return(allUsers)
+			
 		} catch (error) {
 			console.log(`Error de lectura`, error);
 			throw new Error(error)
 		}	
 	}
 
-	async getAll() {
+	async getByEmail(email,password) {
 		try {
-			let allProducts = await ProductoModel.find({});
-			// console.log(allProducts);
-			return(allProducts)
-			
+			let secret = process.env.SECRET;
+			console.log(secret);
+			let user = await UsuarioModel.findOne({email: email});
+			console.log(user);
+			if (!user) {
+				return (res.status(404).send({message:'No existe el usuario'}))
+			} else if (bcrypt.compareSync(password, user.password)){
+				const token = jwt.sign({
+					userId: user._id,
+					idAdmin: user.isAdmin,
+				}, secret,{expiresIn: '1d'});
+				// return (res.status(200).send({email: user.email, token}))
+				return({email: user.email, token})
+			} else {
+				// return (res.status(400).send({message:'contraseña incorrecta'}))
+				return({message:'contraseña incorrecta'})
+			}
+			// return(user)
 		} catch (error) {
 			console.log(`Error de lectura`, error);
 			throw new Error(error)
@@ -57,8 +72,8 @@ class MongoDB {
 
 	async deleteById(id) {
 		try {
-			// let borrar = await ProductoModel.deleteOne({"_id": id});
-			let borrar = await ProductoModel.findByIdAndDelete(id);
+			// let borrar = await UsuarioModel.deleteOne({"_id": id});
+			let borrar = await UsuarioModel.findByIdAndDelete(id);
 
 		} catch (error) {
 			console.log(`Error de lectura`, error);
@@ -68,7 +83,7 @@ class MongoDB {
 
 	async deleteAll() {
 		try {
-			const contenido = await ProductoModel.deleteMany({});
+			const contenido = await UsuarioModel.deleteMany({});
 
 		} catch (error) {
 			throw new Error(error)

@@ -16,6 +16,7 @@ require("dotenv").config();
 const PORT = process.env.PORT || '8088';
 const MONGO_ATLAS=process.env.MONGO_URL_ATLAS;
 const serverRoutes = require("./routes");
+const authJwt = require("./helpers/jwt");
 
 // vistas
 // app.set("views", path.join(__dirname, 'views', 'ejs'))
@@ -39,6 +40,7 @@ let acceso = {
 // Utilidades
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
+// app.use(authJwt())
 // app.use(express.static("./public"));
 
 app.use(cookieParser())

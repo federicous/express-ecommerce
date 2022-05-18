@@ -13,6 +13,7 @@ let address = Joi.string().min(3);
 let phone = Joi.string().min(3);
 let avatar = Joi.string().min(3);
 let timestamp = Joi.string().min(3);
+let isAdmin = Joi.boolean();
 
 
 const usuarioSchema = {
@@ -24,7 +25,8 @@ const usuarioSchema = {
     	address: address.required(),
     	phone: phone.required(),
 	avatar: avatar.required(),
-	timestamp: timestamp.required()
+	timestamp: timestamp.required(),
+	isAdmin: isAdmin.required()
 }
 
 let usuarioSchemaModel = new Schema(usuarioSchema);

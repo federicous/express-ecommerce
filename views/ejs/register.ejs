@@ -50,14 +50,24 @@
 	</nav>
 	<div class="container justify-content-center">
 
-			<h1 class="text-center m-3">Login</h1>
-			<form action="/login"  method="POST"
+			<h1 class="text-center m-3">Register</h1>
+			<form action="/register"  method="POST"
 				id="formProducts">
 				<div class="mb-3 d-flex align-items-center flex-column p-5 mx-5">
 					<label for="email" class="form-label">Email:
 						<input type="email" name="email" id="email" class="form-control" required><br></label>
 					<label for="password" class="form-label">Password:
 						<input type="password" name="password" id="password" class="form-control" required><br></label>						
+					<label for="name" class="form-label">Nombre:
+						<input type="text" name="name" id="name" class="form-control" required><br></label>
+					<label for="age" class="form-label">Age:
+						<input type="number" name="age" id="age" class="form-control" required><br></label>						
+					<label for="address" class="form-label">Address:
+						<input type="text" name="address" id="address" class="form-control" required><br></label>
+					<label for="phone" class="form-label">Phone:
+						<input type="phone" name="phone" id="phone" class="form-control" required><br></label>						
+					<label for="avatar" class="form-label">Avatar:
+						<input type="avatar" name="avatar" id="avatar" class="form-control" required><br></label>
 					<button type="submit" class="btn btn-primary">submit</button>
 				</div>
 			</form>			

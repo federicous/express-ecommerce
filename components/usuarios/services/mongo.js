@@ -1,10 +1,13 @@
 let {connection, mongoose} = require("../../../config/mongo");
-let UsuarioModel = require('../../../schema/usuarios')
+let UsuarioModel = require('../../../schema/usuarios');
+let bcrypt = require("bcryptjs");
 
 class MongoDB {
 
 	async save(usuario) {
 		try {
+			const passwordHash = bcrypt.hashSync(usuario.password, 10)
+			usuario.password = passwordHash;
 			usuario.timestamp=Date.now();
 			let agregarUsuarioModel= new UsuarioModel(usuario);
 			let agregarUsuario = await agregarUsuarioModel.save();
