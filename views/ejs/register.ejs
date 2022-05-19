@@ -31,11 +31,8 @@
 			<div class="collapse navbar-collapse" id="navbarTogglerDemo02">
 				<ul class="navbar-nav me-auto mb-2 mb-lg-0 align-items-center">
 					<li class="nav-item">
-						<a class="nav-link active" aria-current="page" href="/">Home</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link" href="/register">
-							<button type="button" class="btn btn-primary">Register</button>
+						<a class="nav-link" href="/login">
+							<button type="button" class="btn btn-primary">Login</button>
 						</a>
 					</li>
 <!-- 					<li class="nav-item">
@@ -51,9 +48,9 @@
 	<div class="container justify-content-center">
 
 			<h1 class="text-center m-3">Register</h1>
-			<form action="/register"  method="POST"
+			<form action="/register"  method="POST" class="mb-3 d-flex justify-content-center"
 				id="formProducts">
-				<div class="mb-3 d-flex align-items-center flex-column p-5 mx-5">
+				<div class="mb-3 d-flex  justify-content flex-column p-5 mx-5">
 					<label for="email" class="form-label">Email:
 						<input type="email" name="email" id="email" class="form-control" required><br></label>
 					<label for="password" class="form-label">Password:
@@ -73,6 +70,11 @@
 						<label class="form-check-label" for="isAdmin">Admin</label>
 					</div>
 					<button type="submit" class="btn btn-primary">submit</button>
+					<% if (message) { %>
+						<div class="alert alert-danger mt-3" role="alert">
+							<%= message %>
+						</div>
+					<% } %> 
 				</div>
 			</form>			
 			

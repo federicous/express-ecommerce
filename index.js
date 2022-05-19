@@ -21,9 +21,8 @@ const serverRoutes = require("./routes");
 // vistas
 // app.set("views", path.join(__dirname, 'views', 'ejs'))
 const ejs= require("ejs")
-app.set('view engine', 'ejs');
 app.set("views","./views/ejs")
-
+app.set('view engine', 'ejs');
 
 // ACCESO DE ADMINISTRADOR
 let acceso = {
