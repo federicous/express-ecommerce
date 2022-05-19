@@ -88,6 +88,15 @@ class Element {
             console.log(error);
         }
     }
+
+    async getVerProductos(req, res, next){
+        try {
+            res.render('verProductos',{message: ''});	
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
 }
 
 module.exports = new Element();
