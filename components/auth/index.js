@@ -11,7 +11,7 @@ module.exports = app => {
     authRouter.get("/logout", authController.getLogout);
     authRouter.get("/register", authController.getRegister);
     authRouter.post("/register", authController.postRegister);
-    authRouter.get("/verProductos", authController.getVerProductos);
+    authRouter.get("/verProductos", Autenticacion.usuario, authController.getVerProductos);
 
     // authRouter.get("/", authController.getAllElement);
     // authRouter.get("/:id", authController.getElement);
