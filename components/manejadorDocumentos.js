@@ -1,5 +1,6 @@
 const fs = require('fs')
 const { uuid } = require('uuidv4');
+const pino = require('../utils/logger/pino')
 
 class Contenedor {
 
@@ -11,7 +12,7 @@ class Contenedor {
 	async leerProductos(){
 		try {
 			const contenido = await fs.promises.readFile(this.url, 'utf-8') 
-			// console.log(contenido);
+			// pino.info(contenido);
 			return contenido
 
 		} catch (error) {
@@ -33,7 +34,7 @@ class Contenedor {
 			producto.uuid=uuid()
 			producto.id= id ? id : this.contador+1
 			this.contador=this.contador+1
-			// console.log(`este es el contador: ${this.contador}`);
+			// pino.info(`este es el contador: ${this.contador}`);
 			infoArray.push(producto)
 
 			let actualizado=JSON.stringify(infoArray, null, 2)
@@ -43,7 +44,7 @@ class Contenedor {
 			return this.contador-1
 
 		} catch (error) {
-			console.log(`Error de lectura`, error);
+			pino.error(`Se produjo un error: ${error}`)
 			throw new Error(error)
 		}		
 	}
@@ -58,7 +59,7 @@ class Contenedor {
 
 
 		} catch (error) {
-			console.log(`Error de lectura`, error);
+			pino.error(`Se produjo un error: ${error}`)
 			throw new Error(error)
 		}	
 	}
@@ -72,7 +73,7 @@ class Contenedor {
 
 
 		} catch (error) {
-			console.log(`Error de lectura`, error);
+			pino.error(`Se produjo un error: ${error}`)
 			throw new Error(error)
 		}	
 		
@@ -86,7 +87,7 @@ class Contenedor {
 			let indice=aux.findIndex(product=>product.id==parseInt(id))
 			aux.splice(indice,1)
 			infoArray=[...aux]
-			console.log(infoArray);	
+			pino.info(infoArray);	
 
 			let actualizado=JSON.stringify(infoArray, null, 2)
 
@@ -94,7 +95,7 @@ class Contenedor {
 
 
 		} catch (error) {
-			console.log(`Error de lectura`, error);
+			pino.error(`Se produjo un error: ${error}`)
 			throw new Error(error)
 		}		
 	}

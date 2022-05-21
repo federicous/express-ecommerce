@@ -1,6 +1,7 @@
 const elementService = require('../services/authService')
 // const jwt = require("jsonwebtoken")
 const JWT = require("../../../utils/jwt/jwt")
+const pino = require('../../../utils/logger/pino')
 
 class Element {
 
@@ -13,27 +14,27 @@ class Element {
             }
 			// const verification = await JWT.verify(token)
 			// if (!verification) return res.status(401).render('authError')
-            console.log(token);
+            pino.info(token);
             if (!verification) {
-                console.log(`sin token`);
+                pino.info(`sin token`);
                 return res.status(200).render('login',{message: ""})
             } else {
-                console.log(`con token`);
+                pino.info(`con token`);
                 res.status(200).redirect('/home')
             }
         } catch (error) {
-            console.log(error);
+            pino.error(`Se produjo un error: ${error}`);
         }
     }
 
     async postLogin(req, res, next){
         try {
             let {email, password} = req.body;
-            console.log(email);
-            console.log(password);
+            pino.info(email);
+            pino.info(password);
             let response = await elementService.login(email,password);
             if (response.message) {
-                console.log(response);
+                pino.info(response);
                 return res.status(404)
                 .render('login', {message: response.message});
             }
@@ -42,7 +43,7 @@ class Element {
             .redirect('/home');
 
         } catch (error) {
-            console.log(error);
+            pino.error(`Se produjo un error: ${error}`);
         }
     }
 
@@ -51,7 +52,7 @@ class Element {
         try {
             res.render('home',{username: req.session.username});
         } catch (error) {
-            console.log(error);
+            pino.error(`Se produjo un error: ${error}`);
         }
     }
 
@@ -59,7 +60,7 @@ class Element {
         try {
             res.status(200).clearCookie('token').render('login',{message: ''})
         } catch (error) {
-            console.log(error);
+            pino.error(`Se produjo un error: ${error}`);
         }
     }
 
@@ -67,7 +68,7 @@ class Element {
         try {
             res.render('register',{message: ''});	
         } catch (error) {
-            console.log(error);
+            pino.error(`Se produjo un error: ${error}`);
         }
     }
 
@@ -76,7 +77,7 @@ class Element {
             let element = req.body;
             let response = await elementService.createUser(element);
             if (response.message) {
-                console.log(response);
+                pino.info(response);
                 return res.status(404)
                 .render('register', {message: response.message});
             }
@@ -85,7 +86,7 @@ class Element {
             .redirect('/login');
             
         } catch (error) {
-            console.log(error);
+            pino.error(`Se produjo un error: ${error}`);
         }
     }
 
@@ -93,7 +94,7 @@ class Element {
         try {
             res.render('verProductos',{message: ''});	
         } catch (error) {
-            console.log(error);
+            pino.error(`Se produjo un error: ${error}`);
         }
     }
 

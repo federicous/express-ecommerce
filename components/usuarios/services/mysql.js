@@ -1,7 +1,7 @@
 const { uuid } = require('uuidv4');
 const {mysqlConfig} = require('../../../config/mysqlDB');
 const knex = require('knex')(mysqlConfig);
-
+const pino = require('../../../utils/logger/pino')
 
 (async()=>{
 	try {
@@ -21,10 +21,10 @@ const knex = require('knex')(mysqlConfig);
 
 			});	  
 		} else {
-			console.log("ya existe la tabla");
+			pino.info("ya existe la tabla");
 		}
       	} catch (error){
-		console.log(error);
+		pino.error(`Se produjo un error: ${error}`)
 	}
 })();
 
@@ -49,12 +49,12 @@ class Contenedor {
 			usuario.uuid=uuid()
 			let agregar= await knex('usuarios')
 			.insert(usuario)
-			console.log("datos insertados")		
+			pino.info("datos insertados")		
 
 			return usuario.id
 
 		} catch (error) {
-			console.log(`Error de lectura`, error);
+			pino.error(`Se produjo un error: ${error}`)
 			throw new Error(error)
 		}		
 	}
@@ -66,7 +66,7 @@ class Contenedor {
 
 
 		} catch (error) {
-			console.log(`Error de lectura`, error);
+			pino.error(`Se produjo un error: ${error}`)
 			throw new Error(error)
 		}	
 	}
@@ -80,7 +80,7 @@ class Contenedor {
 
 
 		} catch (error) {
-			console.log(`Error de lectura`, error);
+			pino.error(`Se produjo un error: ${error}`)
 			throw new Error(error)
 		}	
 	}
@@ -88,11 +88,11 @@ class Contenedor {
 	async getAll() {
 		try {
 			let mostrar = await knex.from('usuarios').select('*');
-			console.log(mostrar);
+			pino.info(mostrar);
 			return mostrar
 
 		} catch (error) {
-			console.log(`Error de lectura`, error);
+			pino.error(`Se produjo un error: ${error}`)
 			throw new Error(error)
 		}	
 		
@@ -104,7 +104,7 @@ class Contenedor {
 
 
 		} catch (error) {
-			console.log(`Error de lectura`, error);
+			pino.error(`Se produjo un error: ${error}`)
 			throw new Error(error)
 		}		
 	}

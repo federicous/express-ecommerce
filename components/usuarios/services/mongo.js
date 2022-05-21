@@ -1,6 +1,7 @@
 let {connection, mongoose} = require("../../../config/mongo");
 let UsuarioModel = require('../../../schema/usuarios');
 let bcrypt = require("bcryptjs");
+const pino = require('../../../utils/logger/pino')
 
 class MongoDB {
 
@@ -11,10 +12,10 @@ class MongoDB {
 			usuario.timestamp=Date.now();
 			let agregarUsuarioModel= new UsuarioModel(usuario);
 			let agregarUsuario = await agregarUsuarioModel.save();
-			console.log(agregarUsuario);		
+			pino.info(agregarUsuario);		
 			
 		} catch (error) {
-			console.log(`Error de lectura`, error);
+			pino.error(`Se produjo un error: ${error}`)
 			throw new Error(error)
 		}
 	}
@@ -24,7 +25,7 @@ class MongoDB {
 			return(modificar)
 
 		} catch (error) {
-			console.log(`Error de lectura`, error);
+			pino.error(`Se produjo un error: ${error}`)
 			throw new Error(error)
 		}	
 	}
@@ -34,7 +35,7 @@ class MongoDB {
 			let mostrar = await UsuarioModel.findById(id);
 			return(mostrar)
 		} catch (error) {
-			console.log(`Error de lectura`, error);
+			pino.error(`Se produjo un error: ${error}`)
 			throw new Error(error)
 		}	
 	}
@@ -42,11 +43,11 @@ class MongoDB {
 	async getAll() {
 		try {
 			let allUsers = await UsuarioModel.find({});
-			// console.log(allUsers);
+			// pino.info(allUsers);
 			return(allUsers)
 			
 		} catch (error) {
-			console.log(`Error de lectura`, error);
+			pino.error(`Se produjo un error: ${error}`)
 			throw new Error(error)
 		}	
 	}
@@ -57,7 +58,7 @@ class MongoDB {
 			let borrar = await UsuarioModel.findByIdAndDelete(id);
 
 		} catch (error) {
-			console.log(`Error de lectura`, error);
+			pino.error(`Se produjo un error: ${error}`)
 			throw new Error(error)
 		}		
 	}

@@ -1,4 +1,5 @@
 const elementService = require('../services')
+const pino = require('../../../utils/logger/pino')
 
 class Element {
 
@@ -9,7 +10,7 @@ class Element {
             let response = await elementService.save(element);
             res.json(response);
         } catch (error) {
-            console.log(error);
+            pino.error(`Se produjo un error: ${error}`);
         }
     }
 
@@ -20,7 +21,7 @@ class Element {
             let response = await elementService.saveSubElement(id,subElement);
             res.json(response);
         } catch (error) {
-            console.log(error);
+            pino.error(`Se produjo un error: ${error}`);
         }
     }
 
@@ -30,7 +31,7 @@ class Element {
             let response = await elementService.getById(id);
             res.json(response);
         } catch (error) {
-            console.log(error);
+            pino.error(`Se produjo un error: ${error}`);
         }
     }
 
@@ -40,7 +41,7 @@ class Element {
             let response = await elementService.getSubElementsById(id);
             res.json(response);
         } catch (error) {
-            console.log(error);
+            pino.error(`Se produjo un error: ${error}`);
         }
     }
 
@@ -49,7 +50,7 @@ class Element {
             let response = await elementService.getAll();
             res.json(response);
         } catch (error) {
-            console.log(error);
+            pino.error(`Se produjo un error: ${error}`);
         }
     }
 
@@ -64,7 +65,7 @@ class Element {
                 new: req.body
             })
         } catch (error) {
-            console.log(error);
+            pino.error(`Se produjo un error: ${error}`);
         }
     }
 
@@ -79,7 +80,7 @@ class Element {
                 id: req.params.id      
             })
         } catch (error) {
-            console.log(error);
+            pino.error(`Se produjo un error: ${error}`);
         }
     }
 
@@ -94,7 +95,7 @@ class Element {
                 id: req.params.id_prod      
             })
         } catch (error) {
-            console.log(error);
+            pino.error(`Se produjo un error: ${error}`);
         }
     }
 
@@ -103,7 +104,7 @@ class Element {
             let response = await elementService.deleteAll();
             res.json(response);
         } catch (error) {
-            console.log(error);
+            pino.error(`Se produjo un error: ${error}`);
         }
     }
 }

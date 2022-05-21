@@ -1,6 +1,7 @@
 let { firebaseDB } = require("../../../utils/firebase");
 let elementos= firebaseDB.collection('productos');
 // import { doc, getDoc } from "firebase/firestore";
+const pino = require('../../../utils/logger/pino')
 
 const { v4 } = require('uuid');
 
@@ -14,8 +15,8 @@ class FirebaseDB {
 			return(element.id)
 			
 		} catch (error) {
-			console.log(`Error de lectura`, error);
-			throw new Error(error)
+			pino.error(`Se produjo un error: ${error}`)
+			
 		}
 	}
 	async modify(element,id) {
@@ -25,8 +26,8 @@ class FirebaseDB {
 			return(modifyElement)
 
 		} catch (error) {
-			console.log(`Error de lectura`, error);
-			throw new Error(error)
+			pino.error(`Se produjo un error: ${error}`)
+			
 		}	
 	}
 
@@ -38,11 +39,11 @@ class FirebaseDB {
 			// Utiliza el ID propio de firebase para la busqueda
 			let getElement = await elementos.doc(`${id}`).get();
 			// let modifyElement = await firebaseDB.getDoc(firebaseDB.doc(firebaseDB, 'productos',`${id}`));
-			console.log(getElement);
+			pino.info(getElement);
 			return(getElement.data())
 		} catch (error) {
-			console.log(`Error de lectura`, error);
-			throw new Error(error)
+			pino.error(`Se produjo un error: ${error}`)
+			
 		}	
 	}
 
@@ -51,12 +52,12 @@ class FirebaseDB {
 			let allElements= await elementos.get();
 			let docsElements = allElements.docs;
 			let dataElements = docsElements.map((documento) => documento.data());
-			console.log(dataElements);
+			pino.info(dataElements);
 			return(dataElements)			
 			
 		} catch (error) {
-			console.log(`Error de lectura`, error);
-			throw new Error(error)
+			pino.error(`Se produjo un error: ${error}`)
+			
 		}	
 	}
 
@@ -65,8 +66,8 @@ class FirebaseDB {
 			let deleteElement=await elementos.doc(`${id}`).delete();
 
 		} catch (error) {
-			console.log(`Error de lectura`, error);
-			throw new Error(error)
+			pino.error(`Se produjo un error: ${error}`)
+			
 		}		
 	}
 
@@ -74,12 +75,9 @@ class FirebaseDB {
 		try {
 			let deleteAllElement=await elementos.doc().delete();
 
-			// let allElements= await elementos.get();
-			// let docsElements = allElements.docs;
-			// let dataElements = docsElements.map((documento) => documento.delete());
-
 		} catch (error) {
-			throw new Error(error)
+			pino.error(`Se produjo un error: ${error}`)
+	
 		}
 	}
 }

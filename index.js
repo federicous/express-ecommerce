@@ -6,6 +6,7 @@ let app = express()
 // const routerProd = Router()
 // const routerCart = Router()
 // const raiz= Router()
+let pino = require("pino");
 let {Server:HttpServer} = require('http')
 let {Server:SocketIO} = require('socket.io');
 let cookieParser= require('cookie-parser')
@@ -82,14 +83,14 @@ let socketIOServer = new SocketIO(httpServer);
 
 socketIOServer.on('connection', async socket =>{
 
-	console.log(`Nuevo usuario: ${socket.id}`);
+	pino.info(`Nuevo usuario: ${socket.id}`);
 
 	// Mensajes
 	let misMensajesGuardados= await misMensajes.getAll()
 	await socketIOServer.sockets.emit('chat', misMensajesGuardados)
 	
 	await socket.on('userMsg', async data =>{
-		console.log(data);
+		pino.info(data);
 		await misMensajes.save(data)
 		misMensajesGuardados= await misMensajes.getAll()
 		await socketIOServer.sockets.emit('chat', misMensajesGuardados)

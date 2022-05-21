@@ -2,6 +2,7 @@
 let { firebaseDB } = require("../../../utils/firebase");
 let elementos= firebaseDB.collection('carritos');
 // import { doc, getDoc } from "firebase/firestore";
+const pino = require('../../../utils/logger/pino')
 
 const { v4 } = require('uuid');
 
@@ -16,8 +17,8 @@ class FirebaseDB {
 			let newElement = await elementos.doc().set(element);
 			return(element)
 		} catch (error) {
-			console.log(`Error de lectura`, error);
-			throw new Error(error)
+			pino.error(`Se produjo un error: ${error}`)
+			
 		}
 	}
 	async modify(element,id) {
@@ -27,8 +28,8 @@ class FirebaseDB {
 			return(modifyElement)
 
 		} catch (error) {
-			console.log(`Error de lectura`, error);
-			throw new Error(error)
+			pino.error(`Se produjo un error: ${error}`)
+			
 		}	
 	}
 
@@ -42,8 +43,8 @@ class FirebaseDB {
 
 			return(getElement.data())
 		} catch (error) {
-			console.log(`Error de lectura`, error);
-			throw new Error(error)
+			pino.error(`Se produjo un error: ${error}`)
+			
 		}	
 	}
 
@@ -52,12 +53,12 @@ class FirebaseDB {
 			let allElements= await elementos.get();
 			let docsElements = allElements.docs;
 			let dataElements = docsElements.map((documento) => documento.data());
-			console.log(dataElements);
+			pino.info(dataElements);
 			return(dataElements)			
 			
 		} catch (error) {
-			console.log(`Error de lectura`, error);
-			throw new Error(error)
+			pino.error(`Se produjo un error: ${error}`)
+			
 		}	
 	}
 
@@ -66,8 +67,8 @@ class FirebaseDB {
 			let deleteElement=await elementos.doc(`${id}`).delete();
 
 		} catch (error) {
-			console.log(`Error de lectura`, error);
-			throw new Error(error)
+			pino.error(`Se produjo un error: ${error}`)
+			
 		}		
 	}
 
@@ -80,7 +81,8 @@ class FirebaseDB {
 			// let dataElements = docsElements.map((documento) => documento.delete());
 
 		} catch (error) {
-			throw new Error(error)
+			pino.error(`Se produjo un error: ${error}`)
+			
 		}
 	}
 }

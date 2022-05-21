@@ -3,6 +3,7 @@ let elementos= firebaseDB.collection('productos');
 // import { doc, getDoc } from "firebase/firestore";
 
 const { v4 } = require('uuid');
+const pino = require('../../../utils/logger/pino')
 
 class FirebaseDB {
 
@@ -14,7 +15,7 @@ class FirebaseDB {
 			return(element.id)
 			
 		} catch (error) {
-			console.log(`Error de lectura`, error);
+			pino.error(`Se produjo un error: ${error}`)
 			throw new Error(error)
 		}
 	}
@@ -25,7 +26,7 @@ class FirebaseDB {
 			return(modifyElement)
 
 		} catch (error) {
-			console.log(`Error de lectura`, error);
+			pino.error(`Se produjo un error: ${error}`)
 			throw new Error(error)
 		}	
 	}
@@ -38,10 +39,10 @@ class FirebaseDB {
 			// Utiliza el ID propio de firebase para la busqueda
 			let getElement = await elementos.doc(`${id}`).get();
 			// let modifyElement = await firebaseDB.getDoc(firebaseDB.doc(firebaseDB, 'productos',`${id}`));
-			console.log(getElement);
+			pino.info(getElement);
 			return(getElement.data())
 		} catch (error) {
-			console.log(`Error de lectura`, error);
+			pino.error(`Se produjo un error: ${error}`)
 			throw new Error(error)
 		}	
 	}
@@ -51,11 +52,11 @@ class FirebaseDB {
 			let allElements= await elementos.get();
 			let docsElements = allElements.docs;
 			let dataElements = docsElements.map((documento) => documento.data());
-			console.log(dataElements);
+			pino.info(dataElements);
 			return(dataElements)			
 			
 		} catch (error) {
-			console.log(`Error de lectura`, error);
+			pino.error(`Se produjo un error: ${error}`)
 			throw new Error(error)
 		}	
 	}
@@ -65,7 +66,7 @@ class FirebaseDB {
 			let deleteElement=await elementos.doc(`${id}`).delete();
 
 		} catch (error) {
-			console.log(`Error de lectura`, error);
+			pino.error(`Se produjo un error: ${error}`)
 			throw new Error(error)
 		}		
 	}

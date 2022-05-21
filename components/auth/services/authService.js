@@ -2,14 +2,15 @@ let UsuarioModel = require('../../../schema/usuarios');
 let bcrypt = require("bcryptjs");
 const JWT = require("../../../utils/jwt/jwt")
 require("dotenv").config();
+const pino = require('../../../utils/logger/pino')
 
 class AuthService {
 
 	async createUser(usuario) {
 		try {
 			let user = await UsuarioModel.findOne({email: usuario.email});
-			console.log(usuario);
-			console.log(user);
+			pino.info(usuario);
+			pino.info(user);
 			if (user.email) {
 				return ({message: 'Ya existe una cuenta con el mismo email'})
 			}
@@ -18,11 +19,11 @@ class AuthService {
 			usuario.timestamp = Date.now();
 			let agregarUsuarioModel = new UsuarioModel(usuario);
 			let agregarUsuario = await agregarUsuarioModel.save();
-			console.log(agregarUsuario);
+			pino.info(agregarUsuario);
 			return agregarUsuario._id
 
 		} catch (error) {
-			console.log(`Error de lectura`, error);
+			pino.error(`Error de lectura`, error);
 			throw new Error(error)
 		}
 	}
@@ -30,13 +31,13 @@ class AuthService {
 	async login(email, password) {
 		try {
 			let secret = process.env.SECRET;
-			console.log(secret);
+			pino.info(secret);
 			let user = await UsuarioModel.findOne({
 				email: email
 			});
-			console.log(user);
+			pino.info(user);
 			if (!user) {
-				console.log(`NO EXISTEEEEE`);
+				pino.info(`NO EXISTEEEEE`);
 				return ({
 					message: 'No existe el usuario'
 				})
@@ -55,7 +56,7 @@ class AuthService {
 				})
 			}
 		} catch (error) {
-			console.log(`Error de lectura`, error);
+			pino.error(`Error de lectura`, error);
 			throw new Error(error)
 		}
 	}

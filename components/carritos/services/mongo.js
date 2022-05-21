@@ -1,6 +1,7 @@
 let {connection, mongoose} = require("../../../config/mongo");
 let ElementoModel = require('../../../schema/carritos')
 const { v4 } = require('uuid');
+const pino = require('../../../utils/logger/pino')
 
 class MongoDB {
 
@@ -16,13 +17,13 @@ class MongoDB {
 			nuevoElementoModel.address=carrito.address;
 			nuevoElementoModel.productList=[]
 			let nuevoElemento = await nuevoElementoModel.save();
-			console.log(nuevoElemento._id);	
-			console.log(nuevoElementoModel);	
+			pino.info(nuevoElemento._id);	
+			pino.info(nuevoElementoModel);	
 			return(nuevoElemento._id)	
 			
 		} catch (error) {
-			console.log(`Error de lectura`, error);
-			throw new Error(error)
+			pino.error(`Se produjo un error: ${error}`)
+			
 		}
 	}
 
@@ -34,8 +35,8 @@ class MongoDB {
 			return(carritoActualizado)
 			
 		} catch (error) {
-			console.log(`Error de lectura`, error);
-			throw new Error(error)
+			pino.error(`Se produjo un error: ${error}`)
+			
 		}
 	}
 
@@ -50,8 +51,8 @@ class MongoDB {
 
 
 		} catch (error) {
-			console.log(`Error de lectura`, error);
-			throw new Error(error)
+			pino.error(`Se produjo un error: ${error}`)
+			
 		}	
 	}
 
@@ -60,8 +61,8 @@ class MongoDB {
 			let mostrar = await ElementoModel.findById(id);
 			return(mostrar)
 		} catch (error) {
-			console.log(`Error de lectura`, error);
-			throw new Error(error)
+			pino.error(`Se produjo un error: ${error}`)
+			
 		}	
 	}
 
@@ -70,20 +71,20 @@ class MongoDB {
 			let mostrar = await ElementoModel.findById(id);
 			return(mostrar.productList)
 		} catch (error) {
-			console.log(`Error de lectura`, error);
-			throw new Error(error)
+			pino.error(`Se produjo un error: ${error}`)
+			
 		}	
 	}
 
 	async getAll() {
 		try {
 			let allElements = await ElementoModel.find({});
-			// console.log(allElements);
+			// pino.info(allElements);
 			return(allElements)
 			
 		} catch (error) {
-			console.log(`Error de lectura`, error);
-			throw new Error(error)
+			pino.error(`Se produjo un error: ${error}`)
+			
 		}	
 	}
 
@@ -93,8 +94,8 @@ class MongoDB {
 			let borrar = await ElementoModel.findByIdAndDelete(id);
 
 		} catch (error) {
-			console.log(`Error de lectura`, error);
-			throw new Error(error)
+			pino.error(`Se produjo un error: ${error}`)
+			
 		}		
 	}
 
@@ -107,8 +108,8 @@ class MongoDB {
 			return(carritoActualizado)
 
 		} catch (error) {
-			console.log(`Error de lectura`, error);
-			throw new Error(error)
+			pino.error(`Se produjo un error: ${error}`)
+			
 		}		
 	}
 
@@ -117,7 +118,8 @@ class MongoDB {
 			const contenido = await ElementoModel.deleteMany({});
 
 		} catch (error) {
-			throw new Error(error)
+			pino.error(`Se produjo un error: ${error}`)
+
 		}
 	}
 }

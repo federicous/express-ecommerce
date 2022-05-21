@@ -3,6 +3,7 @@ const knex = require('knex')(mysqlConfig);
 const {
 	v4
 } = require('uuid');
+const pino = require('../../../utils/logger/pino')
 
 (async () => {
 	try {
@@ -17,10 +18,10 @@ const {
 				table.uuid('uuid')
 			});
 		} else {
-			console.log("ya existe la tabla");
+			pino.info("ya existe la tabla");
 		}
 	} catch (error) {
-		console.log(error);
+		pino.error(`Se produjo un error: ${error}`)
 	}
 })();
 
@@ -45,13 +46,13 @@ class Contenedor {
 			carrito.productList = JSON.stringify([])
 			let agregar = await knex('carritos')
 				.insert(carrito)
-			console.log("datos insertados")
+			pino.info("datos insertados")
 
 			return carrito.id
 
 		} catch (error) {
-			console.log(`Error de lectura`, error);
-			throw new Error(error)
+			pino.error(`Se produjo un error: ${error}`)
+			
 		}
 	}
 
@@ -67,8 +68,8 @@ class Contenedor {
 			return (carrito)
 
 		} catch (error) {
-			console.log(`Error de lectura`, error);
-			throw new Error(error)
+			pino.error(`Se produjo un error: ${error}`)
+			
 		}
 	}
 
@@ -78,8 +79,8 @@ class Contenedor {
 			return (modificar)
 
 		} catch (error) {
-			console.log(`Error de lectura`, error);
-			throw new Error(error)
+			pino.error(`Se produjo un error: ${error}`)
+			
 		}
 	}
 
@@ -92,8 +93,8 @@ class Contenedor {
 
 
 		} catch (error) {
-			console.log(`Error de lectura`, error);
-			throw new Error(error)
+			pino.error(`Se produjo un error: ${error}`)
+			
 		}
 	}
 
@@ -106,20 +107,20 @@ class Contenedor {
 
 
 		} catch (error) {
-			console.log(`Error de lectura`, error);
-			throw new Error(error)
+			pino.error(`Se produjo un error: ${error}`)
+			
 		}
 	}
 
 	async getAll() {
 		try {
 			let mostrar = await knex.from('carritos').select('*');
-			console.log(mostrar);
+			pino.info(mostrar);
 			return mostrar
 
 		} catch (error) {
-			console.log(`Error de lectura`, error);
-			throw new Error(error)
+			pino.error(`Se produjo un error: ${error}`)
+			
 		}
 
 	}
@@ -129,8 +130,8 @@ class Contenedor {
 			let borrar = await knex.from('carritos').where({id: `${id}`}).del();
 
 		} catch (error) {
-			console.log(`Error de lectura`, error);
-			throw new Error(error)
+			pino.error(`Se produjo un error: ${error}`)
+			
 		}
 	}
 
@@ -151,8 +152,8 @@ class Contenedor {
 			carritoActualizado.productList = nuevaProductList;
 
 		} catch (error) {
-			console.log(`Error de lectura`, error);
-			throw new Error(error)
+			pino.error(`Se produjo un error: ${error}`)
+			
 		}
 	}
 
@@ -161,7 +162,7 @@ class Contenedor {
 			const contenido = await fs.promises.writeFile(this.url, [])
 
 		} catch (error) {
-			throw new Error(error)
+			
 		}
 
 
