@@ -1,12 +1,6 @@
 let express = require('express')
 let app = express()
-// const PORT = process.env.PORT;
-// const { Router } = express
-// const router = Router()
-// const routerProd = Router()
-// const routerCart = Router()
-// const raiz= Router()
-let pino = require("pino");
+const pino = require('./utils/logger/pino')
 let {Server:HttpServer} = require('http')
 let {Server:SocketIO} = require('socket.io');
 let cookieParser= require('cookie-parser')
@@ -17,7 +11,6 @@ require("dotenv").config();
 const PORT = process.env.PORT || '8088';
 const MONGO_ATLAS=process.env.MONGO_URL_ATLAS;
 const serverRoutes = require("./routes");
-// const authJwt = require("./helpers/jwt");
 
 // vistas
 // app.set("views", path.join(__dirname, 'views', 'ejs'))
@@ -72,10 +65,6 @@ app.use(session({
 
 serverRoutes(app);
 
-
-// app.get('/verProductos', async (req, res) => {
-// 	res.sendFile(__dirname + '/public/productos.html');
-// })
 
 /* ############################## Websockets Chat ###################################### */
 let httpServer = new HttpServer(app);
