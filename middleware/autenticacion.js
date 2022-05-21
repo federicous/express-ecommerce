@@ -17,7 +17,9 @@ class Autenticacion {
 			const token = req.cookies.token
 			const verification = await JWT.verify(token)
 			console.log(verification);
-			if(!verification) throw new Error('Token invalido')
+			if(!verification) { 
+				return res.status(401).render('authError')
+			}
 			const payload = await JWT.decode(token)
 			console.log(payload);
 			if (!payload || payload.isAdmin != 'on'){
