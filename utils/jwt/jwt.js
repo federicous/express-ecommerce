@@ -1,6 +1,7 @@
 const jwt = require('jsonwebtoken')
 require("dotenv").config();
 let PRIVATE_KEY = process.env.SECRET
+const pino = require('../../utils/logger/pino')
 
 class JWT {
     async generate(payload){
@@ -10,7 +11,7 @@ class JWT {
                 algorithm: 'HS256'
             })
         } catch (error) {
-		      console.log(error);
+              pino.error(`Se produjo un error: ${error}`)
         }
     }
     async verify(token){
@@ -19,7 +20,7 @@ class JWT {
                 algorithm: ['HS256']
             })
         } catch (error) {
-		console.log(error);
+        pino.error(`Se produjo un error: ${error}`)
         }
     }
     async decode(token){
@@ -28,7 +29,7 @@ class JWT {
                 algorithm: ['HS256']
             })
         } catch (error) {
-		console.log(error);
+        pino.error(`Se produjo un error: ${error}`)
         }
     }
 }

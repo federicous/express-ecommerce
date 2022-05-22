@@ -1,4 +1,5 @@
 const JWT = require("../utils/jwt/jwt")
+const pino = require('../utils/logger/pino')
 
 class Autenticacion {
 	async usuario(req, res, next) {
@@ -8,7 +9,7 @@ class Autenticacion {
 			if (!payload) return res.status(401).render('authError')
 			next()
 		} catch (error) {
-			console.log(error);
+			pino.error(`Se produjo un error: ${error}`);
 		}
 	}
 
@@ -16,21 +17,21 @@ class Autenticacion {
 		try {
 			const token = req.cookies.token
 			const verification = await JWT.verify(token)
-			console.log(verification);
+			// pino.info(verification);
 			if(!verification) { 
 				return res.status(401).render('authError')
 			}
 			const payload = await JWT.decode(token)
-			console.log(payload);
+			// pino.info(payload);
 			if (!payload || payload.isAdmin != 'on'){
-				console.log(payload.isAdmin);
+				// pino.info(payload.isAdmin);
 				return res.status(401).render('authError')
 			}
 			if (!payload) return res.status(401).render('authError')
-			console.log(`>>>>>> paso el midlleware`);
+			// pino.info(`>>>>>> paso el midlleware`);
 			next()
 		} catch (error) {
-			console.log(error);
+			pino.error(`Se produjo un error: ${error}`);
 		}
 
 	}

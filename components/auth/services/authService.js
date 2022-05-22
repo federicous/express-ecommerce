@@ -23,21 +23,19 @@ class AuthService {
 			return agregarUsuario._id
 
 		} catch (error) {
-			pino.error(`Error de lectura`, error);
-			throw new Error(error)
+			pino.error(`Se produjo un error: ${error}`)
 		}
 	}
 
 	async login(email, password) {
 		try {
 			let secret = process.env.SECRET;
-			pino.info(secret);
 			let user = await UsuarioModel.findOne({
 				email: email
 			});
 			pino.info(user);
 			if (!user) {
-				pino.info(`NO EXISTEEEEE`);
+				pino.error(`NO EXISTE EL USUARIO ${email}`);
 				return ({
 					message: 'No existe el usuario'
 				})
@@ -51,13 +49,13 @@ class AuthService {
 					token
 				})
 			} else {
+				pino.error(`CONTRASEÑA INCORRECTA: ${password} PARA USUARIO: ${email}`);
 				return ({
 					message: 'contraseña incorrecta'
 				})
 			}
 		} catch (error) {
-			pino.error(`Error de lectura`, error);
-			throw new Error(error)
+			pino.error(`Se produjo un error: ${error}`)
 		}
 	}
 
