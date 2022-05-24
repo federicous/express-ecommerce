@@ -1,6 +1,6 @@
 const { uuid } = require('uuidv4');
-const {mysqlConfig} = require('../../../config/mysqlDB');
-const knex = require('knex')(mysqlConfig);
+const {sqliteConfig} = require('../../../config/SQLite');
+const knex = require('knex')(sqliteConfig);
 const pino = require('../../../utils/logger/pino');
 
 (async()=>{
@@ -56,7 +56,7 @@ class Contenedor {
 		}		
 	}
 	
-	async modify(id, producto) {
+	async modify(producto,id) {
 		try {
 			let modificar = await knex.from('productos').select('*').where({id:`${id}`}).update(producto);
 			return(modificar)

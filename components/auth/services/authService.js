@@ -40,8 +40,11 @@ class AuthService {
 					message: 'No existe el usuario'
 				})
 			} else if (bcrypt.compareSync(password, user.password)) {
+				let ID = user._id ? user._id : user.id;
 				const token = await JWT.generate({
-					userId: user._id,
+					id: ID,
+					name: user.name,
+					email: user.email,
 					isAdmin: user.isAdmin,
 				})
 				return ({

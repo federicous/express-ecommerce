@@ -1,1 +1,42 @@
 {"level":50,"time":1653173670709,"pid":22571,"hostname":"yemes-PC","msg":"CONTRASEÑA INCORRECTA: ddrtudy6i PARA USUARIO: federicous@gmail.com"}
+{"level":50,"time":1653207410180,"pid":56058,"hostname":"yemes-PC","msg":"CONTRASEÑA INCORRECTA: ddrtudy6i PARA USUARIO: federicous@gmail.com"}
+{"level":50,"time":1653361126168,"pid":7196,"hostname":"yemes-PC","msg":"Se produjo un error: JsonWebTokenError: jwt must be provided"}
+{"level":50,"time":1653361141090,"pid":7196,"hostname":"yemes-PC","msg":"CONTRASEÑA INCORRECTA: poi¡0 PARA USUARIO: jorge@gmail.com"}
+{"level":50,"time":1653362880194,"pid":10690,"hostname":"yemes-PC","msg":"Se produjo un error: Error: connect ECONNREFUSED 127.0.0.1:3306"}
+{"level":50,"time":1653362880195,"pid":10690,"hostname":"yemes-PC","msg":"Se produjo un error: Error: connect ECONNREFUSED 127.0.0.1:3306"}
+{"level":50,"time":1653362880195,"pid":10690,"hostname":"yemes-PC","msg":"Se produjo un error: Error: connect ECONNREFUSED 127.0.0.1:3306"}
+{"level":50,"time":1653362880195,"pid":10690,"hostname":"yemes-PC","msg":"Se produjo un error: Error: connect ECONNREFUSED 127.0.0.1:3306"}
+{"level":50,"time":1653363068036,"pid":11356,"hostname":"yemes-PC","msg":"Se produjo un error: Error: SQLITE_CANTOPEN: unable to open database file"}
+{"level":50,"time":1653363068036,"pid":11356,"hostname":"yemes-PC","msg":"Se produjo un error: Error: SQLITE_CANTOPEN: unable to open database file"}
+{"level":50,"time":1653363068036,"pid":11356,"hostname":"yemes-PC","msg":"Se produjo un error: Error: SQLITE_CANTOPEN: unable to open database file"}
+{"level":50,"time":1653363068037,"pid":11356,"hostname":"yemes-PC","msg":"Se produjo un error: Error: SQLITE_CANTOPEN: unable to open database file"}
+{"level":50,"time":1653363173923,"pid":11655,"hostname":"yemes-PC","msg":"Se produjo un error: Error: SQLITE_CANTOPEN: unable to open database file"}
+{"level":50,"time":1653363173923,"pid":11655,"hostname":"yemes-PC","msg":"Se produjo un error: Error: SQLITE_CANTOPEN: unable to open database file"}
+{"level":50,"time":1653363173924,"pid":11655,"hostname":"yemes-PC","msg":"Se produjo un error: Error: SQLITE_CANTOPEN: unable to open database file"}
+{"level":50,"time":1653363173924,"pid":11655,"hostname":"yemes-PC","msg":"Se produjo un error: Error: SQLITE_CANTOPEN: unable to open database file"}
+{"level":50,"time":1653363296537,"pid":11978,"hostname":"yemes-PC","msg":"Se produjo un error: Error: create table `productos` (`id` integer not null primary key autoincrement, `name` varchar(255), `stock` integer, `price` float, `description` varchar(255), `image` varchar(255), `timestamp` datetime default CURRENT_TIMESTAMP, `uuid` char(36)) - SQLITE_ERROR: table `productos` already exists"}
+{"level":50,"time":1653363656855,"pid":12594,"hostname":"yemes-PC","msg":"Se produjo un error: Error: SQLITE_CANTOPEN: unable to open database file"}
+{"level":50,"time":1653363656856,"pid":12594,"hostname":"yemes-PC","msg":"Se produjo un error: Error: SQLITE_CANTOPEN: unable to open database file"}
+{"level":50,"time":1653363656856,"pid":12594,"hostname":"yemes-PC","msg":"Se produjo un error: Error: SQLITE_CANTOPEN: unable to open database file"}
+{"level":50,"time":1653363656856,"pid":12594,"hostname":"yemes-PC","msg":"Se produjo un error: Error: SQLITE_CANTOPEN: unable to open database file"}
+{"level":50,"time":1653363727909,"pid":12787,"hostname":"yemes-PC","msg":"Se produjo un error: Error: SQLITE_CANTOPEN: unable to open database file"}
+{"level":50,"time":1653363727909,"pid":12787,"hostname":"yemes-PC","msg":"Se produjo un error: Error: SQLITE_CANTOPEN: unable to open database file"}
+{"level":50,"time":1653363727909,"pid":12787,"hostname":"yemes-PC","msg":"Se produjo un error: Error: SQLITE_CANTOPEN: unable to open database file"}
+{"level":50,"time":1653363727910,"pid":12787,"hostname":"yemes-PC","msg":"Se produjo un error: Error: SQLITE_CANTOPEN: unable to open database file"}
+{"level":50,"time":1653363859872,"pid":13059,"hostname":"yemes-PC","msg":"Se produjo un error: Error: SQLITE_CANTOPEN: unable to open database file"}
+{"level":50,"time":1653363859872,"pid":13059,"hostname":"yemes-PC","msg":"Se produjo un error: Error: SQLITE_CANTOPEN: unable to open database file"}
+{"level":50,"time":1653363859872,"pid":13059,"hostname":"yemes-PC","msg":"Se produjo un error: Error: SQLITE_CANTOPEN: unable to open database file"}
+{"level":50,"time":1653363859873,"pid":13059,"hostname":"yemes-PC","msg":"Se produjo un error: Error: SQLITE_CANTOPEN: unable to open database file"}
+{"level":50,"time":1653363899966,"pid":13227,"hostname":"yemes-PC","msg":"Se produjo un error: Error: SQLITE_CANTOPEN: unable to open database file"}
+{"level":50,"time":1653363899967,"pid":13227,"hostname":"yemes-PC","msg":"Se produjo un error: Error: SQLITE_CANTOPEN: unable to open database file"}
+{"level":50,"time":1653363899967,"pid":13227,"hostname":"yemes-PC","msg":"Se produjo un error: Error: SQLITE_CANTOPEN: unable to open database file"}
+{"level":50,"time":1653363899967,"pid":13227,"hostname":"yemes-PC","msg":"Se produjo un error: Error: SQLITE_CANTOPEN: unable to open database file"}
+{"level":50,"time":1653363935717,"pid":13358,"hostname":"yemes-PC","msg":"Se produjo un error: Error: SQLITE_CANTOPEN: unable to open database file"}
+{"level":50,"time":1653363935717,"pid":13358,"hostname":"yemes-PC","msg":"Se produjo un error: Error: SQLITE_CANTOPEN: unable to open database file"}
+{"level":50,"time":1653363935717,"pid":13358,"hostname":"yemes-PC","msg":"Se produjo un error: Error: SQLITE_CANTOPEN: unable to open database file"}
+{"level":50,"time":1653363935718,"pid":13358,"hostname":"yemes-PC","msg":"Se produjo un error: Error: SQLITE_CANTOPEN: unable to open database file"}
+{"level":50,"time":1653364095354,"pid":13794,"hostname":"yemes-PC","msg":"Se produjo un error: Error: SQLITE_CANTOPEN: unable to open database file"}
+{"level":50,"time":1653364095354,"pid":13794,"hostname":"yemes-PC","msg":"Se produjo un error: Error: SQLITE_CANTOPEN: unable to open database file"}
+{"level":50,"time":1653364095354,"pid":13794,"hostname":"yemes-PC","msg":"Se produjo un error: Error: SQLITE_CANTOPEN: unable to open database file"}
+{"level":50,"time":1653364095354,"pid":13794,"hostname":"yemes-PC","msg":"Se produjo un error: Error: SQLITE_CANTOPEN: unable to open database file"}
+{"level":50,"time":1653364195164,"pid":14007,"hostname":"yemes-PC","msg":"Se produjo un error: Error: create table `productos` (`id` integer not null primary key autoincrement, `name` varchar(255), `stock` integer, `price` float, `description` varchar(255), `image` varchar(255), `timestamp` datetime default CURRENT_TIMESTAMP, `uuid` char(36)) - SQLITE_ERROR: table `productos` already exists"}

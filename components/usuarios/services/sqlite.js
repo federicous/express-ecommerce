@@ -1,21 +1,24 @@
 const { uuid } = require('uuidv4');
-const {mysqlConfig} = require('../../../config/mysqlDB');
-const knex = require('knex')(mysqlConfig);
+const {sqliteConfig} = require('../../../config/SQLite');
+const knex = require('knex')(sqliteConfig);
 const pino = require('../../../utils/logger/pino');
 
 (async()=>{
 	try {
-		let exists= await knex.schema.hasTable('productos');
+		let exists= await knex.schema.hasTable('usuarios');
 		if (!exists) {
-			await knex.schema.createTable('productos', table => {
+			await knex.schema.createTable('usuarios', table => {
 				table.increments('id')
 				table.string('name')
-				table.integer('stock')
-				table.float('price')
-				table.string('description')
-				table.string('image')
+				table.integer('age')
+				table.string('password')
+				table.string('address')
+				table.string('email')
+				table.string('phone')
+				table.string('avatar')
 				table.timestamp('timestamp').defaultTo(knex.fn.now())
 				table.uuid('uuid')
+
 			});	  
 		} else {
 			pino.info("ya existe la tabla");
@@ -38,17 +41,17 @@ class Contenedor {
 		return this;
 	}
 
-	async save(producto,id) {
+	async save(usuario,id) {
 		try {
 			if (id) {
-				producto.id= id;
+				usuario.id= id;
 			}
-			producto.uuid=uuid()
-			let agregar= await knex('productos')
-			.insert(producto)
+			usuario.uuid=uuid()
+			let agregar= await knex('usuarios')
+			.insert(usuario)
 			pino.info("datos insertados")		
 
-			return producto.id
+			return usuario.id
 
 		} catch (error) {
 			pino.error(`Se produjo un error: ${error}`)
@@ -56,9 +59,9 @@ class Contenedor {
 		}		
 	}
 	
-	async modify(id, producto) {
+	async modify(id, usuario) {
 		try {
-			let modificar = await knex.from('productos').select('*').where({id:`${id}`}).update(producto);
+			let modificar = await knex.from('usuarios').select('*').where({id:`${id}`}).update(usuario);
 			return(modificar)
 
 
@@ -70,9 +73,9 @@ class Contenedor {
 
 	async getById(id) {
 		try {
-			let idProduct= parseInt(id);
-			// let mostrar = await knex.from('productos').select('*').where({id:`${id}`});
-			let mostrar = await knex.from('productos').select('*').where({id:id});
+			let idUser= parseInt(id);
+			// let mostrar = await knex.from('usuarios').select('*').where({id:`${id}`});
+			let mostrar = await knex.from('usuarios').select('*').where({id:id});
 			return(mostrar)
 
 
@@ -84,7 +87,7 @@ class Contenedor {
 
 	async getAll() {
 		try {
-			let mostrar = await knex.from('productos').select('*');
+			let mostrar = await knex.from('usuarios').select('*');
 			pino.info(mostrar);
 			return mostrar
 
@@ -97,7 +100,7 @@ class Contenedor {
 
 	async deleteById(id) {
 		try {
-			let borrar = await knex.from('productos').where({id:`${id}`}).del();
+			let borrar = await knex.from('usuarios').where({id:`${id}`}).del();
 
 
 		} catch (error) {

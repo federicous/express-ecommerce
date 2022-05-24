@@ -1,7 +1,7 @@
 const { uuid } = require('uuidv4');
 const {mysqlConfig} = require('../../../config/mysqlDB');
 const knex = require('knex')(mysqlConfig);
-const pino = require('../../../utils/logger/pino')
+const pino = require('../../../utils/logger/pino');
 
 (async()=>{
 	try {

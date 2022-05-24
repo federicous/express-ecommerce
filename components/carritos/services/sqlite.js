@@ -1,5 +1,5 @@
-const {	mysqlConfig } = require('../../../config/mysqlDB');
-const knex = require('knex')(mysqlConfig);
+const {	sqliteConfig } = require('../../../config/SQLite');
+const knex = require('knex')(sqliteConfig);
 const {
 	v4
 } = require('uuid');
