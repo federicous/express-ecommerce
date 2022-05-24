@@ -1,12 +1,12 @@
 const express = require("express");
-const productoController = require("./controllers/productoController");
+const mensajeController = require("./controllers/mensajeController");
 module.exports = app => {
-    const prodRouter = express.Router();
-    app.use("/api/product", prodRouter);
-    prodRouter.get("/", productoController.getAllElement);
-    prodRouter.get("/:id", productoController.getElement);
-    prodRouter.post("/", productoController.createElement);
-    prodRouter.put("/:id", productoController.updateElement);
-    prodRouter.delete("/:id", productoController.deleteElement);
+    const mensajeRouter = express.Router();
+    app.use("/api/message", mensajeRouter);
+    mensajeRouter.get("/", mensajeController.getAllElement);
+    mensajeRouter.get("/:id", mensajeController.getElement);
+    mensajeRouter.post("/", mensajeController.createElement);
+    mensajeRouter.put("/:id", mensajeController.updateElement);
+    mensajeRouter.delete("/:id", mensajeController.deleteElement);
 }
 

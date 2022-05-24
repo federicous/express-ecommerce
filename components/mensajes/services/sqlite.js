@@ -5,9 +5,9 @@ const pino = require('../../../utils/logger/pino');
 
 (async()=>{
 	try {
-		let exists= await knex.schema.hasTable('productos');
+		let exists= await knex.schema.hasTable('mensajes');
 		if (!exists) {
-			await knex.schema.createTable('productos', table => {
+			await knex.schema.createTable('mensajes', table => {
 				table.increments('id')
 				table.string('name')
 				table.integer('stock')
@@ -38,17 +38,17 @@ class Contenedor {
 		return this;
 	}
 
-	async save(producto,id) {
+	async save(mensaje,id) {
 		try {
 			if (id) {
-				producto.id= id;
+				mensaje.id= id;
 			}
-			producto.uuid=uuid()
-			let agregar= await knex('productos')
-			.insert(producto)
+			mensaje.uuid=uuid()
+			let agregar= await knex('mensajes')
+			.insert(mensaje)
 			pino.info("datos insertados")		
 
-			return producto.id
+			return mensaje.id
 
 		} catch (error) {
 			pino.error(`Se produjo un error: ${error}`)
@@ -56,9 +56,9 @@ class Contenedor {
 		}		
 	}
 	
-	async modify(producto,id) {
+	async modify(mensaje,id) {
 		try {
-			let modificar = await knex.from('productos').select('*').where({id:`${id}`}).update(producto);
+			let modificar = await knex.from('mensajes').select('*').where({id:`${id}`}).update(mensaje);
 			return(modificar)
 
 
@@ -70,9 +70,9 @@ class Contenedor {
 
 	async getById(id) {
 		try {
-			let idProduct= parseInt(id);
-			// let mostrar = await knex.from('productos').select('*').where({id:`${id}`});
-			let mostrar = await knex.from('productos').select('*').where({id:id});
+			let idMensaje= parseInt(id);
+			// let mostrar = await knex.from('mensajes').select('*').where({id:`${id}`});
+			let mostrar = await knex.from('mensajes').select('*').where({id:id});
 			return(mostrar)
 
 
@@ -84,7 +84,7 @@ class Contenedor {
 
 	async getAll() {
 		try {
-			let mostrar = await knex.from('productos').select('*');
+			let mostrar = await knex.from('mensajes').select('*');
 			pino.info(mostrar);
 			return mostrar
 
@@ -97,7 +97,7 @@ class Contenedor {
 
 	async deleteById(id) {
 		try {
-			let borrar = await knex.from('productos').where({id:`${id}`}).del();
+			let borrar = await knex.from('mensajes').where({id:`${id}`}).del();
 
 
 		} catch (error) {

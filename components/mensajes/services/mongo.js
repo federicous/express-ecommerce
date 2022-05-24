@@ -1,30 +1,30 @@
 // let {connection, mongoose} = require("../config/mongo");
 let {connection, mongoose} = require("../../../config/mongo");
-// let ProductoModel = require('../schema/productos')
-let ProductoModel = require('../../../schema/productos')
+// let MensajeModel = require('../schema/mensajes')
+let MensajeModel = require('../../../schema/mensajes')
 const pino = require('../../../utils/logger/pino')
 
 class MongoDB {
 
 
-	async save(producto) {
+	async save(mensaje) {
 		try {
-			producto.timestamp=Date.now();
-			let agregarProductoModel= new ProductoModel(producto);
-			let agregarProducto = await agregarProductoModel.save();
-			pino.info(agregarProducto);		
+			mensaje.timestamp=Date.now();
+			let agregarMensajeModel= new MensajeModel(mensaje);
+			let agregarMensaje = await agregarMensajeModel.save();
+			pino.info(agregarMensaje);		
 			
 		} catch (error) {
 			pino.error(`Se produjo un error: ${error}`)
 			
 		}
 	}
-	async modify(producto,id) {
+	async modify(mensaje,id) {
 		try {
-			// let modificar = await ProductoModel.updateOne({_id:id}, {
-			// 	$set: producto
+			// let modificar = await MensajeModel.updateOne({_id:id}, {
+			// 	$set: mensaje
 			// });
-			let modificar = await ProductoModel.findByIdAndUpdate(id, producto);
+			let modificar = await MensajeModel.findByIdAndUpdate(id, mensaje);
 			return(modificar)
 
 
@@ -36,7 +36,7 @@ class MongoDB {
 
 	async getById(id) {
 		try {
-			let mostrar = await ProductoModel.findById(id);
+			let mostrar = await MensajeModel.findById(id);
 			return(mostrar)
 		} catch (error) {
 			pino.error(`Se produjo un error: ${error}`)
@@ -46,9 +46,9 @@ class MongoDB {
 
 	async getAll() {
 		try {
-			let allProducts = await ProductoModel.find({});
-			// pino.info(allProducts);
-			return(allProducts)
+			let allMensajes = await MensajeModel.find({});
+			// pino.info(allMensajes);
+			return(allMensajes)
 			
 		} catch (error) {
 			pino.error(`Se produjo un error: ${error}`)
@@ -58,8 +58,8 @@ class MongoDB {
 
 	async deleteById(id) {
 		try {
-			// let borrar = await ProductoModel.deleteOne({"_id": id});
-			let borrar = await ProductoModel.findByIdAndDelete(id);
+			// let borrar = await MensajeModel.deleteOne({"_id": id});
+			let borrar = await MensajeModel.findByIdAndDelete(id);
 
 		} catch (error) {
 			pino.error(`Se produjo un error: ${error}`)
@@ -69,7 +69,7 @@ class MongoDB {
 
 	async deleteAll() {
 		try {
-			const contenido = await ProductoModel.deleteMany({});
+			const contenido = await MensajeModel.deleteMany({});
 
 		} catch (error) {
 			pino.error(`Se produjo un error: ${error}`)

@@ -63,9 +63,6 @@ app.use(session({
 
 /* ####### FIN SESION #######  */
 
-serverRoutes(app);
-
-
 /* ############################## Websockets Chat ###################################### */
 let httpServer = new HttpServer(app);
 let socketIOServer = new SocketIO(httpServer);
@@ -87,6 +84,8 @@ socketIOServer.on('connection', async socket =>{
 
 })
 /* ############################## Fin Websockets Chat ###################################### */
+
+serverRoutes(app);
 
 httpServer.listen(PORT, ()=>{
 	console.log(`Server on!: http://localhost:${PORT}`)
