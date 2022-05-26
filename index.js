@@ -65,24 +65,10 @@ app.use(session({
 
 /* ############################## Websockets Chat ###################################### */
 let httpServer = new HttpServer(app);
-let socketIOServer = new SocketIO(httpServer);
+const Websocket = require("./components/mensajes/utils/websocket");
+const websocket = new Websocket(httpServer);
+websocket.init()
 
-socketIOServer.on('connection', async socket =>{
-
-	pino.info(`Nuevo usuario: ${socket.id}`);
-
-	// Mensajes
-	let misMensajesGuardados= await misMensajes.getAll()
-	await socketIOServer.sockets.emit('chat', misMensajesGuardados)
-	
-	await socket.on('userMsg', async data =>{
-		pino.info(data);
-		await misMensajes.save(data)
-		misMensajesGuardados= await misMensajes.getAll()
-		await socketIOServer.sockets.emit('chat', misMensajesGuardados)
-	})
-
-})
 /* ############################## Fin Websockets Chat ###################################### */
 
 serverRoutes(app);

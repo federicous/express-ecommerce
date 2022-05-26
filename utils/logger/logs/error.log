@@ -119,3 +119,5 @@
 {"level":50,"time":1653535269217,"pid":43062,"hostname":"yemes-PC","msg":"Se produjo un error: JsonWebTokenError: jwt must be provided"}
 {"level":50,"time":1653535282537,"pid":43062,"hostname":"yemes-PC","msg":"Se produjo un error: JsonWebTokenError: jwt must be provided"}
 {"level":50,"time":1653535456934,"pid":43062,"hostname":"yemes-PC","msg":"NO EXISTE EL USUARIO pepe@hotmail.com"}
+{"level":50,"time":1653539522516,"pid":53355,"hostname":"yemes-PC","msg":"Se produjo un error: TypeError: this.on is not a function"}
+{"level":50,"time":1653539724467,"pid":53839,"hostname":"yemes-PC","msg":"Se produjo un error: JsonWebTokenError: jwt must be provided"}
