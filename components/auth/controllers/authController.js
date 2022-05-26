@@ -1,4 +1,4 @@
-const elementService = require('../services/authService')
+const elementService = require('../services')
 // const jwt = require("jsonwebtoken")
 const JWT = require("../../../utils/jwt/jwt")
 const pino = require('../../../utils/logger/pino')

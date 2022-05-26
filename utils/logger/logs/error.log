@@ -40,3 +40,82 @@
 {"level":50,"time":1653364095354,"pid":13794,"hostname":"yemes-PC","msg":"Se produjo un error: Error: SQLITE_CANTOPEN: unable to open database file"}
 {"level":50,"time":1653364095354,"pid":13794,"hostname":"yemes-PC","msg":"Se produjo un error: Error: SQLITE_CANTOPEN: unable to open database file"}
 {"level":50,"time":1653364195164,"pid":14007,"hostname":"yemes-PC","msg":"Se produjo un error: Error: create table `productos` (`id` integer not null primary key autoincrement, `name` varchar(255), `stock` integer, `price` float, `description` varchar(255), `image` varchar(255), `timestamp` datetime default CURRENT_TIMESTAMP, `uuid` char(36)) - SQLITE_ERROR: table `productos` already exists"}
+{"level":50,"time":1653509314221,"pid":4519,"hostname":"yemes-PC","msg":"Se produjo un error: MongooseError: Operation `usuarios.findOne()` buffering timed out after 10000ms"}
+{"level":50,"time":1653509314221,"pid":4519,"hostname":"yemes-PC","msg":"Se produjo un error: TypeError: Cannot read properties of undefined (reading 'message')"}
+{"level":50,"time":1653509322021,"pid":4519,"hostname":"yemes-PC","msg":"Se produjo un error: MongooseError: Operation `usuarios.findOne()` buffering timed out after 10000ms"}
+{"level":50,"time":1653509322022,"pid":4519,"hostname":"yemes-PC","msg":"Se produjo un error: TypeError: Cannot read properties of undefined (reading 'message')"}
+{"level":50,"time":1653509324588,"pid":4519,"hostname":"yemes-PC","msg":"Se produjo un error: MongooseError: Operation `usuarios.findOne()` buffering timed out after 10000ms"}
+{"level":50,"time":1653509324588,"pid":4519,"hostname":"yemes-PC","msg":"Se produjo un error: TypeError: Cannot read properties of undefined (reading 'message')"}
+{"level":50,"time":1653509334026,"pid":4519,"hostname":"yemes-PC","msg":"Se produjo un error: MongooseError: Operation `usuarios.findOne()` buffering timed out after 10000ms"}
+{"level":50,"time":1653509334027,"pid":4519,"hostname":"yemes-PC","msg":"Se produjo un error: TypeError: Cannot read properties of undefined (reading 'message')"}
+{"level":50,"time":1653509364841,"pid":5514,"hostname":"yemes-PC","msg":"Se produjo un error: MongooseError: Operation `usuarios.findOne()` buffering timed out after 10000ms"}
+{"level":50,"time":1653509364842,"pid":5514,"hostname":"yemes-PC","msg":"Se produjo un error: TypeError: Cannot read properties of undefined (reading 'message')"}
+{"level":50,"time":1653509402359,"pid":5514,"hostname":"yemes-PC","msg":"Se produjo un error: MongooseError: Operation `usuarios.findOne()` buffering timed out after 10000ms"}
+{"level":50,"time":1653509402360,"pid":5514,"hostname":"yemes-PC","msg":"Se produjo un error: TypeError: Cannot read properties of undefined (reading 'message')"}
+{"level":50,"time":1653509864507,"pid":8148,"hostname":"yemes-PC","msg":"CONTRASEÑA INCORRECTA: pepe123huih PARA USUARIO: jorge@gmail.com"}
+{"level":50,"time":1653510243480,"pid":9070,"hostname":"yemes-PC","msg":"CONTRASEÑA INCORRECTA: oihpih PARA USUARIO: jorge@gmail.com"}
+{"level":50,"time":1653510252069,"pid":9070,"hostname":"yemes-PC","msg":"NO EXISTE EL USUARIO jorge@gmail.comhiuhi"}
+{"level":50,"time":1653522459664,"pid":23561,"hostname":"yemes-PC","msg":"Se produjo un error: Error: connect ECONNREFUSED 127.0.0.1:3306"}
+{"level":50,"time":1653522459664,"pid":23561,"hostname":"yemes-PC","msg":"Se produjo un error: Error: connect ECONNREFUSED 127.0.0.1:3306"}
+{"level":50,"time":1653522459665,"pid":23561,"hostname":"yemes-PC","msg":"Se produjo un error: Error: connect ECONNREFUSED 127.0.0.1:3306"}
+{"level":50,"time":1653522459665,"pid":23561,"hostname":"yemes-PC","msg":"Se produjo un error: Error: connect ECONNREFUSED 127.0.0.1:3306"}
+{"level":50,"time":1653522459665,"pid":23561,"hostname":"yemes-PC","msg":"Se produjo un error: Error: connect ECONNREFUSED 127.0.0.1:3306"}
+{"level":50,"time":1653522459666,"pid":23561,"hostname":"yemes-PC","msg":"Se produjo un error: Error: connect ECONNREFUSED 127.0.0.1:3306"}
+{"level":50,"time":1653522495789,"pid":23707,"hostname":"yemes-PC","msg":"Se produjo un error: JsonWebTokenError: jwt must be provided"}
+{"level":50,"time":1653522500911,"pid":23707,"hostname":"yemes-PC","msg":"Se produjo un error: ReferenceError: usuario is not defined"}
+{"level":50,"time":1653522500911,"pid":23707,"hostname":"yemes-PC","msg":"Se produjo un error: TypeError: Cannot read properties of undefined (reading 'message')"}
+{"level":50,"time":1653522581898,"pid":23979,"hostname":"yemes-PC","msg":"Se produjo un error: ReferenceError: bcrypt is not defined"}
+{"level":50,"time":1653522581898,"pid":23979,"hostname":"yemes-PC","msg":"Se produjo un error: TypeError: Cannot read properties of undefined (reading 'message')"}
+{"level":50,"time":1653523731702,"pid":25303,"hostname":"yemes-PC","msg":"Se produjo un error: Error: Illegal arguments: string, undefined"}
+{"level":50,"time":1653523731702,"pid":25303,"hostname":"yemes-PC","msg":"Se produjo un error: TypeError: Cannot read properties of undefined (reading 'message')"}
+{"level":50,"time":1653529957340,"pid":32522,"hostname":"yemes-PC","msg":"Se produjo un error: Error: Illegal arguments: string, undefined"}
+{"level":50,"time":1653529957340,"pid":32522,"hostname":"yemes-PC","msg":"Se produjo un error: TypeError: Cannot read properties of undefined (reading 'message')"}
+{"level":50,"time":1653532338884,"pid":36372,"hostname":"yemes-PC","msg":"Se produjo un error: Error: Illegal arguments: string, undefined"}
+{"level":50,"time":1653532338884,"pid":36372,"hostname":"yemes-PC","msg":"Se produjo un error: TypeError: Cannot read properties of undefined (reading 'message')"}
+{"level":50,"time":1653532552881,"pid":36882,"hostname":"yemes-PC","msg":"Se produjo un error: Error: Illegal arguments: string, undefined"}
+{"level":50,"time":1653532552881,"pid":36882,"hostname":"yemes-PC","msg":"Se produjo un error: TypeError: Cannot read properties of undefined (reading 'message')"}
+{"level":50,"time":1653532601517,"pid":37068,"hostname":"yemes-PC","msg":"Se produjo un error: Error: Illegal arguments: string, undefined"}
+{"level":50,"time":1653532601517,"pid":37068,"hostname":"yemes-PC","msg":"Se produjo un error: TypeError: Cannot read properties of undefined (reading 'message')"}
+{"level":50,"time":1653532643293,"pid":37068,"hostname":"yemes-PC","msg":"Se produjo un error: Error: Illegal arguments: string, undefined"}
+{"level":50,"time":1653532643294,"pid":37068,"hostname":"yemes-PC","msg":"Se produjo un error: TypeError: Cannot read properties of undefined (reading 'message')"}
+{"level":50,"time":1653532666309,"pid":37068,"hostname":"yemes-PC","msg":"Se produjo un error: Error: Illegal arguments: string, undefined"}
+{"level":50,"time":1653532666309,"pid":37068,"hostname":"yemes-PC","msg":"Se produjo un error: TypeError: Cannot read properties of undefined (reading 'message')"}
+{"level":50,"time":1653532817427,"pid":37636,"hostname":"yemes-PC","msg":"NO EXISTE EL USUARIO federicous@gmail.com"}
+{"level":50,"time":1653532858921,"pid":37636,"hostname":"yemes-PC","msg":"Se produjo un error: Error: insert into `usuarios` (`address`, `age`, `avatar`, `email`, `isAdmin`, `name`, `password`, `phone`, `uuid`) values ('chaco 166', '45', 'http://pic-art/avatar5', 'jorge@gmail.com', 'on', 'jorge', '$2a$10$B0wdg1z18j.b45tyAUTtpOJYU/ZLrDqHaQbrPbxIagmJqo33iSawO', '024759369839', 'b1329c06-f22e-478a-89f3-c8533966995e') - SQLITE_ERROR: table usuarios has no column named isAdmin"}
+{"level":50,"time":1653532858921,"pid":37636,"hostname":"yemes-PC","msg":"Se produjo un error: TypeError: Cannot read properties of undefined (reading 'message')"}
+{"level":50,"time":1653533054218,"pid":38187,"hostname":"yemes-PC","msg":"Se produjo un error: Error: insert into `usuarios` (`address`, `age`, `avatar`, `email`, `isAdmin`, `name`, `password`, `phone`, `uuid`) values ('chaco 166', '45', 'http://pic-art/avatar5', 'jorge@gmail.com', 'on', 'jorge', '$2a$10$4o925koqU40aPhQVH3AgYugfvgmb0Z/cWdsCHEvV0mGjnKpVyxPfy', '024759369839', '626011d3-6d98-456a-8c4e-0c96aec0be99') - SQLITE_ERROR: table usuarios has no column named isAdmin"}
+{"level":50,"time":1653533054218,"pid":38187,"hostname":"yemes-PC","msg":"Se produjo un error: TypeError: Cannot read properties of undefined (reading 'message')"}
+{"level":50,"time":1653533212231,"pid":38513,"hostname":"yemes-PC","msg":"Se produjo un error: Error: create table `usuarios` (`id` integer not null primary key autoincrement, `name` varchar(255), `age` integer, `password` varchar(255), `address` varchar(255), `email` varchar(255), `phone` varchar(255), `avatar` varchar(255), `timestamp` datetime default CURRENT_TIMESTAMP, `uuid` char(36)) - SQLITE_ERROR: table `usuarios` already exists"}
+{"level":50,"time":1653533294621,"pid":38766,"hostname":"yemes-PC","msg":"Se produjo un error: TypeError: Cannot read properties of undefined (reading 'message')"}
+{"level":50,"time":1653533322373,"pid":38766,"hostname":"yemes-PC","msg":"NO EXISTE EL USUARIO federicous@gmail.com"}
+{"level":50,"time":1653533329527,"pid":38766,"hostname":"yemes-PC","msg":"Se produjo un error: Error: Illegal arguments: string, undefined"}
+{"level":50,"time":1653533329527,"pid":38766,"hostname":"yemes-PC","msg":"Se produjo un error: TypeError: Cannot read properties of undefined (reading 'message')"}
+{"level":50,"time":1653533377748,"pid":38766,"hostname":"yemes-PC","msg":"Se produjo un error: Error: Illegal arguments: string, undefined"}
+{"level":50,"time":1653533377749,"pid":38766,"hostname":"yemes-PC","msg":"Se produjo un error: TypeError: Cannot read properties of undefined (reading 'message')"}
+{"level":50,"time":1653533483024,"pid":39284,"hostname":"yemes-PC","msg":"Se produjo un error: Error: Illegal arguments: string, undefined"}
+{"level":50,"time":1653533483025,"pid":39284,"hostname":"yemes-PC","msg":"Se produjo un error: TypeError: Cannot read properties of undefined (reading 'message')"}
+{"level":50,"time":1653533493150,"pid":39284,"hostname":"yemes-PC","msg":"NO EXISTE EL USUARIO federicous@gmail.com"}
+{"level":50,"time":1653533501151,"pid":39284,"hostname":"yemes-PC","msg":"Se produjo un error: Error: Illegal arguments: string, undefined"}
+{"level":50,"time":1653533501151,"pid":39284,"hostname":"yemes-PC","msg":"Se produjo un error: TypeError: Cannot read properties of undefined (reading 'message')"}
+{"level":50,"time":1653533589063,"pid":39752,"hostname":"yemes-PC","msg":"Se produjo un error: Error: Illegal arguments: string, undefined"}
+{"level":50,"time":1653533589063,"pid":39752,"hostname":"yemes-PC","msg":"Se produjo un error: TypeError: Cannot read properties of undefined (reading 'message')"}
+{"level":50,"time":1653533647994,"pid":39928,"hostname":"yemes-PC","msg":"Se produjo un error: Error: Illegal arguments: string, undefined"}
+{"level":50,"time":1653533647994,"pid":39928,"hostname":"yemes-PC","msg":"Se produjo un error: TypeError: Cannot read properties of undefined (reading 'message')"}
+{"level":50,"time":1653534001691,"pid":40526,"hostname":"yemes-PC","msg":"Se produjo un error: Error: Illegal arguments: string, undefined"}
+{"level":50,"time":1653534001691,"pid":40526,"hostname":"yemes-PC","msg":"Se produjo un error: TypeError: Cannot read properties of undefined (reading 'message')"}
+{"level":50,"time":1653534054904,"pid":40763,"hostname":"yemes-PC","msg":"Se produjo un error: Error: Illegal arguments: string, undefined"}
+{"level":50,"time":1653534054904,"pid":40763,"hostname":"yemes-PC","msg":"Se produjo un error: TypeError: Cannot read properties of undefined (reading 'message')"}
+{"level":50,"time":1653534132075,"pid":41046,"hostname":"yemes-PC","msg":"NO EXISTE EL USUARIO jorge@gmail.com"}
+{"level":50,"time":1653534207515,"pid":41046,"hostname":"yemes-PC","msg":"Se produjo un error: TypeError: Cannot read properties of undefined (reading 'message')"}
+{"level":50,"time":1653534378075,"pid":41046,"hostname":"yemes-PC","msg":"NO EXISTE EL USUARIO jorge@gmail.com"}
+{"level":50,"time":1653534404382,"pid":41046,"hostname":"yemes-PC","msg":"Se produjo un error: JsonWebTokenError: jwt must be provided"}
+{"level":50,"time":1653534488070,"pid":41782,"hostname":"yemes-PC","msg":"Se produjo un error: ReferenceError: user is not defined"}
+{"level":50,"time":1653534488071,"pid":41782,"hostname":"yemes-PC","msg":"Se produjo un error: TypeError: Cannot read properties of undefined (reading 'message')"}
+{"level":50,"time":1653534538039,"pid":42041,"hostname":"yemes-PC","msg":"NO EXISTE EL USUARIO jorge@gmail.com"}
+{"level":50,"time":1653534670359,"pid":42438,"hostname":"yemes-PC","msg":"NO EXISTE EL USUARIO jorge@gmail.com"}
+{"level":50,"time":1653534714596,"pid":42644,"hostname":"yemes-PC","msg":"CONTRASEÑA INCORRECTA: oyoiuyhuio PARA USUARIO: jorge@gmail.com"}
+{"level":50,"time":1653534731130,"pid":42644,"hostname":"yemes-PC","msg":"NO EXISTE EL USUARIO kimaje4684@o3live.com"}
+{"level":50,"time":1653534737021,"pid":42644,"hostname":"yemes-PC","msg":"CONTRASEÑA INCORRECTA: rteytetyr PARA USUARIO: jorge@gmail.com"}
+{"level":50,"time":1653535269217,"pid":43062,"hostname":"yemes-PC","msg":"Se produjo un error: JsonWebTokenError: jwt must be provided"}
+{"level":50,"time":1653535282537,"pid":43062,"hostname":"yemes-PC","msg":"Se produjo un error: JsonWebTokenError: jwt must be provided"}
+{"level":50,"time":1653535456934,"pid":43062,"hostname":"yemes-PC","msg":"NO EXISTE EL USUARIO pepe@hotmail.com"}

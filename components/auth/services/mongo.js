@@ -1,8 +1,8 @@
 let UsuarioModel = require('../../../schema/usuarios');
 let bcrypt = require("bcryptjs");
-const JWT = require("../../../utils/jwt/jwt")
+const JWT = require("../../../utils/jwt/jwt");
 require("dotenv").config();
-const pino = require('../../../utils/logger/pino')
+const pino = require('../../../utils/logger/pino');
 
 class AuthService {
 
@@ -29,7 +29,6 @@ class AuthService {
 
 	async login(email, password) {
 		try {
-			let secret = process.env.SECRET;
 			let user = await UsuarioModel.findOne({
 				email: email
 			});
@@ -64,4 +63,4 @@ class AuthService {
 
 }
 
-module.exports = new AuthService;
+module.exports = AuthService;
