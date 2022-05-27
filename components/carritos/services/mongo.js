@@ -9,7 +9,18 @@ class MongoDB {
 	async save(carrito) {
 		try {
 			// elemento.timestamp=Date.now();
-			// let agregarElementoModel= new ElementoModel(elemento);
+			// let agregarElementoModel= new ElementoModel(elemento);	
+			console.log(`>>>>>>>> ENTRA`);
+			let cart = await ElementoModel.findOne({email: carrito.email});
+			pino.info(carrito);
+			console.log(`>>>>>>>> CAAT`);
+			pino.info(cart);
+			if (cart) {
+				pino.info(`Ya existe el carrito id: ${cart._id}`)
+				return (cart._id)
+			}
+
+
 			let nuevoElementoModel= new ElementoModel();
 			nuevoElementoModel.id=v4();
 			nuevoElementoModel.timestamp = Date.now();   
@@ -66,6 +77,15 @@ class MongoDB {
 		}	
 	}
 
+	async getByEmail(email) {
+		try {
+			let mostrar = await ElementoModel.findOne({email: email});
+			return(mostrar)
+		} catch (error) {
+			pino.error(`Se produjo un error: ${error}`)
+			
+		}	
+	}
 	async getSubElementsById(id) {
 		try {
 			let mostrar = await ElementoModel.findById(id);

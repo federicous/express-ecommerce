@@ -1,7 +1,9 @@
 const elementService = require('../services')
 // const jwt = require("jsonwebtoken")
-const JWT = require("../../../utils/jwt/jwt")
-const pino = require('../../../utils/logger/pino')
+const JWT = require("../../../utils/jwt/jwt");
+const pino = require('../../../utils/logger/pino');
+const productService = require('../../pruductos/services');
+const carritoService = require('../../carritos/services');
 
 class Element {
 
@@ -92,7 +94,11 @@ class Element {
 
     async getVerProductos(req, res, next){
         try {
-            res.render('verProductos',{message: ''});	
+            const token = req.cookies.token
+            let payload = await JWT.decode(token)
+            let carritoId = await carritoService.save(payload);
+            let productos = await productService.getAll();
+            res.render('verProductos',{message: '',productos, carritoId});	
         } catch (error) {
             pino.error(`Se produjo un error: ${error}`);
         }

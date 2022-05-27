@@ -1,5 +1,7 @@
-const elementService = require('../services')
-const pino = require('../../../utils/logger/pino')
+const elementService = require('../services');
+const productService = require('../../pruductos/services');
+const pino = require('../../../utils/logger/pino');
+const JWT = require("../../../utils/jwt/jwt");
 
 class Element {
 
@@ -19,7 +21,15 @@ class Element {
             let id = req.params.id
             let subElement = req.body;
             let response = await elementService.saveSubElement(id,subElement);
-            res.json(response);
+            // res.json(response);
+
+            const token = req.cookies.token
+            let payload = await JWT.decode(token)
+            // let carrito = await elementService.getByEmail(payload.email);
+            let carritoId = await elementService.save(payload);
+            let productos = await productService.getAll();
+            res.render('verProductos',{message: 'Producto agregado',productos, carritoId});	
+            // res.render('verCarrito',{message: '',carrito});
         } catch (error) {
             pino.error(`Se produjo un error: ${error}`);
         }

@@ -121,3 +121,23 @@
 {"level":50,"time":1653535456934,"pid":43062,"hostname":"yemes-PC","msg":"NO EXISTE EL USUARIO pepe@hotmail.com"}
 {"level":50,"time":1653539522516,"pid":53355,"hostname":"yemes-PC","msg":"Se produjo un error: TypeError: this.on is not a function"}
 {"level":50,"time":1653539724467,"pid":53839,"hostname":"yemes-PC","msg":"Se produjo un error: JsonWebTokenError: jwt must be provided"}
+{"level":50,"time":1653609261617,"pid":4337,"hostname":"yemes-PC","msg":"Se produjo un error: JsonWebTokenError: jwt must be provided"}
+{"level":50,"time":1653613256219,"pid":11775,"hostname":"yemes-PC","msg":"Se produjo un error: JsonWebTokenError: jwt must be provided"}
+{"level":50,"time":1653614855267,"pid":14466,"hostname":"yemes-PC","msg":"Se produjo un error: TypeError: Cannot read properties of undefined (reading 'email')"}
+{"level":50,"time":1653614964358,"pid":14466,"hostname":"yemes-PC","msg":"Se produjo un error: TypeError: Cannot read properties of undefined (reading 'email')"}
+{"level":50,"time":1653614976201,"pid":14466,"hostname":"yemes-PC","msg":"Se produjo un error: TypeError: Cannot read properties of undefined (reading 'email')"}
+{"level":50,"time":1653615077925,"pid":14913,"hostname":"yemes-PC","msg":"Se produjo un error: TypeError: Cannot read properties of undefined (reading 'email')"}
+{"level":50,"time":1653615105818,"pid":15053,"hostname":"yemes-PC","msg":"Se produjo un error: TypeError: Cannot read properties of undefined (reading 'email')"}
+{"level":50,"time":1653615566600,"pid":15695,"hostname":"yemes-PC","msg":"Se produjo un error: ReferenceError: payload is not defined"}
+{"level":50,"time":1653615580817,"pid":15819,"hostname":"yemes-PC","msg":"Se produjo un error: TypeError: Cannot read properties of null (reading 'email')"}
+{"level":50,"time":1653615721911,"pid":16103,"hostname":"yemes-PC","msg":"Se produjo un error: TypeError: Cannot read properties of null (reading 'email')"}
+{"level":50,"time":1653621786335,"pid":22800,"hostname":"yemes-PC","msg":"Se produjo un error: ReferenceError: JWT is not defined"}
+{"level":50,"time":1653621807168,"pid":22800,"hostname":"yemes-PC","msg":"Se produjo un error: ReferenceError: JWT is not defined"}
+{"level":50,"time":1653621857908,"pid":23093,"hostname":"yemes-PC","msg":"Se produjo un error: ReferenceError: carritoService is not defined"}
+{"level":50,"time":1653621903572,"pid":23314,"hostname":"yemes-PC","msg":"Se produjo un error: ReferenceError: elementService is not defined"}
+{"level":50,"time":1653621939785,"pid":23501,"hostname":"yemes-PC","msg":"Se produjo un error: ReferenceError: productService is not defined"}
+{"level":50,"time":1653625427271,"pid":30046,"hostname":"yemes-PC","msg":"Se produjo un error: JsonWebTokenError: jwt must be provided"}
+{"level":50,"time":1653625442839,"pid":30046,"hostname":"yemes-PC","msg":"Se produjo un error: JsonWebTokenError: jwt must be provided"}
+{"level":50,"time":1653625484164,"pid":30046,"hostname":"yemes-PC","msg":"Se produjo un error: TypeError: Cannot read properties of null (reading 'email')"}
+{"level":50,"time":1653625527763,"pid":30046,"hostname":"yemes-PC","msg":"Se produjo un error: TypeError: Cannot read properties of null (reading 'email')"}
+{"level":50,"time":1653625682862,"pid":31011,"hostname":"yemes-PC","msg":"Se produjo un error: JsonWebTokenError: jwt must be provided"}
