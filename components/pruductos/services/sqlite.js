@@ -85,7 +85,6 @@ class Contenedor {
 	async getAll() {
 		try {
 			let mostrar = await knex.from('productos').select('*');
-			pino.info(mostrar);
 			return mostrar
 
 		} catch (error) {

@@ -40,15 +40,22 @@ class Contenedor {
 
 	async save(carrito) {
 		try {
-			carrito.uuid = v4();
-			carrito.email = carrito.email;
-			carrito.address = carrito.address;
-			carrito.productList = JSON.stringify([])
+			let busquedaCart = await knex.from('carritos').select('*').where({email: carrito.email});
+			let cart = busquedaCart[0];
+			if (cart) {
+				return (cart.id)
+			}
+			let nuevoCarrito = {};
+			nuevoCarrito.uuid = v4();
+			nuevoCarrito.email = carrito.email;
+			nuevoCarrito.address = carrito.address;
+			nuevoCarrito.productList = JSON.stringify([])
 			let agregar = await knex('carritos')
-				.insert(carrito)
+				.insert(nuevoCarrito)
 			pino.info("datos insertados")
-
-			return carrito.id
+			let carritoGuardado = await knex.from('carritos').select('*').where({email: carrito.email});
+			pino.info(`Nuevo carrito id: ${cart.id}`)
+			return carritoGuardado.id
 
 		} catch (error) {
 			pino.error(`Se produjo un error: ${error}`)
@@ -89,7 +96,7 @@ class Contenedor {
 			let idCarrito = parseInt(id);
 			// let mostrar = await knex.from('carritos').select('*').where({id:`${id}`});
 			let mostrar = await knex.from('carritos').select('*').where({id: id});
-			return (mostrar)
+			return (mostrar[0])
 
 
 		} catch (error) {
@@ -103,7 +110,7 @@ class Contenedor {
 			// let idCarrito = parseInt(id);
 			// let mostrar = await knex.from('carritos').select('*').where({id:`${id}`});
 			let carrito = await knex.from('carritos').select('*').where({id: id});
-			return (carrito[0].productList)
+			return (JSON.parse(carrito[0].productList))
 
 
 		} catch (error) {
@@ -115,7 +122,6 @@ class Contenedor {
 	async getAll() {
 		try {
 			let mostrar = await knex.from('carritos').select('*');
-			pino.info(mostrar);
 			return mostrar
 
 		} catch (error) {

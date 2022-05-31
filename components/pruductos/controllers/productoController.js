@@ -1,5 +1,7 @@
-const elementService = require('../services')
-const pino = require('../../../utils/logger/pino')
+const elementService = require('../services');
+const pino = require('../../../utils/logger/pino');
+const carritoService = require('../../carritos/services');
+const JWT = require("../../../utils/jwt/jwt");
 
 class Element {
 
@@ -28,6 +30,13 @@ class Element {
         try {
             let response = await elementService.getAll();
             res.json(response);
+
+            // const token = req.cookies.token
+            // let payload = await JWT.decode(token)
+            // let carritoId = await carritoService.save(payload);
+            // let productos = await elementService.getAll();
+            // res.render('verProductos',{message: 'Producto agregado',productos, carritoId});
+
         } catch (error) {
             pino.error(`Se produjo un error: ${error}`);
         }

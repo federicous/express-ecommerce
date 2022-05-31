@@ -9,8 +9,10 @@ class Element {
         try {
             let element = req.body; // En el body recibe email y dirección
             // let response = await elementService.save(element);
-            let response = await elementService.save(element);
-            res.json(response);
+            const token = req.cookies.token;
+            let payload = await JWT.decode(token);
+            let carritoId = await elementService.save(payload);
+              res.json(carritoId);
         } catch (error) {
             pino.error(`Se produjo un error: ${error}`);
         }
@@ -18,18 +20,41 @@ class Element {
 
     async createSubElement(req, res, next){
         try {
-            let id = req.params.id
+            const token = req.cookies.token;
+            let payload = await JWT.decode(token);
+            let carritoId = await elementService.save(payload);
             let subElement = req.body;
-            let response = await elementService.saveSubElement(id,subElement);
+            let response = await elementService.saveSubElement(carritoId,subElement);
             // res.json(response);
 
+
+            // let productos = await productService.getAll();
+            // res.render('verProductos',{message: 'Producto agregado',productos, carritoId});	
+            // res.send('agregado')
+            req.session.agregado = true;
+            res.status(200).redirect('productos')
+            
+        } catch (error) {
+            pino.error(`Se produjo un error: ${error}`);
+        }
+    }
+
+    async getProducts(req, res, next){
+        try {
             const token = req.cookies.token
             let payload = await JWT.decode(token)
-            // let carrito = await elementService.getByEmail(payload.email);
             let carritoId = await elementService.save(payload);
             let productos = await productService.getAll();
-            res.render('verProductos',{message: 'Producto agregado',productos, carritoId});	
-            // res.render('verCarrito',{message: '',carrito});
+            let message = '';
+            if (req.session.agregado) {
+                message = 'Producto agregado al carrito'
+            }
+            req.session.agregado = false;
+            res.status(200).render('verProductos',{message: message,productos, carritoId});	
+
+            // // res.status(200).redirect('/api/product')
+
+
         } catch (error) {
             pino.error(`Se produjo un error: ${error}`);
         }
@@ -37,8 +62,10 @@ class Element {
 
     async getElement(req, res, next){
         try {
-            let id = req.params.id
-            let response = await elementService.getById(id);
+            const token = req.cookies.token;
+            let payload = await JWT.decode(token);
+            let carritoId = await elementService.save(payload);
+            let response = await elementService.getById(carritoId);
             res.json(response);
         } catch (error) {
             pino.error(`Se produjo un error: ${error}`);
@@ -47,9 +74,12 @@ class Element {
 
     async getSubElement(req, res, next){
         try {
-            let id = req.params.id
-            let response = await elementService.getSubElementsById(id);
-            res.json(response);
+            const token = req.cookies.token;
+            let payload = await JWT.decode(token);
+            let carritoId = await elementService.save(payload);
+            let carrito = await elementService.getSubElementsById(carritoId);
+            res.status(200).render('carrito',{message: '',carrito, carritoId});	
+            // res.json(response);
         } catch (error) {
             pino.error(`Se produjo un error: ${error}`);
         }
@@ -64,14 +94,18 @@ class Element {
         }
     }
 
+
+
     async updateElement(req, res, next){
         try {
             let { element } = req.body;
-            let id = req.params.id
-            let response = await elementService.modify(id, element);
+            const token = req.cookies.token;
+            let payload = await JWT.decode(token);
+            let carritoId = await elementService.save(payload);
+            let response = await elementService.modify(carritoId, element);
             res.json({
                 result:'ok',
-                id: req.params.id,
+                id: carritoId,
                 new: req.body
             })
         } catch (error) {
@@ -81,13 +115,15 @@ class Element {
 
     async deleteElement(req, res, next){
         try {
-            // let { id } = req.body;
-            let id = req.params.id
-            let response = await elementService.deleteById(id);
+
+            const token = req.cookies.token;
+            let payload = await JWT.decode(token);
+            let carritoId = await elementService.save(payload);
+            let response = await elementService.deleteById(carritoId);
             // res.json(response);
             res.json({
                 result:'ok',
-                id: req.params.id      
+                id: carritoId      
             })
         } catch (error) {
             pino.error(`Se produjo un error: ${error}`);
@@ -96,9 +132,11 @@ class Element {
 
     async deleteSubElement(req, res, next){
         try {
+            const token = req.cookies.token;
+            let payload = await JWT.decode(token);
+            let carritoId = await elementService.save(payload);
             let id_prod = req.params.id_prod;
-            let id = req.params.id;
-            let response = await elementService.deleteSubElementById(id, id_prod);
+            let response = await elementService.deleteSubElementById(carritoId, id_prod);
             // res.json(response);
             res.json({
                 result:'ok',

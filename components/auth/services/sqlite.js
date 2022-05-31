@@ -51,7 +51,7 @@ class Contenedor {
 			pino.info(usuario);
 			pino.info(user);
 
-			if (user.email) {
+			if (user) {
 				return ({message: 'Ya existe una cuenta con el mismo email'})
 			}
 			const passwordHash = bcrypt.hashSync(usuario.password, 10)
@@ -59,8 +59,9 @@ class Contenedor {
 			usuario.uuid=uuid()
 			let agregar= await knex('usuarios')
 			.insert(usuario)
-			pino.info("datos insertados")	
-			return usuario.id
+			pino.info("datos insertados");
+			let usuarioAgregado = await knex.from('usuarios').select('*').where({email: usuario.email});
+			return {id: usuarioAgregado.id, message:''}
 
 		} catch (error) {
 			pino.error(`Se produjo un error: ${error}`)

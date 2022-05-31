@@ -22,7 +22,7 @@ class Element {
                 return res.status(200).render('login',{message: ""})
             } else {
                 pino.info(`con token`);
-                res.status(200).redirect('/home')
+                res.status(200).redirect('/productos')
             }
         } catch (error) {
             pino.error(`Se produjo un error: ${error}`);
@@ -32,8 +32,6 @@ class Element {
     async postLogin(req, res, next){
         try {
             let {email, password} = req.body;
-            pino.info(email);
-            pino.info(password);
             let response = await elementService.login(email,password);
             if (response.message) {
                 pino.info(response);
@@ -42,7 +40,7 @@ class Element {
             }
             res.status(200)
             .cookie('token', response.token, {maxAge: 3600000})
-            .redirect('/home');
+            .redirect('/productos');
 
         } catch (error) {
             pino.error(`Se produjo un error: ${error}`);
@@ -79,7 +77,7 @@ class Element {
             let element = req.body;
             let response = await elementService.createUser(element);
             if (response.message) {
-                pino.info(response);
+                // pino.info(response);
                 return res.status(404)
                 .render('register', {message: response.message});
             }

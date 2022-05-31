@@ -20,7 +20,7 @@ class AuthService {
 			let agregarUsuarioModel = new UsuarioModel(usuario);
 			let agregarUsuario = await agregarUsuarioModel.save();
 			pino.info(agregarUsuario);
-			return agregarUsuario._id
+			return {id: agregarUsuario._id, message:''}
 
 		} catch (error) {
 			pino.error(`Se produjo un error: ${error}`)

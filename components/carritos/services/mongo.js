@@ -10,11 +10,9 @@ class MongoDB {
 		try {
 			// elemento.timestamp=Date.now();
 			// let agregarElementoModel= new ElementoModel(elemento);	
-			console.log(`>>>>>>>> ENTRA`);
 			let cart = await ElementoModel.findOne({email: carrito.email});
-			pino.info(carrito);
-			console.log(`>>>>>>>> CAAT`);
-			pino.info(cart);
+			// pino.info(carrito);
+			// pino.info(cart);
 			if (cart) {
 				pino.info(`Ya existe el carrito id: ${cart._id}`)
 				return (cart._id)
@@ -70,6 +68,7 @@ class MongoDB {
 	async getById(id) {
 		try {
 			let mostrar = await ElementoModel.findById(id);
+			pino.info(mostrar)
 			return(mostrar)
 		} catch (error) {
 			pino.error(`Se produjo un error: ${error}`)

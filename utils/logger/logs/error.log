@@ -141,3 +141,31 @@
 {"level":50,"time":1653625484164,"pid":30046,"hostname":"yemes-PC","msg":"Se produjo un error: TypeError: Cannot read properties of null (reading 'email')"}
 {"level":50,"time":1653625527763,"pid":30046,"hostname":"yemes-PC","msg":"Se produjo un error: TypeError: Cannot read properties of null (reading 'email')"}
 {"level":50,"time":1653625682862,"pid":31011,"hostname":"yemes-PC","msg":"Se produjo un error: JsonWebTokenError: jwt must be provided"}
+{"level":50,"time":1653775027177,"pid":4340,"hostname":"yemes-PC","msg":"Se produjo un error: JsonWebTokenError: jwt must be provided"}
+{"level":50,"time":1653799492678,"pid":4450,"hostname":"yemes-PC","msg":"Se produjo un error: JsonWebTokenError: jwt must be provided"}
+{"level":50,"time":1653799496486,"pid":4450,"hostname":"yemes-PC","msg":"Se produjo un error: JsonWebTokenError: jwt must be provided"}
+{"level":50,"time":1653799509380,"pid":4450,"hostname":"yemes-PC","msg":"CONTRASEÑA INCORRECTA: ḉ PARA USUARIO: jorge@gmail.com"}
+{"level":50,"time":1653958326065,"pid":9366,"hostname":"yemes-PC","msg":"Se produjo un error: JsonWebTokenError: jwt must be provided"}
+{"level":50,"time":1653963562146,"pid":19501,"hostname":"yemes-PC","msg":"Se produjo un error: JsonWebTokenError: jwt must be provided"}
+{"level":50,"time":1653966482649,"pid":26272,"hostname":"yemes-PC","msg":"Se produjo un error: Error: insert into `carritos` (`address`, `email`, `exp`, `iat`, `id`, `isAdmin`, `name`, `productList`, `uuid`) values (NULL, 'jorge@gmail.com', 1654049969, 1653963569, '6284f0ed4a55eb8ccf091dc5', 'on', 'jorge', '[]', '11dfc21c-b249-4b4b-9c65-2157df1e681a') - SQLITE_ERROR: table carritos has no column named exp"}
+{"level":50,"time":1653966493865,"pid":26272,"hostname":"yemes-PC","msg":"Se produjo un error: Error: insert into `carritos` (`address`, `email`, `exp`, `iat`, `id`, `isAdmin`, `name`, `productList`, `uuid`) values (NULL, 'jorge@gmail.com', 1654049969, 1653963569, '6284f0ed4a55eb8ccf091dc5', 'on', 'jorge', '[]', 'cb327838-ead6-436e-80ce-f47e27d4f4eb') - SQLITE_ERROR: table carritos has no column named exp"}
+{"level":50,"time":1653966538255,"pid":26272,"hostname":"yemes-PC","msg":"Se produjo un error: Error: insert into `carritos` (`address`, `email`, `exp`, `iat`, `id`, `isAdmin`, `name`, `productList`, `uuid`) values (NULL, 'jorge@gmail.com', 1654049969, 1653963569, '6284f0ed4a55eb8ccf091dc5', 'on', 'jorge', '[]', 'e84931c6-d225-4a35-8627-d11bce7a73df') - SQLITE_ERROR: table carritos has no column named exp"}
+{"level":50,"time":1653966623837,"pid":26272,"hostname":"yemes-PC","msg":"Se produjo un error: JsonWebTokenError: jwt must be provided"}
+{"level":50,"time":1653966639493,"pid":26272,"hostname":"yemes-PC","msg":"Se produjo un error: Error: insert into `carritos` (`address`, `email`, `exp`, `iat`, `id`, `isAdmin`, `name`, `productList`, `uuid`) values (NULL, 'jorge@gmail.com', 1654053034, 1653966634, 1, 'on', 'jorge', '[]', '8f495f4b-9e95-4492-a176-06732c082c41') - SQLITE_ERROR: table carritos has no column named exp"}
+{"level":50,"time":1653966720897,"pid":27215,"hostname":"yemes-PC","msg":"Se produjo un error: Error: insert into `carritos` (`address`, `email`, `exp`, `iat`, `id`, `isAdmin`, `name`, `productList`, `uuid`) values (NULL, 'jorge@gmail.com', 1654053034, 1653966634, 1, 'on', 'jorge', '[]', 'd005953b-e0d1-4b75-a293-563298bb4a64') - SQLITE_ERROR: table carritos has no column named exp"}
+{"level":50,"time":1653966730265,"pid":27215,"hostname":"yemes-PC","msg":"Se produjo un error: Error: insert into `carritos` (`address`, `email`, `exp`, `iat`, `id`, `isAdmin`, `name`, `productList`, `uuid`) values (NULL, 'jorge@gmail.com', 1654053034, 1653966634, 1, 'on', 'jorge', '[]', '3ba1cca0-927b-431e-bfee-9e41b3354845') - SQLITE_ERROR: table carritos has no column named exp"}
+{"level":50,"time":1653967470345,"pid":28588,"hostname":"yemes-PC","msg":"Se produjo un error: JsonWebTokenError: jwt must be provided"}
+{"level":50,"time":1653968539677,"pid":32155,"hostname":"yemes-PC","msg":"NO EXISTE EL USUARIO federicous@gmail.com"}
+{"level":50,"time":1653968583971,"pid":32155,"hostname":"yemes-PC","msg":"Se produjo un error: TypeError: Cannot read properties of undefined (reading 'email')"}
+{"level":50,"time":1653968583972,"pid":32155,"hostname":"yemes-PC","msg":"Se produjo un error: TypeError: Cannot read properties of undefined (reading 'message')"}
+{"level":50,"time":1653968706206,"pid":32155,"hostname":"yemes-PC","msg":"Se produjo un error: TypeError: Cannot read properties of undefined (reading 'email')"}
+{"level":50,"time":1653968706206,"pid":32155,"hostname":"yemes-PC","msg":"Se produjo un error: TypeError: Cannot read properties of undefined (reading 'message')"}
+{"level":50,"time":1653968782482,"pid":32760,"hostname":"yemes-PC","msg":"Se produjo un error: TypeError: Cannot read properties of undefined (reading 'message')"}
+{"level":50,"time":1653968873500,"pid":33077,"hostname":"yemes-PC","msg":"CONTRASEÑA INCORRECTA: pep PARA USUARIO: federicous@gmail.com"}
+{"level":50,"time":1653968885439,"pid":33077,"hostname":"yemes-PC","msg":"Se produjo un error: TypeError: Cannot read properties of undefined (reading 'id')"}
+{"level":50,"time":1653968977767,"pid":33708,"hostname":"yemes-PC","msg":"NO EXISTE EL USUARIO memer57884@697av.com"}
+{"level":50,"time":1653969016691,"pid":33708,"hostname":"yemes-PC","msg":"Se produjo un error: TypeError: Cannot read properties of undefined (reading 'message')"}
+{"level":50,"time":1653969332774,"pid":34281,"hostname":"yemes-PC","msg":"Se produjo un error: TypeError: Cannot read properties of undefined (reading 'message')"}
+{"level":50,"time":1653973891490,"pid":43428,"hostname":"yemes-PC","msg":"Se produjo un error: ReferenceError: message is not defined"}
+{"level":50,"time":1653975561534,"pid":47584,"hostname":"yemes-PC","msg":"Se produjo un error: JsonWebTokenError: jwt must be provided"}
+{"level":50,"time":1653975571768,"pid":47584,"hostname":"yemes-PC","msg":"CONTRASEÑA INCORRECTA: pepe12 PARA USUARIO: jorge@gmail.com"}
