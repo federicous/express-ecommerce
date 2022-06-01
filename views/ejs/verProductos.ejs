@@ -74,12 +74,12 @@
 						<% for (const prod of productos) { %>
 							<form class="productos" action="/api/cart/product" method="post">
 									<tr>
-										<th scope="row" class="d-none"><%=prod.id %></th>
+										<th scope="row" class="d-none"><%=prod._id ? prod._id : prod.id %></th>
 										<td><img class="img-thumbnail" style="height: 80px;" src="<%=prod.image %>" alt=""><input class="form-input d-none" type="text" name="image" value="<%=prod.image %>" readonly="true"></td>
 										<td><%=prod.name %><input class="form-input d-none" type="text" name="name" value="<%=prod.name %>" readonly="true"></td>
 										<td><%=prod.stock %><input class="form-input d-none" type="number" name="qty" value="1"></td>
 										<td><%=prod.price %><input class="form-input d-none" type="text" name="price" value="<%=prod.price %>" readonly="true"></td>
-										<td><a class="btn btn-outline-secondary my-3" href="/api/products/<%=prod.id %>">Detalle</a></td>
+										<td><a class="btn btn-outline-secondary my-3" href="/api/products/<%=prod._id ? prod._id : prod.id %>">Detalle</a></td>
 										<td><input class="btn btn-primary my-3" type="submit" value="Add to cart"></td>
 									</tr>
 							</form>
@@ -98,15 +98,15 @@
 								<p class="card-text"><%=prod.description %></p>
 								<p class="card-text"><small class="text-muted">Stock: <%=prod.stock %></small></p>
 								<p class="card-text"><b>Price: $ <%=prod.price %></b></p>
-								<!-- <a href="/api/cart/prduct/<%=prod.id %>" class="btn btn-primary">Comprar</a> -->
+								<!-- <a href="/api/cart/prduct/<%=prod._id ? prod._id : prod.id %>" class="btn btn-primary">Comprar</a> -->
 								<form class="productos" action="/carrito" method="post">
 									
-										<input class="form-input d-none" type="text" name="id" value="<%=prod.id %>">
+										<input class="form-input d-none" type="text" name="id" value="<%=prod._id ? prod._id : prod.id %>">
 										<input class="form-input d-none" type="text" name="image" value="<%=prod.image %>" readonly="true">
 										<input class="form-input d-none" type="text" name="name" value="<%=prod.name %>" readonly="true">
 										<input class="form-input d-none" type="number" name="qty" value="1">
 										<input class="form-input d-none" type="text" name="price" value="<%=prod.price %>" readonly="true">
-										<a class="btn btn-outline-secondary my-3 d-block" href="/productos/<%=prod.id %>">Detalle</a>
+										<a class="btn btn-outline-secondary my-3 d-block" href="/productos/<%=prod._id ? prod._id : prod.id %>">Detalle</a>
 										<input class="btn btn-primary my-3 d-block" type="submit" value="Add to cart">
 									
 								</form>

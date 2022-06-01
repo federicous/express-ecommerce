@@ -32,7 +32,7 @@ class Element {
             // res.render('verProductos',{message: 'Producto agregado',productos, carritoId});	
             // res.send('agregado')
             req.session.agregado = true;
-            res.status(200).redirect('productos')
+            res.status(200).redirect('/productos')
             
         } catch (error) {
             pino.error(`Se produjo un error: ${error}`);

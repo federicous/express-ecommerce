@@ -16,7 +16,7 @@ module.exports = app => {
     carritoRouter.post("/", Autenticacion.usuario, carritoController.createElement);
     carritoRouter.post("/product", Autenticacion.usuario, carritoController.createSubElement);
     // carritoRouter.put("/:id", carritoController.updateElement);
-    carritoRouter.delete("/", Autenticacion.usuario, carritoController.deleteElement);
+    carritoRouter.delete("/carrito", Autenticacion.usuario, carritoController.deleteElement);
     carritoRouter.delete("/product/:id_prod", Autenticacion.usuario, carritoController.deleteSubElement);
 }
 

@@ -73,9 +73,9 @@
 				<tbody id="tablaProductos">
 
 					<% for (const prod of carrito) { %>
-					<form class="productos" action="/carrito/<%=prod.id %>" method="post">
+					<form class="productos" action="/carrito/<%=prod._id ? prod._id : prod.id %>" method="post">
 						<tr>
-							<th scope="row" class="d-none"><%=prod.id %></th>
+							<th scope="row" class="d-none"><%=prod._id ? prod._id : prod.id %></th>
 							<td><img class="img-thumbnail" style="height: 80px;"
 									src="<%=prod.image %>" alt=""><input
 									class="form-input d-none" type="text"
@@ -90,8 +90,8 @@
 									name="price" value="<%=prod.price %>"
 									readonly="true"></td>
 							<td><a class="btn btn-outline-secondary my-3"
-									href="/productos/<%=prod.id %>">Detalle</a></td>
-							<td><button class="btn btn-danger my-3" type="submit" formaction="/carrito/<%=prod.id %>">Remove</button></td>
+									href="/productos/<%=prod._id ? prod._id : prod.id %>">Detalle</a></td>
+							<td><button class="btn btn-danger my-3" type="submit" formaction="/carrito/<%=prod._id ? prod._id : prod.id %>">Remove</button></td>
 						</tr>
 					</form>
 					<% } %>

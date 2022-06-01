@@ -196,3 +196,24 @@
 {"level":50,"time":1654051680408,"pid":16034,"hostname":"yemes-PC","msg":"Se produjo un error: Error: Error: Undefined binding(s) detected when compiling SELECT. Undefined column(s): [id] query: select * from `productos` where `id` = ?"}
 {"level":50,"time":1654051708792,"pid":16230,"hostname":"yemes-PC","msg":"Se produjo un error: Error: Undefined binding(s) detected when compiling SELECT. Undefined column(s): [id] query: select * from `productos` where `id` = ?"}
 {"level":50,"time":1654051708792,"pid":16230,"hostname":"yemes-PC","msg":"Se produjo un error: Error: Error: Undefined binding(s) detected when compiling SELECT. Undefined column(s): [id] query: select * from `productos` where `id` = ?"}
+{"level":50,"time":1654053276198,"pid":7701,"hostname":"yemes-PC","msg":"Se produjo un error: CastError: Cast to ObjectId failed for value \"2\" (type string) at path \"_id\" for model \"productos\""}
+{"level":50,"time":1654053276198,"pid":7701,"hostname":"yemes-PC","msg":"Se produjo un error: Error: CastError: Cast to ObjectId failed for value \"2\" (type string) at path \"_id\" for model \"productos\""}
+{"level":50,"time":1654053280840,"pid":7701,"hostname":"yemes-PC","msg":"Se produjo un error: CastError: Cast to ObjectId failed for value \"3\" (type string) at path \"_id\" for model \"productos\""}
+{"level":50,"time":1654053280840,"pid":7701,"hostname":"yemes-PC","msg":"Se produjo un error: Error: CastError: Cast to ObjectId failed for value \"3\" (type string) at path \"_id\" for model \"productos\""}
+{"level":50,"time":1654053891693,"pid":9116,"hostname":"yemes-PC","msg":"Se produjo un error: JsonWebTokenError: jwt must be provided"}
+{"level":50,"time":1654054198515,"pid":9116,"hostname":"yemes-PC","msg":"Se produjo un error: CastError: Cast to ObjectId failed for value \"2\" (type string) at path \"_id\" for model \"productos\""}
+{"level":50,"time":1654054198516,"pid":9116,"hostname":"yemes-PC","msg":"Se produjo un error: Error: CastError: Cast to ObjectId failed for value \"2\" (type string) at path \"_id\" for model \"productos\""}
+{"level":50,"time":1654054212083,"pid":9116,"hostname":"yemes-PC","msg":"Se produjo un error: CastError: Cast to ObjectId failed for value \"6\" (type string) at path \"_id\" for model \"productos\""}
+{"level":50,"time":1654054212084,"pid":9116,"hostname":"yemes-PC","msg":"Se produjo un error: Error: CastError: Cast to ObjectId failed for value \"6\" (type string) at path \"_id\" for model \"productos\""}
+{"level":50,"time":1654054220712,"pid":9116,"hostname":"yemes-PC","msg":"Se produjo un error: CastError: Cast to ObjectId failed for value \"4\" (type string) at path \"_id\" for model \"productos\""}
+{"level":50,"time":1654054220712,"pid":9116,"hostname":"yemes-PC","msg":"Se produjo un error: Error: CastError: Cast to ObjectId failed for value \"4\" (type string) at path \"_id\" for model \"productos\""}
+{"level":50,"time":1654054285702,"pid":9116,"hostname":"yemes-PC","msg":"Se produjo un error: CastError: Cast to ObjectId failed for value \"2\" (type string) at path \"_id\" for model \"productos\""}
+{"level":50,"time":1654054285702,"pid":9116,"hostname":"yemes-PC","msg":"Se produjo un error: Error: CastError: Cast to ObjectId failed for value \"2\" (type string) at path \"_id\" for model \"productos\""}
+{"level":50,"time":1654054291937,"pid":9116,"hostname":"yemes-PC","msg":"Se produjo un error: CastError: Cast to ObjectId failed for value \"2\" (type string) at path \"_id\" for model \"productos\""}
+{"level":50,"time":1654054291937,"pid":9116,"hostname":"yemes-PC","msg":"Se produjo un error: Error: CastError: Cast to ObjectId failed for value \"2\" (type string) at path \"_id\" for model \"productos\""}
+{"level":50,"time":1654054349982,"pid":9116,"hostname":"yemes-PC","msg":"Se produjo un error: CastError: Cast to ObjectId failed for value \"2\" (type string) at path \"_id\" for model \"productos\""}
+{"level":50,"time":1654054349982,"pid":9116,"hostname":"yemes-PC","msg":"Se produjo un error: Error: CastError: Cast to ObjectId failed for value \"2\" (type string) at path \"_id\" for model \"productos\""}
+{"level":50,"time":1654054419642,"pid":11158,"hostname":"yemes-PC","msg":"Se produjo un error: CastError: Cast to ObjectId failed for value \"2\" (type string) at path \"_id\" for model \"productos\""}
+{"level":50,"time":1654054419642,"pid":11158,"hostname":"yemes-PC","msg":"Se produjo un error: Error: CastError: Cast to ObjectId failed for value \"2\" (type string) at path \"_id\" for model \"productos\""}
+{"level":50,"time":1654056256384,"pid":15094,"hostname":"yemes-PC","msg":"Se produjo un error: TypeError: Cannot read properties of null (reading 'productList')"}
+{"level":50,"time":1654056482518,"pid":15094,"hostname":"yemes-PC","msg":"Se produjo un error: JsonWebTokenError: jwt must be provided"}
