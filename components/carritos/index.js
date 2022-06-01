@@ -7,11 +7,12 @@ module.exports = app => {
     app.use("/", carritoRouter);
     // carritoRouter.get("/", Autenticacion.usuario, carritoController.getAllElement);
     carritoRouter.get("/productos", Autenticacion.usuario, carritoController.getProducts);
+    carritoRouter.get("/productos/:id_prod", Autenticacion.usuario, carritoController.getSubProducts);
     // carritoRouter.get("/:id", carritoController.getElement);
     carritoRouter.get("/product", Autenticacion.usuario, carritoController.getSubElement);
     carritoRouter.get("/carrito", Autenticacion.usuario, carritoController.getSubElement);
     carritoRouter.post("/carrito", Autenticacion.usuario, carritoController.createSubElement);
-    carritoRouter.delete("/carrito/:id_prod", Autenticacion.usuario, carritoController.deleteSubElement);
+    carritoRouter.post("/carrito/:id_prod", Autenticacion.usuario, carritoController.deleteSubElement);
     carritoRouter.post("/", Autenticacion.usuario, carritoController.createElement);
     carritoRouter.post("/product", Autenticacion.usuario, carritoController.createSubElement);
     // carritoRouter.put("/:id", carritoController.updateElement);

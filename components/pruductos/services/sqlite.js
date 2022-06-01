@@ -59,7 +59,7 @@ class Contenedor {
 	async modify(id, producto) {
 		try {
 			let modificar = await knex.from('productos').select('*').where({id:`${id}`}).update(producto);
-			return(modificar)
+			return(modificar[0])
 
 
 		} catch (error) {
@@ -73,7 +73,7 @@ class Contenedor {
 			let idProduct= parseInt(id);
 			// let mostrar = await knex.from('productos').select('*').where({id:`${id}`});
 			let mostrar = await knex.from('productos').select('*').where({id:id});
-			return(mostrar)
+			return(mostrar[0])
 
 
 		} catch (error) {

@@ -52,8 +52,24 @@ class Element {
             req.session.agregado = false;
             res.status(200).render('verProductos',{message: message,productos, carritoId});	
 
-            // // res.status(200).redirect('/api/product')
+        } catch (error) {
+            pino.error(`Se produjo un error: ${error}`);
+        }
+    }
 
+    async getSubProducts(req, res, next){
+        try {
+            let id_prod = req.params.id_prod;
+            const token = req.cookies.token
+            let payload = await JWT.decode(token)
+            let carritoId = await elementService.save(payload);
+            let item = await productService.getById(id_prod);
+            let message = '';
+            if (req.session.agregado) {
+                message = 'Producto actualizado'
+            }
+            req.session.agregado = false;
+            res.status(200).render('item',{message: message,item, carritoId});	
 
         } catch (error) {
             pino.error(`Se produjo un error: ${error}`);
@@ -120,11 +136,13 @@ class Element {
             let payload = await JWT.decode(token);
             let carritoId = await elementService.save(payload);
             let response = await elementService.deleteById(carritoId);
-            // res.json(response);
-            res.json({
-                result:'ok',
-                id: carritoId      
-            })
+            let carrito = await elementService.getSubElementsById(carritoId);
+            res.status(200).render('carrito',{message: '',carrito, carritoId});	
+            // // res.json(response);
+            // res.json({
+            //     result:'ok',
+            //     id: carritoId      
+            // })
         } catch (error) {
             pino.error(`Se produjo un error: ${error}`);
         }
@@ -137,11 +155,14 @@ class Element {
             let carritoId = await elementService.save(payload);
             let id_prod = req.params.id_prod;
             let response = await elementService.deleteSubElementById(carritoId, id_prod);
-            // res.json(response);
-            res.json({
-                result:'ok',
-                id: req.params.id_prod      
-            })
+            let carrito = await elementService.getSubElementsById(carritoId);
+            res.status(200).render('carrito',{message: 'Producto eliminado',carrito, carritoId});	
+
+            // // res.json(response);
+            // res.json({
+            //     result:'ok',
+            //     id: req.params.id_prod      
+            // })
         } catch (error) {
             pino.error(`Se produjo un error: ${error}`);
         }
