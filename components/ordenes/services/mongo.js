@@ -6,19 +6,19 @@ const pino = require('../../../utils/logger/pino')
 class MongoDB {
 
 
-	async save(elemento) {
+	async save(payload, element) {
 		try {
-			// elemento.timestamp=Date.now();
-			// let agregarElementoModel= new ElementoModel(elemento);
+			
 			let nuevoElementoModel= new ElementoModel();
 			nuevoElementoModel.id=v4();
 			nuevoElementoModel.timestamp = Date.now();   
-			nuevoElementoModel.email=elemento.email;
-			nuevoElementoModel.state=elemento.state;
-			nuevoElementoModel.productList=[]
+			nuevoElementoModel.email=payload.email;
+			nuevoElementoModel.state=payload.state;
+			nuevoElementoModel.productList=element;
+			// console.log(element);			
 			let nuevoElemento = await nuevoElementoModel.save();
-			pino.info(nuevoElemento._id);	
-			pino.info(nuevoElementoModel);	
+			// pino.info(nuevoElemento._id);	
+			// pino.info(nuevoElementoModel);	
 			return(nuevoElemento._id)	
 			
 		} catch (error) {

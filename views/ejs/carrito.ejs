@@ -59,23 +59,24 @@
 			<% if (carrito.length) { %>
 			<h1 class="m-3">Carrito</h1>
 
-			<table class="table table-dark table-hover">
-				<thead>
-					<tr>
-						<th scope="col"></th>
-						<th scope="col">Name</th>
-						<th scope="col">qty</th>
-						<th scope="col">Price</th>
-						<th scope="col"></th>
-						<th scope="col"></th>
-					</tr>
-				</thead>
-				<tbody id="tablaProductos">
-
-					<% for (const prod of carrito) { %>
-					<form class="productos" action="/carrito/<%=prod._id ? prod._id : prod.id %>" method="post">
+			<form class="productos" action="/api/order" method="post">
+				<table class="table table-dark table-hover">
+					<thead>
 						<tr>
-							<th scope="row" class="d-none"><%=prod._id ? prod._id : prod.id %></th>
+							<th scope="col"></th>
+							<th scope="col">Name</th>
+							<th scope="col">qty</th>
+							<th scope="col">Price</th>
+							<th scope="col"></th>
+							<th scope="col"></th>
+						</tr>
+					</thead>
+					<tbody id="tablaProductos">
+
+						<% for (const prod of carrito) { %>
+						<tr>
+							<th scope="row" class="d-none">
+								<%=prod._id ? prod._id : prod.id %></th>
 							<td><img class="img-thumbnail" style="height: 80px;"
 									src="<%=prod.image %>" alt=""><input
 									class="form-input d-none" type="text"
@@ -84,43 +85,46 @@
 							<td><%=prod.name %><input class="form-input d-none" type="text"
 									name="name" value="<%=prod.name %>"
 									readonly="true"></td>
-							<td><%=prod.qty %><input class="form-input d-none"
-									type="number" name="qty" value="1"></td>
+							<td><%=prod.qty %><input class="form-input d-none" type="number"
+									name="qty" value="1"></td>
 							<td><%=prod.price %><input class="form-input d-none" type="text"
 									name="price" value="<%=prod.price %>"
 									readonly="true"></td>
 							<td><a class="btn btn-outline-secondary my-3"
-									href="/productos/<%=prod._id ? prod._id : prod.id %>">Detalle</a></td>
-							<td><button class="btn btn-danger my-3" type="submit" formaction="/carrito/<%=prod._id ? prod._id : prod.id %>">Remove</button></td>
+									href="/productos/<%=prod._id ? prod._id : prod.id %>">Detalle</a>
+							</td>
+							<td><button class="btn btn-danger my-3" type="submit"
+									formaction="/carrito/<%=prod._id ? prod._id : prod.id %>">Remove</button>
+							</td>
 						</tr>
-					</form>
-					<% } %>
-				</tbody>
-			</table>
-
-				<% if (message) { %>
-				<div class="modal show fade" style="display: block;" id="exampleModal" tabindex="-1"
-					aria-labelledby="exampleModalLabel" aria-modal="true" role="dialog">
-					<div class="modal-dialog">
-						<div class="modal-content">
-							<div class="modal-header">
-								<h5 class="modal-title" id="exampleModalLabel">Resultado</h5>
-								<button onclick="cerrar();" type="button" class="btn-close"
-									data-bs-dismiss="modal" aria-label="Close"></button>
-							</div>
-							<div class="modal-body">
-								<p><%= message %></p>
-							</div>
-							<div class="modal-footer">
-								<button onclick="cerrar();" type="button"
-									class="btn btn-primary"
-									data-bs-dismiss="modal">Close</button>
-							</div>
+						<% } %>
+					</tbody>
+				</table>
+				<button class="btn btn-primary my-3" type="submit">Comprar</button>
+			</form>
+			<% if (message) { %>
+			<div class="modal show fade" style="display: block;" id="exampleModal" tabindex="-1"
+				aria-labelledby="exampleModalLabel" aria-modal="true" role="dialog">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h5 class="modal-title" id="exampleModalLabel">Resultado</h5>
+							<button onclick="cerrar();" type="button" class="btn-close"
+								data-bs-dismiss="modal" aria-label="Close"></button>
+						</div>
+						<div class="modal-body">
+							<p><%= message %></p>
+						</div>
+						<div class="modal-footer">
+							<button onclick="cerrar();" type="button"
+								class="btn btn-primary"
+								data-bs-dismiss="modal">Close</button>
 						</div>
 					</div>
 				</div>
-				<div class="modal-backdrop fade show"></div>
-				<% } %>
+			</div>
+			<div class="modal-backdrop fade show"></div>
+			<% } %>
 			<% } else { %>
 			<div id="verProductos">
 				<h4>No hay productos</h4>

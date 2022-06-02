@@ -225,3 +225,8 @@
 {"level":50,"time":1654133230614,"pid":17948,"hostname":"yemes-PC","msg":"Se produjo un error: ReferenceError: id is not defined"}
 {"level":50,"time":1654133290117,"pid":18143,"hostname":"yemes-PC","msg":"Se produjo un error: ReferenceError: id is not defined"}
 {"level":50,"time":1654133331537,"pid":18311,"hostname":"yemes-PC","msg":"Se produjo un error: ReferenceError: id is not defined"}
+{"level":50,"time":1654134903744,"pid":21660,"hostname":"yemes-PC","msg":"Se produjo un error: JsonWebTokenError: jwt must be provided"}
+{"level":50,"time":1654140589202,"pid":21660,"hostname":"yemes-PC","msg":"Se produjo un error: JsonWebTokenError: jwt must be provided"}
+{"level":50,"time":1654146362620,"pid":38728,"hostname":"yemes-PC","msg":"Se produjo un error: JsonWebTokenError: jwt must be provided"}
+{"level":50,"time":1654146848791,"pid":40769,"hostname":"yemes-PC","msg":"Se produjo un error: ReferenceError: message is not defined"}
+{"level":50,"time":1654146870661,"pid":41023,"hostname":"yemes-PC","msg":"Se produjo un error: ReferenceError: productos is not defined"}

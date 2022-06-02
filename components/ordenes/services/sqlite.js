@@ -38,17 +38,17 @@ class Contenedor {
 		return this;
 	}
 
-	async save(orden) {
+	async save(payload, element) {
 		try {
-			orden.uuid = v4();
-			orden.email = orden.email;
-			orden.address = orden.address;
-			orden.productList = JSON.stringify([])
-			let agregar = await knex('ordenes')
-				.insert(orden)
+			let nuevaOrden = {};
+			nuevaOrden.uuid = v4();
+			nuevaOrden.email = payload.email;
+			nuevaOrden.address = payload.address;
+			nuevaOrden.productList = JSON.stringify(element)
+			let agregar = await knex('ordenes').insert(nuevaOrden)
 			pino.info("datos insertados")
 
-			return orden.id
+			return nuevaOrden.id
 
 		} catch (error) {
 			pino.error(`Se produjo un error: ${error}`)
