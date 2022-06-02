@@ -217,3 +217,11 @@
 {"level":50,"time":1654054419642,"pid":11158,"hostname":"yemes-PC","msg":"Se produjo un error: Error: CastError: Cast to ObjectId failed for value \"2\" (type string) at path \"_id\" for model \"productos\""}
 {"level":50,"time":1654056256384,"pid":15094,"hostname":"yemes-PC","msg":"Se produjo un error: TypeError: Cannot read properties of null (reading 'productList')"}
 {"level":50,"time":1654056482518,"pid":15094,"hostname":"yemes-PC","msg":"Se produjo un error: JsonWebTokenError: jwt must be provided"}
+{"level":50,"time":1654127599020,"pid":5351,"hostname":"yemes-PC","msg":"Se produjo un error: JsonWebTokenError: jwt must be provided"}
+{"level":50,"time":1654131255617,"pid":5351,"hostname":"yemes-PC","msg":"Se produjo un error: JsonWebTokenError: jwt must be provided"}
+{"level":50,"time":1654133138916,"pid":17421,"hostname":"yemes-PC","msg":"Se produjo un error: ReferenceError: id is not defined"}
+{"level":50,"time":1654133153905,"pid":17421,"hostname":"yemes-PC","msg":"Se produjo un error: ReferenceError: id is not defined"}
+{"level":50,"time":1654133172466,"pid":17421,"hostname":"yemes-PC","msg":"Se produjo un error: ReferenceError: id is not defined"}
+{"level":50,"time":1654133230614,"pid":17948,"hostname":"yemes-PC","msg":"Se produjo un error: ReferenceError: id is not defined"}
+{"level":50,"time":1654133290117,"pid":18143,"hostname":"yemes-PC","msg":"Se produjo un error: ReferenceError: id is not defined"}
+{"level":50,"time":1654133331537,"pid":18311,"hostname":"yemes-PC","msg":"Se produjo un error: ReferenceError: id is not defined"}

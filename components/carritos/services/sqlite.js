@@ -68,9 +68,10 @@ class Contenedor {
 
 			let resultado = await knex.from('carritos').select('*').where({id: `${id}`});
 			let carrito = resultado[0]
-			let nuevaLista = JSON.parse(carrito.productList);
-			nuevaLista.push(subElement)
-			carrito.productList = JSON.stringify(nuevaLista)
+			let productlistParsed = JSON.parse(carrito.productList);
+			let nuevaProductList = productlistParsed.filter((item) => item.id !== `${subElement.id}`);
+			nuevaProductList.push(subElement)
+			carrito.productList = JSON.stringify(nuevaProductList)
 			await knex.from('carritos').select('*').where({id: `${id}`}).update(carrito);
 			return (carrito)
 

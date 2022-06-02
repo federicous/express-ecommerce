@@ -36,11 +36,13 @@ class MongoDB {
 		}
 	}
 
-	async saveSubElement(id,subElement) {
+	async saveSubElement(carritoId,subElement) {
 		try {
-			let carritoActualizado = await ElementoModel.findById(id);
+			let carritoActualizado = await ElementoModel.findById(carritoId);
+			let nuevaProductList = carritoActualizado.productList.filter((item) => item.id !== `${subElement.id}`);
+			carritoActualizado.productList=nuevaProductList;
 			carritoActualizado.productList.push(subElement) // subElement es un objeto: {idProducto: <id>, cantidad: <cantidad>}
-			await ElementoModel.findByIdAndUpdate(id, carritoActualizado);
+			await ElementoModel.findByIdAndUpdate(carritoId, carritoActualizado);
 			return(carritoActualizado)
 			
 		} catch (error) {

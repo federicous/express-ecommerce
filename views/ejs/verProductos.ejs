@@ -41,7 +41,8 @@
 						<a class="nav-link" href="/productos">Productos</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link active" aria-current="page" href="/carrito">Carrito</a>
+						<a class="nav-link active" aria-current="page"
+							href="/carrito">Carrito</a>
 					</li>
 					<li class="nav-item">
 						<a class="nav-link" href="/logout">
@@ -90,29 +91,43 @@
 			<!-- <div class="card-group"> -->
 			<div class="row row-cols-1 row-cols-md-3 row-cols-lg-4 g-4">
 				<% for (const prod of productos) { %>
-					<div class="col">
-						<div class="card">
-							<img src="<%=prod.image %>" class="card-img-top" alt="<%=prod.name %>">
-							<div class="card-body d-flex justify-content-center flex-column align-items-center">
-								<h5 class="card-title"><%=prod.name %></h5>
-								<p class="card-text"><%=prod.description %></p>
-								<p class="card-text"><small class="text-muted">Stock: <%=prod.stock %></small></p>
-								<p class="card-text"><b>Price: $ <%=prod.price %></b></p>
-								<!-- <a href="/api/cart/prduct/<%=prod._id ? prod._id : prod.id %>" class="btn btn-primary">Comprar</a> -->
-								<form class="productos" action="/carrito" method="post">
-									
-										<input class="form-input d-none" type="text" name="id" value="<%=prod._id ? prod._id : prod.id %>">
-										<input class="form-input d-none" type="text" name="image" value="<%=prod.image %>" readonly="true">
-										<input class="form-input d-none" type="text" name="name" value="<%=prod.name %>" readonly="true">
-										<input class="form-input d-none" type="number" name="qty" value="1">
-										<input class="form-input d-none" type="text" name="price" value="<%=prod.price %>" readonly="true">
-										<a class="btn btn-outline-secondary my-3 d-block" href="/productos/<%=prod._id ? prod._id : prod.id %>">Detalle</a>
-										<input class="btn btn-primary my-3 d-block" type="submit" value="Add to cart">
-									
-								</form>
-							</div>
+				<div class="col">
+					<div class="card">
+						<img src="<%=prod.image %>" class="card-img-top" alt="<%=prod.name %>">
+						<div
+							class="card-body d-flex justify-content-center flex-column align-items-center">
+							<h5 class="card-title"><%=prod.name %></h5>
+							<p class="card-text"><%=prod.description %></p>
+							<p class="card-text"><small class="text-muted">Stock:
+									<%=prod.stock %></small></p>
+							<p class="card-text"><b>Price: $ <%=prod.price %></b></p>
+							<!-- <a href="/api/cart/prduct/<%=prod._id ? prod._id : prod.id %>" class="btn btn-primary">Comprar</a> -->
+							<form class="productos d-flex flex-column" action="/carrito"
+								method="post">
+
+								<input class="form-input d-none" type="text" name="id"
+									value="<%=prod._id ? prod._id : prod.id %>">
+								<input class="form-input d-none" type="text"
+									name="image" value="<%=prod.image %>"
+									readonly="true">
+								<input class="form-input d-none" type="text" name="name"
+									value="<%=prod.name %>" readonly="true">
+								<a class="btn btn-outline-secondary d-block"
+									href="/productos/<%=prod._id ? prod._id : prod.id %>">Detalle</a>
+								<input class="form-input d-none" type="text"
+									name="price" value="<%=prod.price %>"
+									readonly="true">
+								<div class="btn-group my-3">
+									<input class="from-control text-center me-3 w-100 d-flex flex-grow-1 justify-content-center"
+										type="number" name="qty" value="1"
+										min="1">
+									<input class="form-input btn btn-primary"
+										type="submit" value="Add to cart">
+								</div>
+							</form>
 						</div>
 					</div>
+				</div>
 
 				<% } %>
 			</div>
@@ -163,6 +178,8 @@
 		// formProducts.addEventListener("submit", (event) => {
 		// 	event.preventDefault();
 		// });
+		let botonSumar = document.getElementById('botonSumar');
+		let botonRestar = document.getElementById('botonRestar');
 	</script>
 </body>
 
