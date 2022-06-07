@@ -230,3 +230,7 @@
 {"level":50,"time":1654146362620,"pid":38728,"hostname":"yemes-PC","msg":"Se produjo un error: JsonWebTokenError: jwt must be provided"}
 {"level":50,"time":1654146848791,"pid":40769,"hostname":"yemes-PC","msg":"Se produjo un error: ReferenceError: message is not defined"}
 {"level":50,"time":1654146870661,"pid":41023,"hostname":"yemes-PC","msg":"Se produjo un error: ReferenceError: productos is not defined"}
+{"level":50,"time":1654571549927,"pid":5976,"hostname":"yemes-PC","msg":"Se produjo un error: JsonWebTokenError: jwt must be provided"}
+{"level":50,"time":1654575196121,"pid":9748,"hostname":"yemes-PC","msg":"Se produjo un error: JsonWebTokenError: jwt must be provided"}
+{"level":50,"time":1654575336888,"pid":9748,"hostname":"yemes-PC","msg":"Se produjo un error: TypeError: Cannot read properties of null (reading 'email')"}
+{"level":50,"time":1654575336888,"pid":9748,"hostname":"yemes-PC","msg":"Se produjo un error: TypeError: Cannot read properties of undefined (reading 'message')"}

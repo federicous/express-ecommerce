@@ -14,7 +14,7 @@ class MongoDB {
 			// pino.info(carrito);
 			// pino.info(cart);
 			if (cart) {
-				pino.info(`Ya existe el carrito id: ${cart._id}`)
+				// pino.info(`Ya existe el carrito id: ${cart._id}`)
 				return (cart._id)
 			}
 

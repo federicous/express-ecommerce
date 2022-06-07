@@ -8,14 +8,15 @@ let email = Joi.string().min(3);
 let mensaje = Joi.string().min(3);
 let timestamp = Joi.string().min(3);
 let uuid = Joi.string().min(3);
-
+let rol = Joi.string().min(3);
 
 const productoSchema = {
 	id: id.required(),
     	email: email.required(),
     	mensaje: mensaje.required(),
     	timestamp: timestamp.required(),
-	uuid: uuid.required()
+	uuid: uuid.required(),
+	rol: rol.required()
 }
 
 let productoSchemaModel = new Schema(productoSchema);

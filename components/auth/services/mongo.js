@@ -11,7 +11,7 @@ class AuthService {
 			let user = await UsuarioModel.findOne({email: usuario.email});
 			pino.info(usuario);
 			pino.info(user);
-			if (user.email) {
+			if (user) {
 				return ({message: 'Ya existe una cuenta con el mismo email'})
 			}
 			const passwordHash = bcrypt.hashSync(usuario.password, 10)

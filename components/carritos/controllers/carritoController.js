@@ -176,6 +176,20 @@ class Element {
             pino.error(`Se produjo un error: ${error}`);
         }
     }
+
+    async getChat(req, res, next){
+        try {
+            const token = req.cookies.token;
+            let payload = await JWT.decode(token);
+            // let carritoId = await elementService.save(payload);
+            // let carrito = await elementService.getSubElementsById(carritoId);
+            // res.status(200).render('mensajes',{message: '',carrito, carritoId});	
+            res.status(200).render('mensajes',{message: '',payload});	
+            // res.json(response);
+        } catch (error) {
+            pino.error(`Se produjo un error: ${error}`);
+        }
+    }
 }
 
 

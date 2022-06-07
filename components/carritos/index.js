@@ -18,5 +18,6 @@ module.exports = app => {
     // carritoRouter.put("/:id", carritoController.updateElement);
     carritoRouter.delete("/carrito", Autenticacion.usuario, carritoController.deleteElement);
     carritoRouter.delete("/product/:id_prod", Autenticacion.usuario, carritoController.deleteSubElement);
+    carritoRouter.get("/chat", Autenticacion.usuario, carritoController.getChat);
 }
 
