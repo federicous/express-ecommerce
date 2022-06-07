@@ -9,13 +9,11 @@ const pino = require('../../../utils/logger/pino');
 		if (!exists) {
 			await knex.schema.createTable('mensajes', table => {
 				table.increments('id')
-				table.string('name')
-				table.integer('stock')
-				table.float('price')
-				table.string('description')
-				table.string('image')
+				table.string('email')
+				table.string('mensaje')
 				table.timestamp('timestamp').defaultTo(knex.fn.now())
 				table.uuid('uuid')
+				table.rol('rol')
 			});	  
 		} else {
 			pino.info("ya existe la tabla");

@@ -13,6 +13,7 @@ const pino = require('../../../utils/logger/pino');
 				table.string('mensaje')
 				table.timestamp('timestamp').defaultTo(knex.fn.now())
 				table.uuid('uuid')
+				table.rol('rol')
 			});	  
 		} else {
 			pino.info("ya existe la tabla");

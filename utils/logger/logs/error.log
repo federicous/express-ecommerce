@@ -234,3 +234,4 @@
 {"level":50,"time":1654575196121,"pid":9748,"hostname":"yemes-PC","msg":"Se produjo un error: JsonWebTokenError: jwt must be provided"}
 {"level":50,"time":1654575336888,"pid":9748,"hostname":"yemes-PC","msg":"Se produjo un error: TypeError: Cannot read properties of null (reading 'email')"}
 {"level":50,"time":1654575336888,"pid":9748,"hostname":"yemes-PC","msg":"Se produjo un error: TypeError: Cannot read properties of undefined (reading 'message')"}
+{"level":50,"time":1654630138134,"pid":80057,"hostname":"yemes-PC","msg":"Se produjo un error: JsonWebTokenError: jwt must be provided"}
