@@ -3,6 +3,7 @@ const carritoService = require('../../carritos/services');
 const productoService = require('../../pruductos/services');
 const pino = require('../../../utils/logger/pino');
 const JWT = require("../../../utils/jwt/jwt");
+const Nodemailer = require('../../../utils/nodemailer')
 
 class Element {
 
@@ -14,9 +15,10 @@ class Element {
             let carritoId = await carritoService.save(payload);
             let carrito = await carritoService.getSubElementsById(carritoId);
             let ordenId = await elementService.save(payload,carrito);
-            let borrarCarrito = await carritoService.deleteById(carritoId);
             let productos = await productoService.getAll();
             let message = `Orden generada, ID: ${ordenId}`;
+            await Nodemailer.orden(payload,carrito);
+            let borrarCarrito = await carritoService.deleteById(carritoId);
             res.status(200).render('verProductos',{message: message,productos, carritoId});	
         } catch (error) {
             pino.error(`Se produjo un error: ${error}`);

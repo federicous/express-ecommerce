@@ -48,8 +48,8 @@ class Contenedor {
 		try {
 			let resultado = await knex.from('usuarios').select('*').where({email: usuario.email});
 			let user=resultado[0]
-			pino.info(usuario);
-			pino.info(user);
+			// pino.info(usuario);
+			// pino.info(user);
 
 			if (user) {
 				return ({message: 'Ya existe una cuenta con el mismo email'})
@@ -59,9 +59,10 @@ class Contenedor {
 			usuario.uuid=uuid()
 			let agregar= await knex('usuarios')
 			.insert(usuario)
-			pino.info("datos insertados");
+			pino.info("datos insertados en sqlite");
+			pino.info(`correo: ${usuario.email}`)
 			let usuarioAgregado = await knex.from('usuarios').select('*').where({email: usuario.email});
-			return {id: usuarioAgregado.id, message:''}
+			return {id: usuarioAgregado[0].id, email:usuario.email, message:''}
 
 		} catch (error) {
 			pino.error(`Se produjo un error: ${error}`)

@@ -27,7 +27,7 @@ class MongoDB {
 			nuevoElementoModel.productList=[]
 			let nuevoElemento = await nuevoElementoModel.save();
 			pino.info(nuevoElemento._id);	
-			pino.info(nuevoElementoModel);	
+			// pino.info(nuevoElementoModel);	
 			return(nuevoElemento._id)	
 			
 		} catch (error) {

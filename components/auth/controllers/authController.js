@@ -4,6 +4,7 @@ const JWT = require("../../../utils/jwt/jwt");
 const pino = require('../../../utils/logger/pino');
 const productService = require('../../pruductos/services');
 const carritoService = require('../../carritos/services');
+const Nodemailer = require('../../../utils/nodemailer')
 
 class Element {
 
@@ -74,6 +75,8 @@ class Element {
 
     async postRegister(req, res, next){
         try {
+            const token = req.cookies.token;
+            // let payload = await JWT.decode(token)
             let element = req.body;
             let response = await elementService.createUser(element);
             if (response.message) {
@@ -81,6 +84,7 @@ class Element {
                 return res.status(404)
                 .render('register', {message: response.message});
             }
+            await Nodemailer.registro(response);
             res.status(200)
             // .cookie('token', response.token, {maxAge: 3600000})
             .redirect('/login');

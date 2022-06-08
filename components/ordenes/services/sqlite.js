@@ -13,6 +13,7 @@ const pino = require('../../../utils/logger/pino');
 				table.increments('id')
 				table.string('email')
 				table.string('state')
+				table.string('address')
 				table.string('productList')
 				table.timestamp('timestamp').defaultTo(knex.fn.now())
 				table.uuid('uuid')
@@ -47,8 +48,8 @@ class Contenedor {
 			nuevaOrden.productList = JSON.stringify(element)
 			let agregar = await knex('ordenes').insert(nuevaOrden)
 			pino.info("datos insertados")
-
-			return nuevaOrden.id
+			let mostrarOrdenId = await knex.from('ordenes').select('*').where({email: nuevaOrden.email});
+			return mostrarOrdenId[0].id
 
 		} catch (error) {
 			pino.error(`Se produjo un error: ${error}`)
