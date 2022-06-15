@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "nodemon index.js",
     "start": "node index.js",
-    "startsoa": "node indexsoa.js"
+    "start2": "node index2.js"
   },
   "keywords": [],
   "author": "",

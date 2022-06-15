@@ -278,3 +278,10 @@
 {"level":50,"time":1654719324889,"pid":92927,"hostname":"yemes-PC","msg":"Tuvimos este error: TypeError: Cannot read properties of null (reading 'email')"}
 {"level":50,"time":1654719334096,"pid":92927,"hostname":"yemes-PC","msg":"Se produjo un error: TypeError: Cannot read properties of undefined (reading 'id')"}
 {"level":50,"time":1654720677885,"pid":96298,"hostname":"yemes-PC","msg":"Tuvimos este error: TypeError: Cannot read properties of null (reading 'email')"}
+{"level":50,"time":1654783594485,"pid":29689,"hostname":"yemes-PC","msg":"Se produjo un error: JsonWebTokenError: jwt must be provided"}
+{"level":50,"time":1654784112940,"pid":34663,"hostname":"yemes-PC","msg":"Se produjo un error: TypeError: Cannot read properties of undefined (reading 'id')"}
+{"level":50,"time":1654784112941,"pid":34663,"hostname":"yemes-PC","msg":"Se produjo un error: TypeError: Cannot read properties of undefined (reading 'productList')"}
+{"level":50,"time":1654784449553,"pid":36050,"hostname":"yemes-PC","msg":"Se produjo un error: TypeError: Cannot read properties of undefined (reading 'id')"}
+{"level":50,"time":1654784449553,"pid":36050,"hostname":"yemes-PC","msg":"Se produjo un error: TypeError: Cannot read properties of undefined (reading 'productList')"}
+{"level":50,"time":1654784643402,"pid":36416,"hostname":"yemes-PC","msg":"Se produjo un error: TypeError: Cannot read properties of undefined (reading 'id')"}
+{"level":50,"time":1655257263210,"pid":4846,"hostname":"yemes-PC","msg":"Se produjo un error: JsonWebTokenError: jwt must be provided"}
