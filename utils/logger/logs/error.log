@@ -278,3 +278,4 @@
 {"level":50,"time":1654719324889,"pid":92927,"hostname":"yemes-PC","msg":"Tuvimos este error: TypeError: Cannot read properties of null (reading 'email')"}
 {"level":50,"time":1654719334096,"pid":92927,"hostname":"yemes-PC","msg":"Se produjo un error: TypeError: Cannot read properties of undefined (reading 'id')"}
 {"level":50,"time":1654720677885,"pid":96298,"hostname":"yemes-PC","msg":"Tuvimos este error: TypeError: Cannot read properties of null (reading 'email')"}
+{"level":50,"time":1655263635816,"pid":16416,"hostname":"yemes-PC","msg":"Se produjo un error: JsonWebTokenError: jwt must be provided"}

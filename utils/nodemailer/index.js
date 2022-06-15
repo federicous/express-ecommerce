@@ -1,6 +1,7 @@
 const transporter = require('./transport');
 const pino = require('../logger/pino');
-let adminEmail = `federicous@gmail.com`
+require("dotenv").config();
+let adminEmail = process.env.NODEMAILER_ADMIN;
 
 class Correo {
 	async registro(user) {
