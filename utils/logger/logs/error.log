@@ -294,3 +294,5 @@
 {"level":50,"time":1655922432362,"pid":61050,"hostname":"yemes-PC","msg":"Se produjo un error: TypeError: Cannot read properties of undefined (reading 'agregado')"}
 {"level":50,"time":1655922600878,"pid":61742,"hostname":"yemes-PC","msg":"Se produjo un error: TypeError: Cannot read properties of undefined (reading 'agregado')"}
 {"level":50,"time":1655927595396,"pid":74269,"hostname":"yemes-PC","msg":"Se produjo un error: JsonWebTokenError: jwt must be provided"}
+{"level":50,"time":1655930204674,"pid":84293,"hostname":"yemes-PC","msg":"Se produjo un error: JsonWebTokenError: jwt must be provided"}
+{"level":50,"time":1655930714829,"pid":85813,"hostname":"yemes-PC","msg":"Se produjo un error: JsonWebTokenError: invalid signature"}

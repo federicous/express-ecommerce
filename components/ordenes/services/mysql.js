@@ -29,7 +29,6 @@ class Contenedor {
 
 	constructor(mysqlConfig) {
 		this.contador = 1;
-		// this.knex = require('knex')(mysqlConfig);
 		// Singleton:
 		if (typeof Contenedor.instance === "object") {
 			return Contenedor.instance;
@@ -70,7 +69,6 @@ class Contenedor {
 	async getById(id) {
 		try {
 			let idOrden = parseInt(id);
-			// let mostrar = await knex.from('ordenes').select('*').where({id:`${id}`});
 			let mostrar = await knex.from('ordenes').select('*').where({id: id});
 			return (mostrar)
 

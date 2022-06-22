@@ -9,8 +9,6 @@ class AuthService {
 	async createUser(usuario) {
 		try {
 			let user = await UsuarioModel.findOne({email: usuario.email});
-			pino.info(usuario);
-			pino.info(user);
 			if (user) {
 				return ({message: 'Ya existe una cuenta con el mismo email'})
 			}

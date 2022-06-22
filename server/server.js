@@ -1,5 +1,4 @@
 let express = require('express');
-const pino = require('../utils/logger/pino');
 let {Server:HttpServer} = require('http');
 const Websocket = require("../components/mensajes/utils/websocket");
 let cookieParser= require('cookie-parser');
@@ -7,8 +6,6 @@ let session = require("express-session");
 let path = require("path");
 const {config} = require('../config')
 const cors = require('cors')
-
-pino.info(config)
 
 const PORT = config.PORT;
 const CORS = config.CORS;

@@ -1,6 +1,4 @@
-// let {connection, mongoose} = require("../config/mongo");
 let {connection, mongoose} = require("../../../config/mongo");
-// let ProductoModel = require('../schema/productos')
 let ProductoModel = require('../../../schema/productos')
 const pino = require('../../../utils/logger/pino')
 
@@ -21,9 +19,6 @@ class MongoDB {
 	}
 	async modify(producto,id) {
 		try {
-			// let modificar = await ProductoModel.updateOne({_id:id}, {
-			// 	$set: producto
-			// });
 			let modificar = await ProductoModel.findByIdAndUpdate(id, producto);
 			return(modificar)
 
@@ -47,7 +42,6 @@ class MongoDB {
 	async getAll() {
 		try {
 			let allProducts = await ProductoModel.find({});
-			// pino.info(allProducts);
 			return(allProducts)
 			
 		} catch (error) {
@@ -58,7 +52,6 @@ class MongoDB {
 
 	async deleteById(id) {
 		try {
-			// let borrar = await ProductoModel.deleteOne({"_id": id});
 			let borrar = await ProductoModel.findByIdAndDelete(id);
 
 		} catch (error) {

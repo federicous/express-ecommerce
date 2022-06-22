@@ -29,7 +29,6 @@ class Contenedor {
 
 	constructor(mysqlConfig) {
 		this.contador = 1;
-		// this.knex = require('knex')(mysqlConfig);
 		// Singleton:
 		if (typeof Contenedor.instance === "object") {
 			return Contenedor.instance;
@@ -87,7 +86,6 @@ class Contenedor {
 	async getById(id) {
 		try {
 			let idCarrito = parseInt(id);
-			// let mostrar = await knex.from('carritos').select('*').where({id:`${id}`});
 			let mostrar = await knex.from('carritos').select('*').where({id: id});
 			return (mostrar)
 
@@ -100,8 +98,6 @@ class Contenedor {
 
 	async getSubElementsById(id) {
 		try {
-			// let idCarrito = parseInt(id);
-			// let mostrar = await knex.from('carritos').select('*').where({id:`${id}`});
 			let carrito = await knex.from('carritos').select('*').where({id: id});
 			return (carrito[0].productList)
 
@@ -137,8 +133,6 @@ class Contenedor {
 
 	async deleteSubElementById(id, id_prod) {
 		try {
-			// let borrar = await knex.from('carritos').where({id: `${id}`}).del();
-
 			let resultado = await knex.from('carritos').select('*').where({id: `${id}`});
 			let carrito = resultado[0]
 			let carritoLista = JSON.parse(carrito.productList);
@@ -146,10 +140,6 @@ class Contenedor {
 			carrito.productList = JSON.stringify(nuevaProductList)
 			await knex.from('carritos').select('*').where({id: `${id}`}).update(carrito);
 			return (nuevaProductList)
-
-
-			// let nuevaProductList = carritoLista.filter((item) => item.id !== `${id_prod}`);
-			carritoActualizado.productList = nuevaProductList;
 
 		} catch (error) {
 			pino.error(`Se produjo un error: ${error}`)
