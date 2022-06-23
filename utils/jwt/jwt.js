@@ -1,14 +1,13 @@
 const jwt = require('jsonwebtoken')
-require("dotenv").config();
-let PRIVATE_KEY = process.env.SECRET
 const pino = require('../../utils/logger/pino')
+const {autenticacion} = require('../../config')
 
 class JWT {
     async generate(payload){
         try {
-            return await jwt.sign(payload, PRIVATE_KEY, {
-                expiresIn: '1d',
-                algorithm: 'HS256'
+            return await jwt.sign(payload, autenticacion.JWT_SECRET, {
+                expiresIn:  autenticacion.JWT_EXP,
+                algorithm: autenticacion.JWT_ALG
             })
         } catch (error) {
               pino.error(`Se produjo un error: ${error}`)
@@ -16,8 +15,8 @@ class JWT {
     }
     async verify(token){
         try {
-            return await jwt.verify(token, PRIVATE_KEY, {
-                algorithm: ['HS256']
+            return await jwt.verify(token, autenticacion.JWT_SECRET, {
+                algorithm: [autenticacion.JWT_ALG]
             })
         } catch (error) {
         pino.error(`Se produjo un error: ${error}`)
@@ -25,8 +24,8 @@ class JWT {
     }
     async decode(token){
         try {
-            return await jwt.decode(token, PRIVATE_KEY, {
-                algorithm: ['HS256']
+            return await jwt.decode(token, autenticacion.JWT_SECRET, {
+                algorithm: [autenticacion.JWT_ALG]
             })
         } catch (error) {
         pino.error(`Se produjo un error: ${error}`)

@@ -25,7 +25,7 @@ class Correo {
 		try {
 			let items = ''
 			carrito.forEach(item => {
-				items += `<li>Producto: ${item.name} | Cantidad: ${item.qty} | Precio: ${item.price}</li><br>`
+				items += `<tr><td>${item.name} </td> <td>${item.qty}</td> <td>${item.price}<td></tr>`
 			})
 			const option = {
 				from: 'Ecommerce - orden <no-reply@ethereal.email>',
@@ -33,13 +33,24 @@ class Correo {
 				bcc: `${adminEmail}`,
 				subject: 'Orden creada',
 				html: `
-		    <div>
-			<p>Su compra ha sido registrada correctamente, detalles:</p>
-			<ul>
-			   ${items} 
-			</ul>
-		    </div>
-		    `
+					<div>
+					<p>Su compra ha sido registrada correctamente, detalles:</p>
+						<table>
+							<thead>
+								<tr>
+									<th scope="col">Producto</th>
+									<th scope="col">Cantidad</th>
+									<th scope="col">Price</th>
+								</tr>
+							</thead>
+							<tbody id="tablaProductos">
+								<tr>
+									${items} 
+								</tr>			 
+							</tbody>
+						</table>
+					</div>
+					`
 			}
 			const response = await transporter.sendMail(option)
 			pino.info(`Enviando correo a: ${user.email}`)

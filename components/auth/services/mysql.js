@@ -1,5 +1,5 @@
 const { uuid } = require('uuidv4');
-const {mysqlConfig} = require('../../../config/mysqlDB');
+const {mysqlConfig} = require('../../../config/mysql');
 const knex = require('knex')(mysqlConfig);
 const pino = require('../../../utils/logger/pino');
 let bcrypt = require("bcryptjs");
@@ -35,7 +35,6 @@ class Contenedor {
 
 	constructor(mysqlConfig) {
 		this.contador=1;
-		// this.knex = require('knex')(mysqlConfig);
 		// Singleton:
 		if (typeof Contenedor.instance === "object") {
 			return Contenedor.instance;
@@ -48,8 +47,6 @@ class Contenedor {
 		try {
 			let resultado = await knex.from('usuarios').select('*').where({email: usuario.email});
 			let user=resultado[0]
-			pino.info(usuario);
-			pino.info(user);
 
 			if (user.email) {
 				return ({message: 'Ya existe una cuenta con el mismo email'})

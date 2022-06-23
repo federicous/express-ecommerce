@@ -1,6 +1,4 @@
-// let {connection, mongoose} = require("../config/mongo");
 let {connection, mongoose} = require("../../../config/mongo");
-// let MensajeModel = require('../schema/mensajes')
 let MensajeModel = require('../../../schema/mensajes')
 const pino = require('../../../utils/logger/pino')
 
@@ -21,9 +19,6 @@ class MongoDB {
 	}
 	async modify(mensaje,id) {
 		try {
-			// let modificar = await MensajeModel.updateOne({_id:id}, {
-			// 	$set: mensaje
-			// });
 			let modificar = await MensajeModel.findByIdAndUpdate(id, mensaje);
 			return(modificar)
 
@@ -47,7 +42,6 @@ class MongoDB {
 	async getAll() {
 		try {
 			let allMensajes = await MensajeModel.find({});
-			// pino.info(allMensajes);
 			return(allMensajes)
 			
 		} catch (error) {
@@ -58,7 +52,6 @@ class MongoDB {
 
 	async deleteById(id) {
 		try {
-			// let borrar = await MensajeModel.deleteOne({"_id": id});
 			let borrar = await MensajeModel.findByIdAndDelete(id);
 
 		} catch (error) {

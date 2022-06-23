@@ -1,7 +1,6 @@
 let UsuarioModel = require('../../../schema/usuarios');
 let bcrypt = require("bcryptjs");
 const JWT = require("../../../utils/jwt/jwt");
-require("dotenv").config();
 const pino = require('../../../utils/logger/pino');
 
 class AuthService {
@@ -9,8 +8,6 @@ class AuthService {
 	async createUser(usuario) {
 		try {
 			let user = await UsuarioModel.findOne({email: usuario.email});
-			pino.info(usuario);
-			pino.info(user);
 			if (user) {
 				return ({message: 'Ya existe una cuenta con el mismo email'})
 			}

@@ -8,13 +8,8 @@ class MongoDB {
 
 	async save(carrito) {
 		try {
-			// elemento.timestamp=Date.now();
-			// let agregarElementoModel= new ElementoModel(elemento);	
 			let cart = await ElementoModel.findOne({email: carrito.email});
-			// pino.info(carrito);
-			// pino.info(cart);
 			if (cart) {
-				// pino.info(`Ya existe el carrito id: ${cart._id}`)
 				return (cart._id)
 			}
 
@@ -27,7 +22,6 @@ class MongoDB {
 			nuevoElementoModel.productList=[]
 			let nuevoElemento = await nuevoElementoModel.save();
 			pino.info(nuevoElemento._id);	
-			// pino.info(nuevoElementoModel);	
 			return(nuevoElemento._id)	
 			
 		} catch (error) {
@@ -54,9 +48,6 @@ class MongoDB {
 
 	async modify(elemento,id) {
 		try {
-			// let modificar = await ElementoModel.updateOne({_id:id}, {
-			// 	$set: elemento
-			// });
 			let modificar = await ElementoModel.findByIdAndUpdate(id, elemento);
 			return(modificar)
 
@@ -100,7 +91,6 @@ class MongoDB {
 	async getAll() {
 		try {
 			let allElements = await ElementoModel.find({});
-			// pino.info(allElements);
 			return(allElements)
 			
 		} catch (error) {
@@ -111,7 +101,6 @@ class MongoDB {
 
 	async deleteById(id) {
 		try {
-			// let borrar = await ElementoModel.deleteOne({"_id": id});
 			let borrar = await ElementoModel.findByIdAndDelete(id);
 
 		} catch (error) {

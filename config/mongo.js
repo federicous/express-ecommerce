@@ -1,10 +1,9 @@
 const mongoose = require("mongoose");
-require("dotenv").config();
+const {config}= require("../config")
 const pino = require('../utils/logger/pino')
 
 let connection;
-// const MONGO_URI=process.env.MONGO_URL_RAIZ+process.env.DB_NAME;
-const MONGO_URI=process.env.MONGO_URL_ATLAS;
+const MONGO_URI=config.MONGO_ATLAS;
 
 // Conexión con MongoDB utilizando Mongoose
 (async()=>{

@@ -1,5 +1,5 @@
 const { uuid } = require('uuidv4');
-const {sqliteConfig} = require('../../../config/SQLite');
+const {sqliteConfig} = require('../../../config/sqlite');
 const knex = require('knex')(sqliteConfig);
 const pino = require('../../../utils/logger/pino');
 
@@ -27,7 +27,6 @@ class Contenedor {
 
 	constructor(mysqlConfig) {
 		this.contador=1;
-		// this.knex = require('knex')(mysqlConfig);
 		// Singleton:
 		if (typeof Contenedor.instance === "object") {
 			return Contenedor.instance;
@@ -69,7 +68,6 @@ class Contenedor {
 	async getById(id) {
 		try {
 			let idMensaje= parseInt(id);
-			// let mostrar = await knex.from('mensajes').select('*').where({id:`${id}`});
 			let mostrar = await knex.from('mensajes').select('*').where({id:id});
 			return(mostrar)
 

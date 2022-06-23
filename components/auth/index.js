@@ -13,10 +13,5 @@ module.exports = app => {
     authRouter.post("/register", authController.postRegister);
     authRouter.get("/verProductos", Autenticacion.usuario, authController.getVerProductos);
 
-    // authRouter.get("/", authController.getAllElement);
-    // authRouter.get("/:id", authController.getElement);
-    // authRouter.post("/", authController.createElement);
-    // authRouter.put("/:id", authController.updateElement);
-    // authRouter.delete("/:id", authController.deleteElement);
 }
 

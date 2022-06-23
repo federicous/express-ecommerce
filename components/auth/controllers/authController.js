@@ -15,8 +15,6 @@ class Element {
             if (token) {
                 verification = await JWT.verify(token) 
             }
-			// const verification = await JWT.verify(token)
-			// if (!verification) return res.status(401).render('authError')
             pino.info(token);
             if (!verification) {
                 pino.info(`sin token`);
@@ -44,16 +42,18 @@ class Element {
             .redirect('/productos');
 
         } catch (error) {
-            pino.error(`Se produjo un error: ${error}`);
+            pino.error(`Se produjo un error: ${error}`)
+            res.status(400).render('error');
         }
     }
 
 
     async getHome(req, res, next){
         try {
-            res.render('home',{username: req.session.username});
+            res.status(200).render('home',{username: req.session.username});
         } catch (error) {
-            pino.error(`Se produjo un error: ${error}`);
+            pino.error(`Se produjo un error: ${error}`)
+            res.status(400).render('error');
         }
     }
 
@@ -61,36 +61,36 @@ class Element {
         try {
             res.status(200).clearCookie('token').render('login',{message: ''})
         } catch (error) {
-            pino.error(`Se produjo un error: ${error}`);
+            pino.error(`Se produjo un error: ${error}`)
+            res.status(400).render('error');
         }
     }
 
     async getRegister(req, res, next){
         try {
-            res.render('register',{message: ''});	
+            res.status(200).render('register',{message: ''});	
         } catch (error) {
-            pino.error(`Se produjo un error: ${error}`);
+            pino.error(`Se produjo un error: ${error}`)
+            res.status(400).render('error');
         }
     }
 
     async postRegister(req, res, next){
         try {
             const token = req.cookies.token;
-            // let payload = await JWT.decode(token)
             let element = req.body;
             let response = await elementService.createUser(element);
             if (response.message) {
-                // pino.info(response);
                 return res.status(404)
                 .render('register', {message: response.message});
             }
             await Nodemailer.registro(response);
             res.status(200)
-            // .cookie('token', response.token, {maxAge: 3600000})
             .redirect('/login');
             
         } catch (error) {
-            pino.error(`Se produjo un error: ${error}`);
+            pino.error(`Se produjo un error: ${error}`)
+            res.status(400).render('error');
         }
     }
 
@@ -100,9 +100,10 @@ class Element {
             let payload = await JWT.decode(token)
             let carritoId = await carritoService.save(payload);
             let productos = await productService.getAll();
-            res.render('verProductos',{message: '',productos, carritoId});	
+            res.status(200).render('verProductos',{message: '',productos, carritoId});	
         } catch (error) {
-            pino.error(`Se produjo un error: ${error}`);
+            pino.error(`Se produjo un error: ${error}`)
+            res.status(400).render('error');
         }
     }
 

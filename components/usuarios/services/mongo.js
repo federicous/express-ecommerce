@@ -43,7 +43,6 @@ class MongoDB {
 	async getAll() {
 		try {
 			let allUsers = await UsuarioModel.find({});
-			// pino.info(allUsers);
 			return(allUsers)
 			
 		} catch (error) {
@@ -54,7 +53,6 @@ class MongoDB {
 
 	async deleteById(id) {
 		try {
-			// let borrar = await UsuarioModel.deleteOne({"_id": id});
 			let borrar = await UsuarioModel.findByIdAndDelete(id);
 
 		} catch (error) {

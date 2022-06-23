@@ -278,4 +278,23 @@
 {"level":50,"time":1654719324889,"pid":92927,"hostname":"yemes-PC","msg":"Tuvimos este error: TypeError: Cannot read properties of null (reading 'email')"}
 {"level":50,"time":1654719334096,"pid":92927,"hostname":"yemes-PC","msg":"Se produjo un error: TypeError: Cannot read properties of undefined (reading 'id')"}
 {"level":50,"time":1654720677885,"pid":96298,"hostname":"yemes-PC","msg":"Tuvimos este error: TypeError: Cannot read properties of null (reading 'email')"}
-{"level":50,"time":1655263635816,"pid":16416,"hostname":"yemes-PC","msg":"Se produjo un error: JsonWebTokenError: jwt must be provided"}
+{"level":50,"time":1654783594485,"pid":29689,"hostname":"yemes-PC","msg":"Se produjo un error: JsonWebTokenError: jwt must be provided"}
+{"level":50,"time":1654784112940,"pid":34663,"hostname":"yemes-PC","msg":"Se produjo un error: TypeError: Cannot read properties of undefined (reading 'id')"}
+{"level":50,"time":1654784112941,"pid":34663,"hostname":"yemes-PC","msg":"Se produjo un error: TypeError: Cannot read properties of undefined (reading 'productList')"}
+{"level":50,"time":1654784449553,"pid":36050,"hostname":"yemes-PC","msg":"Se produjo un error: TypeError: Cannot read properties of undefined (reading 'id')"}
+{"level":50,"time":1654784449553,"pid":36050,"hostname":"yemes-PC","msg":"Se produjo un error: TypeError: Cannot read properties of undefined (reading 'productList')"}
+{"level":50,"time":1654784643402,"pid":36416,"hostname":"yemes-PC","msg":"Se produjo un error: TypeError: Cannot read properties of undefined (reading 'id')"}
+{"level":50,"time":1655257263210,"pid":4846,"hostname":"yemes-PC","msg":"Se produjo un error: JsonWebTokenError: jwt must be provided"}
+{"level":50,"time":1655922175543,"pid":60045,"hostname":"yemes-PC","msg":"Se produjo un error: JsonWebTokenError: jwt must be provided"}
+{"level":50,"time":1655922185930,"pid":60045,"hostname":"yemes-PC","msg":"Se produjo un error: TypeError: Cannot read properties of undefined (reading 'agregado')"}
+{"level":50,"time":1655922208067,"pid":60045,"hostname":"yemes-PC","msg":"Se produjo un error: TypeError: Cannot read properties of undefined (reading 'agregado')"}
+{"level":50,"time":1655922274005,"pid":60045,"hostname":"yemes-PC","msg":"Se produjo un error: TypeError: Cannot read properties of undefined (reading 'agregado')"}
+{"level":50,"time":1655922279919,"pid":60045,"hostname":"yemes-PC","msg":"Se produjo un error: TypeError: Cannot read properties of undefined (reading 'agregado')"}
+{"level":50,"time":1655922344878,"pid":60045,"hostname":"yemes-PC","msg":"Se produjo un error: TypeError: Cannot read properties of undefined (reading 'agregado')"}
+{"level":50,"time":1655922432362,"pid":61050,"hostname":"yemes-PC","msg":"Se produjo un error: TypeError: Cannot read properties of undefined (reading 'agregado')"}
+{"level":50,"time":1655922600878,"pid":61742,"hostname":"yemes-PC","msg":"Se produjo un error: TypeError: Cannot read properties of undefined (reading 'agregado')"}
+{"level":50,"time":1655927595396,"pid":74269,"hostname":"yemes-PC","msg":"Se produjo un error: JsonWebTokenError: jwt must be provided"}
+{"level":50,"time":1655930204674,"pid":84293,"hostname":"yemes-PC","msg":"Se produjo un error: JsonWebTokenError: jwt must be provided"}
+{"level":50,"time":1655930714829,"pid":85813,"hostname":"yemes-PC","msg":"Se produjo un error: JsonWebTokenError: invalid signature"}
+{"level":50,"time":1655949565195,"pid":7287,"hostname":"yemes-PC","msg":"Se produjo un error: JsonWebTokenError: jwt must be provided"}
+{"level":50,"time":1655954386757,"pid":16273,"hostname":"yemes-PC","msg":"Se produjo un error: JsonWebTokenError: jwt must be provided"}
