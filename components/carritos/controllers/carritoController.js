@@ -11,9 +11,10 @@ class Element {
             const token = req.cookies.token;
             let payload = await JWT.decode(token);
             let carritoId = await elementService.save(payload);
-              res.json(carritoId);
+              res.status(200).json(carritoId);
         } catch (error) {
-            pino.error(`Se produjo un error: ${error}`);
+            pino.error(`Se produjo un error: ${error}`)
+            res.status(400).render('error');
         }
     }
 
@@ -29,6 +30,7 @@ class Element {
             
         } catch (error) {
             pino.error(`Se produjo un error: ${error}`);
+            res.status(400).render('error');
         }
     }
 
@@ -47,6 +49,7 @@ class Element {
 
         } catch (error) {
             pino.error(`Se produjo un error: ${error}`);
+            res.status(400).render('error');
         }
     }
 
@@ -66,6 +69,7 @@ class Element {
 
         } catch (error) {
             pino.error(`Se produjo un error: ${error}`);
+            res.status(400).render('error');
         }
     }
 
@@ -75,9 +79,10 @@ class Element {
             let payload = await JWT.decode(token);
             let carritoId = await elementService.save(payload);
             let response = await elementService.getById(carritoId);
-            res.json(response);
+            res.status(200).json(response);
         } catch (error) {
             pino.error(`Se produjo un error: ${error}`);
+            res.status(400).render('error');
         }
     }
 
@@ -90,15 +95,17 @@ class Element {
             res.status(200).render('carrito',{message: '',carrito, carritoId});	
         } catch (error) {
             pino.error(`Se produjo un error: ${error}`);
+            res.status(400).render('error');
         }
     }
 
     async getAllElement(req, res, next){
         try {
             let response = await elementService.getAll();
-            res.json(response);
+            res.status(200).json(response);
         } catch (error) {
             pino.error(`Se produjo un error: ${error}`);
+            res.status(400).render('error');
         }
     }
 
@@ -111,7 +118,7 @@ class Element {
             let payload = await JWT.decode(token);
             let carritoId = await elementService.save(payload);
             let response = await elementService.modify(carritoId, element);
-            res.json({
+            res.status(200).json({
                 result:'ok',
                 id: carritoId,
                 new: req.body
@@ -153,7 +160,7 @@ class Element {
     async deleteAllElement(req, res, next){
         try {
             let response = await elementService.deleteAll();
-            res.json(response);
+            res.status(200).json(response);
         } catch (error) {
             pino.error(`Se produjo un error: ${error}`);
         }

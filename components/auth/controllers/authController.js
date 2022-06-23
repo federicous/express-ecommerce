@@ -42,16 +42,18 @@ class Element {
             .redirect('/productos');
 
         } catch (error) {
-            pino.error(`Se produjo un error: ${error}`);
+            pino.error(`Se produjo un error: ${error}`)
+            res.status(400).render('error');
         }
     }
 
 
     async getHome(req, res, next){
         try {
-            res.render('home',{username: req.session.username});
+            res.status(200).render('home',{username: req.session.username});
         } catch (error) {
-            pino.error(`Se produjo un error: ${error}`);
+            pino.error(`Se produjo un error: ${error}`)
+            res.status(400).render('error');
         }
     }
 
@@ -59,15 +61,17 @@ class Element {
         try {
             res.status(200).clearCookie('token').render('login',{message: ''})
         } catch (error) {
-            pino.error(`Se produjo un error: ${error}`);
+            pino.error(`Se produjo un error: ${error}`)
+            res.status(400).render('error');
         }
     }
 
     async getRegister(req, res, next){
         try {
-            res.render('register',{message: ''});	
+            res.status(200).render('register',{message: ''});	
         } catch (error) {
-            pino.error(`Se produjo un error: ${error}`);
+            pino.error(`Se produjo un error: ${error}`)
+            res.status(400).render('error');
         }
     }
 
@@ -85,7 +89,8 @@ class Element {
             .redirect('/login');
             
         } catch (error) {
-            pino.error(`Se produjo un error: ${error}`);
+            pino.error(`Se produjo un error: ${error}`)
+            res.status(400).render('error');
         }
     }
 
@@ -95,9 +100,10 @@ class Element {
             let payload = await JWT.decode(token)
             let carritoId = await carritoService.save(payload);
             let productos = await productService.getAll();
-            res.render('verProductos',{message: '',productos, carritoId});	
+            res.status(200).render('verProductos',{message: '',productos, carritoId});	
         } catch (error) {
-            pino.error(`Se produjo un error: ${error}`);
+            pino.error(`Se produjo un error: ${error}`)
+            res.status(400).render('error');
         }
     }
 

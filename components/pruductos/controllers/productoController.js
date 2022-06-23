@@ -9,9 +9,10 @@ class Element {
         try {
             let element = req.body;
             let response = await elementService.save(element);
-            res.json(response);
+            res.status(200).json(response);
         } catch (error) {
             pino.error(`Se produjo un error: ${error}`);
+            res.status(400).render('error');
         }
     }
 
@@ -19,19 +20,21 @@ class Element {
         try {
             let id = req.params.id
             let response = await elementService.getById(id);
-            res.json(response);
+            res.status(200).json(response);
         } catch (error) {
             pino.error(`Se produjo un error: ${error}`);
+            res.status(400).render('error');
         }
     }
 
     async getAllElement(req, res, next){
         try {
             let response = await elementService.getAll();
-            res.json(response);
+            res.status(200).json(response);
 
         } catch (error) {
             pino.error(`Se produjo un error: ${error}`);
+            res.status(400).render('error');
         }
     }
 
@@ -40,13 +43,14 @@ class Element {
             let element = req.body;
             let id = req.params.id
             let response = await elementService.modify(id, element);
-            res.json({
+            res.status(200).json({
                 result:'ok',
                 id: req.params.id,
                 new: req.body
             })
         } catch (error) {
             pino.error(`Se produjo un error: ${error}`);
+            res.status(400).render('error');
         }
     }
 
@@ -54,21 +58,23 @@ class Element {
         try {
             let id = req.params.id
             let response = await elementService.deleteById(id);
-            res.json({
+            res.status(200).json({
                 result:'ok',
                 id: req.params.id      
             })
         } catch (error) {
             pino.error(`Se produjo un error: ${error}`);
+            res.status(400).render('error');
         }
     }
 
     async deleteAllElement(req, res, next){
         try {
             let response = await elementService.deleteAll();
-            res.json(response);
+            res.status(200).json(response);
         } catch (error) {
             pino.error(`Se produjo un error: ${error}`);
+            res.status(400).render('error');
         }
     }
 }
