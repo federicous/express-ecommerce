@@ -1,5 +1,5 @@
 const { uuid } = require('uuidv4');
-const {sqliteConfig} = require('../../../config/SQLite');
+const {sqliteConfig} = require('../../../config/sqlite');
 const knex = require('knex')(sqliteConfig);
 const pino = require('../../../utils/logger/pino');
 let bcrypt = require("bcryptjs");

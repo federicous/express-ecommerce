@@ -15,8 +15,6 @@ class Element {
             if (token) {
                 verification = await JWT.verify(token) 
             }
-			// const verification = await JWT.verify(token)
-			// if (!verification) return res.status(401).render('authError')
             pino.info(token);
             if (!verification) {
                 pino.info(`sin token`);
@@ -76,17 +74,14 @@ class Element {
     async postRegister(req, res, next){
         try {
             const token = req.cookies.token;
-            // let payload = await JWT.decode(token)
             let element = req.body;
             let response = await elementService.createUser(element);
             if (response.message) {
-                // pino.info(response);
                 return res.status(404)
                 .render('register', {message: response.message});
             }
             await Nodemailer.registro(response);
             res.status(200)
-            // .cookie('token', response.token, {maxAge: 3600000})
             .redirect('/login');
             
         } catch (error) {

@@ -28,7 +28,16 @@ const config = {
 	MONGO_ATLAS: process.env.MONGO_URL_ATLAS,
 	CORS: process.env.CORS || "*",
 	SESSION: sessionConfig,
+	DB: process.env.DB || "mongo",
 }
+
+const mysql = {
+	MARIADB_HOST: process.env.MARIADB_HOST,
+	MARIADB_USER: process.env.MARIADB_USER,
+	MARIADB_PASS: process.env.MARIADB_PASS,
+	MARIADB_DATABASE: process.env.MARIADB_DATABASE
+}
+
 
 const correo = {
 	NODEMAILER_USER: process.env.NODEMAILER_USER,
@@ -41,10 +50,12 @@ const correo = {
 const autenticacion = {
 	JWT_SECRET: process.env.JWT_SECRET || "943onfdis",
 	JWT_ALG: process.env.JWT_ALG || "HS256",
+	JWT_EXP: process.env.JWT_EXP || "1d",
 }
 
 module.exports = {
 	config,
 	correo,
-	autenticacion
+	autenticacion,
+	mysql
 }

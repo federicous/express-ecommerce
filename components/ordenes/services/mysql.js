@@ -1,4 +1,4 @@
-const {	mysqlConfig } = require('../../../config/mysqlDB');
+const {	mysqlConfig } = require('../../../config/mysql');
 const knex = require('knex')(mysqlConfig);
 const {
 	v4

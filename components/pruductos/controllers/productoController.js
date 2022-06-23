@@ -17,7 +17,6 @@ class Element {
 
     async getElement(req, res, next){
         try {
-            //let { id } = req.body;
             let id = req.params.id
             let response = await elementService.getById(id);
             res.json(response);
@@ -30,12 +29,6 @@ class Element {
         try {
             let response = await elementService.getAll();
             res.json(response);
-
-            // const token = req.cookies.token
-            // let payload = await JWT.decode(token)
-            // let carritoId = await carritoService.save(payload);
-            // let productos = await elementService.getAll();
-            // res.render('verProductos',{message: 'Producto agregado',productos, carritoId});
 
         } catch (error) {
             pino.error(`Se produjo un error: ${error}`);
@@ -59,10 +52,8 @@ class Element {
 
     async deleteElement(req, res, next){
         try {
-            // let { id } = req.body;
             let id = req.params.id
             let response = await elementService.deleteById(id);
-            // res.json(response);
             res.json({
                 result:'ok',
                 id: req.params.id      

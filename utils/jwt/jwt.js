@@ -6,7 +6,7 @@ class JWT {
     async generate(payload){
         try {
             return await jwt.sign(payload, autenticacion.JWT_SECRET, {
-                expiresIn: '1d',
+                expiresIn:  autenticacion.JWT_EXP,
                 algorithm: autenticacion.JWT_ALG
             })
         } catch (error) {

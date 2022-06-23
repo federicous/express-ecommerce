@@ -1,7 +1,6 @@
 let UsuarioModel = require('../../../schema/usuarios');
 let bcrypt = require("bcryptjs");
 const JWT = require("../../../utils/jwt/jwt");
-require("dotenv").config();
 const pino = require('../../../utils/logger/pino');
 
 class AuthService {

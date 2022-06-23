@@ -296,3 +296,5 @@
 {"level":50,"time":1655927595396,"pid":74269,"hostname":"yemes-PC","msg":"Se produjo un error: JsonWebTokenError: jwt must be provided"}
 {"level":50,"time":1655930204674,"pid":84293,"hostname":"yemes-PC","msg":"Se produjo un error: JsonWebTokenError: jwt must be provided"}
 {"level":50,"time":1655930714829,"pid":85813,"hostname":"yemes-PC","msg":"Se produjo un error: JsonWebTokenError: invalid signature"}
+{"level":50,"time":1655949565195,"pid":7287,"hostname":"yemes-PC","msg":"Se produjo un error: JsonWebTokenError: jwt must be provided"}
+{"level":50,"time":1655954386757,"pid":16273,"hostname":"yemes-PC","msg":"Se produjo un error: JsonWebTokenError: jwt must be provided"}

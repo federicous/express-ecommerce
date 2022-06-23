@@ -1,5 +1,5 @@
 const { uuid } = require('uuidv4');
-const {mysqlConfig} = require('../../../config/mysqlDB');
+const {mysqlConfig} = require('../../../config/mysql');
 const knex = require('knex')(mysqlConfig);
 const pino = require('../../../utils/logger/pino');
 let bcrypt = require("bcryptjs");

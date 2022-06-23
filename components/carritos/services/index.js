@@ -1,5 +1,5 @@
-require("dotenv").config();
-let opcionDB= process.env.DB || "mongo";
+const {config} = require("../../../config");
+let opcionDB= config.DB;
 const pino = require('../../../utils/logger/pino')
 
 	let CarritoDB=require(`../services/${opcionDB}`)
