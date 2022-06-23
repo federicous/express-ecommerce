@@ -298,3 +298,5 @@
 {"level":50,"time":1655930714829,"pid":85813,"hostname":"yemes-PC","msg":"Se produjo un error: JsonWebTokenError: invalid signature"}
 {"level":50,"time":1655949565195,"pid":7287,"hostname":"yemes-PC","msg":"Se produjo un error: JsonWebTokenError: jwt must be provided"}
 {"level":50,"time":1655954386757,"pid":16273,"hostname":"yemes-PC","msg":"Se produjo un error: JsonWebTokenError: jwt must be provided"}
+{"level":50,"time":1656009440239,"pid":56018,"hostname":"yemes-PC","msg":"Se produjo un error: JsonWebTokenError: jwt must be provided"}
+{"level":50,"time":1656009448918,"pid":56018,"hostname":"yemes-PC","msg":"CONTRASEÑA INCORRECTA: hkuhik PARA USUARIO: jorge@gmail.com"}
