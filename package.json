@@ -23,7 +23,6 @@
     "express": "^4.17.1",
     "express-jwt": "^6.1.0",
     "express-session": "^1.17.2",
-    "firebase-admin": "^10.0.1",
     "joi": "^17.5.0",
     "jsonwebtoken": "^8.5.1",
     "knex": "^0.95.15",
@@ -37,6 +36,7 @@
     "pino-pretty": "^7.6.1",
     "socket.io": "^4.4.0",
     "sqlite3": "^5.0.2",
-    "uuidv4": "^6.2.12"
+    "uuidv4": "^6.2.12",
+    "validator": "^13.7.0"
   }
 }
