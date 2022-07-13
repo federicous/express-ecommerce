@@ -8,7 +8,6 @@
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
 		integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
 		crossorigin="anonymous">
-
 	<script src="./socket.io/socket.io.js"></script>
 	<title>app-ecommerce</title>
 </head>
@@ -18,69 +17,54 @@
 		padding: 5px;
 	}
 </style>
-
 <body>
 	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 		<div class="container-fluid">
 			<a class="navbar-brand" href="#">
-				<svg class="mainIcon Iconflex-shrink-0 fill-current" xmlns="http://www.w3.org/2000/svg"
-					fill="currentColor" viewBox="0 0 512 512"
-					style="--darkreader-inline-fill: currentColor;" data-darkreader-inline-fill="">
-					<title>Cube</title>
-					<path
-						d="M440.9 136.3a4 4 0 000-6.91L288.16 40.65a64.14 64.14 0 00-64.33 0L71.12 129.39a4 4 0 000 6.91L254 243.88a4 4 0 004.06 0zM54 163.51a4 4 0 00-6 3.49v173.89a48 48 0 0023.84 41.39L234 479.51a4 4 0 006-3.46V274.3a4 4 0 00-2-3.46zM272 275v201a4 4 0 006 3.46l162.15-97.23A48 48 0 00464 340.89V167a4 4 0 00-6-3.45l-184 108a4 4 0 00-2 3.45z">
-					</path>
-				</svg>
+				<svg class="mainIcon Iconflex-shrink-0 fill-current" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 512 512" style="--darkreader-inline-fill: currentColor;" data-darkreader-inline-fill=""><title>Cube</title><path d="M440.9 136.3a4 4 0 000-6.91L288.16 40.65a64.14 64.14 0 00-64.33 0L71.12 129.39a4 4 0 000 6.91L254 243.88a4 4 0 004.06 0zM54 163.51a4 4 0 00-6 3.49v173.89a48 48 0 0023.84 41.39L234 479.51a4 4 0 006-3.46V274.3a4 4 0 00-2-3.46zM272 275v201a4 4 0 006 3.46l162.15-97.23A48 48 0 00464 340.89V167a4 4 0 00-6-3.45l-184 108a4 4 0 00-2 3.45z"></path></svg>
 			</a>
-			<button class="navbar-toggler" type="button" data-bs-toggle="offcanvas"
-				data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02"
-				aria-expanded="false" aria-label="Toggle navigation">
+			<button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+				data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false"
+				aria-label="Toggle navigation">
 				<span class="navbar-toggler-icon"></span>
 			</button>
-			<div class="offcanvas offcanvas-start p-3 p-lg-0" style="width: 230px;" id="navbarTogglerDemo02">
-				<ul class="navbar-nav me-auto mb-2 mb-lg-0 align-items-lg-center">
-					<li class="nav-item mb-3 mb-lg-0 mx-4 mx-lg-0">
+			<div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+				<ul class="navbar-nav me-auto mb-2 mb-lg-0 align-items-center">
+					<li class="nav-item">
 						<a class="nav-link" href="/register">
 							<button type="button" class="btn btn-primary">Register</button>
 						</a>
 					</li>
-					<li class="nav-item mb-3 mb-lg-0 mx-4 mx-lg-0">
+<!-- 					<li class="nav-item">
 						<a class="nav-link" href="productos.html">Ver productos</a>
 					</li>
-					<li class="nav-item mb-3 mb-lg-0 mx-4 mx-lg-0">
+					<li class="nav-item">
 						<a class="nav-link" href="/verProductos">Ver products</a>
-					</li>
+					</li> -->
 				</ul>
 			</div>
 		</div>
 	</nav>
-
-	<section class="w-100 p-4 d-flex justify-content-center pb-4">
-		<div style="width: 26rem;">
+	<div class="container justify-content-center">
 
 			<h1 class="text-center m-3">Login</h1>
-			<form action="/login" method="POST" class="w-100 d-flex justify-content-center"
+			<form action="/login"  method="POST" class="mb-3 d-flex justify-content-center"
 				id="formProducts">
-				<div class="w-100 mb-3 d-flex justify-content-center flex-column ">
+				<div class="mb-3 d-flex justify-content-center flex-column p-5 mx-5">
 					<label for="email" class="form-label">Email:
-						<input type="email" name="email" id="email" class="form-control"
-							required><br></label>
+						<input type="email" name="email" id="email" class="form-control" required><br></label>
 					<label for="password" class="form-label">Password:
-						<input type="password" name="password" id="password"
-							class="form-control" required><br></label>
+						<input type="password" name="password" id="password" class="form-control" required><br></label>						
 					<button type="submit" class="btn btn-primary">submit</button>
-
+									
 					<% if (message) { %>
-					<div class="alert alert-danger mt-3" role="alert">
-						<%= message %>
-					</div>
-					<% } %>
+						<div class="alert alert-danger mt-3" role="alert">
+							<%= message %>
+						</div>
+					<% } %> 
 				</div>
-			</form>
-
-	</section>
+			</form>	
 	</div>
-
 	<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"
 		integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB"
 		crossorigin="anonymous"></script>

@@ -77,9 +77,13 @@ class Element {
 
     async postRegister(req, res, next){
         try {
-            const token = req.cookies.token;
+            // const token = req.cookies.token;
+            // // res.send(req.file)
+            // console.log(req.file.filename);
+            // console.log(req.body.email);
+            let avatar = req.file.filename ? req.file.filename : "avatar-generico.jpg";
             let element = req.body;
-            let response = await elementService.createUser(element);
+            let response = await elementService.createUser(element,avatar);
             if (response.message) {
                 return res.status(404)
                 .render('register', {message: response.message});
@@ -103,6 +107,22 @@ class Element {
             res.status(200).render('verProductos',{message: '',productos, carritoId});	
         } catch (error) {
             pino.error(`Se produjo un error: ${error}`)
+            res.status(400).render('error');
+        }
+    }
+
+    async postUpload(req, res, next){
+        try {
+            const file = req.file;
+            if (!file) {
+                pino.error(`Por favor subir un archivo`);
+                    return res.status(404)
+                    .render('register', {message: `Por favor subir un archivo de imgen (.jpg, .png, .jpeg)`});
+            }
+            res.send(file)
+
+        } catch (error) {
+            pino.error(`Se produjo un error: ${error}`);
             res.status(400).render('error');
         }
     }

@@ -43,7 +43,7 @@ class Contenedor {
 		return this;
 	}
 
-	async createUser(usuario) {
+	async createUser(usuario,avatar) {
 		try {
 			let resultado = await knex.from('usuarios').select('*').where({email: usuario.email});
 			let user=resultado[0]
@@ -53,7 +53,8 @@ class Contenedor {
 			}
 			const passwordHash = bcrypt.hashSync(usuario.password, 10)
 			usuario.password = passwordHash;
-			usuario.uuid=uuid()
+			usuario.uuid=uuid();
+			usuario.avatar= avatar;
 			let agregar= await knex('usuarios')
 			.insert(usuario)
 			pino.info("datos insertados en sqlite");

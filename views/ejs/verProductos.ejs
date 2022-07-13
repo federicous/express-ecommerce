@@ -15,6 +15,18 @@
 		width: 45px;
 		padding: 5px;
 	}
+
+	/* Chrome, Safari, Edge, Opera */
+	input::-webkit-outer-spin-button,
+	input::-webkit-inner-spin-button {
+		-webkit-appearance: none;
+		margin: 0;
+	}
+
+	/* Firefox */
+	input[type=number] {
+		-moz-appearance: textfield;
+	}
 </style>
 
 <body>
@@ -30,24 +42,25 @@
 					</path>
 				</svg>
 			</a>
-			<button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+			<button class="navbar-toggler" type="button" data-bs-toggle="offcanvas"
 				data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02"
 				aria-expanded="false" aria-label="Toggle navigation">
 				<span class="navbar-toggler-icon"></span>
 			</button>
-			<div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-				<ul class="navbar-nav me-auto mb-2 mb-lg-0 align-items-center">
-					<li class="nav-item">
+			<div class="offcanvas offcanvas-start p-3 p-lg-0" style="width: 230px;"
+				id="navbarTogglerDemo02">
+				<ul class="navbar-nav me-auto mb-2 mb-lg-0 align-items-lg-center">
+					<li class="nav-item mb-3 mb-lg-0 mx-4 mx-lg-0">
 						<a class="nav-link" href="/productos">Productos</a>
 					</li>
-					<li class="nav-item">
+					<li class="nav-item mb-3 mb-lg-0 mx-4 mx-lg-0">
 						<a class="nav-link active" aria-current="page"
 							href="/carrito">Carrito</a>
 					</li>
-					<li class="nav-item">
+					<li class="nav-item mb-3 mb-lg-0 mx-4 mx-lg-0">
 						<a class="nav-link active" aria-current="page" href="/chat">Chat</a>
 					</li>
-					<li class="nav-item">
+					<li class="nav-item mb-3 mb-lg-0 mx-4 mx-lg-0">
 						<a class="nav-link" href="/logout">
 							<button type="button" class="btn btn-danger">Logout</button>
 						</a>
@@ -62,36 +75,6 @@
 			<% if (productos.length) { %>
 			<h1 class="m-3">Lista de Productos</h1>
 
-			<!-- <table class="table table-dark table-hover">
-					<thead>
-						<tr>
-							<th scope="col"></th>
-							<th scope="col">Name</th>
-							<th scope="col">stock</th>
-							<th scope="col">Price</th>
-							<th scope="col"></th>
-							<th scope="col"></th>
-						</tr>
-					</thead>
-					<tbody id="tablaProductos">
-			
-						<% for (const prod of productos) { %>
-							<form class="productos" action="/api/cart/product" method="post">
-									<tr>
-										<th scope="row" class="d-none"><%=prod._id ? prod._id : prod.id %></th>
-										<td><img class="img-thumbnail" style="height: 80px;" src="<%=prod.image %>" alt=""><input class="form-input d-none" type="text" name="image" value="<%=prod.image %>" readonly="true"></td>
-										<td><%=prod.name %><input class="form-input d-none" type="text" name="name" value="<%=prod.name %>" readonly="true"></td>
-										<td><%=prod.stock %><input class="form-input d-none" type="number" name="qty" value="1"></td>
-										<td><%=prod.price %><input class="form-input d-none" type="text" name="price" value="<%=prod.price %>" readonly="true"></td>
-										<td><a class="btn btn-outline-secondary my-3" href="/api/products/<%=prod._id ? prod._id : prod.id %>">Detalle</a></td>
-										<td><input class="btn btn-primary my-3" type="submit" value="Add to cart"></td>
-									</tr>
-							</form>
-						<% } %>
-					</tbody>
-				</table> -->
-
-			<!-- <div class="card-group"> -->
 			<div class="row row-cols-1 row-cols-md-3 row-cols-lg-4 g-4">
 				<% for (const prod of productos) { %>
 				<div class="col">
@@ -105,8 +88,8 @@
 									<%=prod.stock %></small></p>
 							<p class="card-text"><b>Price: $ <%=prod.price %></b></p>
 							<!-- <a href="/api/cart/prduct/<%=prod._id ? prod._id : prod.id %>" class="btn btn-primary">Comprar</a> -->
-							<form class="productos d-flex w-100 flex-column" action="/carrito"
-								method="post">
+							<form class="productos d-flex w-100 flex-column"
+								action="/carrito" method="post">
 
 								<input class="form-input d-none" type="text" name="id"
 									value="<%=prod._id ? prod._id : prod.id %>">
@@ -121,17 +104,53 @@
 									name="price" value="<%=prod.price %>"
 									readonly="true">
 								<div class="btn-group my-3">
-									<input class="from-control text-center me-3 w-100 d-flex flex-grow-1 justify-content-center"
+									<!-- <input class="from-control text-center me-3 w-100 d-flex flex-grow-1 justify-content-center"
 										type="number" name="qty" value="1"
-										min="1" max="<%=prod.stock %>">
+										min="1" max="<%=prod.stock %>"> -->
+
+									<div class="btn-group" role="group"
+										aria-label="Basic example">
+										<button type="button"
+											class="btn btn-primary minus<%=prod._id ? prod._id : prod.id %>" id="minus<%=prod._id ? prod._id : prod.id %>">-</button>
+										<span><input class="h-100 p-0 m-0 text-center"
+												style="width: 30px;"
+												value="1" min="1"
+												max="<%=prod.stock %>"
+												type="number" name="qty"
+												id=""></span>
+										<button type="button" id="plus<%=prod._id ? prod._id : prod.id %>"
+											class="btn btn-primary me-3 plus<%=prod._id ? prod._id : prod.id %>">+</button>
+
+
+									</div>
 									<input class="form-input btn btn-primary"
-										type="submit" value="Add to cart">
+										type="submit" value="Add">
 								</div>
 							</form>
 						</div>
 					</div>
 				</div>
 
+				<script>
+					
+					let minus<%=prod._id ? prod._id : prod.id %> = document.querySelector("#minus<%=prod._id ? prod._id : prod.id %>");
+					minus<%=prod._id ? prod._id : prod.id %>.addEventListener("click", function () {
+							let $input = plus<%=prod._id ? prod._id : prod.id %>.parentElement.querySelector('input');
+							let count = parseInt($input.value) - 1;
+							count = count < 1 ? 1 : count;
+							$input.value = count;
+							// $input.change();
+							return false;
+						});
+					let plus<%=prod._id ? prod._id : prod.id %> = document.querySelector("#plus<%=prod._id ? prod._id : prod.id %>");
+					plus<%=prod._id ? prod._id : prod.id %>.addEventListener("click", function () {
+							let $input = plus<%=prod._id ? prod._id : prod.id %>.parentElement.querySelector('input');
+							let count = parseInt($input.value) + 1;
+							$input.value= count > <%=prod.stock %> ? $input.value : count;
+							// $input.change();
+							return false;
+						});
+				</script>
 				<% } %>
 			</div>
 
@@ -184,6 +203,7 @@
 		let botonSumar = document.getElementById('botonSumar');
 		let botonRestar = document.getElementById('botonRestar');
 	</script>
+
 </body>
 
 </html>

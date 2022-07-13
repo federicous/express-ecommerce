@@ -8,7 +8,7 @@
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
 		integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
 		crossorigin="anonymous">
-	<title>Item</title>
+	<title>Carrito</title>
 </head>
 <style>
 	.mainIcon {
@@ -45,6 +45,9 @@
 							href="/carrito">Carrito</a>
 					</li>
 					<li class="nav-item mb-3 mb-lg-0 mx-4 mx-lg-0">
+						<a class="nav-link active" aria-current="page" href="/chat">Chat</a>
+					</li>
+					<li class="nav-item mb-3 mb-lg-0 mx-4 mx-lg-0">
 						<a class="nav-link" href="/logout">
 							<button type="button" class="btn btn-danger">Logout</button>
 						</a>
@@ -56,50 +59,52 @@
 	<div class="container" style="margin-top: 100px;">
 		<span>
 
-			<% if (item) { %>
-			<h1 class="m-3">Detalle del producto</h1>
-<div class="container" style="width: fit-content;">
-			<div class="card-group">
-				<div class="col">
-					<div class="card flex-lg-row">
-						<img src="<%=item.image %>" class="card-img-top" alt="<%=item.name %>">
-						<div
-							class="card-body w-100 d-flex justify-content-center flex-column align-items-center">
-							<h5 class="card-title"><%=item.name %></h5>
-							<p class="card-text"><%=item.description %></p>
-							<p class="card-text"><small class="text-muted">Stock:
-									<%=item.stock %></small></p>
-							<p class="card-text"><b>Price: $ <%=item.price %></b></p>
-							<!-- <a href="/api/cart/prduct/<%=item._id ? item._id : item.id %>" class="btn btn-primary">Comprar</a> -->
-							<form class="productos w-100 d-flex justify-content-center" action="/carrito" method="post">
+			<% if (carrito && carrito.length) { %>
+			<h1 class="m-3">Carrito</h1>
 
-								<input class="form-input d-none" type="text" name="id"
-									value="<%=item._id ? item._id : item.id %>">
-								<input class="form-input d-none" type="text"
-									name="image" value="<%=item.image %>"
-									readonly="true">
-								<input class="form-input d-none" type="text" name="name"
-									value="<%=item.name %>" readonly="true">
-								<input class="form-input d-none" type="number"
-									name="qty" value="1">
-								<input class="form-input d-none" type="text"
-									name="price" value="<%=item.price %>"
-									readonly="true">
+			<form class="productos" action="/api/order" method="post">
+				<table class="table table-dark table-hover">
+					<thead>
+						<tr>
+							<th scope="col"></th>
+							<th scope="col">Name</th>
+							<th scope="col">qty</th>
+							<th scope="col">Price</th>
+							<th scope="col"></th>
+							<th scope="col"></th>
+						</tr>
+					</thead>
+					<tbody id="tablaProductos">
 
-								<div class="btn-group my-3">
-									<input class="from-control text-center me-3 w-100 d-flex flex-grow-1 justify-content-center"
-										type="number" name="qty" value="1"
-										min="1" max="<%=item.stock %>">
-									<input class="form-input btn btn-primary"
-										type="submit" value="Add to cart">
-								</div>
-
-							</form>
-						</div>
-					</div>
-				</div>
-			</div>
-</div>
+						<% for (const prod of carrito) { %>
+						<tr>
+							<th scope="row" class="d-none">
+								<%=prod._id ? prod._id : prod.id %></th>
+							<td><img class="img-thumbnail" style="height: 80px;"
+									src="<%=prod.image %>" alt=""><input
+									class="form-input d-none" type="text"
+									name="image" value="<%=prod.image %>"
+									readonly="true"></td>
+							<td><%=prod.name %><input class="form-input d-none" type="text"
+									name="name" value="<%=prod.name %>"
+									readonly="true"></td>
+							<td><%=prod.qty %><input class="form-input d-none" type="number"
+									name="qty" value="1"></td>
+							<td><%=prod.price %><input class="form-input d-none" type="text"
+									name="price" value="<%=prod.price %>"
+									readonly="true"></td>
+							<td><a class="btn btn-outline-secondary my-3"
+									href="/productos/<%=prod._id ? prod._id : prod.id %>">Detalle</a>
+							</td>
+							<td><button class="btn btn-danger my-3" type="submit"
+									formaction="/carrito/<%=prod._id ? prod._id : prod.id %>">Remove</button>
+							</td>
+						</tr>
+						<% } %>
+					</tbody>
+				</table>
+				<button class="btn btn-primary my-3" type="submit">Comprar</button>
+			</form>
 			<% if (message) { %>
 			<div class="modal show fade" style="display: block;" id="exampleModal" tabindex="-1"
 				aria-labelledby="exampleModalLabel" aria-modal="true" role="dialog">
@@ -125,7 +130,7 @@
 			<% } %>
 			<% } else { %>
 			<div id="verProductos">
-				<h4>No existe el producto</h4>
+				<h4>No hay productos</h4>
 			</div>
 			<% } %>
 

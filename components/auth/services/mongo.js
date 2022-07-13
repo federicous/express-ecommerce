@@ -5,7 +5,7 @@ const pino = require('../../../utils/logger/pino');
 
 class AuthService {
 
-	async createUser(usuario) {
+	async createUser(usuario,avatar) {
 		try {
 			let user = await UsuarioModel.findOne({email: usuario.email});
 			if (user) {
@@ -14,6 +14,7 @@ class AuthService {
 			const passwordHash = bcrypt.hashSync(usuario.password, 10)
 			usuario.password = passwordHash;
 			usuario.timestamp = Date.now();
+			usuario.avatar= avatar;
 			let agregarUsuarioModel = new UsuarioModel(usuario);
 			let agregarUsuario = await agregarUsuarioModel.save();
 			pino.info(agregarUsuario);

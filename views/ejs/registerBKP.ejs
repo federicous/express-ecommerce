@@ -31,81 +31,69 @@
 					</path>
 				</svg>
 			</a>
-			<button class="navbar-toggler" type="button" data-bs-toggle="offcanvas"
+			<button class="navbar-toggler" type="button" data-bs-toggle="collapse"
 				data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02"
 				aria-expanded="false" aria-label="Toggle navigation">
 				<span class="navbar-toggler-icon"></span>
 			</button>
-			<div class="offcanvas offcanvas-start p-3 p-lg-0" style="width: 230px;" id="navbarTogglerDemo02">
-				<ul class="navbar-nav me-auto mb-2 mb-lg-0 align-items-lg-center">
-					<li class="nav-item mb-3 mb-lg-0 mx-4 mx-lg-0">
+			<div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+				<ul class="navbar-nav me-auto mb-2 mb-lg-0 align-items-center">
+					<li class="nav-item">
 						<a class="nav-link" href="/login">
 							<button type="button" class="btn btn-primary">Login</button>
 						</a>
 					</li>
-					<li class="nav-item mb-3 mb-lg-0 mx-4 mx-lg-0">
-						<a class="nav-link" href="productos.html">Ver productos</a>
-					</li>
-					<li class="nav-item mb-3 mb-lg-0 mx-4 mx-lg-0">
-						<a class="nav-link" href="/verProductos">Ver products</a>
-					</li>
+
 				</ul>
 			</div>
-
 		</div>
 	</nav>
+	<div class="container justify-content-center">
 
-	<section class="w-100 p-4 d-flex justify-content-center pb-4">
-		<div style="width: 26rem;">
-
-			<h1 class="text-center m-3">Register</h1>
-			<form onsubmit="return check();" action="/register" method="POST"
-				class="w-100 mb-3 d-flex justify-content-center" id="formProducts"
-				enctype="multipart/form-data">
-				<div class="w-100 mb-3 d-flex  justify-content flex-column">
-					<label for="email" class="form-label">Email:
-						<input type="email" name="email" id="email" class="form-control mb-3"
-							required></label>
-					<label for="password" class="form-label">Password:
-						<input type="password" name="password" id="password"
-							class="form-control mb-3" required onkeyup='check();'></label>
-					<label for="confirmPassword" class="form-label">Confirmar password:
-						<input type="password" name="confirmPassword" id="confirmPassword"
-							class="form-control mb-3" required onkeyup='check();' />
-					</label>
-					<label for="name" class="form-label">Nombre:
-						<input type="text" name="name" id="name" class="form-control mb-3"
-							required></label>
-					<label for="age" class="form-label">Age:
-						<input type="number" name="age" id="age" class="form-control mb-3"
-							required></label>
-					<label for="address" class="form-label">Address:
-						<input type="text" name="address" id="address" class="form-control mb-3"
-							required></label>
-					<label for="phone" class="form-label">Phone:
-						<input type="phone" name="phone" id="phone" class="form-control mb-3"
-							required></label>
-					<label for="myFile" class="form-label">Avatar</label>
-					<input class="form-control mb-3" type="file" id="myFile" name="myFile">
-
-					<div class="mb-3 form-check">
-						<input type="checkbox" class="form-check-input" id="isAdmin"
-							name="isAdmin">
-						<label class="form-check-label" for="isAdmin">Admin</label>
-					</div>
-					<button type="submit" class="btn btn-primary">submit</button>
-					<% if (message) { %>
-					<div class="alert alert-danger mt-3" role="alert">
-						<%= message %>
-					</div>
-					<% } %>
+		<h1 class="text-center m-3">Register</h1>
+		<form onsubmit="return check();" action="/register" method="POST" class="mb-3 d-flex justify-content-center" id="formProducts">
+			<div class="mb-3 d-flex  justify-content flex-column p-5 mx-5">
+				<label for="email" class="form-label">Email:
+					<input type="email" name="email" id="email" class="form-control mb-3"
+						required></label>
+				<label for="password" class="form-label">Password:
+					<input type="password" name="password" id="password" class="form-control mb-3"
+						required onkeyup='check();'></label>
+				<label for="confirmPassword" class="form-label">Confirmar password:
+					<input type="password" name="confirmPassword" id="confirmPassword"
+						class="form-control mb-3" required onkeyup='check();' />
+				</label>
+				<label for="name" class="form-label">Nombre:
+					<input type="text" name="name" id="name" class="form-control mb-3"
+						required></label>
+				<label for="age" class="form-label">Age:
+					<input type="number" name="age" id="age" class="form-control mb-3"
+						required></label>
+				<label for="address" class="form-label">Address:
+					<input type="text" name="address" id="address" class="form-control mb-3"
+						required></label>
+				<label for="phone" class="form-label">Phone:
+					<input type="phone" name="phone" id="phone" class="form-control mb-3"
+						required></label>
+				<label for="avatar" class="form-label">Avatar:
+					<input type="avatar" name="avatar" id="avatar" class="form-control mb-3"
+						required></label>
+				<div class="mb-3 form-check">
+					<input type="checkbox" class="form-check-input" id="isAdmin" name="isAdmin">
+					<label class="form-check-label" for="isAdmin">Admin</label>
 				</div>
-			</form>
+				<button type="submit" class="btn btn-primary">submit</button>
+				<% if (message) { %>
+				<div class="alert alert-danger mt-3" role="alert">
+					<%= message %>
+				</div>
+				<% } %>
+			</div>
+		</form>
 
 
 
-		</div>
-	</section>
+	</div>
 	<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"
 		integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB"
 		crossorigin="anonymous"></script>
@@ -117,11 +105,7 @@
 		let check = function () {
 			let password = document.getElementById('password');
 			let confirmPassword = document.getElementById('confirmPassword');
-			let passwordValidate = validator.isStrongPassword(confirmPassword.value, {
-				minLength: 4,
-				minUppercase: 0,
-				minSymbols: 0
-			});
+			let passwordValidate = validator.isStrongPassword(confirmPassword.value,{ minLength: 4, minUppercase: 0, minSymbols: 0 });
 			if (password.value == confirmPassword.value) {
 				if (passwordValidate) {
 					password.setAttribute("class", "form-control mb-3 is-valid");

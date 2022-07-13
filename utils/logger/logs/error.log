@@ -301,3 +301,28 @@
 {"level":50,"time":1656009440239,"pid":56018,"hostname":"yemes-PC","msg":"Se produjo un error: JsonWebTokenError: jwt must be provided"}
 {"level":50,"time":1656009448918,"pid":56018,"hostname":"yemes-PC","msg":"CONTRASEÑA INCORRECTA: hkuhik PARA USUARIO: jorge@gmail.com"}
 {"level":50,"time":1656385242856,"pid":4499,"hostname":"yemes-PC","msg":"Se produjo un error: JsonWebTokenError: jwt must be provided"}
+{"level":50,"time":1657645327170,"pid":57898,"hostname":"yemes-PC","msg":"Se produjo un error: Only .png, .jpg and .jpeg format allowed!"}
+{"level":50,"time":1657645342137,"pid":58075,"hostname":"yemes-PC","msg":"Se produjo un error: Only .png, .jpg and .jpeg format allowed!"}
+{"level":50,"time":1657645390512,"pid":58277,"hostname":"yemes-PC","msg":"Se produjo un error: Only .png, .jpg and .jpeg format allowed!"}
+{"level":50,"time":1657645390522,"pid":58277,"hostname":"yemes-PC","msg":"Por favor subir un archivo"}
+{"level":50,"time":1657645678614,"pid":58980,"hostname":"yemes-PC","msg":"Se produjo un error: Only .png, .jpg and .jpeg format allowed!"}
+{"level":50,"time":1657645678626,"pid":58980,"hostname":"yemes-PC","msg":"Por favor subir un archivo"}
+{"level":50,"time":1657646151643,"pid":60605,"hostname":"yemes-PC","msg":"Se produjo un error: Only .png, .jpg and .jpeg format allowed!"}
+{"level":50,"time":1657646151654,"pid":60605,"hostname":"yemes-PC","msg":"Por favor subir un archivo"}
+{"level":50,"time":1657646232300,"pid":61285,"hostname":"yemes-PC","msg":"Se produjo un error: Only .png, .jpg and .jpeg format allowed!"}
+{"level":50,"time":1657646232309,"pid":61285,"hostname":"yemes-PC","msg":"Por favor subir un archivo"}
+{"level":50,"time":1657646313417,"pid":61618,"hostname":"yemes-PC","msg":"Se produjo un error: Only .png, .jpg and .jpeg format allowed!"}
+{"level":50,"time":1657646313427,"pid":61618,"hostname":"yemes-PC","msg":"Por favor subir un archivo"}
+{"level":50,"time":1657650711235,"pid":72975,"hostname":"yemes-PC","msg":"Se produjo un error: Error [ERR_HTTP_HEADERS_SENT]: Cannot set headers after they are sent to the client"}
+{"level":50,"time":1657651299753,"pid":75151,"hostname":"yemes-PC","msg":"Se produjo un error: TypeError: Cannot read properties of undefined (reading 'filename')"}
+{"level":50,"time":1657651491424,"pid":75151,"hostname":"yemes-PC","msg":"Se produjo un error: TypeError: Cannot read properties of undefined (reading 'filename')"}
+{"level":50,"time":1657651536340,"pid":76191,"hostname":"yemes-PC","msg":"Se produjo un error: TypeError: Cannot read properties of undefined (reading 'filename')"}
+{"level":50,"time":1657651561371,"pid":76191,"hostname":"yemes-PC","msg":"Se produjo un error: TypeError: Cannot read properties of undefined (reading 'filename')"}
+{"level":50,"time":1657652255303,"pid":78046,"hostname":"yemes-PC","msg":"Se produjo un error: TypeError: Cannot read properties of undefined (reading 'filename')"}
+{"level":50,"time":1657652325660,"pid":78631,"hostname":"yemes-PC","msg":"Se produjo un error: TypeError: Cannot read properties of undefined (reading 'filename')"}
+{"level":50,"time":1657680758765,"pid":101025,"hostname":"yemes-PC","msg":"Se produjo un error: JsonWebTokenError: jwt must be provided"}
+{"level":50,"time":1657684605443,"pid":101025,"hostname":"yemes-PC","msg":"Se produjo un error: JsonWebTokenError: jwt must be provided"}
+{"level":50,"time":1657688472301,"pid":101025,"hostname":"yemes-PC","msg":"Se produjo un error: JsonWebTokenError: jwt must be provided"}
+{"level":50,"time":1657725958385,"pid":38848,"hostname":"yemes-PC","msg":"Se produjo un error: JsonWebTokenError: jwt must be provided"}
+{"level":50,"time":1657729640715,"pid":38848,"hostname":"yemes-PC","msg":"Se produjo un error: JsonWebTokenError: jwt must be provided"}
+{"level":50,"time":1657738070085,"pid":38848,"hostname":"yemes-PC","msg":"Se produjo un error: JsonWebTokenError: jwt must be provided"}

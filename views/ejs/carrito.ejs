@@ -15,6 +15,22 @@
 		width: 45px;
 		padding: 5px;
 	}
+
+	/* Chrome, Safari, Edge, Opera */
+	input::-webkit-outer-spin-button,
+	input::-webkit-inner-spin-button {
+		-webkit-appearance: none;
+		margin: 0;
+	}
+
+	/* Firefox */
+	input[type=number] {
+		-moz-appearance: textfield;
+	}
+	.imagenProducto {
+		height: 80px;
+		max-width: none;
+	}
 </style>
 
 <body>
@@ -30,24 +46,25 @@
 					</path>
 				</svg>
 			</a>
-			<button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+			<button class="navbar-toggler" type="button" data-bs-toggle="offcanvas"
 				data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02"
 				aria-expanded="false" aria-label="Toggle navigation">
 				<span class="navbar-toggler-icon"></span>
 			</button>
-			<div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-				<ul class="navbar-nav me-auto mb-2 mb-lg-0 align-items-center">
-					<li class="nav-item">
+			<div class="offcanvas offcanvas-start p-3 p-lg-0" style="width: 230px;"
+				id="navbarTogglerDemo02">
+				<ul class="navbar-nav me-auto mb-2 mb-lg-0 align-items-lg-center">
+					<li class="nav-item mb-3 mb-lg-0 mx-4 mx-lg-0">
 						<a class="nav-link" href="/productos">Productos</a>
 					</li>
-					<li class="nav-item">
+					<li class="nav-item mb-3 mb-lg-0 mx-4 mx-lg-0">
 						<a class="nav-link active" aria-current="page"
 							href="/carrito">Carrito</a>
 					</li>
-					<li class="nav-item">
+					<li class="nav-item mb-3 mb-lg-0 mx-4 mx-lg-0">
 						<a class="nav-link active" aria-current="page" href="/chat">Chat</a>
 					</li>
-					<li class="nav-item">
+					<li class="nav-item mb-3 mb-lg-0 mx-4 mx-lg-0">
 						<a class="nav-link" href="/logout">
 							<button type="button" class="btn btn-danger">Logout</button>
 						</a>
@@ -67,39 +84,80 @@
 					<thead>
 						<tr>
 							<th scope="col"></th>
-							<th scope="col">Name</th>
+							<!-- <th scope="col">Name</th> -->
 							<th scope="col">qty</th>
 							<th scope="col">Price</th>
 							<th scope="col"></th>
-							<th scope="col"></th>
+							<!-- <th scope="col"></th> -->
 						</tr>
 					</thead>
 					<tbody id="tablaProductos">
-
 						<% for (const prod of carrito) { %>
 						<tr>
 							<th scope="row" class="d-none">
 								<%=prod._id ? prod._id : prod.id %></th>
-							<td><img class="img-thumbnail" style="height: 80px;"
-									src="<%=prod.image %>" alt=""><input
+							<td class="align-middle clickable" onclick="window.location='/productos/<%=prod._id ? prod._id : prod.id %>'">
+								<div
+									class="d-flex flex-column align-items-center align-middle">
+									<div>
+										<img class="img-thumbnail imagenProducto"
+											style="height: 80px; max-width: none;"
+											src="<%=prod.image %>"
+											alt=""><input
+											class="form-input d-none"
+											type="text" name="image"
+											value="<%=prod.image %>"
+											readonly="true">
+									</div>
+									<div class="text-center">
+										<%=prod.name %><input
+											class="form-input d-none"
+											type="text" name="name"
+											value="<%=prod.name %>"
+											readonly="true">
+									</div>
+								</div>
+							</td>
+							<td class="align-middle"><%=prod.qty %><input
+									class="form-input d-none" type="number"
+									name="qty" value="1">
+								<!-- <div class="btn-group" role="group"
+									aria-label="Basic example">
+									<button type="button"
+										class="btn btn-primary">-</button>
+									<span><input class="h-100 p-0 m-0 text-center"
+											style="width: 30px;"
+											value="<%=prod.qty %>"
+											type="number" name="contador"
+											id=""></span>
+									<button type="button"
+										class="btn btn-primary">+</button>
+								</div> -->
+
+
+							</td>
+							<td class="align-middle"><%=prod.price %><input
 									class="form-input d-none" type="text"
-									name="image" value="<%=prod.image %>"
-									readonly="true"></td>
-							<td><%=prod.name %><input class="form-input d-none" type="text"
-									name="name" value="<%=prod.name %>"
-									readonly="true"></td>
-							<td><%=prod.qty %><input class="form-input d-none" type="number"
-									name="qty" value="1"></td>
-							<td><%=prod.price %><input class="form-input d-none" type="text"
 									name="price" value="<%=prod.price %>"
 									readonly="true"></td>
-							<td><a class="btn btn-outline-secondary my-3"
-									href="/productos/<%=prod._id ? prod._id : prod.id %>">Detalle</a>
-							</td>
-							<td><button class="btn btn-danger my-3" type="submit"
-									formaction="/carrito/<%=prod._id ? prod._id : prod.id %>">Remove</button>
+
+							<td class="align-middle"><button class="btn btn-danger my-3"
+									type="submit"
+									formaction="/carrito/<%=prod._id ? prod._id : prod.id %>">
+									<svg xmlns="http://www.w3.org/2000/svg"
+										width="16" height="16"
+										fill="currentColor"
+										class="bi bi-trash-fill"
+										viewBox="0 0 16 16">
+										<path
+											d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z" />
+									</svg>
+								</button>
+
+
 							</td>
 						</tr>
+
 						<% } %>
 					</tbody>
 				</table>
