@@ -23,10 +23,11 @@ class Server {
 	}
 	middlewares(){
 	    this.app.use(cors(CORS))
-	    this.app.use(express.json())
-	    this.app.use(express.urlencoded({extended: true}))
+	    this.app.use(express.json({limit: '50mb'}))
+	    this.app.use(express.urlencoded({extended: true, limit: '50mb'}))
 	    this.app.use(cookieParser())
 	    this.app.use(session(SESSION))
+	    this.app.use('/images', express.static('uploads'));
 	}
 	routes(){
 	    serverRoutes(this.app)

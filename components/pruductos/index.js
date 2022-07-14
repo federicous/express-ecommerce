@@ -10,5 +10,6 @@ module.exports = app => {
     prodRouter.post("/", Autenticacion.administrador, productoController.createElement);
     prodRouter.put("/:id", Autenticacion.administrador, productoController.updateElement);
     prodRouter.delete("/:id", Autenticacion.administrador, productoController.deleteElement);
+    prodRouter.delete("/", Autenticacion.administrador, productoController.deleteAllElement);
 }
 

@@ -1,7 +1,8 @@
 require('dotenv').config()
 let MongoStore = require("connect-mongo");
 
-const MONGO_ATLAS = process.env.MONGO_URL_ATLAS;
+// const MONGO_ATLAS = process.env.MONGO_URL_ATLAS;
+const MONGO_ATLAS = process.env.MONGO_URI;
 const MONGO_SECRET = process.env.MONGO_SECRET || "nkl3erkwehf89";
 const COOKIE_AGE = process.env.COOKIE_AGE || 1000 * 60 * 10;
 
@@ -9,7 +10,7 @@ let advancedOptions = {
 	useNewUrlParser: true,
 	useUnifiedTopology: true
 }
-
+console.log(MONGO_ATLAS);
 let sessionConfig = {
 	store: MongoStore.create({
 		mongoUrl: MONGO_ATLAS,
@@ -25,7 +26,7 @@ let sessionConfig = {
 
 const config = {
 	PORT: process.env.PORT || '8088',
-	MONGO_ATLAS: process.env.MONGO_URL_ATLAS,
+	MONGO_ATLAS: MONGO_ATLAS,
 	CORS: process.env.CORS || "*",
 	SESSION: sessionConfig,
 	DB: process.env.DB || "mongo",

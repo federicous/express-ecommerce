@@ -326,3 +326,12 @@
 {"level":50,"time":1657725958385,"pid":38848,"hostname":"yemes-PC","msg":"Se produjo un error: JsonWebTokenError: jwt must be provided"}
 {"level":50,"time":1657729640715,"pid":38848,"hostname":"yemes-PC","msg":"Se produjo un error: JsonWebTokenError: jwt must be provided"}
 {"level":50,"time":1657738070085,"pid":38848,"hostname":"yemes-PC","msg":"Se produjo un error: JsonWebTokenError: jwt must be provided"}
+{"level":50,"time":1657746052915,"pid":86424,"hostname":"yemes-PC","msg":"Se produjo un error: JsonWebTokenError: jwt must be provided"}
+{"level":50,"time":1657746069121,"pid":86424,"hostname":"yemes-PC","msg":"Se produjo un error: JsonWebTokenError: jwt must be provided"}
+{"level":50,"time":1657746188025,"pid":86424,"hostname":"yemes-PC","msg":"NO EXISTE EL USUARIO jorge@hotmail.com"}
+{"level":50,"time":1657763154215,"pid":10052,"hostname":"yemes-PC","msg":"Se produjo un error: JsonWebTokenError: jwt must be provided"}
+{"level":50,"time":1657769721656,"pid":10488,"hostname":"yemes-PC","msg":"Se produjo un error: JsonWebTokenError: jwt must be provided"}
+{"level":50,"time":1657769729611,"pid":10488,"hostname":"yemes-PC","msg":"NO EXISTE EL USUARIO jorge@gmail.com"}
+{"level":50,"time":1657769742768,"pid":10488,"hostname":"yemes-PC","msg":"NO EXISTE EL USUARIO jorge@gmail.com"}
+{"level":50,"time":1657769781769,"pid":10488,"hostname":"yemes-PC","msg":"Se produjo un error: TypeError: Cannot read properties of undefined (reading 'filename')"}
+{"level":50,"time":1657769837766,"pid":10488,"hostname":"yemes-PC","msg":"Tuvimos este error: Error: Greeting never received"}

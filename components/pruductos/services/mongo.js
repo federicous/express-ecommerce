@@ -7,10 +7,26 @@ class MongoDB {
 
 	async save(producto) {
 		try {
-			producto.timestamp=Date.now();
-			let agregarProductoModel= new ProductoModel(producto);
-			let agregarProducto = await agregarProductoModel.save();
-			pino.info(agregarProducto);		
+			if (Array.isArray(producto)) {
+				producto.forEach(async element => {
+					element.timestamp=Date.now();
+					let agregarProductoModel= new ProductoModel(element);
+					let agregarProducto = await agregarProductoModel.save();
+					pino.info(agregarProducto);
+				});
+				
+			}else {
+				producto.timestamp=Date.now();
+				let agregarProductoModel= new ProductoModel(producto);
+				let agregarProducto = await agregarProductoModel.save();
+				pino.info(agregarProducto);
+			}			
+
+
+			// producto.timestamp=Date.now();
+			// let agregarProductoModel= new ProductoModel(producto);
+			// let agregarProducto = await agregarProductoModel.save();
+			// pino.info(agregarProducto);		
 			
 		} catch (error) {
 			pino.error(`Se produjo un error: ${error}`)
