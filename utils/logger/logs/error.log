@@ -335,3 +335,8 @@
 {"level":50,"time":1657769742768,"pid":10488,"hostname":"yemes-PC","msg":"NO EXISTE EL USUARIO jorge@gmail.com"}
 {"level":50,"time":1657769781769,"pid":10488,"hostname":"yemes-PC","msg":"Se produjo un error: TypeError: Cannot read properties of undefined (reading 'filename')"}
 {"level":50,"time":1657769837766,"pid":10488,"hostname":"yemes-PC","msg":"Tuvimos este error: Error: Greeting never received"}
+{"level":50,"time":1657803310872,"pid":21283,"hostname":"yemes-PC","msg":"Se produjo un error: JsonWebTokenError: jwt must be provided"}
+{"level":50,"time":1657803329586,"pid":21283,"hostname":"yemes-PC","msg":"Se produjo un error: MongooseError: Operation `usuarios.findOne()` buffering timed out after 10000ms"}
+{"level":50,"time":1657803329586,"pid":21283,"hostname":"yemes-PC","msg":"Se produjo un error: TypeError: Cannot read properties of undefined (reading 'message')"}
+{"level":50,"time":1657807443440,"pid":24232,"hostname":"yemes-PC","msg":"Se produjo un error: JsonWebTokenError: jwt must be provided"}
+{"level":50,"time":1657816749476,"pid":24232,"hostname":"yemes-PC","msg":"Se produjo un error: JsonWebTokenError: jwt must be provided"}
