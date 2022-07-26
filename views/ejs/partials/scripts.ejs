@@ -1,0 +1,32 @@
+<script>
+	function cerrar() {
+		document.querySelector('#exampleModal').remove()
+		document.querySelector('.modal-backdrop').remove()
+	}
+	let formProducts = document.getElementsByClassName('productos');
+	// formProducts.addEventListener("submit", (event) => {
+	// 	event.preventDefault();
+	// });
+	let botonSumar = document.getElementById('botonSumar');
+	let botonRestar = document.getElementById('botonRestar');
+</script>
+<script>
+	function restar(identificador) {
+		let minus = document.querySelector(`#minus${identificador}`);
+		let $input = minus.parentElement.querySelector('input');
+		let count = parseInt($input.value) - 1;
+		count = count < 1 ? 1 : count;
+		$input.value = count;
+		// $input.change();
+		return false;
+	}
+
+	function sumar(identificador, stock) {
+		let plus = document.querySelector(`#plus${identificador}`);
+		let $input = plus.parentElement.querySelector('input');
+		let count = parseInt($input.value) + 1;
+		$input.value = count > stock ? $input.value : count;
+		// $input.change();
+		return false;
+	}
+</script>

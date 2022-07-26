@@ -10,211 +10,24 @@
 		crossorigin="anonymous">
 	<title>productos</title>
 </head>
-<style>
-	.mainIcon {
-		width: 45px;
-		padding: 5px;
-	}
 
-	/* Chrome, Safari, Edge, Opera */
-	input::-webkit-outer-spin-button,
-	input::-webkit-inner-spin-button {
-		-webkit-appearance: none;
-		margin: 0;
-	}
-
-	/* Firefox */
-	input[type=number] {
-		-moz-appearance: textfield;
-	}
-</style>
+<%- include('./partials/style') %>
 
 <body>
-	<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-		<div class="container-fluid">
-			<a class="navbar-brand" href="#">
-				<svg class="mainIcon Iconflex-shrink-0 fill-current" xmlns="http://www.w3.org/2000/svg"
-					fill="currentColor" viewBox="0 0 512 512"
-					style="--darkreader-inline-fill: currentColor;" data-darkreader-inline-fill="">
-					<title>Cube</title>
-					<path
-						d="M440.9 136.3a4 4 0 000-6.91L288.16 40.65a64.14 64.14 0 00-64.33 0L71.12 129.39a4 4 0 000 6.91L254 243.88a4 4 0 004.06 0zM54 163.51a4 4 0 00-6 3.49v173.89a48 48 0 0023.84 41.39L234 479.51a4 4 0 006-3.46V274.3a4 4 0 00-2-3.46zM272 275v201a4 4 0 006 3.46l162.15-97.23A48 48 0 00464 340.89V167a4 4 0 00-6-3.45l-184 108a4 4 0 00-2 3.45z">
-					</path>
-				</svg>
-			</a>
-			<button class="navbar-toggler" type="button" data-bs-toggle="offcanvas"
-				data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02"
-				aria-expanded="false" aria-label="Toggle navigation">
-				<span class="navbar-toggler-icon"></span>
-			</button>
-			<div class="offcanvas offcanvas-start p-3 p-lg-0" style="width: 230px;"
-				id="navbarTogglerDemo02">
-				<ul class="navbar-nav me-auto mb-2 mb-lg-0 align-items-lg-center">
-					<li class="nav-item mb-3 mb-lg-0 mx-4 mx-lg-0">
-						<a class="nav-link" href="/productos">Productos</a>
-					</li>
-					<li class="nav-item mb-3 mb-lg-0 mx-4 mx-lg-0">
-						<a class="nav-link active" aria-current="page"
-							href="/carrito">Carrito</a>
-					</li>
-					<li class="nav-item mb-3 mb-lg-0 mx-4 mx-lg-0">
-						<a class="nav-link active" aria-current="page" href="/chat">Chat</a>
-					</li>
-					<li class="nav-item mb-3 mb-lg-0 mx-4 mx-lg-0">
-						<a class="nav-link" href="/logout">
-							<button type="button" class="btn btn-danger">Logout</button>
-						</a>
-					</li>
-				</ul>
-			</div>
-		</div>
-	</nav>
+	<%- include('./partials/header') %>
+	
 	<div class="container" style="margin-top: 100px;">
 		<span>
+			<%- include('./partials/productos', productos) %>
 
-			<% if (productos.length) { %>
-			<h1 class="m-3">Lista de Productos</h1>
-
-			<div class="row row-cols-1 row-cols-md-3 row-cols-lg-4 g-4">
-				<% for (const prod of productos) { %>
-				<div class="col">
-					<div class="card">
-						<img src="/images/<%=prod.image %>" alt="Image not found" onerror="this.onerror=null;this.src='/images/sin_imagen.jpg';" class="card-img-top"
-							alt="<%=prod.name %>">
-						<div
-							class="card-body d-flex justify-content-center flex-column align-items-center">
-							<h5 class="card-title"><%=prod.name %></h5>
-							<p class="card-text"><%=prod.description %></p>
-							<p class="card-text"><small class="text-muted">Stock:
-									<%=prod.stock %></small></p>
-							<p class="card-text"><b>Price: $ <%=prod.price %></b></p>
-							<!-- <a href="/api/cart/prduct/<%=prod._id ? prod._id : prod.id %>" class="btn btn-primary">Comprar</a> -->
-							<form class="productos d-flex w-100 flex-column"
-								action="/carrito" method="post">
-
-								<input class="form-input d-none" type="text" name="id"
-									value="<%=prod._id ? prod._id : prod.id %>">
-								<input class="form-input d-none" type="text"
-									name="image" value="<%=prod.image %>"
-									readonly="true">
-								<input class="form-input d-none" type="text" name="name"
-									value="<%=prod.name %>" readonly="true">
-								<a class="btn btn-outline-secondary d-block"
-									href="/productos/<%=prod._id ? prod._id : prod.id %>">Detalle</a>
-								<input class="form-input d-none" type="text"
-									name="price" value="<%=prod.price %>"
-									readonly="true">
-								<div class="btn-group my-3">
-									<!-- <input class="from-control text-center me-3 w-100 d-flex flex-grow-1 justify-content-center"
-										type="number" name="qty" value="1"
-										min="1" max="<%=prod.stock %>"> -->
-
-									<div class="btn-group" role="group"
-										aria-label="Basic example">
-										<button onclick='restar("<%=prod._id ? prod._id : prod.id %>");'
-											type="button"
-											class="btn btn-primary minus<%=prod._id ? prod._id : prod.id %>"
-											id="minus<%=prod._id ? prod._id : prod.id %>">-</button>
-										<span><input class="h-100 p-0 m-0 text-center"
-												style="width: 55px;"
-												value="1" min="1"
-												max="<%=prod.stock %>"
-												type="number" name="qty"
-												id=""></span>
-										<button onclick='sumar("<%=prod._id ? prod._id : prod.id %>","<%=prod.stock %>");'
-											type="button"
-											id="plus<%=prod._id ? prod._id : prod.id %>"
-											class="btn btn-primary me-3 plus<%=prod._id ? prod._id : prod.id %>">+</button>
-
-
-									</div>
-									<button class="form-input btn btn-primary"
-										type="submit" value="Add"><svg
-											xmlns="http://www.w3.org/2000/svg"
-											width="18" height="18"
-											fill="currentColor"
-											class="bi bi-cart-plus-fill"
-											viewBox="0 0 16 16">
-											<path
-												d="M.5 1a.5.5 0 0 0 0 1h1.11l.401 1.607 1.498 7.985A.5.5 0 0 0 4 12h1a2 2 0 1 0 0 4 2 2 0 0 0 0-4h7a2 2 0 1 0 0 4 2 2 0 0 0 0-4h1a.5.5 0 0 0 .491-.408l1.5-8A.5.5 0 0 0 14.5 3H2.89l-.405-1.621A.5.5 0 0 0 2 1H.5zM6 14a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm7 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0zM9 5.5V7h1.5a.5.5 0 0 1 0 1H9v1.5a.5.5 0 0 1-1 0V8H6.5a.5.5 0 0 1 0-1H8V5.5a.5.5 0 0 1 1 0z" />
-										</svg></button>
-								</div>
-							</form>
-						</div>
-					</div>
-				</div>
-				<% } %>
-			</div>
-
-			<% if (message) { %>
-			<div class="modal show fade" style="display: block;" id="exampleModal" tabindex="-1"
-				aria-labelledby="exampleModalLabel" aria-modal="true" role="dialog">
-				<div class="modal-dialog">
-					<div class="modal-content">
-						<div class="modal-header">
-							<h5 class="modal-title" id="exampleModalLabel">Resultado</h5>
-							<button onclick="cerrar();" type="button" class="btn-close"
-								data-bs-dismiss="modal" aria-label="Close"></button>
-						</div>
-						<div class="modal-body">
-							<p><%= message %></p>
-						</div>
-						<div class="modal-footer">
-							<button onclick="cerrar();" type="button"
-								class="btn btn-primary"
-								data-bs-dismiss="modal">Close</button>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="modal-backdrop fade show"></div>
-			<% } %>
-			<% } else { %>
-			<div id="verProductos">
-				<h4>No hay productos</h4>
-			</div>
-			<% } %>
+			<%- include('./partials/mensajes') %>
 
 		</span>
 	</div>
-	<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"
-		integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB"
-		crossorigin="anonymous"></script>
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"
-		integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13"
-		crossorigin="anonymous"></script>
-	<script>
-		function cerrar() {
-			document.querySelector('#exampleModal').remove()
-			document.querySelector('.modal-backdrop').remove()
-		}
-		let formProducts = document.getElementsByClassName('productos');
-		// formProducts.addEventListener("submit", (event) => {
-		// 	event.preventDefault();
-		// });
-		let botonSumar = document.getElementById('botonSumar');
-		let botonRestar = document.getElementById('botonRestar');
-	</script>
-	<script>
-		function restar(identificador) {
-			let minus = document.querySelector(`#minus${identificador}`);
-			let $input = minus.parentElement.querySelector('input');
-			let count = parseInt($input.value) - 1;
-			count = count < 1 ? 1 : count;
-			$input.value = count;
-			// $input.change();
-			return false;
-		}
 
-		function sumar(identificador, stock) {
-			let plus = document.querySelector(`#plus${identificador}`);
-			let $input = plus.parentElement.querySelector('input');
-			let count = parseInt($input.value) + 1;
-			$input.value = count > stock ? $input.value : count;
-			// $input.change();
-			return false;
-		}
-	</script>
+	<%- include('./partials/bootstrap') %>
+	<%- include('./partials/scripts') %>
+
 </body>
 
 </html>

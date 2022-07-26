@@ -24,7 +24,8 @@ class Element {
             let payload = await JWT.decode(token);
             let carritoId = await elementService.save(payload);
             let subElement = req.body;
-            let response = await elementService.saveSubElement(carritoId,subElement);
+            // let response = await elementService.saveSubElement(carritoId,subElement);
+            let response = await elementService.saveSubElementReact(carritoId,subElement);
             req.session.agregado = true;
             res.status(200).redirect('/productos')
             
@@ -45,7 +46,9 @@ class Element {
                 message = 'Producto agregado al carrito'
             }
             req.session.agregado = false;
-            res.status(200).render('verProductos',{message: message,productos, carritoId});	
+            // res.status(200).render('verProductos',{message: message,productos, carritoId});	
+            res.status(200).render('categorias',{message: message,productos, carritoId});	
+
 
         } catch (error) {
             pino.error(`Se produjo un error: ${error}`);

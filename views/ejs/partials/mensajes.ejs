@@ -1,0 +1,22 @@
+<% if (message) { %>
+<div class="modal show fade" style="display: block;" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+	aria-modal="true" role="dialog">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="exampleModalLabel">Resultado</h5>
+				<button onclick="cerrar();" type="button" class="btn-close" data-bs-dismiss="modal"
+					aria-label="Close"></button>
+			</div>
+			<div class="modal-body">
+				<p><%= message %></p>
+			</div>
+			<div class="modal-footer">
+				<button onclick="cerrar();" type="button" class="btn btn-primary"
+					data-bs-dismiss="modal">Close</button>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="modal-backdrop fade show"></div>
+<% } %>

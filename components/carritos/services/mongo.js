@@ -46,6 +46,30 @@ class MongoDB {
 	}
 
 
+	async saveSubElementReact(carritoId,subElement) {
+		try {
+			// Si es array sobreescribo el carrito
+			if (Array.isArray(subElement)) {
+				let carritoActualizado = await ElementoModel.findById(carritoId);
+				carritoActualizado.productList=subElement;
+				await ElementoModel.findByIdAndUpdate(carritoId, carritoActualizado);					
+				return(carritoActualizado)
+			} else {
+				let carritoActualizado = await ElementoModel.findById(carritoId);
+				let nuevaProductList = carritoActualizado.productList.filter((item) => item.id !== `${subElement.id}`);
+				carritoActualizado.productList=nuevaProductList;
+				carritoActualizado.productList.push(subElement)
+				await ElementoModel.findByIdAndUpdate(carritoId, carritoActualizado);
+				return(carritoActualizado)
+			}
+			
+		} catch (error) {
+			pino.error(`Se produjo un error: ${error}`)
+			
+		}
+	}
+
+
 	async modify(elemento,id) {
 		try {
 			let modificar = await ElementoModel.findByIdAndUpdate(id, elemento);

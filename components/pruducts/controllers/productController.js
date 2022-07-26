@@ -1,47 +1,20 @@
 const elementService = require('../services');
-const carritoService = require('../../carritos/services');
-const productoService = require('../../pruductos/services');
 const pino = require('../../../utils/logger/pino');
+const carritoService = require('../../carritos/services');
 const JWT = require("../../../utils/jwt/jwt");
-const Nodemailer = require('../../../utils/nodemailer')
 
 class Element {
 
-
     async createElement(req, res, next){
         try {
-            const token = req.cookies.token;
-            let payload = await JWT.decode(token);
-            let carritoId = await carritoService.save(payload);
-            let carrito = await carritoService.getSubElementsById(carritoId);
-            let ordenId = await elementService.save(payload,carrito);
-            let productos = await productoService.getAll();
-            let message = `Orden generada, ID: ${ordenId}`;
-            await Nodemailer.orden(payload,carrito);
-            let borrarCarrito = await carritoService.deleteById(carritoId);
-            res.status(200).render('verProductos',{message: message,productos, carritoId});	
+            let element = req.body;
+            let response = await elementService.save(element);
+            res.status(200).json(response);
         } catch (error) {
             pino.error(`Se produjo un error: ${error}`);
             res.status(400).render('error');
         }
     }
-
-    async createElementReact(req, res, next){
-        try {
-            const token = req.cookies.token;
-            let payload = await JWT.decode(token);
-            let carrito = req.body
-            let ordenId = await elementService.save(payload,carrito);
-            let productos = await productoService.getAll();
-            let message = `Orden generada, ID: ${ordenId}`;
-            await Nodemailer.orden(payload,carrito);
-            let borrarCarrito = await carritoService.deleteById(carritoId);
-            res.status(200).render('verProductos',{message: message,productos, carritoId});	
-        } catch (error) {
-            pino.error(`Se produjo un error: ${error}`);
-            res.status(400).render('error');
-        }
-    }  
 
     async getElement(req, res, next){
         try {
@@ -58,6 +31,7 @@ class Element {
         try {
             let response = await elementService.getAll();
             res.status(200).json(response);
+
         } catch (error) {
             pino.error(`Se produjo un error: ${error}`);
             res.status(400).render('error');
@@ -66,7 +40,7 @@ class Element {
 
     async updateElement(req, res, next){
         try {
-            let { element } = req.body;
+            let element = req.body;
             let id = req.params.id
             let response = await elementService.modify(id, element);
             res.status(200).json({

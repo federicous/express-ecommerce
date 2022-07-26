@@ -104,7 +104,8 @@ class Element {
             let payload = await JWT.decode(token)
             let carritoId = await carritoService.save(payload);
             let productos = await productService.getAll();
-            res.status(200).render('verProductos',{message: '',productos, carritoId});	
+            // res.status(200).render('verProductos',{message: '',productos, carritoId});	
+            res.status(200).render('categorias',{message: '',productos, carritoId});	
         } catch (error) {
             pino.error(`Se produjo un error: ${error}`)
             res.status(400).render('error');

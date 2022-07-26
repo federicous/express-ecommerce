@@ -340,3 +340,76 @@
 {"level":50,"time":1657803329586,"pid":21283,"hostname":"yemes-PC","msg":"Se produjo un error: TypeError: Cannot read properties of undefined (reading 'message')"}
 {"level":50,"time":1657807443440,"pid":24232,"hostname":"yemes-PC","msg":"Se produjo un error: JsonWebTokenError: jwt must be provided"}
 {"level":50,"time":1657816749476,"pid":24232,"hostname":"yemes-PC","msg":"Se produjo un error: JsonWebTokenError: jwt must be provided"}
+{"level":50,"time":1657824161290,"pid":75771,"hostname":"yemes-PC","msg":"Se produjo un error: JsonWebTokenError: jwt must be provided"}
+{"level":50,"time":1657828704677,"pid":85396,"hostname":"yemes-PC","msg":"Se produjo un error: JsonWebTokenError: jwt must be provided"}
+{"level":50,"time":1657828757901,"pid":85396,"hostname":"yemes-PC","msg":"Se produjo un error: CastError: Cast to ObjectId failed for value \"sin_imagen.jpg\" (type string) at path \"_id\" for model \"productos\""}
+{"level":50,"time":1657828757901,"pid":85396,"hostname":"yemes-PC","msg":"Se produjo un error: Error: CastError: Cast to ObjectId failed for value \"sin_imagen.jpg\" (type string) at path \"_id\" for model \"productos\""}
+{"level":50,"time":1658195385496,"pid":8396,"hostname":"yemes-PC","msg":"NO EXISTE EL USUARIO "}
+{"level":50,"time":1658200972452,"pid":22316,"hostname":"yemes-PC","msg":"Se produjo un error: Error [ERR_HTTP_HEADERS_SENT]: Cannot set headers after they are sent to the client"}
+{"level":50,"time":1658201065101,"pid":22316,"hostname":"yemes-PC","msg":"Se produjo un error: Error [ERR_HTTP_HEADERS_SENT]: Cannot set headers after they are sent to the client"}
+{"level":50,"time":1658260447385,"pid":80453,"hostname":"yemes-PC","msg":"Se produjo un error: ReferenceError: datos is not defined"}
+{"level":50,"time":1658260894993,"pid":82295,"hostname":"yemes-PC","msg":"Se produjo un error: ReferenceError: uniq is not defined"}
+{"level":50,"time":1658260928209,"pid":82612,"hostname":"yemes-PC","msg":"Se produjo un error: ReferenceError: uniq is not defined"}
+{"level":50,"time":1658260930794,"pid":82612,"hostname":"yemes-PC","msg":"Se produjo un error: ReferenceError: uniq is not defined"}
+{"level":50,"time":1658261708008,"pid":88169,"hostname":"yemes-PC","msg":"Se produjo un error: JsonWebTokenError: jwt must be provided"}
+{"level":50,"time":1658281560925,"pid":5296,"hostname":"yemes-PC","msg":"Se produjo un error: JsonWebTokenError: jwt must be provided"}
+{"level":50,"time":1658282006897,"pid":9085,"hostname":"yemes-PC","msg":"Se produjo un error: JsonWebTokenError: jwt must be provided"}
+{"level":50,"time":1658282012978,"pid":9085,"hostname":"yemes-PC","msg":"Se produjo un error: JsonWebTokenError: jwt must be provided"}
+{"level":50,"time":1658282014490,"pid":9085,"hostname":"yemes-PC","msg":"Se produjo un error: JsonWebTokenError: jwt must be provided"}
+{"level":50,"time":1658282016439,"pid":9085,"hostname":"yemes-PC","msg":"Se produjo un error: JsonWebTokenError: jwt must be provided"}
+{"level":50,"time":1658282805464,"pid":9085,"hostname":"yemes-PC","msg":"NO EXISTE EL USUARIO undefined"}
+{"level":50,"time":1658282805472,"pid":9085,"hostname":"yemes-PC","msg":"NO EXISTE EL USUARIO undefined"}
+{"level":50,"time":1658282806824,"pid":9085,"hostname":"yemes-PC","msg":"NO EXISTE EL USUARIO undefined"}
+{"level":50,"time":1658282806827,"pid":9085,"hostname":"yemes-PC","msg":"NO EXISTE EL USUARIO undefined"}
+{"level":50,"time":1658283814044,"pid":13494,"hostname":"yemes-PC","msg":"Se produjo un error: JsonWebTokenError: jwt must be provided"}
+{"level":50,"time":1658283828134,"pid":13494,"hostname":"yemes-PC","msg":"Se produjo un error: JsonWebTokenError: jwt must be provided"}
+{"level":50,"time":1658284061323,"pid":13494,"hostname":"yemes-PC","msg":"Se produjo un error: JsonWebTokenError: jwt must be provided"}
+{"level":50,"time":1658287834354,"pid":13494,"hostname":"yemes-PC","msg":"Se produjo un error: JsonWebTokenError: jwt must be provided"}
+{"level":50,"time":1658289083632,"pid":21045,"hostname":"yemes-PC","msg":"Se produjo un error: CastError: Cast to ObjectId failed for value \"undefined\" (type string) at path \"_id\" for model \"productos\""}
+{"level":50,"time":1658289083632,"pid":21045,"hostname":"yemes-PC","msg":"Se produjo un error: Error: CastError: Cast to ObjectId failed for value \"undefined\" (type string) at path \"_id\" for model \"productos\""}
+{"level":50,"time":1658289169038,"pid":21045,"hostname":"yemes-PC","msg":"Se produjo un error: CastError: Cast to ObjectId failed for value \"undefined\" (type string) at path \"_id\" for model \"productos\""}
+{"level":50,"time":1658289169038,"pid":21045,"hostname":"yemes-PC","msg":"Se produjo un error: Error: CastError: Cast to ObjectId failed for value \"undefined\" (type string) at path \"_id\" for model \"productos\""}
+{"level":50,"time":1658289175430,"pid":21045,"hostname":"yemes-PC","msg":"Se produjo un error: CastError: Cast to ObjectId failed for value \"undefined\" (type string) at path \"_id\" for model \"productos\""}
+{"level":50,"time":1658289175430,"pid":21045,"hostname":"yemes-PC","msg":"Se produjo un error: Error: CastError: Cast to ObjectId failed for value \"undefined\" (type string) at path \"_id\" for model \"productos\""}
+{"level":50,"time":1658289301955,"pid":21045,"hostname":"yemes-PC","msg":"Se produjo un error: CastError: Cast to ObjectId failed for value \"undefined\" (type string) at path \"_id\" for model \"productos\""}
+{"level":50,"time":1658289301955,"pid":21045,"hostname":"yemes-PC","msg":"Se produjo un error: Error: CastError: Cast to ObjectId failed for value \"undefined\" (type string) at path \"_id\" for model \"productos\""}
+{"level":50,"time":1658289305691,"pid":21045,"hostname":"yemes-PC","msg":"Se produjo un error: CastError: Cast to ObjectId failed for value \"undefined\" (type string) at path \"_id\" for model \"productos\""}
+{"level":50,"time":1658289305691,"pid":21045,"hostname":"yemes-PC","msg":"Se produjo un error: Error: CastError: Cast to ObjectId failed for value \"undefined\" (type string) at path \"_id\" for model \"productos\""}
+{"level":50,"time":1658289313590,"pid":21045,"hostname":"yemes-PC","msg":"Se produjo un error: CastError: Cast to ObjectId failed for value \"undefined\" (type string) at path \"_id\" for model \"productos\""}
+{"level":50,"time":1658289313590,"pid":21045,"hostname":"yemes-PC","msg":"Se produjo un error: Error: CastError: Cast to ObjectId failed for value \"undefined\" (type string) at path \"_id\" for model \"productos\""}
+{"level":50,"time":1658289323726,"pid":21045,"hostname":"yemes-PC","msg":"Se produjo un error: CastError: Cast to ObjectId failed for value \"undefined\" (type string) at path \"_id\" for model \"productos\""}
+{"level":50,"time":1658289323726,"pid":21045,"hostname":"yemes-PC","msg":"Se produjo un error: Error: CastError: Cast to ObjectId failed for value \"undefined\" (type string) at path \"_id\" for model \"productos\""}
+{"level":50,"time":1658290400503,"pid":21045,"hostname":"yemes-PC","msg":"Se produjo un error: CastError: Cast to ObjectId failed for value \"undefined\" (type string) at path \"_id\" for model \"productos\""}
+{"level":50,"time":1658290400503,"pid":21045,"hostname":"yemes-PC","msg":"Se produjo un error: Error: CastError: Cast to ObjectId failed for value \"undefined\" (type string) at path \"_id\" for model \"productos\""}
+{"level":50,"time":1658291505844,"pid":21045,"hostname":"yemes-PC","msg":"Se produjo un error: JsonWebTokenError: jwt must be provided"}
+{"level":50,"time":1658291514008,"pid":21045,"hostname":"yemes-PC","msg":"Se produjo un error: JsonWebTokenError: jwt must be provided"}
+{"level":50,"time":1658291532943,"pid":21045,"hostname":"yemes-PC","msg":"Se produjo un error: JsonWebTokenError: jwt must be provided"}
+{"level":50,"time":1658291535713,"pid":21045,"hostname":"yemes-PC","msg":"Se produjo un error: JsonWebTokenError: jwt must be provided"}
+{"level":50,"time":1658329714432,"pid":34845,"hostname":"yemes-PC","msg":"Se produjo un error: JsonWebTokenError: jwt must be provided"}
+{"level":50,"time":1658331679014,"pid":34845,"hostname":"yemes-PC","msg":"Se produjo un error: CastError: Cast to ObjectId failed for value \"undefined\" (type string) at path \"_id\" for model \"productos\""}
+{"level":50,"time":1658331679015,"pid":34845,"hostname":"yemes-PC","msg":"Se produjo un error: Error: CastError: Cast to ObjectId failed for value \"undefined\" (type string) at path \"_id\" for model \"productos\""}
+{"level":50,"time":1658332494997,"pid":34845,"hostname":"yemes-PC","msg":"Se produjo un error: CastError: Cast to ObjectId failed for value \"undefined\" (type string) at path \"_id\" for model \"productos\""}
+{"level":50,"time":1658332494997,"pid":34845,"hostname":"yemes-PC","msg":"Se produjo un error: Error: CastError: Cast to ObjectId failed for value \"undefined\" (type string) at path \"_id\" for model \"productos\""}
+{"level":50,"time":1658337003478,"pid":34845,"hostname":"yemes-PC","msg":"Se produjo un error: JsonWebTokenError: jwt must be provided"}
+{"level":50,"time":1658341069024,"pid":34845,"hostname":"yemes-PC","msg":"Se produjo un error: JsonWebTokenError: jwt must be provided"}
+{"level":50,"time":1658341076107,"pid":34845,"hostname":"yemes-PC","msg":"Se produjo un error: JsonWebTokenError: jwt must be provided"}
+{"level":50,"time":1658341088567,"pid":34845,"hostname":"yemes-PC","msg":"Se produjo un error: JsonWebTokenError: jwt must be provided"}
+{"level":50,"time":1658344971707,"pid":34845,"hostname":"yemes-PC","msg":"Se produjo un error: JsonWebTokenError: jwt must be provided"}
+{"level":50,"time":1658344992624,"pid":34845,"hostname":"yemes-PC","msg":"Se produjo un error: JsonWebTokenError: jwt must be provided"}
+{"level":50,"time":1658345183842,"pid":34845,"hostname":"yemes-PC","msg":"Se produjo un error: JsonWebTokenError: jwt must be provided"}
+{"level":50,"time":1658345270761,"pid":34845,"hostname":"yemes-PC","msg":"Se produjo un error: JsonWebTokenError: jwt must be provided"}
+{"level":50,"time":1658354154430,"pid":34845,"hostname":"yemes-PC","msg":"Se produjo un error: JsonWebTokenError: jwt must be provided"}
+{"level":50,"time":1658414670370,"pid":31431,"hostname":"yemes-PC","msg":"Se produjo un error: JsonWebTokenError: jwt must be provided"}
+{"level":50,"time":1658418459567,"pid":31431,"hostname":"yemes-PC","msg":"Se produjo un error: CastError: Cast to ObjectId failed for value \"CEhStJl7T5zonvxt7yIn\" (type string) at path \"_id\" for model \"productos\""}
+{"level":50,"time":1658418459567,"pid":31431,"hostname":"yemes-PC","msg":"Se produjo un error: Error: CastError: Cast to ObjectId failed for value \"CEhStJl7T5zonvxt7yIn\" (type string) at path \"_id\" for model \"productos\""}
+{"level":50,"time":1658426279635,"pid":31431,"hostname":"yemes-PC","msg":"CONTRASEÑA INCORRECTA: edfjdgkl PARA USUARIO: jorge@gmail.com"}
+{"level":50,"time":1658430498848,"pid":31431,"hostname":"yemes-PC","msg":"Se produjo un error: CastError: Cast to ObjectId failed for value \"ZVl2fskHIv5tOJgPsTnf\" (type string) at path \"_id\" for model \"productos\""}
+{"level":50,"time":1658430498848,"pid":31431,"hostname":"yemes-PC","msg":"Se produjo un error: Error: CastError: Cast to ObjectId failed for value \"ZVl2fskHIv5tOJgPsTnf\" (type string) at path \"_id\" for model \"productos\""}
+{"level":50,"time":1658865170929,"pid":97438,"hostname":"yemes-PC","msg":"NO EXISTE EL USUARIO undefined"}
+{"level":50,"time":1658865262729,"pid":97438,"hostname":"yemes-PC","msg":"Se produjo un error: JsonWebTokenError: jwt must be provided"}
+{"level":50,"time":1658865282189,"pid":97438,"hostname":"yemes-PC","msg":"Se produjo un error: JsonWebTokenError: jwt must be provided"}
+{"level":50,"time":1658865291893,"pid":97438,"hostname":"yemes-PC","msg":"NO EXISTE EL USUARIO undefined"}
+{"level":50,"time":1658865324793,"pid":97438,"hostname":"yemes-PC","msg":"Se produjo un error: JsonWebTokenError: jwt must be provided"}
+{"level":50,"time":1658865356168,"pid":97438,"hostname":"yemes-PC","msg":"Se produjo un error: JsonWebTokenError: jwt must be provided"}
+{"level":50,"time":1658865471906,"pid":97438,"hostname":"yemes-PC","msg":"NO EXISTE EL USUARIO undefined"}
+{"level":50,"time":1658865501350,"pid":97438,"hostname":"yemes-PC","msg":"Se produjo un error: JsonWebTokenError: jwt must be provided"}

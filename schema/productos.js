@@ -6,6 +6,11 @@ let {Schema, model} = mongoose;
 const Joi = require("joi");
 let id = Joi.string().min(3);
 let name = Joi.string().min(3);
+let code = Joi.string().min(3);
+let label = Joi.string().min(3);
+let origin = Joi.string().min(3);
+let iva = Joi.string().min(3);
+
 let price = Joi.number().min(3);
 let stock = Joi.number().min(3);
 let description = Joi.string().min(3);
@@ -17,6 +22,10 @@ let uuid = Joi.string().min(3);
 const productoSchema = {
 	id: id.required(),
     	name: name.required(),
+    	code: code.required(),
+    	label: label.required(),
+    	origin: origin.required(),
+    	iva: iva.required(),
     	price: price.required(),
     	stock: stock.required(),
     	description: description.required(),

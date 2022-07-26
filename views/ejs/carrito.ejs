@@ -27,6 +27,7 @@
 	input[type=number] {
 		-moz-appearance: textfield;
 	}
+
 	.imagenProducto {
 		height: 80px;
 		max-width: none;
@@ -96,20 +97,24 @@
 						<tr>
 							<th scope="row" class="d-none">
 								<%=prod._id ? prod._id : prod.id %></th>
-							<td class="align-middle clickable" onclick="window.location='/productos/<%=prod._id ? prod._id : prod.id %>'">
+							<td class="align-middle clickable"
+								onclick="window.location='/productos/<%=prod._id ? prod._id : prod.id %>'">
 								<div
 									class="d-flex flex-column align-items-center align-middle">
 									<div>
-										<img class="img-thumbnail imagenProducto"
+										<img src="/images/<%=prod.image %>"
+											alt="Image not found"
+											onerror="this.onerror=null;this.src='/images/sin_imagen.jpg';"
+											class="card-img-top"
 											style="height: 80px; max-width: none;"
-											src="<%=prod.image %>"
-											alt=""><input
-											class="form-input d-none"
+											alt="<%=prod.name %>">
+										<input class="form-input d-none"
 											type="text" name="image"
 											value="<%=prod.image %>"
 											readonly="true">
 									</div>
-									<div class="text-center">
+									<div class="text-center mt-1"
+										style="min-width: 140px;max-width: 200px">
 										<%=prod.name %><input
 											class="form-input d-none"
 											type="text" name="name"
@@ -136,7 +141,7 @@
 
 
 							</td>
-							<td class="align-middle"><%=prod.price %><input
+							<td class="align-middle">$<%=prod.price %><input
 									class="form-input d-none" type="text"
 									name="price" value="<%=prod.price %>"
 									readonly="true"></td>

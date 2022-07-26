@@ -10,10 +10,6 @@ const pino = require('../../../utils/logger/pino');
 			await knex.schema.createTable('productos', table => {
 				table.increments('id')
 				table.string('name')
-				table.string('code')
-				table.string('label')
-				table.string('origin')
-				table.string('iva')
 				table.integer('stock')
 				table.float('price')
 				table.string('description')

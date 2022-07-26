@@ -1,6 +1,6 @@
 const { uuid } = require('uuidv4');
-const {mysqlConfig} = require('../../../config/mysql');
-const knex = require('knex')(mysqlConfig);
+const {sqliteConfig} = require('../../../config/sqlite');
+const knex = require('knex')(sqliteConfig);
 const pino = require('../../../utils/logger/pino');
 
 (async()=>{
@@ -10,10 +10,6 @@ const pino = require('../../../utils/logger/pino');
 			await knex.schema.createTable('productos', table => {
 				table.increments('id')
 				table.string('name')
-				table.string('code')
-				table.string('label')
-				table.string('origin')
-				table.string('iva')
 				table.integer('stock')
 				table.float('price')
 				table.string('description')
@@ -62,7 +58,7 @@ class Contenedor {
 	async modify(id, producto) {
 		try {
 			let modificar = await knex.from('productos').select('*').where({id:`${id}`}).update(producto);
-			return(modificar)
+			return(modificar[0])
 
 
 		} catch (error) {
@@ -75,7 +71,7 @@ class Contenedor {
 		try {
 			let idProduct= parseInt(id);
 			let mostrar = await knex.from('productos').select('*').where({id:id});
-			return(mostrar)
+			return(mostrar[0])
 
 
 		} catch (error) {
@@ -87,7 +83,6 @@ class Contenedor {
 	async getAll() {
 		try {
 			let mostrar = await knex.from('productos').select('*');
-			pino.info(mostrar);
 			return mostrar
 
 		} catch (error) {
