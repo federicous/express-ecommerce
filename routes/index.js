@@ -1,6 +1,7 @@
 const apiProductos = require("../components/pruductos");
 const apiProducts = require("../components/pruducts");
 const apiCarritos = require("../components/carritos");
+const apiCart = require("../components/carritosApi");
 const apiMensajes = require("../components/mensajes");
 const apiUsuarios = require("../components/usuarios");
 const apiOrdenes = require("../components/ordenes");
@@ -11,6 +12,7 @@ function serverRoutes(app) {
     apiProductos(app);
     apiProducts(app);
     apiCarritos(app);
+    apiCart(app);
     apiMensajes(app);
     apiUsuarios(app);
     apiAuth(app);

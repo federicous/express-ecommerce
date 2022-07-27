@@ -413,3 +413,5 @@
 {"level":50,"time":1658865356168,"pid":97438,"hostname":"yemes-PC","msg":"Se produjo un error: JsonWebTokenError: jwt must be provided"}
 {"level":50,"time":1658865471906,"pid":97438,"hostname":"yemes-PC","msg":"NO EXISTE EL USUARIO undefined"}
 {"level":50,"time":1658865501350,"pid":97438,"hostname":"yemes-PC","msg":"Se produjo un error: JsonWebTokenError: jwt must be provided"}
+{"level":50,"time":1658890683137,"pid":11681,"hostname":"yemes-PC","msg":"Se produjo un error: JsonWebTokenError: jwt must be provided"}
+{"level":50,"time":1658890689729,"pid":11681,"hostname":"yemes-PC","msg":"CONTRASEÑA INCORRECTA: epe123 PARA USUARIO: jorge@gmail.com"}
