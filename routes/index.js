@@ -7,6 +7,7 @@ const apiUsuarios = require("../components/usuarios");
 const apiOrdenes = require("../components/ordenes");
 const apiAuth = require("../components/auth");
 const apiCategorias = require("../components/categorias");
+const apiSearch = require("../components/search");
 
 function serverRoutes(app) {
     apiProductos(app);
@@ -18,6 +19,7 @@ function serverRoutes(app) {
     apiAuth(app);
     apiOrdenes(app);
     apiCategorias(app);
+    apiSearch(app);
 
     app.get("/", (req, res, next)=>{
         res.redirect('login');

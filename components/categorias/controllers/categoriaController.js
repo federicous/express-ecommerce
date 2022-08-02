@@ -1,8 +1,6 @@
-const elementService = require('../../pruductos/services');
+// const elementService = require('../../pruductos/services');
+const elementService = require('../services');
 const pino = require('../../../utils/logger/pino');
-// const carritoService = require('../../carritos/services');
-const JWT = require("../../../utils/jwt/jwt");
-const categorias = require('..');
 
 class Element {
 
@@ -11,7 +9,7 @@ class Element {
             // let datos;
             let identificador = req.params.id
             const categorias = [];
-            let response = await elementService.getAll();
+            let response = await elementService.getAll(identificador);
             for (let prod = 0; prod < response.length; prod++) {
                 const element = response[prod];
                 console.log(element);
@@ -28,7 +26,6 @@ class Element {
             res.status(400).render('error');
         }
     }
-
 }
 
 

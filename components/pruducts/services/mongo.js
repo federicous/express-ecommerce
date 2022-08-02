@@ -71,6 +71,17 @@ class MongoDB {
 		}
 	}
 
+	async getAllCategory(category) {
+		try {
+			let allProducts = await ProductoModel.find({label: category})
+			return (allProducts)
+
+		} catch (error) {
+			pino.error(`Se produjo un error: ${error}`)
+			throw new Error(error)
+		}
+	}
+
 	async deleteById(id) {
 		try {
 			let borrar = await ProductoModel.findByIdAndDelete(id);

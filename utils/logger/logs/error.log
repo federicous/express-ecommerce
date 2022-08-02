@@ -415,3 +415,189 @@
 {"level":50,"time":1658865501350,"pid":97438,"hostname":"yemes-PC","msg":"Se produjo un error: JsonWebTokenError: jwt must be provided"}
 {"level":50,"time":1658890683137,"pid":11681,"hostname":"yemes-PC","msg":"Se produjo un error: JsonWebTokenError: jwt must be provided"}
 {"level":50,"time":1658890689729,"pid":11681,"hostname":"yemes-PC","msg":"CONTRASEÑA INCORRECTA: epe123 PARA USUARIO: jorge@gmail.com"}
+{"level":50,"time":1658891072101,"pid":11681,"hostname":"yemes-PC","msg":"Se produjo un error: CastError: Cast to ObjectId failed for value \"5VO9Py8AsO1gVSMIXtOz\" (type string) at path \"_id\" for model \"productos\""}
+{"level":50,"time":1658891072101,"pid":11681,"hostname":"yemes-PC","msg":"Se produjo un error: Error: CastError: Cast to ObjectId failed for value \"5VO9Py8AsO1gVSMIXtOz\" (type string) at path \"_id\" for model \"productos\""}
+{"level":50,"time":1658894425404,"pid":11681,"hostname":"yemes-PC","msg":"Se produjo un error: JsonWebTokenError: jwt must be provided"}
+{"level":50,"time":1658897399491,"pid":27249,"hostname":"yemes-PC","msg":"Se produjo un error: ReferenceError: page is not defined"}
+{"level":50,"time":1658897399491,"pid":27249,"hostname":"yemes-PC","msg":"Se produjo un error: Error: ReferenceError: page is not defined"}
+{"level":50,"time":1658897414401,"pid":27249,"hostname":"yemes-PC","msg":"Se produjo un error: ReferenceError: page is not defined"}
+{"level":50,"time":1658897414401,"pid":27249,"hostname":"yemes-PC","msg":"Se produjo un error: Error: ReferenceError: page is not defined"}
+{"level":50,"time":1658897425464,"pid":27249,"hostname":"yemes-PC","msg":"Se produjo un error: ReferenceError: page is not defined"}
+{"level":50,"time":1658897425465,"pid":27249,"hostname":"yemes-PC","msg":"Se produjo un error: Error: ReferenceError: page is not defined"}
+{"level":50,"time":1658897430017,"pid":27249,"hostname":"yemes-PC","msg":"Se produjo un error: ReferenceError: page is not defined"}
+{"level":50,"time":1658897430017,"pid":27249,"hostname":"yemes-PC","msg":"Se produjo un error: Error: ReferenceError: page is not defined"}
+{"level":50,"time":1658897455435,"pid":27249,"hostname":"yemes-PC","msg":"Se produjo un error: ReferenceError: page is not defined"}
+{"level":50,"time":1658897455436,"pid":27249,"hostname":"yemes-PC","msg":"Se produjo un error: Error: ReferenceError: page is not defined"}
+{"level":50,"time":1658897608432,"pid":27249,"hostname":"yemes-PC","msg":"Se produjo un error: ReferenceError: page is not defined"}
+{"level":50,"time":1658897608432,"pid":27249,"hostname":"yemes-PC","msg":"Se produjo un error: Error: ReferenceError: page is not defined"}
+{"level":50,"time":1658897615820,"pid":27249,"hostname":"yemes-PC","msg":"Se produjo un error: ReferenceError: page is not defined"}
+{"level":50,"time":1658897615821,"pid":27249,"hostname":"yemes-PC","msg":"Se produjo un error: Error: ReferenceError: page is not defined"}
+{"level":50,"time":1658897622606,"pid":27249,"hostname":"yemes-PC","msg":"Se produjo un error: ReferenceError: page is not defined"}
+{"level":50,"time":1658897622606,"pid":27249,"hostname":"yemes-PC","msg":"Se produjo un error: Error: ReferenceError: page is not defined"}
+{"level":50,"time":1658898740471,"pid":30098,"hostname":"yemes-PC","msg":"Se produjo un error: JsonWebTokenError: jwt must be provided"}
+{"level":50,"time":1658902072520,"pid":30098,"hostname":"yemes-PC","msg":"Se produjo un error: JsonWebTokenError: jwt must be provided"}
+{"level":50,"time":1658934950398,"pid":33710,"hostname":"yemes-PC","msg":"Se produjo un error: JsonWebTokenError: jwt must be provided"}
+{"level":50,"time":1658934950466,"pid":33710,"hostname":"yemes-PC","msg":"Se produjo un error: JsonWebTokenError: jwt must be provided"}
+{"level":50,"time":1658939593177,"pid":33710,"hostname":"yemes-PC","msg":"Se produjo un error: JsonWebTokenError: jwt must be provided"}
+{"level":50,"time":1658939663198,"pid":33710,"hostname":"yemes-PC","msg":"Se produjo un error: JsonWebTokenError: jwt must be provided"}
+{"level":50,"time":1658943409264,"pid":33710,"hostname":"yemes-PC","msg":"Se produjo un error: JsonWebTokenError: jwt must be provided"}
+{"level":50,"time":1658943498405,"pid":33710,"hostname":"yemes-PC","msg":"Se produjo un error: JsonWebTokenError: jwt must be provided"}
+{"level":50,"time":1658943529932,"pid":33710,"hostname":"yemes-PC","msg":"Se produjo un error: JsonWebTokenError: jwt must be provided"}
+{"level":50,"time":1658955310199,"pid":33710,"hostname":"yemes-PC","msg":"Se produjo un error: JsonWebTokenError: jwt must be provided"}
+{"level":50,"time":1658955702291,"pid":33710,"hostname":"yemes-PC","msg":"Se produjo un error: JsonWebTokenError: jwt must be provided"}
+{"level":50,"time":1658955786844,"pid":33710,"hostname":"yemes-PC","msg":"Se produjo un error: JsonWebTokenError: jwt must be provided"}
+{"level":50,"time":1658955921001,"pid":33710,"hostname":"yemes-PC","msg":"Se produjo un error: JsonWebTokenError: jwt must be provided"}
+{"level":50,"time":1658956046044,"pid":33710,"hostname":"yemes-PC","msg":"Se produjo un error: JsonWebTokenError: jwt must be provided"}
+{"level":50,"time":1658963318398,"pid":33710,"hostname":"yemes-PC","msg":"Se produjo un error: JsonWebTokenError: jwt must be provided"}
+{"level":50,"time":1658963512987,"pid":33710,"hostname":"yemes-PC","msg":"Se produjo un error: JsonWebTokenError: jwt must be provided"}
+{"level":50,"time":1658963587566,"pid":33710,"hostname":"yemes-PC","msg":"Se produjo un error: JsonWebTokenError: jwt must be provided"}
+{"level":50,"time":1658963603770,"pid":33710,"hostname":"yemes-PC","msg":"Se produjo un error: JsonWebTokenError: jwt must be provided"}
+{"level":50,"time":1658963893018,"pid":33710,"hostname":"yemes-PC","msg":"Se produjo un error: JsonWebTokenError: jwt must be provided"}
+{"level":50,"time":1658963944539,"pid":33710,"hostname":"yemes-PC","msg":"Se produjo un error: JsonWebTokenError: jwt must be provided"}
+{"level":50,"time":1658963999344,"pid":33710,"hostname":"yemes-PC","msg":"Se produjo un error: JsonWebTokenError: jwt must be provided"}
+{"level":50,"time":1658964254375,"pid":33710,"hostname":"yemes-PC","msg":"Se produjo un error: JsonWebTokenError: jwt must be provided"}
+{"level":50,"time":1658964285727,"pid":33710,"hostname":"yemes-PC","msg":"Se produjo un error: JsonWebTokenError: jwt must be provided"}
+{"level":50,"time":1658964327350,"pid":33710,"hostname":"yemes-PC","msg":"Se produjo un error: JsonWebTokenError: jwt must be provided"}
+{"level":50,"time":1658964472885,"pid":33710,"hostname":"yemes-PC","msg":"Se produjo un error: JsonWebTokenError: jwt must be provided"}
+{"level":50,"time":1658964507071,"pid":33710,"hostname":"yemes-PC","msg":"Se produjo un error: JsonWebTokenError: jwt must be provided"}
+{"level":50,"time":1658970287728,"pid":33710,"hostname":"yemes-PC","msg":"Se produjo un error: JsonWebTokenError: jwt must be provided"}
+{"level":50,"time":1658970612238,"pid":33710,"hostname":"yemes-PC","msg":"Se produjo un error: JsonWebTokenError: jwt must be provided"}
+{"level":50,"time":1658970643547,"pid":33710,"hostname":"yemes-PC","msg":"Se produjo un error: JsonWebTokenError: jwt must be provided"}
+{"level":50,"time":1658970725890,"pid":33710,"hostname":"yemes-PC","msg":"Se produjo un error: JsonWebTokenError: jwt must be provided"}
+{"level":50,"time":1658970733608,"pid":33710,"hostname":"yemes-PC","msg":"Se produjo un error: JsonWebTokenError: jwt must be provided"}
+{"level":50,"time":1658970733750,"pid":33710,"hostname":"yemes-PC","msg":"Se produjo un error: JsonWebTokenError: jwt must be provided"}
+{"level":50,"time":1658971294350,"pid":33710,"hostname":"yemes-PC","msg":"Se produjo un error: JsonWebTokenError: jwt must be provided"}
+{"level":50,"time":1658971294481,"pid":33710,"hostname":"yemes-PC","msg":"Se produjo un error: JsonWebTokenError: jwt must be provided"}
+{"level":50,"time":1658971820840,"pid":33710,"hostname":"yemes-PC","msg":"Se produjo un error: JsonWebTokenError: jwt must be provided"}
+{"level":50,"time":1658971820992,"pid":33710,"hostname":"yemes-PC","msg":"Se produjo un error: JsonWebTokenError: jwt must be provided"}
+{"level":50,"time":1658971821610,"pid":33710,"hostname":"yemes-PC","msg":"Se produjo un error: JsonWebTokenError: jwt must be provided"}
+{"level":50,"time":1658971821759,"pid":33710,"hostname":"yemes-PC","msg":"Se produjo un error: JsonWebTokenError: jwt must be provided"}
+{"level":50,"time":1658972435599,"pid":33710,"hostname":"yemes-PC","msg":"Se produjo un error: JsonWebTokenError: jwt must be provided"}
+{"level":50,"time":1658972504503,"pid":33710,"hostname":"yemes-PC","msg":"Se produjo un error: JsonWebTokenError: jwt must be provided"}
+{"level":50,"time":1658972515884,"pid":33710,"hostname":"yemes-PC","msg":"Se produjo un error: JsonWebTokenError: jwt must be provided"}
+{"level":50,"time":1658972516486,"pid":33710,"hostname":"yemes-PC","msg":"Se produjo un error: JsonWebTokenError: jwt must be provided"}
+{"level":50,"time":1658972637007,"pid":33710,"hostname":"yemes-PC","msg":"Se produjo un error: JsonWebTokenError: jwt must be provided"}
+{"level":50,"time":1658972637120,"pid":33710,"hostname":"yemes-PC","msg":"Se produjo un error: JsonWebTokenError: jwt must be provided"}
+{"level":50,"time":1658972698255,"pid":33710,"hostname":"yemes-PC","msg":"Se produjo un error: JsonWebTokenError: jwt must be provided"}
+{"level":50,"time":1658972698355,"pid":33710,"hostname":"yemes-PC","msg":"Se produjo un error: JsonWebTokenError: jwt must be provided"}
+{"level":50,"time":1658980640480,"pid":33710,"hostname":"yemes-PC","msg":"Se produjo un error: JsonWebTokenError: jwt must be provided"}
+{"level":50,"time":1658980641958,"pid":33710,"hostname":"yemes-PC","msg":"Se produjo un error: JsonWebTokenError: jwt must be provided"}
+{"level":50,"time":1658980641960,"pid":33710,"hostname":"yemes-PC","msg":"Se produjo un error: JsonWebTokenError: jwt must be provided"}
+{"level":50,"time":1658980642815,"pid":33710,"hostname":"yemes-PC","msg":"Se produjo un error: JsonWebTokenError: jwt must be provided"}
+{"level":50,"time":1658980655134,"pid":33710,"hostname":"yemes-PC","msg":"Se produjo un error: JsonWebTokenError: jwt must be provided"}
+{"level":50,"time":1658980655292,"pid":33710,"hostname":"yemes-PC","msg":"Se produjo un error: JsonWebTokenError: jwt must be provided"}
+{"level":50,"time":1658980683852,"pid":33710,"hostname":"yemes-PC","msg":"Se produjo un error: JsonWebTokenError: jwt must be provided"}
+{"level":50,"time":1658980683996,"pid":33710,"hostname":"yemes-PC","msg":"Se produjo un error: JsonWebTokenError: jwt must be provided"}
+{"level":50,"time":1659023911044,"pid":39922,"hostname":"yemes-PC","msg":"Se produjo un error: JsonWebTokenError: jwt must be provided"}
+{"level":50,"time":1659023911190,"pid":39922,"hostname":"yemes-PC","msg":"Se produjo un error: JsonWebTokenError: jwt must be provided"}
+{"level":50,"time":1659027413965,"pid":53013,"hostname":"yemes-PC","msg":"Se produjo un error: TypeError: elementService.getAllCategory is not a function"}
+{"level":50,"time":1659033807123,"pid":54519,"hostname":"yemes-PC","msg":"Se produjo un error: JsonWebTokenError: jwt must be provided"}
+{"level":50,"time":1659033809517,"pid":54519,"hostname":"yemes-PC","msg":"Se produjo un error: JsonWebTokenError: jwt must be provided"}
+{"level":50,"time":1659042311949,"pid":82018,"hostname":"yemes-PC","msg":"Se produjo un error: JsonWebTokenError: jwt must be provided"}
+{"level":50,"time":1659042313244,"pid":82018,"hostname":"yemes-PC","msg":"Se produjo un error: JsonWebTokenError: jwt must be provided"}
+{"level":50,"time":1659042322061,"pid":82018,"hostname":"yemes-PC","msg":"Se produjo un error: JsonWebTokenError: jwt must be provided"}
+{"level":50,"time":1659042323165,"pid":82018,"hostname":"yemes-PC","msg":"Se produjo un error: JsonWebTokenError: jwt must be provided"}
+{"level":50,"time":1659042324494,"pid":82018,"hostname":"yemes-PC","msg":"Se produjo un error: JsonWebTokenError: jwt must be provided"}
+{"level":50,"time":1659042325910,"pid":82018,"hostname":"yemes-PC","msg":"Se produjo un error: JsonWebTokenError: jwt must be provided"}
+{"level":50,"time":1659042326805,"pid":82018,"hostname":"yemes-PC","msg":"Se produjo un error: JsonWebTokenError: jwt must be provided"}
+{"level":50,"time":1659042361072,"pid":82018,"hostname":"yemes-PC","msg":"Se produjo un error: JsonWebTokenError: jwt must be provided"}
+{"level":50,"time":1659042362417,"pid":82018,"hostname":"yemes-PC","msg":"Se produjo un error: JsonWebTokenError: jwt must be provided"}
+{"level":50,"time":1659042436950,"pid":82018,"hostname":"yemes-PC","msg":"Se produjo un error: JsonWebTokenError: jwt must be provided"}
+{"level":50,"time":1659044307892,"pid":82018,"hostname":"yemes-PC","msg":"Se produjo un error: JsonWebTokenError: jwt must be provided"}
+{"level":50,"time":1659044308037,"pid":82018,"hostname":"yemes-PC","msg":"Se produjo un error: JsonWebTokenError: jwt must be provided"}
+{"level":50,"time":1659044362818,"pid":82018,"hostname":"yemes-PC","msg":"Se produjo un error: JsonWebTokenError: jwt must be provided"}
+{"level":50,"time":1659044362937,"pid":82018,"hostname":"yemes-PC","msg":"Se produjo un error: JsonWebTokenError: jwt must be provided"}
+{"level":50,"time":1659052873957,"pid":127202,"hostname":"yemes-PC","msg":"Se produjo un error: JsonWebTokenError: jwt must be provided"}
+{"level":50,"time":1659052874159,"pid":127202,"hostname":"yemes-PC","msg":"Se produjo un error: JsonWebTokenError: jwt must be provided"}
+{"level":50,"time":1659052885057,"pid":127202,"hostname":"yemes-PC","msg":"Se produjo un error: TypeError: elementService.getAll is not a function"}
+{"level":50,"time":1659052933871,"pid":127632,"hostname":"yemes-PC","msg":"Se produjo un error: TypeError: elementService.getAll is not a function"}
+{"level":50,"time":1659150518959,"pid":4302,"hostname":"yemes-PC","msg":"Se produjo un error: JsonWebTokenError: jwt must be provided"}
+{"level":50,"time":1659150519132,"pid":4302,"hostname":"yemes-PC","msg":"Se produjo un error: JsonWebTokenError: jwt must be provided"}
+{"level":50,"time":1659157927535,"pid":19476,"hostname":"yemes-PC","msg":"Se produjo un error: SyntaxError: Invalid regular expression: /(^|.*\\h)(?i)${patron}.*/: Invalid group"}
+{"level":50,"time":1659157927536,"pid":19476,"hostname":"yemes-PC","msg":"Se produjo un error: Error: SyntaxError: Invalid regular expression: /(^|.*\\h)(?i)${patron}.*/: Invalid group"}
+{"level":50,"time":1659158022383,"pid":19706,"hostname":"yemes-PC","msg":"Se produjo un error: SyntaxError: Invalid regular expression: /(^|.*\\h)(?i)${patron}.*/: Invalid group"}
+{"level":50,"time":1659158022383,"pid":19706,"hostname":"yemes-PC","msg":"Se produjo un error: Error: SyntaxError: Invalid regular expression: /(^|.*\\h)(?i)${patron}.*/: Invalid group"}
+{"level":50,"time":1659158024985,"pid":19706,"hostname":"yemes-PC","msg":"Se produjo un error: SyntaxError: Invalid regular expression: /(^|.*\\h)(?i)${patron}.*/: Invalid group"}
+{"level":50,"time":1659158024985,"pid":19706,"hostname":"yemes-PC","msg":"Se produjo un error: Error: SyntaxError: Invalid regular expression: /(^|.*\\h)(?i)${patron}.*/: Invalid group"}
+{"level":50,"time":1659158026672,"pid":19706,"hostname":"yemes-PC","msg":"Se produjo un error: SyntaxError: Invalid regular expression: /(^|.*\\h)(?i)${patron}.*/: Invalid group"}
+{"level":50,"time":1659158026672,"pid":19706,"hostname":"yemes-PC","msg":"Se produjo un error: Error: SyntaxError: Invalid regular expression: /(^|.*\\h)(?i)${patron}.*/: Invalid group"}
+{"level":50,"time":1659158028285,"pid":19706,"hostname":"yemes-PC","msg":"Se produjo un error: SyntaxError: Invalid regular expression: /(^|.*\\h)(?i)${patron}.*/: Invalid group"}
+{"level":50,"time":1659158028285,"pid":19706,"hostname":"yemes-PC","msg":"Se produjo un error: Error: SyntaxError: Invalid regular expression: /(^|.*\\h)(?i)${patron}.*/: Invalid group"}
+{"level":50,"time":1659158050711,"pid":20008,"hostname":"yemes-PC","msg":"Se produjo un error: SyntaxError: Invalid regular expression: /(^|.*\\h)(?i)`${patron}`.*/: Invalid group"}
+{"level":50,"time":1659158050711,"pid":20008,"hostname":"yemes-PC","msg":"Se produjo un error: Error: SyntaxError: Invalid regular expression: /(^|.*\\h)(?i)`${patron}`.*/: Invalid group"}
+{"level":50,"time":1659158052761,"pid":20008,"hostname":"yemes-PC","msg":"Se produjo un error: SyntaxError: Invalid regular expression: /(^|.*\\h)(?i)`${patron}`.*/: Invalid group"}
+{"level":50,"time":1659158052761,"pid":20008,"hostname":"yemes-PC","msg":"Se produjo un error: Error: SyntaxError: Invalid regular expression: /(^|.*\\h)(?i)`${patron}`.*/: Invalid group"}
+{"level":50,"time":1659158463914,"pid":22324,"hostname":"yemes-PC","msg":"Se produjo un error: MongoServerError: Regular expression is invalid: missing )"}
+{"level":50,"time":1659158463914,"pid":22324,"hostname":"yemes-PC","msg":"Se produjo un error: Error: MongoServerError: Regular expression is invalid: missing )"}
+{"level":50,"time":1659229474510,"pid":12583,"hostname":"yemes-PC","msg":"Se produjo un error: TypeError: ProductoModel.findAll is not a function"}
+{"level":50,"time":1659229474510,"pid":12583,"hostname":"yemes-PC","msg":"Se produjo un error: Error: TypeError: ProductoModel.findAll is not a function"}
+{"level":50,"time":1659229475294,"pid":12583,"hostname":"yemes-PC","msg":"Se produjo un error: TypeError: ProductoModel.findAll is not a function"}
+{"level":50,"time":1659229475294,"pid":12583,"hostname":"yemes-PC","msg":"Se produjo un error: Error: TypeError: ProductoModel.findAll is not a function"}
+{"level":50,"time":1659229477965,"pid":12583,"hostname":"yemes-PC","msg":"Se produjo un error: TypeError: ProductoModel.findAll is not a function"}
+{"level":50,"time":1659229477965,"pid":12583,"hostname":"yemes-PC","msg":"Se produjo un error: Error: TypeError: ProductoModel.findAll is not a function"}
+{"level":50,"time":1659229489465,"pid":12786,"hostname":"yemes-PC","msg":"Se produjo un error: TypeError: ProductoModel.findMany is not a function"}
+{"level":50,"time":1659229489465,"pid":12786,"hostname":"yemes-PC","msg":"Se produjo un error: Error: TypeError: ProductoModel.findMany is not a function"}
+{"level":50,"time":1659229489662,"pid":12786,"hostname":"yemes-PC","msg":"Se produjo un error: TypeError: ProductoModel.findMany is not a function"}
+{"level":50,"time":1659229489662,"pid":12786,"hostname":"yemes-PC","msg":"Se produjo un error: Error: TypeError: ProductoModel.findMany is not a function"}
+{"level":50,"time":1659229493491,"pid":12786,"hostname":"yemes-PC","msg":"Se produjo un error: TypeError: ProductoModel.findMany is not a function"}
+{"level":50,"time":1659229493491,"pid":12786,"hostname":"yemes-PC","msg":"Se produjo un error: Error: TypeError: ProductoModel.findMany is not a function"}
+{"level":50,"time":1659306512494,"pid":5135,"hostname":"yemes-PC","msg":"Se produjo un error: JsonWebTokenError: jwt must be provided"}
+{"level":50,"time":1659306512629,"pid":5135,"hostname":"yemes-PC","msg":"Se produjo un error: JsonWebTokenError: jwt must be provided"}
+{"level":50,"time":1659310504987,"pid":5135,"hostname":"yemes-PC","msg":"Se produjo un error: JsonWebTokenError: jwt must be provided"}
+{"level":50,"time":1659310508211,"pid":5135,"hostname":"yemes-PC","msg":"Se produjo un error: JsonWebTokenError: jwt must be provided"}
+{"level":50,"time":1659311422011,"pid":5135,"hostname":"yemes-PC","msg":"Se produjo un error: JsonWebTokenError: jwt must be provided"}
+{"level":50,"time":1659311422148,"pid":5135,"hostname":"yemes-PC","msg":"Se produjo un error: JsonWebTokenError: jwt must be provided"}
+{"level":50,"time":1659321694464,"pid":23544,"hostname":"yemes-PC","msg":"Se produjo un error: ReferenceError: label is not defined"}
+{"level":50,"time":1659321694465,"pid":23544,"hostname":"yemes-PC","msg":"Se produjo un error: Error: ReferenceError: label is not defined"}
+{"level":50,"time":1659321701986,"pid":23544,"hostname":"yemes-PC","msg":"Se produjo un error: ReferenceError: label is not defined"}
+{"level":50,"time":1659321701986,"pid":23544,"hostname":"yemes-PC","msg":"Se produjo un error: Error: ReferenceError: label is not defined"}
+{"level":50,"time":1659322464689,"pid":24097,"hostname":"yemes-PC","msg":"Se produjo un error: ReferenceError: $label is not defined"}
+{"level":50,"time":1659322464689,"pid":24097,"hostname":"yemes-PC","msg":"Se produjo un error: Error: ReferenceError: $label is not defined"}
+{"level":50,"time":1659322786272,"pid":24661,"hostname":"yemes-PC","msg":"Se produjo un error: ReferenceError: label is not defined"}
+{"level":50,"time":1659322786273,"pid":24661,"hostname":"yemes-PC","msg":"Se produjo un error: Error: ReferenceError: label is not defined"}
+{"level":50,"time":1659322789010,"pid":24661,"hostname":"yemes-PC","msg":"Se produjo un error: ReferenceError: label is not defined"}
+{"level":50,"time":1659322789010,"pid":24661,"hostname":"yemes-PC","msg":"Se produjo un error: Error: ReferenceError: label is not defined"}
+{"level":50,"time":1659322789186,"pid":24661,"hostname":"yemes-PC","msg":"Se produjo un error: ReferenceError: label is not defined"}
+{"level":50,"time":1659322789186,"pid":24661,"hostname":"yemes-PC","msg":"Se produjo un error: Error: ReferenceError: label is not defined"}
+{"level":50,"time":1659322831014,"pid":26138,"hostname":"yemes-PC","msg":"Se produjo un error: ReferenceError: label is not defined"}
+{"level":50,"time":1659322831014,"pid":26138,"hostname":"yemes-PC","msg":"Se produjo un error: Error: ReferenceError: label is not defined"}
+{"level":50,"time":1659322832350,"pid":26138,"hostname":"yemes-PC","msg":"Se produjo un error: ReferenceError: label is not defined"}
+{"level":50,"time":1659322832350,"pid":26138,"hostname":"yemes-PC","msg":"Se produjo un error: Error: ReferenceError: label is not defined"}
+{"level":50,"time":1659322836833,"pid":26138,"hostname":"yemes-PC","msg":"Se produjo un error: ReferenceError: label is not defined"}
+{"level":50,"time":1659322836833,"pid":26138,"hostname":"yemes-PC","msg":"Se produjo un error: Error: ReferenceError: label is not defined"}
+{"level":50,"time":1659322838269,"pid":26138,"hostname":"yemes-PC","msg":"Se produjo un error: ReferenceError: label is not defined"}
+{"level":50,"time":1659322838269,"pid":26138,"hostname":"yemes-PC","msg":"Se produjo un error: Error: ReferenceError: label is not defined"}
+{"level":50,"time":1659322839204,"pid":26138,"hostname":"yemes-PC","msg":"Se produjo un error: ReferenceError: label is not defined"}
+{"level":50,"time":1659322839204,"pid":26138,"hostname":"yemes-PC","msg":"Se produjo un error: Error: ReferenceError: label is not defined"}
+{"level":50,"time":1659322842933,"pid":26138,"hostname":"yemes-PC","msg":"Se produjo un error: ReferenceError: label is not defined"}
+{"level":50,"time":1659322842933,"pid":26138,"hostname":"yemes-PC","msg":"Se produjo un error: Error: ReferenceError: label is not defined"}
+{"level":50,"time":1659323579200,"pid":27700,"hostname":"yemes-PC","msg":"Se produjo un error: ReferenceError: $code is not defined"}
+{"level":50,"time":1659323579200,"pid":27700,"hostname":"yemes-PC","msg":"Se produjo un error: Error: ReferenceError: $code is not defined"}
+{"level":50,"time":1659323579459,"pid":27700,"hostname":"yemes-PC","msg":"Se produjo un error: ReferenceError: $code is not defined"}
+{"level":50,"time":1659323579459,"pid":27700,"hostname":"yemes-PC","msg":"Se produjo un error: Error: ReferenceError: $code is not defined"}
+{"level":50,"time":1659323580049,"pid":27700,"hostname":"yemes-PC","msg":"Se produjo un error: ReferenceError: $code is not defined"}
+{"level":50,"time":1659323580049,"pid":27700,"hostname":"yemes-PC","msg":"Se produjo un error: Error: ReferenceError: $code is not defined"}
+{"level":50,"time":1659323582185,"pid":27700,"hostname":"yemes-PC","msg":"Se produjo un error: ReferenceError: $code is not defined"}
+{"level":50,"time":1659323582185,"pid":27700,"hostname":"yemes-PC","msg":"Se produjo un error: Error: ReferenceError: $code is not defined"}
+{"level":50,"time":1659323583490,"pid":27700,"hostname":"yemes-PC","msg":"Se produjo un error: ReferenceError: $code is not defined"}
+{"level":50,"time":1659323583490,"pid":27700,"hostname":"yemes-PC","msg":"Se produjo un error: Error: ReferenceError: $code is not defined"}
+{"level":50,"time":1659323607590,"pid":27971,"hostname":"yemes-PC","msg":"Se produjo un error: ReferenceError: $code is not defined"}
+{"level":50,"time":1659323607590,"pid":27971,"hostname":"yemes-PC","msg":"Se produjo un error: Error: ReferenceError: $code is not defined"}
+{"level":50,"time":1659323618894,"pid":28089,"hostname":"yemes-PC","msg":"Se produjo un error: ReferenceError: code is not defined"}
+{"level":50,"time":1659323618894,"pid":28089,"hostname":"yemes-PC","msg":"Se produjo un error: Error: ReferenceError: code is not defined"}
+{"level":50,"time":1659323621456,"pid":28089,"hostname":"yemes-PC","msg":"Se produjo un error: ReferenceError: code is not defined"}
+{"level":50,"time":1659323621456,"pid":28089,"hostname":"yemes-PC","msg":"Se produjo un error: Error: ReferenceError: code is not defined"}
+{"level":50,"time":1659323624132,"pid":28089,"hostname":"yemes-PC","msg":"Se produjo un error: ReferenceError: code is not defined"}
+{"level":50,"time":1659323624132,"pid":28089,"hostname":"yemes-PC","msg":"Se produjo un error: Error: ReferenceError: code is not defined"}
+{"level":50,"time":1659323861742,"pid":28817,"hostname":"yemes-PC","msg":"Se produjo un error: ReferenceError: zipConversionStage is not defined"}
+{"level":50,"time":1659323861742,"pid":28817,"hostname":"yemes-PC","msg":"Se produjo un error: Error: ReferenceError: zipConversionStage is not defined"}
+{"level":50,"time":1659323862556,"pid":28817,"hostname":"yemes-PC","msg":"Se produjo un error: ReferenceError: zipConversionStage is not defined"}
+{"level":50,"time":1659323862556,"pid":28817,"hostname":"yemes-PC","msg":"Se produjo un error: Error: ReferenceError: zipConversionStage is not defined"}
+{"level":50,"time":1659324051026,"pid":29336,"hostname":"yemes-PC","msg":"Se produjo un error: ReferenceError: code is not defined"}
+{"level":50,"time":1659324051026,"pid":29336,"hostname":"yemes-PC","msg":"Se produjo un error: Error: ReferenceError: code is not defined"}
+{"level":50,"time":1659324051179,"pid":29336,"hostname":"yemes-PC","msg":"Se produjo un error: ReferenceError: code is not defined"}
+{"level":50,"time":1659324051179,"pid":29336,"hostname":"yemes-PC","msg":"Se produjo un error: Error: ReferenceError: code is not defined"}
+{"level":50,"time":1659324089792,"pid":29528,"hostname":"yemes-PC","msg":"Se produjo un error: ReferenceError: code is not defined"}
+{"level":50,"time":1659324089792,"pid":29528,"hostname":"yemes-PC","msg":"Se produjo un error: Error: ReferenceError: code is not defined"}
+{"level":50,"time":1659402606385,"pid":9452,"hostname":"yemes-PC","msg":"Se produjo un error: JsonWebTokenError: jwt must be provided"}
+{"level":50,"time":1659402606529,"pid":9452,"hostname":"yemes-PC","msg":"Se produjo un error: JsonWebTokenError: jwt must be provided"}

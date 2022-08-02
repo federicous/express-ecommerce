@@ -58,7 +58,18 @@ class MongoDB {
 		}
 	}
 
-	async getAll(page = 1) {
+	async getAll() {
+		try {
+			let allProducts = await ProductoModel.find({});
+			return (allProducts)
+
+		} catch (error) {
+			pino.error(`Se produjo un error: ${error}`)
+			throw new Error(error)
+		}
+	}
+
+	async getAllPage(page = 1) {
 		try {
 			const PAGE_SIZE = 10; // Similar a 'límite'
 			const skip = (page - 1) * PAGE_SIZE;
@@ -70,6 +81,7 @@ class MongoDB {
 			throw new Error(error)
 		}
 	}
+
 
 	async deleteById(id) {
 		try {
