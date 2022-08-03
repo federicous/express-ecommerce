@@ -29,7 +29,10 @@ class Element {
 
     async getAllElement(req, res, next){
         try {
-            let response = await elementService.getAll();
+             // let response = await elementService.getAll();
+             let page = req.query.page;
+             let pageSize = req.query.pageSize
+             let response = await elementService.getAllPage(page,pageSize);
             res.status(200).json(response);
 
         } catch (error) {
@@ -40,8 +43,10 @@ class Element {
 
     async getAllElementCategory(req, res, next){
         try {
+            let page = req.query.page;
+            let pageSize = req.query.pageSize
             let category = req.params.category
-            let response = await elementService.getAllCategory(category);
+            let response = await elementService.getAllCategoryPage(category,page,pageSize);
             res.status(200).json(response);
 
         } catch (error) {

@@ -58,12 +58,25 @@ class MongoDB {
 		}
 	}
 
-	async getAll(page = 1) {
+	async getAll() {
 		try {
-			const PAGE_SIZE = 10; // Similar a 'límite'
+			let allProducts = await ProductoModel.find({});
+			return (allProducts)
+
+		} catch (error) {
+			pino.error(`Se produjo un error: ${error}`)
+			throw new Error(error)
+		}
+	}
+
+	async getAllPage(page,pageSize) {
+		try {
+			const PAGE_SIZE = pageSize; // Similar a 'límite'
 			const skip = (page - 1) * PAGE_SIZE;
 			let allProducts = await ProductoModel.find({}).skip(skip).limit(PAGE_SIZE);
-			return (allProducts)
+			let total = await ProductoModel.countDocuments({})
+			// return (allProducts)
+			return ({allProducts: allProducts,total: total})
 
 		} catch (error) {
 			pino.error(`Se produjo un error: ${error}`)
@@ -75,6 +88,21 @@ class MongoDB {
 		try {
 			let allProducts = await ProductoModel.find({label: category})
 			return (allProducts)
+
+		} catch (error) {
+			pino.error(`Se produjo un error: ${error}`)
+			throw new Error(error)
+		}
+	}
+
+	async getAllCategoryPage(category,page,pageSize) {
+		try {
+			const PAGE_SIZE = pageSize; // Similar a 'límite'
+			const skip = (page - 1) * PAGE_SIZE;
+			let allProducts = await ProductoModel.find({label: category}).skip(skip).limit(PAGE_SIZE);
+			// let total = await ProductoModel.find({label: category}).countDocuments()
+			let total = await ProductoModel.countDocuments({label: category})
+			return ({allProducts: allProducts,total: total})
 
 		} catch (error) {
 			pino.error(`Se produjo un error: ${error}`)

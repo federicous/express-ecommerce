@@ -29,7 +29,11 @@ class Element {
 
     async getAllElement(req, res, next){
         try {
-            let response = await elementService.getAll();
+            // let response = await elementService.getAll();
+
+            let page = req.query;
+            console.log(page);
+            let response = await elementService.getAllPage();
             res.status(200).json(response);
 
         } catch (error) {

@@ -601,3 +601,33 @@
 {"level":50,"time":1659324089792,"pid":29528,"hostname":"yemes-PC","msg":"Se produjo un error: Error: ReferenceError: code is not defined"}
 {"level":50,"time":1659402606385,"pid":9452,"hostname":"yemes-PC","msg":"Se produjo un error: JsonWebTokenError: jwt must be provided"}
 {"level":50,"time":1659402606529,"pid":9452,"hostname":"yemes-PC","msg":"Se produjo un error: JsonWebTokenError: jwt must be provided"}
+{"level":50,"time":1659406621570,"pid":16234,"hostname":"yemes-PC","msg":"Se produjo un error: JsonWebTokenError: jwt must be provided"}
+{"level":50,"time":1659406621678,"pid":16234,"hostname":"yemes-PC","msg":"Se produjo un error: JsonWebTokenError: jwt must be provided"}
+{"level":50,"time":1659412977964,"pid":35033,"hostname":"yemes-PC","msg":"Se produjo un error: TypeError: elementService.getAllPage is not a function"}
+{"level":50,"time":1659456225792,"pid":137954,"hostname":"yemes-PC","msg":"Se produjo un error: JsonWebTokenError: jwt must be provided"}
+{"level":50,"time":1659456226002,"pid":137954,"hostname":"yemes-PC","msg":"Se produjo un error: JsonWebTokenError: jwt must be provided"}
+{"level":50,"time":1659472217052,"pid":137954,"hostname":"yemes-PC","msg":"Se produjo un error: JsonWebTokenError: jwt must be provided"}
+{"level":50,"time":1659489669917,"pid":4715,"hostname":"yemes-PC","msg":"Se produjo un error: JsonWebTokenError: jwt must be provided"}
+{"level":50,"time":1659489670073,"pid":4715,"hostname":"yemes-PC","msg":"Se produjo un error: JsonWebTokenError: jwt must be provided"}
+{"level":50,"time":1659490822203,"pid":10224,"hostname":"yemes-PC","msg":"Se produjo un error: TypeError: elementService.getAllCategoryPage is not a function"}
+{"level":50,"time":1659490824660,"pid":10224,"hostname":"yemes-PC","msg":"Se produjo un error: TypeError: elementService.getAllCategoryPage is not a function"}
+{"level":50,"time":1659491048735,"pid":11424,"hostname":"yemes-PC","msg":"Se produjo un error: CastError: Cast to Number failed for value \"$\" (type string) at path \"limit\""}
+{"level":50,"time":1659491048735,"pid":11424,"hostname":"yemes-PC","msg":"Se produjo un error: Error: CastError: Cast to Number failed for value \"$\" (type string) at path \"limit\""}
+{"level":50,"time":1659491052271,"pid":11424,"hostname":"yemes-PC","msg":"Se produjo un error: CastError: Cast to Number failed for value \"$pageSize{}\" (type string) at path \"limit\""}
+{"level":50,"time":1659491052271,"pid":11424,"hostname":"yemes-PC","msg":"Se produjo un error: Error: CastError: Cast to Number failed for value \"$pageSize{}\" (type string) at path \"limit\""}
+{"level":50,"time":1659491054011,"pid":11424,"hostname":"yemes-PC","msg":"Se produjo un error: CastError: Cast to Number failed for value \"$pageSize}\" (type string) at path \"limit\""}
+{"level":50,"time":1659491054011,"pid":11424,"hostname":"yemes-PC","msg":"Se produjo un error: Error: CastError: Cast to Number failed for value \"$pageSize}\" (type string) at path \"limit\""}
+{"level":50,"time":1659491072807,"pid":11424,"hostname":"yemes-PC","msg":"Se produjo un error: CastError: Cast to Number failed for value \"undefined\" (type string) at path \"limit\""}
+{"level":50,"time":1659491072807,"pid":11424,"hostname":"yemes-PC","msg":"Se produjo un error: Error: CastError: Cast to Number failed for value \"undefined\" (type string) at path \"limit\""}
+{"level":50,"time":1659492981477,"pid":15694,"hostname":"yemes-PC","msg":"Se produjo un error: CastError: Cast to Number failed for value \"undefined\" (type string) at path \"limit\""}
+{"level":50,"time":1659492981477,"pid":15694,"hostname":"yemes-PC","msg":"Se produjo un error: Error: CastError: Cast to Number failed for value \"undefined\" (type string) at path \"limit\""}
+{"level":50,"time":1659493522396,"pid":15694,"hostname":"yemes-PC","msg":"Se produjo un error: JsonWebTokenError: jwt must be provided"}
+{"level":50,"time":1659493525375,"pid":15694,"hostname":"yemes-PC","msg":"Se produjo un error: JsonWebTokenError: jwt must be provided"}
+{"level":50,"time":1659493536348,"pid":15694,"hostname":"yemes-PC","msg":"Se produjo un error: JsonWebTokenError: jwt must be provided"}
+{"level":50,"time":1659493542354,"pid":15694,"hostname":"yemes-PC","msg":"Se produjo un error: JsonWebTokenError: jwt must be provided"}
+{"level":50,"time":1659493544980,"pid":15694,"hostname":"yemes-PC","msg":"Se produjo un error: JsonWebTokenError: jwt must be provided"}
+{"level":50,"time":1659493547590,"pid":15694,"hostname":"yemes-PC","msg":"Se produjo un error: JsonWebTokenError: jwt must be provided"}
+{"level":50,"time":1659493603361,"pid":15694,"hostname":"yemes-PC","msg":"Se produjo un error: JsonWebTokenError: jwt must be provided"}
+{"level":50,"time":1659497299003,"pid":25388,"hostname":"yemes-PC","msg":"Se produjo un error: JsonWebTokenError: jwt must be provided"}
+{"level":50,"time":1659497302325,"pid":25388,"hostname":"yemes-PC","msg":"Se produjo un error: JsonWebTokenError: jwt must be provided"}
+{"level":50,"time":1659497309466,"pid":25388,"hostname":"yemes-PC","msg":"Se produjo un error: JsonWebTokenError: jwt must be provided"}
