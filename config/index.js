@@ -1,5 +1,8 @@
 require('dotenv').config()
 let MongoStore = require("connect-mongo");
+const session = require('express-session');
+const KnexSessionStore = require('connect-session-knex')(session);
+const Knex = require('knex');
 
 // const MONGO_ATLAS = process.env.MONGO_URL_ATLAS;
 const MONGO_ATLAS = process.env.MONGO_URI;
@@ -10,19 +13,45 @@ let advancedOptions = {
 	useNewUrlParser: true,
 	useUnifiedTopology: true
 }
-console.log(MONGO_ATLAS);
-let sessionConfig = {
-	store: MongoStore.create({
-		mongoUrl: MONGO_ATLAS,
-		mongoOptions: advancedOptions
-	}),
-	secret: MONGO_SECRET,
-	cookie: {
-		maxAge: COOKIE_AGE
+
+const knex = Knex({
+	client: 'sqlite3',
+	connection: {
+	filename: 'DB/mydbSession.sqlite'
 	},
-	resave: false,
-	saveUninitialized: false
+	useNullAsDefault: true,	
+      });
+
+let sessionConfig = {};
+if (process.env.DB == 'mongo') {
+	console.log(`session mongo`);
+	sessionConfig = {
+		store: MongoStore.create({
+			mongoUrl: MONGO_ATLAS,
+			mongoOptions: advancedOptions
+		}),
+		secret: MONGO_SECRET,
+		cookie: {
+			maxAge: COOKIE_AGE
+		},
+		resave: false,
+		saveUninitialized: false
+	}
+} else {
+	console.log(`session sqlite`);
+	sessionConfig = {
+		store: new KnexSessionStore({
+			knex,	
+		}),		
+		secret: MONGO_SECRET,
+		cookie: {
+			maxAge: COOKIE_AGE
+		},
+		resave: false,
+		saveUninitialized: false
+	}
 }
+
 
 const config = {
 	PORT: process.env.PORT || '8088',

@@ -41,19 +41,6 @@ class Contenedor {
 		return this;
 	}
 
-	async getById(id) {
-		try {
-			let idProduct= parseInt(id);
-			let mostrar = await knex.from('productos').select('*').where({id:id});
-			return(mostrar[0])
-
-
-		} catch (error) {
-			pino.error(`Se produjo un error: ${error}`)
-			throw new Error(error)
-		}	
-	}
-
 	async getAllNamesPage(patron = "a",page,pageSize) {
 		try {
 			const PAGE_SIZE = pageSize; // Similar a 'límite'
@@ -100,17 +87,6 @@ class Contenedor {
 		}
 	}
 
-	async getAll() {
-		try {
-			let mostrar = await knex.from('productos').select('*');
-			return mostrar
-
-		} catch (error) {
-			pino.error(`Se produjo un error: ${error}`)
-			throw new Error(error)
-		}	
-		
-	}
 
 }
 
