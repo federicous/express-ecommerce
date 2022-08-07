@@ -46,12 +46,21 @@ class Contenedor {
 			if (id) {
 				producto.id= id;
 			}
-			producto.uuid=uuid()
-			let agregar= await knex('productos')
-			.insert(producto)
-			pino.info("datos insertados")		
 
-			return producto.id
+
+			if (Array.isArray(producto)) {
+				producto.forEach(async element => {
+					element.uuid=uuid()
+					let agregarProducto = await knex('productos').insert(element)
+					pino.info(agregarProducto);
+				});
+
+			} else {
+				producto.timestamp = Date.now();
+				let agregarProducto = await knex('productos').insert(producto)					
+				pino.info(agregarProducto);
+			}
+
 
 		} catch (error) {
 			pino.error(`Se produjo un error: ${error}`)
@@ -96,6 +105,48 @@ class Contenedor {
 		
 	}
 
+	async getAllPage(page,pageSize) {
+		try {
+			const PAGE_SIZE = pageSize; // Similar a 'límite'
+			const skip = (page - 1) * PAGE_SIZE;
+			let allProducts = await knex.from('productos').select('*').offset(`${skip}`).limit(`${PAGE_SIZE}`);
+			let todosProductos = await knex.from('productos').select('*')
+			let total = todosProductos.length
+			return ({allProducts: allProducts,total: total})
+
+		} catch (error) {
+			pino.error(`Se produjo un error: ${error}`)
+			throw new Error(error)
+		}
+	}
+
+	async getAllCategory(category) {
+		try {
+			let allProducts = await knex.from('productos').select('*').where({label:`${category}`});
+			return (allProducts)
+
+		} catch (error) {
+			pino.error(`Se produjo un error: ${error}`)
+			throw new Error(error)
+		}
+	}
+
+	async getAllCategoryPage(category,page,pageSize) {
+		try {
+			const PAGE_SIZE = pageSize; // Similar a 'límite'
+			const skip = (page - 1) * PAGE_SIZE;
+			let allProducts = await knex.from('productos').select('*').where({label:`${category}`}).offset(`${skip}`).limit(`${PAGE_SIZE}`);
+			// let total = await knex.from('productos').select('*').where({label:`${category}`}).count('*')
+			let todos= await knex.from('productos').select('*').where({label:`${category}`})
+			let total = todos.length
+			return ({allProducts: allProducts,total: total})
+
+		} catch (error) {
+			pino.error(`Se produjo un error: ${error}`)
+			throw new Error(error)
+		}
+	}	
+
 	async deleteById(id) {
 		try {
 			let borrar = await knex.from('productos').where({id:`${id}`}).del();
@@ -109,7 +160,7 @@ class Contenedor {
 
 	async deleteAll() {
 		try {
-			const contenido = await fs.promises.writeFile(this.url,[])
+			const contenido = await knex.from('productos').del()
 
 		} catch (error) {
 			throw new Error(error)

@@ -13,7 +13,7 @@ class Element {
             let carritoId = await elementService.save(payload);
               res.status(200).json(carritoId);
         } catch (error) {
-            pino.error(`Se produjo un error: ${error}`)
+            pino.error(`Se produjo un error cart: ${error}`)
             res.status(400).render('error');
         }
     }
@@ -30,7 +30,7 @@ class Element {
             res.status(200).redirect('/productos')
             
         } catch (error) {
-            pino.error(`Se produjo un error: ${error}`);
+            pino.error(`Se produjo un error cart: ${error}`);
             res.status(400).render('error');
         }
     }
@@ -51,7 +51,7 @@ class Element {
 
 
         } catch (error) {
-            pino.error(`Se produjo un error: ${error}`);
+            pino.error(`Se produjo un error cart: ${error}`);
             res.status(400).render('error');
         }
     }
@@ -71,7 +71,7 @@ class Element {
             res.status(200).render('item',{message: message,item, carritoId});	
 
         } catch (error) {
-            pino.error(`Se produjo un error: ${error}`);
+            pino.error(`Se produjo un error cart: ${error}`);
             res.status(400).render('error');
         }
     }
@@ -84,7 +84,7 @@ class Element {
             let response = await elementService.getById(carritoId);
             res.status(200).json(response);
         } catch (error) {
-            pino.error(`Se produjo un error: ${error}`);
+            pino.error(`Se produjo un error cart: ${error}`);
             res.status(400).render('error');
         }
     }
@@ -97,7 +97,7 @@ class Element {
             let carrito = await elementService.getSubElementsById(carritoId);
             res.status(200).json(carrito);	
         } catch (error) {
-            pino.error(`Se produjo un error: ${error}`);
+            pino.error(`Se produjo un error cart: ${error}`);
             res.status(400).render('error');
         }
     }
@@ -107,7 +107,7 @@ class Element {
             let response = await elementService.getAll();
             res.status(200).json(response);
         } catch (error) {
-            pino.error(`Se produjo un error: ${error}`);
+            pino.error(`Se produjo un error cart: ${error}`);
             res.status(400).render('error');
         }
     }
@@ -127,7 +127,7 @@ class Element {
                 new: req.body
             })
         } catch (error) {
-            pino.error(`Se produjo un error: ${error}`);
+            pino.error(`Se produjo un error cart: ${error}`);
         }
     }
 
@@ -141,7 +141,7 @@ class Element {
             let carrito = await elementService.getSubElementsById(carritoId);
             res.status(200).render('carrito',{message: '',carrito, carritoId});	
         } catch (error) {
-            pino.error(`Se produjo un error: ${error}`);
+            pino.error(`Se produjo un error cart: ${error}`);
         }
     }
 
@@ -156,7 +156,7 @@ class Element {
             res.status(200).render('carrito',{message: 'Producto eliminado',carrito, carritoId});	
 
         } catch (error) {
-            pino.error(`Se produjo un error: ${error}`);
+            pino.error(`Se produjo un error cart: ${error}`);
         }
     }
 
@@ -165,7 +165,7 @@ class Element {
             let response = await elementService.deleteAll();
             res.status(200).json(response);
         } catch (error) {
-            pino.error(`Se produjo un error: ${error}`);
+            pino.error(`Se produjo un error cart: ${error}`);
         }
     }
 
@@ -175,7 +175,7 @@ class Element {
             let payload = await JWT.decode(token);
             res.status(200).render('mensajes',{message: '',payload});	
         } catch (error) {
-            pino.error(`Se produjo un error: ${error}`);
+            pino.error(`Se produjo un error cart: ${error}`);
         }
     }
 }

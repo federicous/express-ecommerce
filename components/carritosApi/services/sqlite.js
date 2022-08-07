@@ -21,7 +21,7 @@ const pino = require('../../../utils/logger/pino');
 			pino.info("ya existe la tabla");
 		}
 	} catch (error) {
-		pino.error(`Se produjo un error: ${error}`)
+		pino.error(`Se produjo un error cart: ${error}`)
 	}
 })();
 
@@ -57,14 +57,13 @@ class Contenedor {
 			return carritoGuardado[0].id
 
 		} catch (error) {
-			pino.error(`Se produjo un error: ${error}`)
+			pino.error(`Se produjo un error cart save: ${error}`)
 			
 		}
 	}
 
 	async saveSubElement(id, subElement) {
 		try {
-
 			let resultado = await knex.from('carritos').select('*').where({id: `${id}`});
 			let carrito = resultado[0]
 			let productlistParsed = JSON.parse(carrito.productList);
@@ -75,7 +74,32 @@ class Contenedor {
 			return (carrito)
 
 		} catch (error) {
-			pino.error(`Se produjo un error: ${error}`)
+			pino.error(`Se produjo un error cart saveSubElement: ${error}`)
+			
+		}
+	}
+
+	async saveSubElementReact(id, subElement) {
+		try {
+			// Si es array simplemente sobreescribo el carrito
+			if (Array.isArray(subElement)) {
+				let resultado = await knex.from('carritos').select('*').where({id: `${id}`});
+				let carrito = resultado[0]
+				carrito.productList= JSON.stringify(subElement);
+				await knex.from('carritos').select('*').where({id: `${id}`}).update(carrito);
+				return (carrito)
+			} else {
+				let resultado = await knex.from('carritos').select('*').where({id: `${id}`});
+				let carrito = resultado[0]
+				let productlistParsed = JSON.parse(carrito.productList);
+				let nuevaProductList = productlistParsed.filter((item) => item.id !== `${subElement.id}`);
+				nuevaProductList.push(subElement)
+				carrito.productList = JSON.stringify(nuevaProductList)
+				await knex.from('carritos').select('*').where({id: `${id}`}).update(carrito);
+				return (carrito)
+			}	
+		} catch (error) {
+			pino.error(`Se produjo un error cart saveSubElementReact: ${error}`)
 			
 		}
 	}
@@ -86,7 +110,7 @@ class Contenedor {
 			return (modificar)
 
 		} catch (error) {
-			pino.error(`Se produjo un error: ${error}`)
+			pino.error(`Se produjo un error cart modify: ${error}`)
 			
 		}
 	}
@@ -99,7 +123,7 @@ class Contenedor {
 
 
 		} catch (error) {
-			pino.error(`Se produjo un error: ${error}`)
+			pino.error(`Se produjo un error cart getById: ${error}`)
 			
 		}
 	}
@@ -111,7 +135,7 @@ class Contenedor {
 
 
 		} catch (error) {
-			pino.error(`Se produjo un error: ${error}`)
+			pino.error(`Se produjo un error cart getSubElementsById: ${error}`)
 			
 		}
 	}
@@ -122,7 +146,7 @@ class Contenedor {
 			return mostrar
 
 		} catch (error) {
-			pino.error(`Se produjo un error: ${error}`)
+			pino.error(`Se produjo un error cart getAll: ${error}`)
 			
 		}
 
@@ -133,7 +157,7 @@ class Contenedor {
 			let borrar = await knex.from('carritos').where({id: `${id}`}).del();
 
 		} catch (error) {
-			pino.error(`Se produjo un error: ${error}`)
+			pino.error(`Se produjo un error cart deleteById: ${error}`)
 			
 		}
 	}
@@ -149,7 +173,7 @@ class Contenedor {
 			return (nuevaProductList)
 
 		} catch (error) {
-			pino.error(`Se produjo un error: ${error}`)
+			pino.error(`Se produjo un error cart deleteSubElementById: ${error}`)
 			
 		}
 	}

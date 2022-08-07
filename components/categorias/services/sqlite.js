@@ -21,7 +21,7 @@ const pino = require('../../../utils/logger/pino');
 			pino.info("ya existe la tabla");
 		}
       	} catch (error){
-		pino.error(`Se produjo un error: ${error}`)
+		pino.error(`Se produjo un error sqlite categorias: ${error}`)
 	}
 })();
 

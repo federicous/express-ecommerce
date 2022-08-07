@@ -3,25 +3,25 @@ const pino = require('../../../utils/logger/pino')
 
 class MongoDB {
 
-	async getAllNames(patron = "a") {
-		try {
-			// let allProducts = await ProductoModel.find({name: {$regex:`.*(?i)${patron}.*`}})
+	// async getAllNames(patron = "a") {
+	// 	try {
+	// 		// let allProducts = await ProductoModel.find({name: {$regex:`.*(?i)${patron}.*`}})
 
 
-		let allProducts = await ProductoModel.find(
-			{$or: 
-				[
-					{name: {$regex: `(^|.*\\h)(?i)${patron}.*`}}, 
-					{code: { $regex: `${patron}.*`}},
-				]
-			}) // matchea todo el nombre del producto si el mismo contiene palabras que comienzan con el patron (se debe escapar el "\")
-			return (allProducts)
+	// 	let allProducts = await ProductoModel.find(
+	// 		{$or: 
+	// 			[
+	// 				{name: {$regex: `(^|.*\\h)(?i)${patron}.*`}}, 
+	// 				{code: { $regex: `${patron}.*`}},
+	// 			]
+	// 		}) // matchea todo el nombre del producto si el mismo contiene palabras que comienzan con el patron (se debe escapar el "\")
+	// 		return (allProducts)
 
-		} catch (error) {
-			pino.error(`Se produjo un error: ${error}`)
-			throw new Error(error)
-		}
-	}
+	// 	} catch (error) {
+	// 		pino.error(`Se produjo un error: ${error}`)
+	// 		throw new Error(error)
+	// 	}
+	// }
 
 	async getAllNamesPage(patron = "a",page,pageSize) {
 		try {
@@ -54,16 +54,16 @@ class MongoDB {
 		}
 	}
 
-	async getAll() {
-		try {
-			let allProducts = await ProductoModel.find({})
-			return (allProducts)
+	// async getAll() {
+	// 	try {
+	// 		let allProducts = await ProductoModel.find({})
+	// 		return (allProducts)
 
-		} catch (error) {
-			pino.error(`Se produjo un error: ${error}`)
-			throw new Error(error)
-		}
-	}
+	// 	} catch (error) {
+	// 		pino.error(`Se produjo un error: ${error}`)
+	// 		throw new Error(error)
+	// 	}
+	// }
 
 	async getAllPage(page,pageSize) {
 		try {

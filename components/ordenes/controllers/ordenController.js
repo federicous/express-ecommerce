@@ -7,6 +7,23 @@ const Nodemailer = require('../../../utils/nodemailer')
 
 class Element {
 
+    // async createElement(req, res, next){
+    //     try {
+    //         const token = req.cookies.token;
+    //         let payload = await JWT.decode(token);
+    //         let carritoId = await carritoService.save(payload);
+    //         let carrito = await carritoService.getSubElementsById(carritoId);
+    //         let ordenId = await elementService.save(payload,carrito);
+    //         let productos = await productoService.getAll();
+    //         let message = `Orden generada, ID: ${ordenId}`;
+    //         await Nodemailer.orden(payload,carrito);
+    //         let borrarCarrito = await carritoService.deleteById(carritoId);
+    //         res.status(200).render('verProductos',{message: message,productos, carritoId});	
+    //     } catch (error) {
+    //         pino.error(`Se produjo un error: ${error}`);
+    //         res.status(400).render('error');
+    //     }
+    // }
 
     async createElement(req, res, next){
         try {
@@ -15,33 +32,33 @@ class Element {
             let carritoId = await carritoService.save(payload);
             let carrito = await carritoService.getSubElementsById(carritoId);
             let ordenId = await elementService.save(payload,carrito);
-            let productos = await productoService.getAll();
             let message = `Orden generada, ID: ${ordenId}`;
             await Nodemailer.orden(payload,carrito);
             let borrarCarrito = await carritoService.deleteById(carritoId);
-            res.status(200).render('verProductos',{message: message,productos, carritoId});	
+            // res.status(200).render('verProductos',{message: message,productos, carritoId});	
+            res.status(200).json({message: message, carritoId});
         } catch (error) {
             pino.error(`Se produjo un error: ${error}`);
-            res.status(400).render('error');
+            res.status(400).json({message: "Se produjo un error"});
         }
     }
 
-    async createElementReact(req, res, next){
-        try {
-            const token = req.cookies.token;
-            let payload = await JWT.decode(token);
-            let carrito = req.body
-            let ordenId = await elementService.save(payload,carrito);
-            let productos = await productoService.getAll();
-            let message = `Orden generada, ID: ${ordenId}`;
-            await Nodemailer.orden(payload,carrito);
-            let borrarCarrito = await carritoService.deleteById(carritoId);
-            res.status(200).render('verProductos',{message: message,productos, carritoId});	
-        } catch (error) {
-            pino.error(`Se produjo un error: ${error}`);
-            res.status(400).render('error');
-        }
-    }  
+    // async createElementReact(req, res, next){
+    //     try {
+    //         const token = req.cookies.token;
+    //         let payload = await JWT.decode(token);
+    //         let carrito = req.body
+    //         let ordenId = await elementService.save(payload,carrito);
+    //         let productos = await productoService.getAll();
+    //         let message = `Orden generada, ID: ${ordenId}`;
+    //         await Nodemailer.orden(payload,carrito);
+    //         let borrarCarrito = await carritoService.deleteById(carritoId);
+    //         res.status(200).render('verProductos',{message: message,productos, carritoId});	
+    //     } catch (error) {
+    //         pino.error(`Se produjo un error: ${error}`);
+    //         res.status(400).render('error');
+    //     }
+    // }  
 
     async getElement(req, res, next){
         try {

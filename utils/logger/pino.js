@@ -2,7 +2,8 @@ const pino = require("pino")({
 	transport: {
 	    targets: [
 		{
-		    level: 'error',
+		//     level: 'error',
+		    level: 'debug',
 		    target: 'pino/file',
 		    options: { destination: './utils/logger/logs/error.log', mkdir: true }
 		},

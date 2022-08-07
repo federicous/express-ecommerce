@@ -41,36 +41,6 @@ class Contenedor {
 		return this;
 	}
 
-	async save(producto,id) {
-		try {
-			if (id) {
-				producto.id= id;
-			}
-			producto.uuid=uuid()
-			let agregar= await knex('productos')
-			.insert(producto)
-			pino.info("datos insertados")		
-
-			return producto.id
-
-		} catch (error) {
-			pino.error(`Se produjo un error: ${error}`)
-			throw new Error(error)
-		}		
-	}
-	
-	async modify(id, producto) {
-		try {
-			let modificar = await knex.from('productos').select('*').where({id:`${id}`}).update(producto);
-			return(modificar[0])
-
-
-		} catch (error) {
-			pino.error(`Se produjo un error: ${error}`)
-			throw new Error(error)
-		}	
-	}
-
 	async getById(id) {
 		try {
 			let idProduct= parseInt(id);
@@ -82,6 +52,52 @@ class Contenedor {
 			pino.error(`Se produjo un error: ${error}`)
 			throw new Error(error)
 		}	
+	}
+
+	async getAllNamesPage(patron = "a",page,pageSize) {
+		try {
+			const PAGE_SIZE = pageSize; // Similar a 'límite'
+			const skip = (page - 1) * PAGE_SIZE;
+			let allProducts = await knex.from('productos')
+			.select('*')
+			.where('name', 'like', `${patron}%`)
+			.orWhere('name', 'like', `% ${patron}%`)
+			.orWhere('code', 'like', `${patron}%`)
+			.offset(`${skip}`)
+			.limit(`${PAGE_SIZE}`);
+			// let total = await knex.from('productos').select('*').where({label:`${category}`}).count('*')
+			let todos= await knex.from('productos')
+			.select('*')
+			.where('name', 'like', `${patron}%`)
+			.orWhere('name', 'like', `% ${patron}%`)
+			.orWhere('code', 'like', `${patron}%`)
+			let total = todos.length
+			return ({allProducts: allProducts,total: total})
+
+		} catch (error) {
+			pino.error(`Se produjo un error: ${error}`)
+			throw new Error(error)
+		}
+	}
+
+	async getAllPage(page,pageSize) {
+		try {
+			const PAGE_SIZE = pageSize; // Similar a 'límite'
+			const skip = (page - 1) * PAGE_SIZE;
+			let allProducts = await knex.from('productos')
+			.select('*')
+			.offset(`${skip}`)
+			.limit(`${PAGE_SIZE}`);
+			let todos= await knex.from('productos')
+			.select('*')
+			// console.log(todos);
+			let total = todos.length
+			return ({allProducts: allProducts,total: total})
+
+		} catch (error) {
+			pino.error(`Se produjo un error: ${error}`)
+			throw new Error(error)
+		}
 	}
 
 	async getAll() {
@@ -96,27 +112,6 @@ class Contenedor {
 		
 	}
 
-	async deleteById(id) {
-		try {
-			let borrar = await knex.from('productos').where({id:`${id}`}).del();
-
-
-		} catch (error) {
-			pino.error(`Se produjo un error: ${error}`)
-			throw new Error(error)
-		}		
-	}
-
-	async deleteAll() {
-		try {
-			const contenido = await fs.promises.writeFile(this.url,[])
-
-		} catch (error) {
-			throw new Error(error)
-		}
-
-
-	}
 }
 
 

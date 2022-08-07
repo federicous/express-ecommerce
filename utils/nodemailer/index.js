@@ -7,7 +7,7 @@ class Correo {
 	async registro(user) {
 		try {
 			const option = {
-				from: 'Ecommerce - registro <no-reply@ethereal.email>',
+				from: `Ecommerce - Registro <${adminEmail}>`,
 				to: `${user.email}`,
 				bcc: `${adminEmail}`,
 				subject: `Usuario Registrado: ${user.email}`,
@@ -28,7 +28,7 @@ class Correo {
 				items += `<tr><td>${item.name} </td> <td>${item.qty}</td> <td>${item.price}<td></tr>`
 			})
 			const option = {
-				from: 'Ecommerce - orden <no-reply@ethereal.email>',
+				from: `Ecommerce - Orden <${adminEmail}>`,
 				to: `${user.email}`,
 				bcc: `${adminEmail}`,
 				subject: 'Orden creada',

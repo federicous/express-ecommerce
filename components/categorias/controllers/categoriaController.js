@@ -12,7 +12,7 @@ class Element {
             let response = await elementService.getAll(identificador);
             for (let prod = 0; prod < response.length; prod++) {
                 const element = response[prod];
-                console.log(element);
+                // console.log(element);
                 categorias.push(response[prod][identificador])
                 
             }
