@@ -53,7 +53,8 @@ class Contenedor {
 				.insert(nuevoCarrito)
 			pino.info("datos insertados")
 			let carritoGuardado = await knex.from('carritos').select('*').where({email: carrito.email});
-			pino.info(`Nuevo carrito id: ${cart.id}`)
+			// pino.info(`Nuevo carrito id: ${cart.id}`)
+			pino.info(`Nuevo carrito id: ${carritoGuardado[0].id}`)
 			return carritoGuardado[0].id
 
 		} catch (error) {

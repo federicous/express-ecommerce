@@ -2,12 +2,14 @@ const transporter = require('./transport');
 const pino = require('../logger/pino');
 require("dotenv").config();
 let adminEmail = process.env.NODEMAILER_ADMIN;
+let userEmail = process.env.NODEMAILER_USER;
+
 
 class Correo {
 	async registro(user) {
 		try {
 			const option = {
-				from: `Ecommerce - Registro <${adminEmail}>`,
+				from: `BRMTOOLS - Registro de usuario <${userEmail}>`,
 				to: `${user.email}`,
 				bcc: `${adminEmail}`,
 				subject: `Usuario Registrado: ${user.email}`,
@@ -17,7 +19,7 @@ class Correo {
 			pino.info(`Enviando correo a: ${user.email}`)
 			return response
 		} catch (error) {
-			pino.error(`Tuvimos este error: ${error}`)
+			pino.error(`Tuvimos este error enviando la confirmación de registro: ${error}`)
 		}
 	}
 
@@ -28,7 +30,7 @@ class Correo {
 				items += `<tr><td>${item.name} </td> <td>${item.qty}</td> <td>${item.price}<td></tr>`
 			})
 			const option = {
-				from: `Ecommerce - Orden <${adminEmail}>`,
+				from: `BRMTOOLS - Orden de compra <${userEmail}>`,
 				to: `${user.email}`,
 				bcc: `${adminEmail}`,
 				subject: 'Orden creada',
@@ -56,7 +58,7 @@ class Correo {
 			pino.info(`Enviando correo a: ${user.email}`)
 			return response
 		} catch (error) {
-			pino.error(`Tuvimos este error: ${error}`)
+			pino.error(`Tuvimos este error enviando la orden por correo: ${error}`)
 		}
 	}
 }

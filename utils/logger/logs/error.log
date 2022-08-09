@@ -5643,3 +5643,856 @@
 {"level":30,"time":1659839836505,"pid":28880,"hostname":"yemes-PC","msg":"ya existe la tabla"}
 {"level":30,"time":1659839836505,"pid":28880,"hostname":"yemes-PC","msg":"ya existe la tabla"}
 {"level":50,"time":1659839925368,"pid":28880,"hostname":"yemes-PC","msg":"Se produjo un error: JsonWebTokenError: jwt must be provided"}
+{"level":50,"time":1659843545841,"pid":28880,"hostname":"yemes-PC","msg":"Se produjo un error: JsonWebTokenError: jwt must be provided"}
+{"level":30,"time":1659907248388,"pid":10315,"hostname":"yemes-PC","msg":"/home/yemes/Documentos/Codehouse/Backend/express-ecommerce/config/DB/mydb.sqlite"}
+{"level":30,"time":1659907248389,"pid":10315,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Mensajes: sqlite"}
+{"level":30,"time":1659907248395,"pid":10315,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Produtos: sqlite"}
+{"level":30,"time":1659907248396,"pid":10315,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Carritos: sqlite"}
+{"level":30,"time":1659907248423,"pid":10315,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Produtos: sqlite"}
+{"level":30,"time":1659907248427,"pid":10315,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Carritos: sqlite"}
+{"level":30,"time":1659907248431,"pid":10315,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Usuarios: sqlite"}
+{"level":30,"time":1659907248433,"pid":10315,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Ordenes: sqlite"}
+{"level":30,"time":1659907248467,"pid":10315,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Auth: sqlite"}
+{"level":30,"time":1659907248482,"pid":10315,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Produtos: sqlite"}
+{"level":30,"time":1659907248485,"pid":10315,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Produtos: sqlite"}
+{"level":30,"time":1659907248505,"pid":10315,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1659907248508,"pid":10315,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1659907248508,"pid":10315,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1659907248508,"pid":10315,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1659907248508,"pid":10315,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1659907248508,"pid":10315,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1659907248508,"pid":10315,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1659907248509,"pid":10315,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1659907248509,"pid":10315,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1659907248509,"pid":10315,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":50,"time":1659907282120,"pid":10315,"hostname":"yemes-PC","msg":"Se produjo un error: JsonWebTokenError: jwt must be provided"}
+{"level":50,"time":1659907282152,"pid":10315,"hostname":"yemes-PC","msg":"Se produjo un error: JsonWebTokenError: jwt must be provided"}
+{"level":50,"time":1659909736427,"pid":10315,"hostname":"yemes-PC","msg":"Se produjo un error: JsonWebTokenError: jwt must be provided"}
+{"level":50,"time":1659909756356,"pid":10315,"hostname":"yemes-PC","msg":"Se produjo un error: JsonWebTokenError: jwt must be provided"}
+{"level":50,"time":1659909756427,"pid":10315,"hostname":"yemes-PC","msg":"Se produjo un error: JsonWebTokenError: jwt must be provided"}
+{"level":50,"time":1659910495517,"pid":10315,"hostname":"yemes-PC","msg":"Se produjo un error: JsonWebTokenError: jwt must be provided"}
+{"level":50,"time":1659910496580,"pid":10315,"hostname":"yemes-PC","msg":"Se produjo un error: JsonWebTokenError: jwt must be provided"}
+{"level":50,"time":1659910523347,"pid":10315,"hostname":"yemes-PC","msg":"Se produjo un error: JsonWebTokenError: jwt must be provided"}
+{"level":50,"time":1659910523596,"pid":10315,"hostname":"yemes-PC","msg":"Se produjo un error: JsonWebTokenError: jwt must be provided"}
+{"level":50,"time":1659910533606,"pid":10315,"hostname":"yemes-PC","msg":"Se produjo un error: JsonWebTokenError: jwt must be provided"}
+{"level":50,"time":1659910535581,"pid":10315,"hostname":"yemes-PC","msg":"Se produjo un error: JsonWebTokenError: jwt must be provided"}
+{"level":50,"time":1659910542084,"pid":10315,"hostname":"yemes-PC","msg":"Se produjo un error: JsonWebTokenError: jwt must be provided"}
+{"level":50,"time":1659910542116,"pid":10315,"hostname":"yemes-PC","msg":"Se produjo un error: JsonWebTokenError: jwt must be provided"}
+{"level":50,"time":1659910592663,"pid":10315,"hostname":"yemes-PC","msg":"Se produjo un error: JsonWebTokenError: jwt must be provided"}
+{"level":50,"time":1659910600949,"pid":10315,"hostname":"yemes-PC","msg":"Se produjo un error: JsonWebTokenError: jwt must be provided"}
+{"level":50,"time":1659910603399,"pid":10315,"hostname":"yemes-PC","msg":"Se produjo un error: JsonWebTokenError: jwt must be provided"}
+{"level":50,"time":1659910610530,"pid":10315,"hostname":"yemes-PC","msg":"Se produjo un error: JsonWebTokenError: jwt must be provided"}
+{"level":50,"time":1659910616851,"pid":10315,"hostname":"yemes-PC","msg":"Se produjo un error: JsonWebTokenError: jwt must be provided"}
+{"level":50,"time":1659910620175,"pid":10315,"hostname":"yemes-PC","msg":"Se produjo un error: JsonWebTokenError: jwt must be provided"}
+{"level":50,"time":1659910626158,"pid":10315,"hostname":"yemes-PC","msg":"Se produjo un error: JsonWebTokenError: jwt must be provided"}
+{"level":50,"time":1659910626201,"pid":10315,"hostname":"yemes-PC","msg":"Se produjo un error: JsonWebTokenError: jwt must be provided"}
+{"level":50,"time":1659921662960,"pid":10315,"hostname":"yemes-PC","msg":"Se produjo un error: JsonWebTokenError: jwt must be provided"}
+{"level":50,"time":1659925361303,"pid":10315,"hostname":"yemes-PC","msg":"Se produjo un error: JsonWebTokenError: jwt must be provided"}
+{"level":50,"time":1659925361319,"pid":10315,"hostname":"yemes-PC","msg":"Se produjo un error: JsonWebTokenError: jwt must be provided"}
+{"level":50,"time":1659926531807,"pid":10315,"hostname":"yemes-PC","msg":"Se produjo un error: JsonWebTokenError: jwt must be provided"}
+{"level":50,"time":1659926775289,"pid":10315,"hostname":"yemes-PC","msg":"Se produjo un error: JsonWebTokenError: jwt must be provided"}
+{"level":30,"time":1660008562307,"pid":4265,"hostname":"yemes-PC","msg":"/home/yemes/Documentos/Codehouse/Backend/express-ecommerce/config/DB/mydb.sqlite"}
+{"level":30,"time":1660008562308,"pid":4265,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Mensajes: sqlite"}
+{"level":30,"time":1660008562314,"pid":4265,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Produtos: sqlite"}
+{"level":30,"time":1660008562316,"pid":4265,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Carritos: sqlite"}
+{"level":30,"time":1660008562338,"pid":4265,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Produtos: sqlite"}
+{"level":30,"time":1660008562345,"pid":4265,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Carritos: sqlite"}
+{"level":30,"time":1660008562349,"pid":4265,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Usuarios: sqlite"}
+{"level":30,"time":1660008562353,"pid":4265,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Ordenes: sqlite"}
+{"level":30,"time":1660008562393,"pid":4265,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Auth: sqlite"}
+{"level":30,"time":1660008562409,"pid":4265,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Produtos: sqlite"}
+{"level":30,"time":1660008562412,"pid":4265,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Produtos: sqlite"}
+{"level":30,"time":1660008562433,"pid":4265,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660008562433,"pid":4265,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660008562435,"pid":4265,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660008562436,"pid":4265,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660008562436,"pid":4265,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660008562436,"pid":4265,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660008562436,"pid":4265,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660008562436,"pid":4265,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660008562436,"pid":4265,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660008562437,"pid":4265,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":50,"time":1660008589125,"pid":4265,"hostname":"yemes-PC","msg":"Se produjo un error: JsonWebTokenError: jwt must be provided"}
+{"level":50,"time":1660008589148,"pid":4265,"hostname":"yemes-PC","msg":"Se produjo un error: JsonWebTokenError: jwt must be provided"}
+{"level":50,"time":1660015687947,"pid":4265,"hostname":"yemes-PC","msg":"Se produjo un error: JsonWebTokenError: jwt must be provided"}
+{"level":30,"time":1660015725594,"pid":4265,"hostname":"yemes-PC","msg":"datos insertados"}
+{"level":30,"time":1660015731097,"pid":4265,"hostname":"yemes-PC","msg":"Enviando correo a: federicous@gmail.com"}
+{"level":30,"time":1660015848429,"pid":4265,"hostname":"yemes-PC","msg":"datos insertados"}
+{"level":50,"time":1660015848430,"pid":4265,"hostname":"yemes-PC","msg":"Se produjo un error: TypeError: Cannot read properties of undefined (reading 'id')"}
+{"level":50,"time":1660015848430,"pid":4265,"hostname":"yemes-PC","msg":"Se produjo un error: Error: Undefined binding(s) detected when compiling SELECT. Undefined column(s): [id] query: select * from `carritos` where `id` = ?"}
+{"level":30,"time":1660015848436,"pid":4265,"hostname":"yemes-PC","msg":"datos insertados"}
+{"level":50,"time":1660015848436,"pid":4265,"hostname":"yemes-PC","msg":"Tuvimos este error: TypeError: Cannot read properties of undefined (reading 'forEach')"}
+{"level":30,"time":1660015876377,"pid":4265,"hostname":"yemes-PC","msg":"datos insertados"}
+{"level":30,"time":1660015879717,"pid":4265,"hostname":"yemes-PC","msg":"Enviando correo a: federicous@gmail.com"}
+{"level":30,"time":1660016011290,"pid":4265,"hostname":"yemes-PC","msg":"datos insertados"}
+{"level":50,"time":1660016011291,"pid":4265,"hostname":"yemes-PC","msg":"Se produjo un error cart save: TypeError: Cannot read properties of undefined (reading 'id')"}
+{"level":50,"time":1660016011292,"pid":4265,"hostname":"yemes-PC","msg":"Se produjo un error cart saveSubElementReact: TypeError: Cannot set properties of undefined (setting 'productList')"}
+{"level":30,"time":1660016133665,"pid":4265,"hostname":"yemes-PC","msg":"datos insertados"}
+{"level":30,"time":1660016137370,"pid":4265,"hostname":"yemes-PC","msg":"Enviando correo a: federicous@gmail.com"}
+{"level":30,"time":1660016257562,"pid":17201,"hostname":"yemes-PC","msg":"/home/yemes/Documentos/Codehouse/Backend/express-ecommerce/config/DB/mydb.sqlite"}
+{"level":30,"time":1660016257563,"pid":17201,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Mensajes: sqlite"}
+{"level":30,"time":1660016257566,"pid":17201,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Produtos: sqlite"}
+{"level":30,"time":1660016257567,"pid":17201,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Carritos: sqlite"}
+{"level":30,"time":1660016257581,"pid":17201,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Produtos: sqlite"}
+{"level":30,"time":1660016257586,"pid":17201,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Carritos: sqlite"}
+{"level":30,"time":1660016257588,"pid":17201,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Usuarios: sqlite"}
+{"level":30,"time":1660016257589,"pid":17201,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Ordenes: sqlite"}
+{"level":30,"time":1660016257613,"pid":17201,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Auth: sqlite"}
+{"level":30,"time":1660016257624,"pid":17201,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Produtos: sqlite"}
+{"level":30,"time":1660016257625,"pid":17201,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Produtos: sqlite"}
+{"level":30,"time":1660016257644,"pid":17201,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660016257647,"pid":17201,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660016257647,"pid":17201,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660016257647,"pid":17201,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660016257647,"pid":17201,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660016257647,"pid":17201,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660016257647,"pid":17201,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660016257647,"pid":17201,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660016257647,"pid":17201,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660016257647,"pid":17201,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660016262998,"pid":17201,"hostname":"yemes-PC","msg":"datos insertados"}
+{"level":50,"time":1660016262999,"pid":17201,"hostname":"yemes-PC","msg":"Se produjo un error cart save: TypeError: Cannot read properties of undefined (reading 'id')"}
+{"level":50,"time":1660016262999,"pid":17201,"hostname":"yemes-PC","msg":"Se produjo un error cart saveSubElementReact: TypeError: Cannot set properties of undefined (setting 'productList')"}
+{"level":30,"time":1660016286545,"pid":17201,"hostname":"yemes-PC","msg":"datos insertados"}
+{"level":50,"time":1660016287344,"pid":17201,"hostname":"yemes-PC","msg":"Tuvimos este error: Error: Can't send mail - all recipients were rejected: 553 5.7.1 <federicous@gmail.com>: Sender address rejected: not owned by user contacto@distribuidorabrmtools.com"}
+{"level":30,"time":1660016445215,"pid":17201,"hostname":"yemes-PC","msg":"datos insertados"}
+{"level":50,"time":1660016445216,"pid":17201,"hostname":"yemes-PC","msg":"Se produjo un error cart save: TypeError: Cannot read properties of undefined (reading 'id')"}
+{"level":50,"time":1660016445216,"pid":17201,"hostname":"yemes-PC","msg":"Se produjo un error cart getSubElementsById: Error: Undefined binding(s) detected when compiling SELECT. Undefined column(s): [id] query: select * from `carritos` where `id` = ?"}
+{"level":30,"time":1660016468696,"pid":17201,"hostname":"yemes-PC","msg":"datos insertados"}
+{"level":50,"time":1660016469074,"pid":17201,"hostname":"yemes-PC","msg":"Tuvimos este error: Error: Can't send mail - all recipients were rejected: 553 5.7.1 <federicous@gmail.com>: Sender address rejected: not owned by user contacto@distribuidorabrmtools.com"}
+{"level":30,"time":1660016803040,"pid":19122,"hostname":"yemes-PC","msg":"/home/yemes/Documentos/Codehouse/Backend/express-ecommerce/config/DB/mydb.sqlite"}
+{"level":30,"time":1660016803041,"pid":19122,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Mensajes: sqlite"}
+{"level":30,"time":1660016803044,"pid":19122,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Produtos: sqlite"}
+{"level":30,"time":1660016803046,"pid":19122,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Carritos: sqlite"}
+{"level":30,"time":1660016803063,"pid":19122,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Produtos: sqlite"}
+{"level":30,"time":1660016808607,"pid":19165,"hostname":"yemes-PC","msg":"/home/yemes/Documentos/Codehouse/Backend/express-ecommerce/config/DB/mydb.sqlite"}
+{"level":30,"time":1660016808608,"pid":19165,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Mensajes: sqlite"}
+{"level":30,"time":1660016808611,"pid":19165,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Produtos: sqlite"}
+{"level":30,"time":1660016808612,"pid":19165,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Carritos: sqlite"}
+{"level":30,"time":1660016808626,"pid":19165,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Produtos: sqlite"}
+{"level":30,"time":1660016808629,"pid":19165,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Carritos: sqlite"}
+{"level":30,"time":1660016808634,"pid":19165,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Usuarios: sqlite"}
+{"level":30,"time":1660016808637,"pid":19165,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Ordenes: sqlite"}
+{"level":30,"time":1660016808659,"pid":19165,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Auth: sqlite"}
+{"level":30,"time":1660016808670,"pid":19165,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Produtos: sqlite"}
+{"level":30,"time":1660016808671,"pid":19165,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Produtos: sqlite"}
+{"level":30,"time":1660016808687,"pid":19165,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660016808687,"pid":19165,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660016808689,"pid":19165,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660016808689,"pid":19165,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660016808690,"pid":19165,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660016808690,"pid":19165,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660016808690,"pid":19165,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660016808690,"pid":19165,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660016808690,"pid":19165,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660016808690,"pid":19165,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660016812229,"pid":19213,"hostname":"yemes-PC","msg":"/home/yemes/Documentos/Codehouse/Backend/express-ecommerce/config/DB/mydb.sqlite"}
+{"level":30,"time":1660016812230,"pid":19213,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Mensajes: sqlite"}
+{"level":30,"time":1660016812233,"pid":19213,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Produtos: sqlite"}
+{"level":30,"time":1660016812234,"pid":19213,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Carritos: sqlite"}
+{"level":30,"time":1660016812247,"pid":19213,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Produtos: sqlite"}
+{"level":30,"time":1660016812250,"pid":19213,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Carritos: sqlite"}
+{"level":30,"time":1660016812255,"pid":19213,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Usuarios: sqlite"}
+{"level":30,"time":1660016812257,"pid":19213,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Ordenes: sqlite"}
+{"level":30,"time":1660016812281,"pid":19213,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Auth: sqlite"}
+{"level":30,"time":1660016812289,"pid":19213,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Produtos: sqlite"}
+{"level":30,"time":1660016812292,"pid":19213,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Produtos: sqlite"}
+{"level":30,"time":1660016812307,"pid":19213,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660016812307,"pid":19213,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660016812307,"pid":19213,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660016812308,"pid":19213,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660016812310,"pid":19213,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660016812310,"pid":19213,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660016812310,"pid":19213,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660016812310,"pid":19213,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660016812310,"pid":19213,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660016812310,"pid":19213,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660016813935,"pid":19231,"hostname":"yemes-PC","msg":"/home/yemes/Documentos/Codehouse/Backend/express-ecommerce/config/DB/mydb.sqlite"}
+{"level":30,"time":1660016813936,"pid":19231,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Mensajes: sqlite"}
+{"level":30,"time":1660016813939,"pid":19231,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Produtos: sqlite"}
+{"level":30,"time":1660016813940,"pid":19231,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Carritos: sqlite"}
+{"level":30,"time":1660016813952,"pid":19231,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Produtos: sqlite"}
+{"level":30,"time":1660016813954,"pid":19231,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Carritos: sqlite"}
+{"level":30,"time":1660016813961,"pid":19231,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Usuarios: sqlite"}
+{"level":30,"time":1660016813963,"pid":19231,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Ordenes: sqlite"}
+{"level":30,"time":1660016813990,"pid":19231,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Auth: sqlite"}
+{"level":30,"time":1660016813999,"pid":19231,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Produtos: sqlite"}
+{"level":30,"time":1660016814001,"pid":19231,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Produtos: sqlite"}
+{"level":30,"time":1660016814025,"pid":19231,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660016814025,"pid":19231,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660016814025,"pid":19231,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660016814025,"pid":19231,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660016814025,"pid":19231,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660016814025,"pid":19231,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660016814025,"pid":19231,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660016814025,"pid":19231,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660016814026,"pid":19231,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660016814026,"pid":19231,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660016817642,"pid":19283,"hostname":"yemes-PC","msg":"/home/yemes/Documentos/Codehouse/Backend/express-ecommerce/config/DB/mydb.sqlite"}
+{"level":30,"time":1660016817643,"pid":19283,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Mensajes: sqlite"}
+{"level":30,"time":1660016817646,"pid":19283,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Produtos: sqlite"}
+{"level":30,"time":1660016817647,"pid":19283,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Carritos: sqlite"}
+{"level":30,"time":1660016817659,"pid":19283,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Produtos: sqlite"}
+{"level":30,"time":1660016822967,"pid":19329,"hostname":"yemes-PC","msg":"/home/yemes/Documentos/Codehouse/Backend/express-ecommerce/config/DB/mydb.sqlite"}
+{"level":30,"time":1660016822968,"pid":19329,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Mensajes: sqlite"}
+{"level":30,"time":1660016822972,"pid":19329,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Produtos: sqlite"}
+{"level":30,"time":1660016822973,"pid":19329,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Carritos: sqlite"}
+{"level":30,"time":1660016822985,"pid":19329,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Produtos: sqlite"}
+{"level":30,"time":1660016822991,"pid":19329,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Carritos: sqlite"}
+{"level":30,"time":1660016822994,"pid":19329,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Usuarios: sqlite"}
+{"level":30,"time":1660016822996,"pid":19329,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Ordenes: sqlite"}
+{"level":30,"time":1660016823018,"pid":19329,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Auth: sqlite"}
+{"level":30,"time":1660016823029,"pid":19329,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Produtos: sqlite"}
+{"level":30,"time":1660016823031,"pid":19329,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Produtos: sqlite"}
+{"level":30,"time":1660016823046,"pid":19329,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660016823047,"pid":19329,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660016823049,"pid":19329,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660016823049,"pid":19329,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660016823049,"pid":19329,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660016823049,"pid":19329,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660016823049,"pid":19329,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660016823049,"pid":19329,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660016823049,"pid":19329,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660016823049,"pid":19329,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660017003430,"pid":19500,"hostname":"yemes-PC","msg":"/home/yemes/Documentos/Codehouse/Backend/express-ecommerce/config/DB/mydb.sqlite"}
+{"level":30,"time":1660017003431,"pid":19500,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Mensajes: sqlite"}
+{"level":30,"time":1660017003435,"pid":19500,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Produtos: sqlite"}
+{"level":30,"time":1660017003437,"pid":19500,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Carritos: sqlite"}
+{"level":30,"time":1660017003450,"pid":19500,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Produtos: sqlite"}
+{"level":30,"time":1660017003455,"pid":19500,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Carritos: sqlite"}
+{"level":30,"time":1660017003458,"pid":19500,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Usuarios: sqlite"}
+{"level":30,"time":1660017003459,"pid":19500,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Ordenes: sqlite"}
+{"level":30,"time":1660017003481,"pid":19500,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Auth: sqlite"}
+{"level":30,"time":1660017003491,"pid":19500,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Produtos: sqlite"}
+{"level":30,"time":1660017003492,"pid":19500,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Produtos: sqlite"}
+{"level":30,"time":1660017003507,"pid":19500,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660017003509,"pid":19500,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660017003509,"pid":19500,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660017003509,"pid":19500,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660017003509,"pid":19500,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660017003509,"pid":19500,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660017003509,"pid":19500,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660017003509,"pid":19500,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660017003510,"pid":19500,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660017003510,"pid":19500,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660017005153,"pid":19538,"hostname":"yemes-PC","msg":"/home/yemes/Documentos/Codehouse/Backend/express-ecommerce/config/DB/mydb.sqlite"}
+{"level":30,"time":1660017005154,"pid":19538,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Mensajes: sqlite"}
+{"level":30,"time":1660017005157,"pid":19538,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Produtos: sqlite"}
+{"level":30,"time":1660017005159,"pid":19538,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Carritos: sqlite"}
+{"level":30,"time":1660017005171,"pid":19538,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Produtos: sqlite"}
+{"level":30,"time":1660017005173,"pid":19538,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Carritos: sqlite"}
+{"level":30,"time":1660017005179,"pid":19538,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Usuarios: sqlite"}
+{"level":30,"time":1660017005180,"pid":19538,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Ordenes: sqlite"}
+{"level":30,"time":1660017005208,"pid":19538,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Auth: sqlite"}
+{"level":30,"time":1660017005220,"pid":19538,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Produtos: sqlite"}
+{"level":30,"time":1660017005222,"pid":19538,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Produtos: sqlite"}
+{"level":30,"time":1660017005240,"pid":19538,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660017005242,"pid":19538,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660017005242,"pid":19538,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660017005242,"pid":19538,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660017005242,"pid":19538,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660017005243,"pid":19538,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660017005243,"pid":19538,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660017005243,"pid":19538,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660017005243,"pid":19538,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660017005243,"pid":19538,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660017057321,"pid":19538,"hostname":"yemes-PC","msg":"datos insertados"}
+{"level":30,"time":1660017057322,"pid":19538,"hostname":"yemes-PC","msg":"Nuevo carrito id: 7"}
+{"level":30,"time":1660017070659,"pid":19538,"hostname":"yemes-PC","msg":"datos insertados"}
+{"level":50,"time":1660017071720,"pid":19538,"hostname":"yemes-PC","msg":"Tuvimos este error: Error: Unexpected socket close"}
+{"level":30,"time":1660017096222,"pid":19538,"hostname":"yemes-PC","msg":"datos insertados"}
+{"level":50,"time":1660017096223,"pid":19538,"hostname":"yemes-PC","msg":"Se produjo un error: TypeError: Cannot read properties of undefined (reading 'id')"}
+{"level":50,"time":1660017096224,"pid":19538,"hostname":"yemes-PC","msg":"Se produjo un error: Error: Undefined binding(s) detected when compiling SELECT. Undefined column(s): [id] query: select * from `carritos` where `id` = ?"}
+{"level":30,"time":1660017096228,"pid":19538,"hostname":"yemes-PC","msg":"datos insertados"}
+{"level":50,"time":1660017096229,"pid":19538,"hostname":"yemes-PC","msg":"Tuvimos este error: TypeError: Cannot read properties of undefined (reading 'forEach')"}
+{"level":30,"time":1660017286267,"pid":19993,"hostname":"yemes-PC","msg":"/home/yemes/Documentos/Codehouse/Backend/express-ecommerce/config/DB/mydb.sqlite"}
+{"level":30,"time":1660017286268,"pid":19993,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Mensajes: sqlite"}
+{"level":30,"time":1660017286271,"pid":19993,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Produtos: sqlite"}
+{"level":30,"time":1660017286272,"pid":19993,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Carritos: sqlite"}
+{"level":30,"time":1660017286286,"pid":19993,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Produtos: sqlite"}
+{"level":30,"time":1660017286293,"pid":19993,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Carritos: sqlite"}
+{"level":30,"time":1660017286296,"pid":19993,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Usuarios: sqlite"}
+{"level":30,"time":1660017286298,"pid":19993,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Ordenes: sqlite"}
+{"level":30,"time":1660017286325,"pid":19993,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Auth: sqlite"}
+{"level":30,"time":1660017286335,"pid":19993,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Produtos: sqlite"}
+{"level":30,"time":1660017286337,"pid":19993,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Produtos: sqlite"}
+{"level":30,"time":1660017286354,"pid":19993,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660017286355,"pid":19993,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660017286355,"pid":19993,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660017286355,"pid":19993,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660017286355,"pid":19993,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660017286355,"pid":19993,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660017286355,"pid":19993,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660017286355,"pid":19993,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660017286355,"pid":19993,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660017286355,"pid":19993,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660017301020,"pid":20069,"hostname":"yemes-PC","msg":"/home/yemes/Documentos/Codehouse/Backend/express-ecommerce/config/DB/mydb.sqlite"}
+{"level":30,"time":1660017301021,"pid":20069,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Mensajes: sqlite"}
+{"level":30,"time":1660017301025,"pid":20069,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Produtos: sqlite"}
+{"level":30,"time":1660017301026,"pid":20069,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Carritos: sqlite"}
+{"level":30,"time":1660017301043,"pid":20069,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Produtos: sqlite"}
+{"level":30,"time":1660017301053,"pid":20069,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Carritos: sqlite"}
+{"level":30,"time":1660017301056,"pid":20069,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Usuarios: sqlite"}
+{"level":30,"time":1660017301057,"pid":20069,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Ordenes: sqlite"}
+{"level":30,"time":1660017301080,"pid":20069,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Auth: sqlite"}
+{"level":30,"time":1660017301089,"pid":20069,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Produtos: sqlite"}
+{"level":30,"time":1660017301090,"pid":20069,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Produtos: sqlite"}
+{"level":30,"time":1660017301105,"pid":20069,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660017301108,"pid":20069,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660017301108,"pid":20069,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660017301108,"pid":20069,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660017301108,"pid":20069,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660017301108,"pid":20069,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660017301108,"pid":20069,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660017301108,"pid":20069,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660017301108,"pid":20069,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660017301108,"pid":20069,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660017305054,"pid":20069,"hostname":"yemes-PC","msg":"datos insertados"}
+{"level":50,"time":1660017306121,"pid":20069,"hostname":"yemes-PC","msg":"Tuvimos este error: Error: Unexpected socket close"}
+{"level":30,"time":1660017347550,"pid":20233,"hostname":"yemes-PC","msg":"/home/yemes/Documentos/Codehouse/Backend/express-ecommerce/config/DB/mydb.sqlite"}
+{"level":30,"time":1660017347551,"pid":20233,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Mensajes: sqlite"}
+{"level":30,"time":1660017347553,"pid":20233,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Produtos: sqlite"}
+{"level":30,"time":1660017347555,"pid":20233,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Carritos: sqlite"}
+{"level":30,"time":1660017347567,"pid":20233,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Produtos: sqlite"}
+{"level":30,"time":1660017347570,"pid":20233,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Carritos: sqlite"}
+{"level":30,"time":1660017347576,"pid":20233,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Usuarios: sqlite"}
+{"level":30,"time":1660017347577,"pid":20233,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Ordenes: sqlite"}
+{"level":30,"time":1660017347600,"pid":20233,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Auth: sqlite"}
+{"level":30,"time":1660017347608,"pid":20233,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Produtos: sqlite"}
+{"level":30,"time":1660017347610,"pid":20233,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Produtos: sqlite"}
+{"level":30,"time":1660017347625,"pid":20233,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660017347625,"pid":20233,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660017347627,"pid":20233,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660017347627,"pid":20233,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660017347627,"pid":20233,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660017347627,"pid":20233,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660017347627,"pid":20233,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660017347627,"pid":20233,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660017347627,"pid":20233,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660017347628,"pid":20233,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660017356933,"pid":20307,"hostname":"yemes-PC","msg":"/home/yemes/Documentos/Codehouse/Backend/express-ecommerce/config/DB/mydb.sqlite"}
+{"level":30,"time":1660017356934,"pid":20307,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Mensajes: sqlite"}
+{"level":30,"time":1660017356938,"pid":20307,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Produtos: sqlite"}
+{"level":30,"time":1660017356939,"pid":20307,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Carritos: sqlite"}
+{"level":30,"time":1660017356953,"pid":20307,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Produtos: sqlite"}
+{"level":30,"time":1660017356955,"pid":20307,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Carritos: sqlite"}
+{"level":30,"time":1660017356962,"pid":20307,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Usuarios: sqlite"}
+{"level":30,"time":1660017356963,"pid":20307,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Ordenes: sqlite"}
+{"level":30,"time":1660017356985,"pid":20307,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Auth: sqlite"}
+{"level":30,"time":1660017356994,"pid":20307,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Produtos: sqlite"}
+{"level":30,"time":1660017356996,"pid":20307,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Produtos: sqlite"}
+{"level":30,"time":1660017357014,"pid":20307,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660017357014,"pid":20307,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660017357014,"pid":20307,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660017357014,"pid":20307,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660017357014,"pid":20307,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660017357014,"pid":20307,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660017357014,"pid":20307,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660017357014,"pid":20307,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660017357014,"pid":20307,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660017357014,"pid":20307,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660017364999,"pid":20380,"hostname":"yemes-PC","msg":"/home/yemes/Documentos/Codehouse/Backend/express-ecommerce/config/DB/mydb.sqlite"}
+{"level":30,"time":1660017364999,"pid":20380,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Mensajes: sqlite"}
+{"level":30,"time":1660017365003,"pid":20380,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Produtos: sqlite"}
+{"level":30,"time":1660017365004,"pid":20380,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Carritos: sqlite"}
+{"level":30,"time":1660017365016,"pid":20380,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Produtos: sqlite"}
+{"level":30,"time":1660017365019,"pid":20380,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Carritos: sqlite"}
+{"level":30,"time":1660017365024,"pid":20380,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Usuarios: sqlite"}
+{"level":30,"time":1660017365026,"pid":20380,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Ordenes: sqlite"}
+{"level":30,"time":1660017365047,"pid":20380,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Auth: sqlite"}
+{"level":30,"time":1660017365057,"pid":20380,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Produtos: sqlite"}
+{"level":30,"time":1660017365058,"pid":20380,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Produtos: sqlite"}
+{"level":30,"time":1660017365073,"pid":20380,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660017365075,"pid":20380,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660017365075,"pid":20380,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660017365075,"pid":20380,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660017365076,"pid":20380,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660017365076,"pid":20380,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660017365076,"pid":20380,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660017365076,"pid":20380,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660017365076,"pid":20380,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660017365076,"pid":20380,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660017382461,"pid":20433,"hostname":"yemes-PC","msg":"/home/yemes/Documentos/Codehouse/Backend/express-ecommerce/config/DB/mydb.sqlite"}
+{"level":30,"time":1660017382462,"pid":20433,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Mensajes: sqlite"}
+{"level":30,"time":1660017382465,"pid":20433,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Produtos: sqlite"}
+{"level":30,"time":1660017382466,"pid":20433,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Carritos: sqlite"}
+{"level":30,"time":1660017382478,"pid":20433,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Produtos: sqlite"}
+{"level":30,"time":1660017382484,"pid":20433,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Carritos: sqlite"}
+{"level":30,"time":1660017382486,"pid":20433,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Usuarios: sqlite"}
+{"level":30,"time":1660017382488,"pid":20433,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Ordenes: sqlite"}
+{"level":30,"time":1660017382510,"pid":20433,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Auth: sqlite"}
+{"level":30,"time":1660017382518,"pid":20433,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Produtos: sqlite"}
+{"level":30,"time":1660017382520,"pid":20433,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Produtos: sqlite"}
+{"level":30,"time":1660017382537,"pid":20433,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660017382540,"pid":20433,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660017382540,"pid":20433,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660017382540,"pid":20433,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660017382540,"pid":20433,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660017382540,"pid":20433,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660017382540,"pid":20433,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660017382540,"pid":20433,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660017382540,"pid":20433,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660017382540,"pid":20433,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660017394951,"pid":20505,"hostname":"yemes-PC","msg":"/home/yemes/Documentos/Codehouse/Backend/express-ecommerce/config/DB/mydb.sqlite"}
+{"level":30,"time":1660017394952,"pid":20505,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Mensajes: sqlite"}
+{"level":30,"time":1660017394955,"pid":20505,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Produtos: sqlite"}
+{"level":30,"time":1660017394957,"pid":20505,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Carritos: sqlite"}
+{"level":30,"time":1660017394970,"pid":20505,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Produtos: sqlite"}
+{"level":30,"time":1660017394977,"pid":20505,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Carritos: sqlite"}
+{"level":30,"time":1660017394979,"pid":20505,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Usuarios: sqlite"}
+{"level":30,"time":1660017394981,"pid":20505,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Ordenes: sqlite"}
+{"level":30,"time":1660017395007,"pid":20505,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Auth: sqlite"}
+{"level":30,"time":1660017395017,"pid":20505,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Produtos: sqlite"}
+{"level":30,"time":1660017395018,"pid":20505,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Produtos: sqlite"}
+{"level":30,"time":1660017395033,"pid":20505,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660017395036,"pid":20505,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660017395036,"pid":20505,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660017395037,"pid":20505,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660017395037,"pid":20505,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660017395037,"pid":20505,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660017395037,"pid":20505,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660017395037,"pid":20505,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660017395037,"pid":20505,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660017395037,"pid":20505,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660017400926,"pid":20554,"hostname":"yemes-PC","msg":"/home/yemes/Documentos/Codehouse/Backend/express-ecommerce/config/DB/mydb.sqlite"}
+{"level":30,"time":1660017400926,"pid":20554,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Mensajes: sqlite"}
+{"level":30,"time":1660017400929,"pid":20554,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Produtos: sqlite"}
+{"level":30,"time":1660017400930,"pid":20554,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Carritos: sqlite"}
+{"level":30,"time":1660017400943,"pid":20554,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Produtos: sqlite"}
+{"level":30,"time":1660017400946,"pid":20554,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Carritos: sqlite"}
+{"level":30,"time":1660017400951,"pid":20554,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Usuarios: sqlite"}
+{"level":30,"time":1660017400954,"pid":20554,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Ordenes: sqlite"}
+{"level":30,"time":1660017400977,"pid":20554,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Auth: sqlite"}
+{"level":30,"time":1660017400989,"pid":20554,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Produtos: sqlite"}
+{"level":30,"time":1660017400991,"pid":20554,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Produtos: sqlite"}
+{"level":30,"time":1660017401011,"pid":20554,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660017401013,"pid":20554,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660017401014,"pid":20554,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660017401014,"pid":20554,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660017401014,"pid":20554,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660017401014,"pid":20554,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660017401014,"pid":20554,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660017401014,"pid":20554,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660017401014,"pid":20554,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660017401014,"pid":20554,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660017402908,"pid":20554,"hostname":"yemes-PC","msg":"datos insertados"}
+{"level":30,"time":1660017402908,"pid":20554,"hostname":"yemes-PC","msg":"Nuevo carrito id: 9"}
+{"level":30,"time":1660017402913,"pid":20554,"hostname":"yemes-PC","msg":"datos insertados"}
+{"level":50,"time":1660017404149,"pid":20554,"hostname":"yemes-PC","msg":"Tuvimos este error enviando la orden por correo: Error: Unexpected socket close"}
+{"level":30,"time":1660017424613,"pid":20554,"hostname":"yemes-PC","msg":"datos insertados"}
+{"level":30,"time":1660017424614,"pid":20554,"hostname":"yemes-PC","msg":"Nuevo carrito id: 10"}
+{"level":30,"time":1660017424620,"pid":20554,"hostname":"yemes-PC","msg":"datos insertados"}
+{"level":50,"time":1660017425664,"pid":20554,"hostname":"yemes-PC","msg":"Tuvimos este error enviando la orden por correo: Error: Unexpected socket close"}
+{"level":30,"time":1660017434651,"pid":20760,"hostname":"yemes-PC","msg":"/home/yemes/Documentos/Codehouse/Backend/express-ecommerce/config/DB/mydb.sqlite"}
+{"level":30,"time":1660017434653,"pid":20760,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Mensajes: sqlite"}
+{"level":30,"time":1660017434656,"pid":20760,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Produtos: sqlite"}
+{"level":30,"time":1660017434657,"pid":20760,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Carritos: sqlite"}
+{"level":30,"time":1660017434671,"pid":20760,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Produtos: sqlite"}
+{"level":30,"time":1660017434676,"pid":20760,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Carritos: sqlite"}
+{"level":30,"time":1660017434679,"pid":20760,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Usuarios: sqlite"}
+{"level":30,"time":1660017434680,"pid":20760,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Ordenes: sqlite"}
+{"level":30,"time":1660017434704,"pid":20760,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Auth: sqlite"}
+{"level":30,"time":1660017434712,"pid":20760,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Produtos: sqlite"}
+{"level":30,"time":1660017434713,"pid":20760,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Produtos: sqlite"}
+{"level":30,"time":1660017434728,"pid":20760,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660017434731,"pid":20760,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660017434731,"pid":20760,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660017434731,"pid":20760,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660017434731,"pid":20760,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660017434731,"pid":20760,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660017434731,"pid":20760,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660017434731,"pid":20760,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660017434731,"pid":20760,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660017434731,"pid":20760,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660017438962,"pid":20760,"hostname":"yemes-PC","msg":"datos insertados"}
+{"level":30,"time":1660017438963,"pid":20760,"hostname":"yemes-PC","msg":"Nuevo carrito id: 11"}
+{"level":30,"time":1660017438968,"pid":20760,"hostname":"yemes-PC","msg":"datos insertados"}
+{"level":50,"time":1660017439617,"pid":20760,"hostname":"yemes-PC","msg":"Tuvimos este error enviando la orden por correo: Error: Can't send mail - all recipients were rejected: 553 5.7.1 <federicous@gmail.com>: Sender address rejected: not owned by user contacto@distribuidorabrmtools.com"}
+{"level":30,"time":1660017619277,"pid":21018,"hostname":"yemes-PC","msg":"/home/yemes/Documentos/Codehouse/Backend/express-ecommerce/config/DB/mydb.sqlite"}
+{"level":30,"time":1660017619278,"pid":21018,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Mensajes: sqlite"}
+{"level":30,"time":1660017619281,"pid":21018,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Produtos: sqlite"}
+{"level":30,"time":1660017619282,"pid":21018,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Carritos: sqlite"}
+{"level":30,"time":1660017619302,"pid":21018,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Produtos: sqlite"}
+{"level":30,"time":1660017619306,"pid":21018,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Carritos: sqlite"}
+{"level":30,"time":1660017619309,"pid":21018,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Usuarios: sqlite"}
+{"level":30,"time":1660017619311,"pid":21018,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Ordenes: sqlite"}
+{"level":30,"time":1660017619335,"pid":21018,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Auth: sqlite"}
+{"level":30,"time":1660017619344,"pid":21018,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Produtos: sqlite"}
+{"level":30,"time":1660017619345,"pid":21018,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Produtos: sqlite"}
+{"level":30,"time":1660017619363,"pid":21018,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660017619363,"pid":21018,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660017619363,"pid":21018,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660017619363,"pid":21018,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660017619363,"pid":21018,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660017619363,"pid":21018,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660017619363,"pid":21018,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660017619363,"pid":21018,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660017619363,"pid":21018,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660017619363,"pid":21018,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660017624645,"pid":21071,"hostname":"yemes-PC","msg":"/home/yemes/Documentos/Codehouse/Backend/express-ecommerce/config/DB/mydb.sqlite"}
+{"level":30,"time":1660017624646,"pid":21071,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Mensajes: sqlite"}
+{"level":30,"time":1660017624650,"pid":21071,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Produtos: sqlite"}
+{"level":30,"time":1660017624652,"pid":21071,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Carritos: sqlite"}
+{"level":30,"time":1660017624673,"pid":21071,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Produtos: sqlite"}
+{"level":30,"time":1660017624677,"pid":21071,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Carritos: sqlite"}
+{"level":30,"time":1660017624680,"pid":21071,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Usuarios: sqlite"}
+{"level":30,"time":1660017624682,"pid":21071,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Ordenes: sqlite"}
+{"level":30,"time":1660017624710,"pid":21071,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Auth: sqlite"}
+{"level":30,"time":1660017624723,"pid":21071,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Produtos: sqlite"}
+{"level":30,"time":1660017624726,"pid":21071,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Produtos: sqlite"}
+{"level":30,"time":1660017624752,"pid":21071,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660017624752,"pid":21071,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660017624752,"pid":21071,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660017624753,"pid":21071,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660017624753,"pid":21071,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660017624753,"pid":21071,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660017624753,"pid":21071,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660017624753,"pid":21071,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660017624753,"pid":21071,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660017624753,"pid":21071,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660017626678,"pid":21118,"hostname":"yemes-PC","msg":"/home/yemes/Documentos/Codehouse/Backend/express-ecommerce/config/DB/mydb.sqlite"}
+{"level":30,"time":1660017626679,"pid":21118,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Mensajes: sqlite"}
+{"level":30,"time":1660017626682,"pid":21118,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Produtos: sqlite"}
+{"level":30,"time":1660017626683,"pid":21118,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Carritos: sqlite"}
+{"level":30,"time":1660017626699,"pid":21118,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Produtos: sqlite"}
+{"level":30,"time":1660017626702,"pid":21118,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Carritos: sqlite"}
+{"level":30,"time":1660017626705,"pid":21118,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Usuarios: sqlite"}
+{"level":30,"time":1660017626706,"pid":21118,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Ordenes: sqlite"}
+{"level":30,"time":1660017626732,"pid":21118,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Auth: sqlite"}
+{"level":30,"time":1660017626740,"pid":21118,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Produtos: sqlite"}
+{"level":30,"time":1660017626742,"pid":21118,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Produtos: sqlite"}
+{"level":30,"time":1660017626763,"pid":21118,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660017626763,"pid":21118,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660017626763,"pid":21118,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660017626763,"pid":21118,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660017626763,"pid":21118,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660017626763,"pid":21118,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660017626763,"pid":21118,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660017626763,"pid":21118,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660017626764,"pid":21118,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660017626764,"pid":21118,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660017628347,"pid":21135,"hostname":"yemes-PC","msg":"/home/yemes/Documentos/Codehouse/Backend/express-ecommerce/config/DB/mydb.sqlite"}
+{"level":30,"time":1660017628348,"pid":21135,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Mensajes: sqlite"}
+{"level":30,"time":1660017628351,"pid":21135,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Produtos: sqlite"}
+{"level":30,"time":1660017628352,"pid":21135,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Carritos: sqlite"}
+{"level":30,"time":1660017628365,"pid":21135,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Produtos: sqlite"}
+{"level":30,"time":1660017628368,"pid":21135,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Carritos: sqlite"}
+{"level":30,"time":1660017628374,"pid":21135,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Usuarios: sqlite"}
+{"level":30,"time":1660017628375,"pid":21135,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Ordenes: sqlite"}
+{"level":30,"time":1660017630137,"pid":21156,"hostname":"yemes-PC","msg":"/home/yemes/Documentos/Codehouse/Backend/express-ecommerce/config/DB/mydb.sqlite"}
+{"level":30,"time":1660017630138,"pid":21156,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Mensajes: sqlite"}
+{"level":30,"time":1660017630141,"pid":21156,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Produtos: sqlite"}
+{"level":30,"time":1660017630142,"pid":21156,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Carritos: sqlite"}
+{"level":30,"time":1660017630155,"pid":21156,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Produtos: sqlite"}
+{"level":30,"time":1660017630157,"pid":21156,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Carritos: sqlite"}
+{"level":30,"time":1660017630165,"pid":21156,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Usuarios: sqlite"}
+{"level":30,"time":1660017630167,"pid":21156,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Ordenes: sqlite"}
+{"level":30,"time":1660017634904,"pid":21200,"hostname":"yemes-PC","msg":"/home/yemes/Documentos/Codehouse/Backend/express-ecommerce/config/DB/mydb.sqlite"}
+{"level":30,"time":1660017634906,"pid":21200,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Mensajes: sqlite"}
+{"level":30,"time":1660017634909,"pid":21200,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Produtos: sqlite"}
+{"level":30,"time":1660017634911,"pid":21200,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Carritos: sqlite"}
+{"level":30,"time":1660017634925,"pid":21200,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Produtos: sqlite"}
+{"level":30,"time":1660017634928,"pid":21200,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Carritos: sqlite"}
+{"level":30,"time":1660017634934,"pid":21200,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Usuarios: sqlite"}
+{"level":30,"time":1660017634935,"pid":21200,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Ordenes: sqlite"}
+{"level":30,"time":1660017634957,"pid":21200,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Auth: sqlite"}
+{"level":30,"time":1660017634966,"pid":21200,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Produtos: sqlite"}
+{"level":30,"time":1660017634968,"pid":21200,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Produtos: sqlite"}
+{"level":30,"time":1660017634986,"pid":21200,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660017634986,"pid":21200,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660017634986,"pid":21200,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660017634986,"pid":21200,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660017634986,"pid":21200,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660017634986,"pid":21200,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660017634986,"pid":21200,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660017634986,"pid":21200,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660017634987,"pid":21200,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660017634987,"pid":21200,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660017637277,"pid":21249,"hostname":"yemes-PC","msg":"/home/yemes/Documentos/Codehouse/Backend/express-ecommerce/config/DB/mydb.sqlite"}
+{"level":30,"time":1660017637278,"pid":21249,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Mensajes: sqlite"}
+{"level":30,"time":1660017637281,"pid":21249,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Produtos: sqlite"}
+{"level":30,"time":1660017637282,"pid":21249,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Carritos: sqlite"}
+{"level":30,"time":1660017637294,"pid":21249,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Produtos: sqlite"}
+{"level":30,"time":1660017637300,"pid":21249,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Carritos: sqlite"}
+{"level":30,"time":1660017637302,"pid":21249,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Usuarios: sqlite"}
+{"level":30,"time":1660017637304,"pid":21249,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Ordenes: sqlite"}
+{"level":30,"time":1660017637326,"pid":21249,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Auth: sqlite"}
+{"level":30,"time":1660017637336,"pid":21249,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Produtos: sqlite"}
+{"level":30,"time":1660017637338,"pid":21249,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Produtos: sqlite"}
+{"level":30,"time":1660017637354,"pid":21249,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660017637358,"pid":21249,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660017637358,"pid":21249,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660017637358,"pid":21249,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660017637358,"pid":21249,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660017637358,"pid":21249,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660017637358,"pid":21249,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660017637358,"pid":21249,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660017637358,"pid":21249,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660017637359,"pid":21249,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660017643475,"pid":21297,"hostname":"yemes-PC","msg":"/home/yemes/Documentos/Codehouse/Backend/express-ecommerce/config/DB/mydb.sqlite"}
+{"level":30,"time":1660017643476,"pid":21297,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Mensajes: sqlite"}
+{"level":30,"time":1660017643479,"pid":21297,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Produtos: sqlite"}
+{"level":30,"time":1660017643480,"pid":21297,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Carritos: sqlite"}
+{"level":30,"time":1660017643495,"pid":21297,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Produtos: sqlite"}
+{"level":30,"time":1660017643497,"pid":21297,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Carritos: sqlite"}
+{"level":30,"time":1660017643500,"pid":21297,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Usuarios: sqlite"}
+{"level":30,"time":1660017643504,"pid":21297,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Ordenes: sqlite"}
+{"level":30,"time":1660017643526,"pid":21297,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Auth: sqlite"}
+{"level":30,"time":1660017643535,"pid":21297,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Produtos: sqlite"}
+{"level":30,"time":1660017643536,"pid":21297,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Produtos: sqlite"}
+{"level":30,"time":1660017643555,"pid":21297,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660017643555,"pid":21297,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660017643558,"pid":21297,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660017643558,"pid":21297,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660017643558,"pid":21297,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660017643558,"pid":21297,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660017643558,"pid":21297,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660017643559,"pid":21297,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660017643559,"pid":21297,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660017643559,"pid":21297,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660017651069,"pid":21347,"hostname":"yemes-PC","msg":"/home/yemes/Documentos/Codehouse/Backend/express-ecommerce/config/DB/mydb.sqlite"}
+{"level":30,"time":1660017651070,"pid":21347,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Mensajes: sqlite"}
+{"level":30,"time":1660017651073,"pid":21347,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Produtos: sqlite"}
+{"level":30,"time":1660017651074,"pid":21347,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Carritos: sqlite"}
+{"level":30,"time":1660017651090,"pid":21347,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Produtos: sqlite"}
+{"level":30,"time":1660017651093,"pid":21347,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Carritos: sqlite"}
+{"level":30,"time":1660017651096,"pid":21347,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Usuarios: sqlite"}
+{"level":30,"time":1660017651098,"pid":21347,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Ordenes: sqlite"}
+{"level":30,"time":1660017651121,"pid":21347,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Auth: sqlite"}
+{"level":30,"time":1660017651132,"pid":21347,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Produtos: sqlite"}
+{"level":30,"time":1660017651134,"pid":21347,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Produtos: sqlite"}
+{"level":30,"time":1660017651151,"pid":21347,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660017651151,"pid":21347,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660017651151,"pid":21347,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660017651151,"pid":21347,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660017651152,"pid":21347,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660017651152,"pid":21347,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660017651152,"pid":21347,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660017651152,"pid":21347,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660017651152,"pid":21347,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660017651152,"pid":21347,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660017660923,"pid":21420,"hostname":"yemes-PC","msg":"/home/yemes/Documentos/Codehouse/Backend/express-ecommerce/config/DB/mydb.sqlite"}
+{"level":30,"time":1660017660924,"pid":21420,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Mensajes: sqlite"}
+{"level":30,"time":1660017660927,"pid":21420,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Produtos: sqlite"}
+{"level":30,"time":1660017660928,"pid":21420,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Carritos: sqlite"}
+{"level":30,"time":1660017660942,"pid":21420,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Produtos: sqlite"}
+{"level":30,"time":1660017660945,"pid":21420,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Carritos: sqlite"}
+{"level":30,"time":1660017660952,"pid":21420,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Usuarios: sqlite"}
+{"level":30,"time":1660017660954,"pid":21420,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Ordenes: sqlite"}
+{"level":30,"time":1660017660976,"pid":21420,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Auth: sqlite"}
+{"level":30,"time":1660017660984,"pid":21420,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Produtos: sqlite"}
+{"level":30,"time":1660017660985,"pid":21420,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Produtos: sqlite"}
+{"level":30,"time":1660017661001,"pid":21420,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660017661003,"pid":21420,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660017661003,"pid":21420,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660017661003,"pid":21420,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660017661003,"pid":21420,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660017661003,"pid":21420,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660017661003,"pid":21420,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660017661003,"pid":21420,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660017661003,"pid":21420,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660017661003,"pid":21420,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660017662889,"pid":21457,"hostname":"yemes-PC","msg":"/home/yemes/Documentos/Codehouse/Backend/express-ecommerce/config/DB/mydb.sqlite"}
+{"level":30,"time":1660017662890,"pid":21457,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Mensajes: sqlite"}
+{"level":30,"time":1660017662892,"pid":21457,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Produtos: sqlite"}
+{"level":30,"time":1660017662894,"pid":21457,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Carritos: sqlite"}
+{"level":30,"time":1660017662906,"pid":21457,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Produtos: sqlite"}
+{"level":30,"time":1660017662912,"pid":21457,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Carritos: sqlite"}
+{"level":30,"time":1660017662915,"pid":21457,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Usuarios: sqlite"}
+{"level":30,"time":1660017662916,"pid":21457,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Ordenes: sqlite"}
+{"level":30,"time":1660017662941,"pid":21457,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Auth: sqlite"}
+{"level":30,"time":1660017662951,"pid":21457,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Produtos: sqlite"}
+{"level":30,"time":1660017662952,"pid":21457,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Produtos: sqlite"}
+{"level":30,"time":1660017662970,"pid":21457,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660017662970,"pid":21457,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660017662970,"pid":21457,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660017662970,"pid":21457,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660017662970,"pid":21457,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660017662970,"pid":21457,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660017662970,"pid":21457,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660017662970,"pid":21457,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660017662970,"pid":21457,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660017662970,"pid":21457,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660017681037,"pid":21457,"hostname":"yemes-PC","msg":"datos insertados"}
+{"level":30,"time":1660017681038,"pid":21457,"hostname":"yemes-PC","msg":"Nuevo carrito id: 12"}
+{"level":30,"time":1660017681044,"pid":21457,"hostname":"yemes-PC","msg":"datos insertados"}
+{"level":30,"time":1660017682644,"pid":21457,"hostname":"yemes-PC","msg":"Enviando correo a: federicous@gmail.com"}
+{"level":30,"time":1660017705339,"pid":21457,"hostname":"yemes-PC","msg":"datos insertados"}
+{"level":30,"time":1660017705340,"pid":21457,"hostname":"yemes-PC","msg":"Nuevo carrito id: 13"}
+{"level":30,"time":1660017718061,"pid":21457,"hostname":"yemes-PC","msg":"datos insertados"}
+{"level":30,"time":1660017719875,"pid":21457,"hostname":"yemes-PC","msg":"Enviando correo a: federicous@gmail.com"}
+{"level":30,"time":1660017881489,"pid":21457,"hostname":"yemes-PC","msg":"datos insertados"}
+{"level":30,"time":1660017881490,"pid":21457,"hostname":"yemes-PC","msg":"Nuevo carrito id: 14"}
+{"level":30,"time":1660017912216,"pid":21457,"hostname":"yemes-PC","msg":"datos insertados"}
+{"level":30,"time":1660017913392,"pid":21457,"hostname":"yemes-PC","msg":"Enviando correo a: federicous@gmail.com"}
+{"level":30,"time":1660018248507,"pid":22322,"hostname":"yemes-PC","msg":"/home/yemes/Documentos/Codehouse/Backend/express-ecommerce/config/DB/mydb.sqlite"}
+{"level":30,"time":1660018248507,"pid":22322,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Mensajes: sqlite"}
+{"level":30,"time":1660018248510,"pid":22322,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Produtos: sqlite"}
+{"level":30,"time":1660018248511,"pid":22322,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Carritos: sqlite"}
+{"level":30,"time":1660018248524,"pid":22322,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Produtos: sqlite"}
+{"level":30,"time":1660018248530,"pid":22322,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Carritos: sqlite"}
+{"level":30,"time":1660018248532,"pid":22322,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Usuarios: sqlite"}
+{"level":30,"time":1660018248534,"pid":22322,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Ordenes: sqlite"}
+{"level":30,"time":1660018248557,"pid":22322,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Auth: sqlite"}
+{"level":30,"time":1660018248566,"pid":22322,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Produtos: sqlite"}
+{"level":30,"time":1660018248567,"pid":22322,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Produtos: sqlite"}
+{"level":30,"time":1660018248582,"pid":22322,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660018248585,"pid":22322,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660018248585,"pid":22322,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660018248585,"pid":22322,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660018248585,"pid":22322,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660018248585,"pid":22322,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660018248585,"pid":22322,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660018248585,"pid":22322,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660018248585,"pid":22322,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660018248585,"pid":22322,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660018251674,"pid":22372,"hostname":"yemes-PC","msg":"/home/yemes/Documentos/Codehouse/Backend/express-ecommerce/config/DB/mydb.sqlite"}
+{"level":30,"time":1660018251675,"pid":22372,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Mensajes: sqlite"}
+{"level":30,"time":1660018251678,"pid":22372,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Produtos: sqlite"}
+{"level":30,"time":1660018251679,"pid":22372,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Carritos: sqlite"}
+{"level":30,"time":1660018251696,"pid":22372,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Produtos: sqlite"}
+{"level":30,"time":1660018251698,"pid":22372,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Carritos: sqlite"}
+{"level":30,"time":1660018251700,"pid":22372,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Usuarios: sqlite"}
+{"level":30,"time":1660018251702,"pid":22372,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Ordenes: sqlite"}
+{"level":30,"time":1660018251725,"pid":22372,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Auth: sqlite"}
+{"level":30,"time":1660018251735,"pid":22372,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Produtos: sqlite"}
+{"level":30,"time":1660018251736,"pid":22372,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Produtos: sqlite"}
+{"level":30,"time":1660018251751,"pid":22372,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660018251754,"pid":22372,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660018251754,"pid":22372,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660018251754,"pid":22372,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660018251754,"pid":22372,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660018251754,"pid":22372,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660018251754,"pid":22372,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660018251754,"pid":22372,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660018251754,"pid":22372,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660018251755,"pid":22372,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660018255972,"pid":22421,"hostname":"yemes-PC","msg":"/home/yemes/Documentos/Codehouse/Backend/express-ecommerce/config/DB/mydb.sqlite"}
+{"level":30,"time":1660018255973,"pid":22421,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Mensajes: sqlite"}
+{"level":30,"time":1660018255976,"pid":22421,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Produtos: sqlite"}
+{"level":30,"time":1660018255977,"pid":22421,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Carritos: sqlite"}
+{"level":30,"time":1660018255995,"pid":22421,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Produtos: sqlite"}
+{"level":30,"time":1660018255997,"pid":22421,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Carritos: sqlite"}
+{"level":30,"time":1660018256000,"pid":22421,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Usuarios: sqlite"}
+{"level":30,"time":1660018256001,"pid":22421,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Ordenes: sqlite"}
+{"level":30,"time":1660018256024,"pid":22421,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Auth: sqlite"}
+{"level":30,"time":1660018256033,"pid":22421,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Produtos: sqlite"}
+{"level":30,"time":1660018256034,"pid":22421,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Produtos: sqlite"}
+{"level":30,"time":1660018256053,"pid":22421,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660018256053,"pid":22421,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660018256053,"pid":22421,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660018256053,"pid":22421,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660018256053,"pid":22421,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660018256053,"pid":22421,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660018256053,"pid":22421,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660018256053,"pid":22421,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660018256054,"pid":22421,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660018256054,"pid":22421,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660018270024,"pid":22471,"hostname":"yemes-PC","msg":"/home/yemes/Documentos/Codehouse/Backend/express-ecommerce/config/DB/mydb.sqlite"}
+{"level":30,"time":1660018270025,"pid":22471,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Mensajes: sqlite"}
+{"level":30,"time":1660018270027,"pid":22471,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Produtos: sqlite"}
+{"level":30,"time":1660018270029,"pid":22471,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Carritos: sqlite"}
+{"level":30,"time":1660018270049,"pid":22471,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Produtos: sqlite"}
+{"level":30,"time":1660018270052,"pid":22471,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Carritos: sqlite"}
+{"level":30,"time":1660018270060,"pid":22471,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Usuarios: sqlite"}
+{"level":30,"time":1660018270062,"pid":22471,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Ordenes: sqlite"}
+{"level":30,"time":1660018270085,"pid":22471,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Auth: sqlite"}
+{"level":30,"time":1660018270096,"pid":22471,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Produtos: sqlite"}
+{"level":30,"time":1660018270098,"pid":22471,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Produtos: sqlite"}
+{"level":30,"time":1660018270116,"pid":22471,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660018270116,"pid":22471,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660018270116,"pid":22471,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660018270117,"pid":22471,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660018270117,"pid":22471,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660018270117,"pid":22471,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660018270117,"pid":22471,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660018270117,"pid":22471,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660018270117,"pid":22471,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660018270117,"pid":22471,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660018283567,"pid":22544,"hostname":"yemes-PC","msg":"/home/yemes/Documentos/Codehouse/Backend/express-ecommerce/config/DB/mydb.sqlite"}
+{"level":30,"time":1660018283568,"pid":22544,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Mensajes: sqlite"}
+{"level":30,"time":1660018283571,"pid":22544,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Produtos: sqlite"}
+{"level":30,"time":1660018283572,"pid":22544,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Carritos: sqlite"}
+{"level":30,"time":1660018283586,"pid":22544,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Produtos: sqlite"}
+{"level":30,"time":1660018283588,"pid":22544,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Carritos: sqlite"}
+{"level":30,"time":1660018283591,"pid":22544,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Usuarios: sqlite"}
+{"level":30,"time":1660018283596,"pid":22544,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Ordenes: sqlite"}
+{"level":30,"time":1660018283619,"pid":22544,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Auth: sqlite"}
+{"level":30,"time":1660018283629,"pid":22544,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Produtos: sqlite"}
+{"level":30,"time":1660018283630,"pid":22544,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Produtos: sqlite"}
+{"level":30,"time":1660018283646,"pid":22544,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660018283648,"pid":22544,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660018283648,"pid":22544,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660018283648,"pid":22544,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660018283648,"pid":22544,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660018283648,"pid":22544,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660018283649,"pid":22544,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660018283649,"pid":22544,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660018283649,"pid":22544,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660018283649,"pid":22544,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660018294021,"pid":22616,"hostname":"yemes-PC","msg":"/home/yemes/Documentos/Codehouse/Backend/express-ecommerce/config/DB/mydb.sqlite"}
+{"level":30,"time":1660018294022,"pid":22616,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Mensajes: sqlite"}
+{"level":30,"time":1660018294026,"pid":22616,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Produtos: sqlite"}
+{"level":30,"time":1660018294027,"pid":22616,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Carritos: sqlite"}
+{"level":30,"time":1660018294040,"pid":22616,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Produtos: sqlite"}
+{"level":30,"time":1660018294042,"pid":22616,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Carritos: sqlite"}
+{"level":30,"time":1660018294047,"pid":22616,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Usuarios: sqlite"}
+{"level":30,"time":1660018294049,"pid":22616,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Ordenes: sqlite"}
+{"level":30,"time":1660018294071,"pid":22616,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Auth: sqlite"}
+{"level":30,"time":1660018294081,"pid":22616,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Produtos: sqlite"}
+{"level":30,"time":1660018294082,"pid":22616,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Produtos: sqlite"}
+{"level":30,"time":1660018294100,"pid":22616,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660018294100,"pid":22616,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660018294100,"pid":22616,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660018294100,"pid":22616,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660018294100,"pid":22616,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660018294100,"pid":22616,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660018294100,"pid":22616,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660018294100,"pid":22616,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660018294100,"pid":22616,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660018294100,"pid":22616,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660018299399,"pid":22666,"hostname":"yemes-PC","msg":"/home/yemes/Documentos/Codehouse/Backend/express-ecommerce/config/DB/mydb.sqlite"}
+{"level":30,"time":1660018299400,"pid":22666,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Mensajes: sqlite"}
+{"level":30,"time":1660018299403,"pid":22666,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Produtos: sqlite"}
+{"level":30,"time":1660018299405,"pid":22666,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Carritos: sqlite"}
+{"level":30,"time":1660018299421,"pid":22666,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Produtos: sqlite"}
+{"level":30,"time":1660018299424,"pid":22666,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Carritos: sqlite"}
+{"level":30,"time":1660018299426,"pid":22666,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Usuarios: sqlite"}
+{"level":30,"time":1660018299427,"pid":22666,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Ordenes: sqlite"}
+{"level":30,"time":1660018299451,"pid":22666,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Auth: sqlite"}
+{"level":30,"time":1660018299459,"pid":22666,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Produtos: sqlite"}
+{"level":30,"time":1660018299460,"pid":22666,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Produtos: sqlite"}
+{"level":30,"time":1660018299478,"pid":22666,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660018299478,"pid":22666,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660018299478,"pid":22666,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660018299478,"pid":22666,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660018299478,"pid":22666,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660018299478,"pid":22666,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660018299479,"pid":22666,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660018299479,"pid":22666,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660018299479,"pid":22666,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660018299479,"pid":22666,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660061459538,"pid":44978,"hostname":"yemes-PC","msg":"/home/yemes/Documentos/Codehouse/Backend/express-ecommerce/config/DB/mydb.sqlite"}
+{"level":30,"time":1660061459539,"pid":44978,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Mensajes: sqlite"}
+{"level":30,"time":1660061459544,"pid":44978,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Produtos: sqlite"}
+{"level":30,"time":1660061459546,"pid":44978,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Carritos: sqlite"}
+{"level":30,"time":1660061459564,"pid":44978,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Produtos: sqlite"}
+{"level":30,"time":1660061459570,"pid":44978,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Carritos: sqlite"}
+{"level":30,"time":1660061459574,"pid":44978,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Usuarios: sqlite"}
+{"level":30,"time":1660061459576,"pid":44978,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Ordenes: sqlite"}
+{"level":30,"time":1660061459618,"pid":44978,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Auth: sqlite"}
+{"level":30,"time":1660061459636,"pid":44978,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Produtos: sqlite"}
+{"level":30,"time":1660061459638,"pid":44978,"hostname":"yemes-PC","msg":">>>>>>>>>>>>>> OPCION Produtos: sqlite"}
+{"level":30,"time":1660061459658,"pid":44978,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660061459658,"pid":44978,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660061459661,"pid":44978,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660061459661,"pid":44978,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660061459661,"pid":44978,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660061459661,"pid":44978,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660061459661,"pid":44978,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660061459662,"pid":44978,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660061459662,"pid":44978,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":30,"time":1660061459662,"pid":44978,"hostname":"yemes-PC","msg":"ya existe la tabla"}
+{"level":50,"time":1660061487434,"pid":44978,"hostname":"yemes-PC","msg":"Se produjo un error: JsonWebTokenError: jwt must be provided"}
+{"level":50,"time":1660061487468,"pid":44978,"hostname":"yemes-PC","msg":"Se produjo un error: JsonWebTokenError: jwt must be provided"}
+{"level":50,"time":1660061519561,"pid":44978,"hostname":"yemes-PC","msg":"Se produjo un error: JsonWebTokenError: jwt must be provided"}

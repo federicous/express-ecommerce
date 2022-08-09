@@ -138,6 +138,7 @@ class Element {
             let payload = await JWT.decode(token);
             let carritoId = await elementService.save(payload);
             let response = await elementService.deleteById(carritoId);
+            carritoId = await elementService.save(payload);
             let carrito = await elementService.getSubElementsById(carritoId);
             res.status(200).render('carrito',{message: '',carrito, carritoId});	
         } catch (error) {
