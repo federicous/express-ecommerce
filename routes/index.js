@@ -21,9 +21,9 @@ function serverRoutes(app) {
     apiCategorias(app);
     apiSearch(app);
 
-    app.get("/", (req, res, next)=>{
-        res.redirect('login');
-        // res.send("ok");
+    app.get("/*", (req, res, next)=>{
+        // res.redirect('login');
+        res.sendFile(path.join(__dirname, '.client/build', 'index.html'));
     });
 }
 
