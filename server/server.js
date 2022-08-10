@@ -19,7 +19,7 @@ class Server {
 	    this.port = PORT
 	    this.middlewares()
 	    this.routes()
-	    this.viewEngine()
+	//     this.viewEngine()
 	}
 	middlewares(){
 	    this.app.use(cors(CORS))
