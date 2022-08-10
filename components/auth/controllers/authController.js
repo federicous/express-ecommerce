@@ -40,7 +40,8 @@ class Element {
             res.status(200)
             .cookie('token', response.token, {maxAge: 3600000})
             .cookie('user', `${response.email}`)
-            .redirect('/productos');
+            .json(response)
+            // .redirect('/productos');
 
         } catch (error) {
             pino.error(`Se produjo un error: ${error}`)
