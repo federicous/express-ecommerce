@@ -12,17 +12,29 @@ class MongoDB {
 		try {
 			if (Array.isArray(producto)) {
 				producto.forEach(async element => {
-					element.timestamp = Date.now();
-					let agregarProductoModel = new ProductoModel(element);
-					let agregarProducto = await agregarProductoModel.save();
-					pino.info(agregarProducto);
+					let verificarExistente = await ProductoModel.find({code: `${element.code}`})
+					if (verificarExistente.length) {
+						console.log(`ya existe un producto con el mismo código ${element.code}`);
+						return{message:`ya existe el producto ${element.code}`}
+					} else {
+						element.timestamp = Date.now();
+						let agregarProductoModel = new ProductoModel(element);
+						let agregarProducto = await agregarProductoModel.save();
+						pino.info(agregarProducto);
+					}
 				});
 
 			} else {
-				producto.timestamp = Date.now();
-				let agregarProductoModel = new ProductoModel(producto);
-				let agregarProducto = await agregarProductoModel.save();
-				pino.info(agregarProducto);
+				let verificarExistente = await ProductoModel.find({code: `${element.code}`})
+				if (verificarExistente.length) {
+					console.log(`ya existe un producto con el mismo código ${element.code}`);
+					return{message:`ya existe el producto ${producto.code}`}
+				} else {
+					producto.timestamp = Date.now();
+					let agregarProductoModel = new ProductoModel(producto);
+					let agregarProducto = await agregarProductoModel.save();
+					pino.info(agregarProducto);
+				}
 			}
 
 

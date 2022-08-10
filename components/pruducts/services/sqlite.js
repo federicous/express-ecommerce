@@ -17,6 +17,8 @@ const pino = require('../../../utils/logger/pino');
 				table.integer('stock')
 				table.float('price')
 				table.string('description')
+				table.string('lista')
+				table.string('marca')
 				table.string('image')
 				table.timestamp('timestamp').defaultTo(knex.fn.now())
 				table.uuid('uuid')
@@ -47,18 +49,30 @@ class Contenedor {
 				producto.id= id;
 			}
 
-
 			if (Array.isArray(producto)) {
 				producto.forEach(async element => {
 					element.uuid=uuid()
-					let agregarProducto = await knex('productos').insert(element)
-					pino.info(agregarProducto);
+					let verificarExistente = await knex.from('productos').select('*').where({code:`${element.code}`});
+					if (verificarExistente.length) {
+						console.log(`ya existe un producto con el mismo código ${element.code}`);
+						return{message:`ya existe el producto ${element.code}`}
+					} else {	
+						element.timestamp = Date.now();				
+						let agregarProducto = await knex('productos').insert(element)
+						pino.info(agregarProducto);
+					}	
 				});
 
 			} else {
-				producto.timestamp = Date.now();
-				let agregarProducto = await knex('productos').insert(producto)					
-				pino.info(agregarProducto);
+				let verificarExistente = await knex.from('productos').select('*').where({code:`${producto.code}`});
+				if (verificarExistente.length) {
+					console.log(`ya existe un producto con el mismo código ${element.code}`);
+					return{message:`ya existe el producto ${producto.code}`}
+				} else {	
+					producto.timestamp = Date.now();
+					let agregarProducto = await knex('productos').insert(producto)					
+					pino.info(agregarProducto);
+				}
 			}
 
 
