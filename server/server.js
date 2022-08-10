@@ -34,10 +34,10 @@ class Server {
 	routes(){
 	    serverRoutes(this.app)
 	}
-	viewEngine(){
-	    this.app.set('views', path.join(__dirname, "../views", "ejs"))
-	    this.app.set('view engine', 'ejs')
-	}
+	// viewEngine(){
+	//     this.app.set('views', path.join(__dirname, "../views", "ejs"))
+	//     this.app.set('view engine', 'ejs')
+	// }
 	init(){
 	    const httpServer = new HttpServer(this.app)
 	    const websocket = new Websocket(httpServer)
