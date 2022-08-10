@@ -28,6 +28,8 @@ class Server {
 	    this.app.use(cookieParser())
 	    this.app.use(session(SESSION))
 	    this.app.use('/images', express.static('uploads'));
+	    // middleware para el deploy en heroku con cliente React:
+	    this.app.use(express.static(path.resolve(__dirname, "./client/build")));
 	}
 	routes(){
 	    serverRoutes(this.app)

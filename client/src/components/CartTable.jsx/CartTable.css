@@ -1,0 +1,3 @@
+.table {
+	min-width: clamp(20rem, 58.5vw, 700px);
+}

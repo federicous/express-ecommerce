@@ -1,0 +1,9 @@
+.logo {
+	display: flex;
+	align-items: center;
+}
+
+.toolBar  {
+	display: flex;
+	justify-content: space-between;
+}
