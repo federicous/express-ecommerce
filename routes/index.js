@@ -1,3 +1,4 @@
+let path = require("path");
 const apiProductos = require("../components/pruductos");
 const apiProducts = require("../components/pruducts");
 const apiCarritos = require("../components/carritos");
