@@ -24,7 +24,8 @@ function serverRoutes(app) {
 
     app.get("/*", (req, res, next)=>{
         // res.redirect('login');
-        res.sendFile(path.join(__dirname, '.client/build', 'index.html'));
+        res.sendFile(path.join(__dirname, '../client/build', 'index.html'));
+        // res.sendFile(path.resolve(__dirname, "./client/build", 'index.html'));
     });
 }
 
