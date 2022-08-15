@@ -6,7 +6,7 @@ class Autenticacion {
 		try {
 			const token = req.cookies.token
 			const payload = await JWT.verify(token)
-			if (!payload) return res.status(401).render('authError')
+			if (!payload) return res.status(401).clearCookie("token").clearCookie("user").render('authError')
 			next()
 		} catch (error) {
 			pino.error(`Se produjo un error: ${error}`);
@@ -17,8 +17,9 @@ class Autenticacion {
 		try {
 			const token = req.cookies.token
 			const verification = await JWT.verify(token)
+			console.log(verification);
 			if(!verification) { 
-				return res.status(401).render('authError')
+				return res.status(401).clearCookie("token").clearCookie("user").render('authError')
 			}
 			const payload = await JWT.decode(token)
 			if (!payload || payload.isAdmin != 'on'){

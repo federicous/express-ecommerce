@@ -22,7 +22,8 @@ class Server {
 	    this.viewEngine()
 	}
 	middlewares(){
-	    this.app.use(cors(CORS))
+	    this.app.use(cors({credentials: true, origin: 'http://localhost:3000'}))
+	//     this.app.use(cors({credentials: true, origin: 'http://app.sitecnia.com'}))
 	    this.app.use(express.json({limit: '50mb'}))
 	    this.app.use(express.urlencoded({extended: true, limit: '50mb'}))
 	    this.app.use(cookieParser())

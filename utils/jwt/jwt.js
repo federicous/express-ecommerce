@@ -19,7 +19,7 @@ class JWT {
                 algorithm: [autenticacion.JWT_ALG]
             })
         } catch (error) {
-        pino.error(`Se produjo un error: ${error}`)
+            pino.error(`Se produjo un error: ${error}`)
         }
     }
     async decode(token){
@@ -28,7 +28,7 @@ class JWT {
                 algorithm: [autenticacion.JWT_ALG]
             })
         } catch (error) {
-        pino.error(`Se produjo un error: ${error}`)
+            pino.error(`Se produjo un error: ${error}`)
         }
     }
 }

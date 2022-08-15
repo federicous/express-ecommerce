@@ -18,7 +18,7 @@ class Element {
             pino.info(token);
             if (!verification) {
                 pino.info(`sin token`);
-                return res.status(200).clearCookie("token").render('login',{message: ""})
+                return res.status(200).render('login',{message: ""})
             } else {
                 pino.info(`con token`);
                 res.status(200).redirect('/productos')
