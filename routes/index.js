@@ -1,5 +1,6 @@
 const apiProductos = require("../components/pruductos");
 const apiProducts = require("../components/pruducts");
+const apiTekbond = require("../components/tekbond");
 const apiCarritos = require("../components/carritos");
 const apiCart = require("../components/carritosApi");
 const apiMensajes = require("../components/mensajes");
@@ -12,6 +13,7 @@ const apiSearch = require("../components/search");
 function serverRoutes(app) {
     apiProductos(app);
     apiProducts(app);
+    apiTekbond(app);
     apiCarritos(app);
     apiCart(app);
     apiMensajes(app);

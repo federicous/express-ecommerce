@@ -27,16 +27,30 @@ class Correo {
 		try {
 			let items = ''
 			carrito.forEach(item => {
-				items += `<tr><td>${item.name} </td> <td>${item.qty}</td> <td>${item.price}<td></tr>`
+				items += `<tr><td>${item.name} </td> <td style="text-align: center">${item.qty}</td> <td style="text-align: center">${item.price}</td></tr>`
 			})
+			let suma=0;
+			for (const item of cart) {
+				suma=parseFloat(item.qty)*parseFloat(item.price)+parseFloat(suma)
+			}			
+			let sumaIva=0;
+			for (const item of cart) {
+				sumaIva=(parseFloat(item.qty)*parseFloat(item.price)*parseFloat(item.iva)/100)+parseFloat(sumaIva)
+			}
 			const option = {
 				from: `BRMTOOLS - Orden de compra <${userEmail}>`,
 				to: `${user.email}`,
 				bcc: `${adminEmail}`,
 				subject: 'Orden creada',
 				html: `
+					<style>
+						table, th, tr, td {
+							border: 1px solid black;
+							border-collapse: collapse;
+						}
+					</style>
 					<div>
-					<p>Su compra ha sido registrada correctamente, detalles:</p>
+						<p>Su compra ha sido registrada correctamente, detalles:</p>
 						<table>
 							<thead>
 								<tr>
@@ -48,6 +62,9 @@ class Correo {
 							<tbody id="tablaProductos">
 								<tr>
 									${items} 
+									<tr><td colspan="2" style="text-align: right">Subtotal</td><td style="text-align: center">${suma}</td></tr>
+									<tr><td colspan="2" style="text-align: right">IVA</td><td style="text-align: center">${sumaIva}</td></tr>
+									<tr><td colspan="2" style="text-align: right">TOTAL</td><td style="text-align: center">${suma+sumaIva}</td></tr>
 								</tr>			 
 							</tbody>
 						</table>
