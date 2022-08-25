@@ -34,6 +34,9 @@ class MongoDB {
 				[
 					{name: {$regex: `(^|.*\\h)(?i)${patron}.*`}}, 
 					{code: { $regex: `${patron}.*`}},
+					{label: { $regex: `${patron}.*`}},
+					{linea: { $regex: `${patron}.*`}},
+					{color: { $regex: `${patron}.*`}},
 				]
 			})
 			.skip(skip).limit(PAGE_SIZE);
@@ -43,6 +46,9 @@ class MongoDB {
 				[
 					{name: {$regex: `(^|.*\\h)(?i)${patron}.*`}}, 
 					{code: { $regex: `${patron}.*`}},
+					{label: { $regex: `${patron}.*`}},
+					{linea: { $regex: `${patron}.*`}},
+					{color: { $regex: `${patron}.*`}},
 				]
 			})
 

@@ -55,6 +55,36 @@ class Element {
         }
     }
 
+    async getAllElementCategoryLista(req, res, next){
+        try {
+            let page = req.query.page;
+            let pageSize = req.query.pageSize
+            let category = req.params.category
+            let lista = req.params.lista
+            let response = await elementService.getAllCategoryPageLista(category,page,pageSize,lista);
+            res.status(200).json(response);
+
+        } catch (error) {
+            pino.error(`Se produjo un error: ${error}`);
+            res.status(400).render('error');
+        }
+    }
+
+    async getAllElementLista(req, res, next){
+        try {
+            let page = req.query.page;
+            let pageSize = req.query.pageSize
+            let category = req.params.category
+            let lista = req.params.lista
+            let response = await elementService.getAllPageLista(category,page,pageSize,lista);
+            res.status(200).json(response);
+
+        } catch (error) {
+            pino.error(`Se produjo un error: ${error}`);
+            res.status(400).render('error');
+        }
+    }
+
     async updateElement(req, res, next){
         try {
             let element = req.body;

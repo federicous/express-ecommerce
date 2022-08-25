@@ -7,6 +7,7 @@ module.exports = app => {
     app.use("/api/categorias", categoria);
     categoria.get("/:id", Autenticacion.usuario ,categoriaController.getElement);
     categoria.get("/", Autenticacion.usuario ,categoriaController.getElement);
+    categoria.get("/:lista/:id", Autenticacion.usuario ,categoriaController.getElementLista);
 
 }
 

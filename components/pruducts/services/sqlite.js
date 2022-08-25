@@ -52,9 +52,9 @@ class Contenedor {
 			if (Array.isArray(producto)) {
 				producto.forEach(async element => {
 					element.uuid=uuid()
-					let verificarExistente = await knex.from('productos').select('*').where({code:`${element.code}`});
+					let verificarExistente = await knex.from('productos').select('*').where({code:`${element.code}`, lista: `${element.lista}`});
 					if (verificarExistente.length) {
-						console.log(`ya existe un producto con el mismo código ${element.code}`);
+						pino.info(`ya existe un producto con el mismo código ${element.code} en la lista ${element.lista}`);
 						return{message:`ya existe el producto ${element.code}`}
 					} else {	
 						element.timestamp = Date.now();				
@@ -152,6 +152,38 @@ class Contenedor {
 			let allProducts = await knex.from('productos').select('*').where({label:`${category}`}).offset(`${skip}`).limit(`${PAGE_SIZE}`);
 			// let total = await knex.from('productos').select('*').where({label:`${category}`}).count('*')
 			let todos= await knex.from('productos').select('*').where({label:`${category}`})
+			let total = todos.length
+			return ({allProducts: allProducts,total: total})
+
+		} catch (error) {
+			pino.error(`Se produjo un error: ${error}`)
+			throw new Error(error)
+		}
+	}	
+
+	async getAllCategoryPageLista(category,page,pageSize,lista) {
+		try {
+			const PAGE_SIZE = pageSize; // Similar a 'límite'
+			const skip = (page - 1) * PAGE_SIZE;
+			let allProducts = await knex.from('productos').select('*').where({label:`${category}`, lista: `${lista}`}).offset(`${skip}`).limit(`${PAGE_SIZE}`);
+			// let total = await knex.from('productos').select('*').where({label:`${category}`}).count('*')
+			let todos= await knex.from('productos').select('*').where({label:`${category}`, lista: `${lista}`})
+			let total = todos.length
+			return ({allProducts: allProducts,total: total})
+
+		} catch (error) {
+			pino.error(`Se produjo un error: ${error}`)
+			throw new Error(error)
+		}
+	}	
+
+	async getAllPageLista(category,page,pageSize,lista) {
+		try {
+			const PAGE_SIZE = pageSize; // Similar a 'límite'
+			const skip = (page - 1) * PAGE_SIZE;
+			let allProducts = await knex.from('productos').select('*').where({lista: `${lista}`}).offset(`${skip}`).limit(`${PAGE_SIZE}`);
+			// let total = await knex.from('productos').select('*').where({label:`${category}`}).count('*')
+			let todos= await knex.from('productos').select('*').where({lista: `${lista}`})
 			let total = todos.length
 			return ({allProducts: allProducts,total: total})
 

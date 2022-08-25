@@ -50,6 +50,9 @@ class Contenedor {
 			.where('name', 'like', `${patron}%`)
 			.orWhere('name', 'like', `% ${patron}%`)
 			.orWhere('code', 'like', `${patron}%`)
+			.orWhere('label', 'like', `${patron}%`)
+			.orWhere('linea', 'like', `${patron}%`)
+			.orWhere('color', 'like', `${patron}%`)
 			.offset(`${skip}`)
 			.limit(`${PAGE_SIZE}`);
 			// let total = await knex.from('productos').select('*').where({label:`${category}`}).count('*')
@@ -58,6 +61,9 @@ class Contenedor {
 			.where('name', 'like', `${patron}%`)
 			.orWhere('name', 'like', `% ${patron}%`)
 			.orWhere('code', 'like', `${patron}%`)
+			.orWhere('label', 'like', `${patron}%`)
+			.orWhere('linea', 'like', `${patron}%`)
+			.orWhere('color', 'like', `${patron}%`)
 			let total = todos.length
 			return ({allProducts: allProducts,total: total})
 

@@ -37,50 +37,7 @@ class Contenedor {
 		return this;
 	}
 
-	async save(producto,id) {
-		try {
-			if (id) {
-				producto.id= id;
-			}
-			producto.uuid=uuid()
-			let agregar= await knex('productos')
-			.insert(producto)
-			pino.info("datos insertados")		
-
-			return producto.id
-
-		} catch (error) {
-			pino.error(`Se produjo un error: ${error}`)
-			throw new Error(error)
-		}		
-	}
-	
-	async modify(id, producto) {
-		try {
-			let modificar = await knex.from('productos').select('*').where({id:`${id}`}).update(producto);
-			return(modificar[0])
-
-
-		} catch (error) {
-			pino.error(`Se produjo un error: ${error}`)
-			throw new Error(error)
-		}	
-	}
-
-	async getById(id) {
-		try {
-			let idProduct= parseInt(id);
-			let mostrar = await knex.from('productos').select('*').where({id:id});
-			return(mostrar[0])
-
-
-		} catch (error) {
-			pino.error(`Se produjo un error: ${error}`)
-			throw new Error(error)
-		}	
-	}
-
-	async getAll() {
+	async getAll(identificador) {
 		try {
 			let mostrar = await knex.from('productos').select('*');
 			return mostrar
@@ -92,27 +49,19 @@ class Contenedor {
 		
 	}
 
-	async deleteById(id) {
+	async getAllLista(identificador,lista) {
 		try {
-			let borrar = await knex.from('productos').where({id:`${id}`}).del();
-
+			// let mostrar = await knex.from('productos').select('*').where({lista:`${lista}`});
+			let mostrar = await knex.from('productos').select(`${identificador}`).where({lista:`${lista}`});
+			return mostrar
 
 		} catch (error) {
 			pino.error(`Se produjo un error: ${error}`)
 			throw new Error(error)
-		}		
+		}	
+		
 	}
 
-	async deleteAll() {
-		try {
-			const contenido = await fs.promises.writeFile(this.url,[])
-
-		} catch (error) {
-			throw new Error(error)
-		}
-
-
-	}
 }
 
 

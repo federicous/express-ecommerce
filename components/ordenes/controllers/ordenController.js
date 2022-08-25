@@ -36,7 +36,7 @@ class Element {
             await Nodemailer.orden(payload,carrito);
             let borrarCarrito = await carritoService.deleteById(carritoId);
             // res.status(200).render('verProductos',{message: message,productos, carritoId});	
-            res.status(200).json({message: message, carritoId});
+            res.status(200).json({message: message, carritoId, ordenId: ordenId});
         } catch (error) {
             pino.error(`Se produjo un error: ${error}`);
             res.status(400).json({message: "Se produjo un error"});

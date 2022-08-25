@@ -4,6 +4,11 @@ require("dotenv").config();
 let adminEmail = process.env.NODEMAILER_ADMIN;
 let userEmail = process.env.NODEMAILER_USER;
 
+let dolar=132;
+
+function ccyFormat(num) {
+	return `${num.toFixed(2)}`;
+      }
 
 class Correo {
 	async registro(user) {
@@ -27,16 +32,21 @@ class Correo {
 		try {
 			let items = ''
 			carrito.forEach(item => {
-				items += `<tr><td>${item.name} </td> <td style="text-align: center">${item.qty}</td> <td style="text-align: center">${item.price}</td></tr>`
+				items += `<tr><td>${
+					[item.name,item.color,item.linea,item.presentacion,`${item.contenido ? (""+item.contenido) : ""}`].filter(Boolean).join("|")
+					} </td> <td style="text-align: center">${item.qty}</td> <td style="text-align: center">${item.price ? item.price : item.usd*dolar}</td></tr>`
 			})
 			let suma=0;
-			for (const item of cart) {
-				suma=parseFloat(item.qty)*parseFloat(item.price)+parseFloat(suma)
+			for (const item of carrito) {
+				let precio = ccyFormat(item.price ? item.price : item.usd*dolar)
+				suma=ccyFormat(parseFloat(item.qty)*parseFloat(precio)+parseFloat(suma))
 			}			
 			let sumaIva=0;
-			for (const item of cart) {
-				sumaIva=(parseFloat(item.qty)*parseFloat(item.price)*parseFloat(item.iva)/100)+parseFloat(sumaIva)
+			for (const item of carrito) {
+				let precio = ccyFormat(item.price ? item.price : item.usd*dolar)
+				sumaIva=ccyFormat((parseFloat(item.qty)*parseFloat(precio)*parseFloat(item.iva)/100)+parseFloat(sumaIva))
 			}
+			let sumaTotal = ccyFormat(parseFloat(suma+sumaIva))
 			const option = {
 				from: `BRMTOOLS - Orden de compra <${userEmail}>`,
 				to: `${user.email}`,
@@ -64,7 +74,7 @@ class Correo {
 									${items} 
 									<tr><td colspan="2" style="text-align: right">Subtotal</td><td style="text-align: center">${suma}</td></tr>
 									<tr><td colspan="2" style="text-align: right">IVA</td><td style="text-align: center">${sumaIva}</td></tr>
-									<tr><td colspan="2" style="text-align: right">TOTAL</td><td style="text-align: center">${suma+sumaIva}</td></tr>
+									<tr><td colspan="2" style="text-align: right">TOTAL</td><td style="text-align: center">${sumaTotal}</td></tr>
 								</tr>			 
 							</tbody>
 						</table>

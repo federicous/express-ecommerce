@@ -9,7 +9,8 @@ const pino = require("pino")({
 		},
 		{
 		    target: 'pino-pretty',
-		    options: { translateTime: "SYS:dd-mm-yyyy HH:MM:ss" }
+		    //options: { translateTime: "SYS:dd-mm-yyyy HH:MM:ss" }
+		    options: { translateTime: "SYS:dd-mm-yyyy HH:MM:ss", destination: './utils/logger/logs/info.log', mkdir: true }
 		}
 	    ]
 	}
