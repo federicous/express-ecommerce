@@ -8,6 +8,13 @@ const Knex = require('knex');
 const MONGO_ATLAS = process.env.MONGO_URI;
 const MONGO_SECRET = process.env.MONGO_SECRET || "nkl3erkwehf89";
 const COOKIE_AGE = process.env.COOKIE_AGE || 1000 * 60 * 10;
+let CORS_CLIENT="http://localhost:3000";
+
+if (process.env.NODE_ENV === 'production') {
+	CORS_CLIENT= "http://app.distribuidorabrmtools.com"
+      }
+
+console.log(CORS_CLIENT);
 
 let advancedOptions = {
 	useNewUrlParser: true,
@@ -59,6 +66,7 @@ const config = {
 	CORS: process.env.CORS || "*",
 	SESSION: sessionConfig,
 	DB: process.env.DB || "mongo",
+	CORS: CORS_CLIENT || "http://localhost:3000"
 }
 
 const mysql = {

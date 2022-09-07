@@ -12,7 +12,6 @@ const CORS = config.CORS;
 const serverRoutes = require("../routes");
 const SESSION=config.SESSION;
 
-
 class Server {
 	constructor(){
 	    this.app = express()
@@ -22,8 +21,7 @@ class Server {
 	    this.viewEngine()
 	}
 	middlewares(){
-	    this.app.use(cors({credentials: true, origin: 'http://localhost:3000'}))
-	//     this.app.use(cors({credentials: true, origin: 'http://app.sitecnia.com'}))
+	    this.app.use(cors({credentials: true, origin: `${CORS}`}))
 	    this.app.use(express.json({limit: '50mb'}))
 	    this.app.use(express.urlencoded({extended: true, limit: '50mb'}))
 	    this.app.use(cookieParser())
@@ -42,7 +40,7 @@ class Server {
 	    const websocket = new Websocket(httpServer)
 	    websocket.init()
 	    httpServer.listen(this.port, ()=>{
-		console.log(`Servidor iniciado en http://localhost:${this.port}`)
+		console.log(`Servidor iniciado en http://localhost:${this.port} \nCORS: ${CORS}`)
 	    })
 	}
     }

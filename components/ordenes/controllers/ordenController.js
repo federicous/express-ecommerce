@@ -81,6 +81,18 @@ class Element {
         }
     }
 
+    async getAllElementUser(req, res, next){
+        try {
+            const token = req.cookies.token;
+            let payload = await JWT.decode(token);
+            let response = await elementService.getAllUser(payload);
+            res.status(200).json(response);
+        } catch (error) {
+            pino.error(`Se produjo un error: ${error}`);
+            res.status(400).render('error');
+        }
+    }
+
     async updateElement(req, res, next){
         try {
             let { element } = req.body;

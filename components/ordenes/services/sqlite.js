@@ -93,6 +93,18 @@ class Contenedor {
 
 	}
 
+	async getAllUser(payload) {
+		try {
+			let allElements = await knex.from('ordenes').where({email: `${payload.email}`});
+			return(allElements)
+			
+		} catch (error) {
+			pino.error(`Se produjo un error: ${error}`)
+			
+		}	
+	}
+
+
 	async deleteById(id) {
 		try {
 			let borrar = await knex.from('ordenes').where({id: `${id}`}).del();
