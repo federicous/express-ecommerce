@@ -12,6 +12,7 @@ module.exports = app => {
     prodRouter.get("/:id", Autenticacion.usuario, productController.getElement);
     prodRouter.post("/", Autenticacion.administrador, productController.createElement);
     prodRouter.put("/:id", Autenticacion.administrador, productController.updateElement);
+    prodRouter.put("/", Autenticacion.administrador, productController.updateAllElement);
     prodRouter.delete("/:id", Autenticacion.administrador, productController.deleteElement);
     prodRouter.delete("/", Autenticacion.administrador, productController.deleteAllElement);
 }

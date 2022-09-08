@@ -64,9 +64,9 @@ class Contenedor {
 				});
 
 			} else {
-				let verificarExistente = await knex.from('productos').select('*').where({code:`${producto.code}`});
+				let verificarExistente = await knex.from('productos').select('*').where({code:`${producto.code}`, lista: `${producto.lista}`});
 				if (verificarExistente.length) {
-					console.log(`ya existe un producto con el mismo código ${element.code}`);
+					console.log(`ya existe un producto con el mismo código ${producto.code}`);
 					return{message:`ya existe el producto ${producto.code}`}
 				} else {	
 					producto.timestamp = Date.now();
@@ -86,6 +86,46 @@ class Contenedor {
 		try {
 			let modificar = await knex.from('productos').select('*').where({id:`${id}`}).update(producto);
 			return(modificar[0])
+
+
+		} catch (error) {
+			pino.error(`Se produjo un error: ${error}`)
+			throw new Error(error)
+		}	
+	}
+	
+	async modifyAll(id, producto) {
+		try {
+			// let modificar = await knex.from('productos').select('*').where({id:`${id}`}).update(producto);
+			// return(modificar[0])
+
+			if (Array.isArray(producto)) {
+				producto.forEach(async element => {
+					element.uuid=uuid()
+					let verificarExistente = await knex.from('productos').select('*').where({code:`${element.code}`, lista: `${element.lista}`});
+					if (verificarExistente.length) {
+						pino.info(`ya existe un producto con el mismo código ${element.code} en la lista ${element.lista}`);
+						await knex.from('productos').select('*').where({code:`${element.code}`, lista: `${element.lista}`}).update(element);
+						return{message:`ya existe el producto ${element.code}`}
+					} else {	
+						element.timestamp = Date.now();				
+						let agregarProducto = await knex('productos').insert(element)
+						pino.info(agregarProducto);
+					}	
+				});
+
+			} else {
+				let verificarExistente = await knex.from('productos').select('*').where({code:`${producto.code}`, lista: `${producto.lista}`});
+				if (verificarExistente.length) {
+					console.log(`ya existe un producto con el mismo código ${producto.code}`);
+					await knex.from('productos').select('*').where({code:`${producto.code}`, lista: `${producto.lista}`}).update(producto);
+					return{message:`ya existe el producto ${producto.code}`}
+				} else {	
+					producto.timestamp = Date.now();
+					let agregarProducto = await knex('productos').insert(producto)					
+					pino.info(agregarProducto);
+				}
+			}
 
 
 		} catch (error) {

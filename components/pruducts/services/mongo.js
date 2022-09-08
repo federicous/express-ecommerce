@@ -25,9 +25,9 @@ class MongoDB {
 				});
 
 			} else {
-				let verificarExistente = await ProductoModel.find({code: `${element.code}`})
+				let verificarExistente = await ProductoModel.find({code: `${producto.code}`, lista: `${producto.lista}`})
 				if (verificarExistente.length) {
-					console.log(`ya existe un producto con el mismo código ${element.code}`);
+					console.log(`ya existe un producto con el mismo código ${producto.code}`);
 					return{message:`ya existe el producto ${producto.code}`}
 				} else {
 					producto.timestamp = Date.now();
@@ -52,6 +52,49 @@ class MongoDB {
 		try {
 			let modificar = await ProductoModel.findByIdAndUpdate(id, producto);
 			return (modificar)
+
+
+		} catch (error) {
+			pino.error(`Se produjo un error: ${error}`)
+			throw new Error(error)
+		}
+	}
+
+	async modifyAll(producto) {
+		try {
+			// let modificar = await ProductoModel.findByIdAndUpdate(id, producto);
+			// return (modificar)
+
+			if (Array.isArray(producto)) {
+				producto.forEach(async element => {
+					let verificarExistente = await ProductoModel.find({code: `${element.code}`, lista: `${element.lista}`})
+					if (verificarExistente.length) {
+						pino.info(`ya existe un producto con el mismo código ${element.code} en la lista ${element.lista}`);
+						await ProductoModel.findOneAndUpdate({code: `${element.code}`, lista: `${element.lista}`}, element)
+						return{message:`ya se modificó el producto ${element.code} en la lista ${element.lista}`}
+					} else {
+						element.timestamp = Date.now();
+						let agregarProductoModel = new ProductoModel(element);
+						let agregarProducto = await agregarProductoModel.save();
+						pino.info(agregarProducto);
+					}
+				});
+
+			} else {
+				let verificarExistente = await ProductoModel.find({code: `${producto.code}`, lista: `${producto.lista}`})
+				if (verificarExistente.length) {
+					console.log(`ya existe un producto con el mismo código ${producto.code}`);
+					await ProductoModel.findOneAndUpdate({code: `${producto.code}`, lista: `${producto.lista}`}, )
+					return{message:`ya se modificó el producto ${producto.code}`}
+				} else {
+					producto.timestamp = Date.now();
+					let agregarProductoModel = new ProductoModel(producto);
+					let agregarProducto = await agregarProductoModel.save();
+					pino.info(agregarProducto);
+				}
+			}
+
+
 
 
 		} catch (error) {

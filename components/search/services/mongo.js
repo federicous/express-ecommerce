@@ -32,11 +32,13 @@ class MongoDB {
 			let allProducts = await ProductoModel.find({
 				$or: 
 				[
-					{name: {$regex: `(^|.*\\h)(?i)${patron}.*`}}, 
-					{code: { $regex: `${patron}.*`}},
-					{label: { $regex: `${patron}.*`}},
-					{linea: { $regex: `${patron}.*`}},
-					{color: { $regex: `${patron}.*`}},
+					{name: {$regex: `(^|.*\\s+)(?i)${patron}.*`}}, 
+					{code: { $regex: `^${patron}.*`}},
+					{label: { $regex: `(^|\\s+)(?i)${patron}.*`}},
+					{linea: { $regex: `(^|\\s+)(?i)${patron}.*`}},
+					{color: { $regex: `^(?i)${patron}.*`}},
+					{contenido: { $regex: `^(?i)${patron}.*`}},
+					{presentacion: { $regex: `^(?i)${patron}.*`}},
 				]
 			})
 			.skip(skip).limit(PAGE_SIZE);
@@ -44,11 +46,13 @@ class MongoDB {
 			let total = await ProductoModel.countDocuments({
 				$or: 
 				[
-					{name: {$regex: `(^|.*\\h)(?i)${patron}.*`}}, 
-					{code: { $regex: `${patron}.*`}},
-					{label: { $regex: `${patron}.*`}},
-					{linea: { $regex: `${patron}.*`}},
-					{color: { $regex: `${patron}.*`}},
+					{name: {$regex: `(^|.*\\s+)(?i)${patron}.*`}}, 
+					{code: { $regex: `^${patron}.*`}},
+					{label: { $regex: `(^|\\s+)(?i)${patron}.*`}},
+					{linea: { $regex: `(^|\\s+)(?i)${patron}.*`}},
+					{color: { $regex: `^(?i)${patron}.*`}},
+					{contenido: { $regex: `^(?i)${patron}.*`}},
+					{presentacion: { $regex: `^(?i)${patron}.*`}},
 				]
 			})
 

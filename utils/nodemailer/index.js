@@ -33,18 +33,18 @@ class Correo {
 			let items = ''
 			carrito.forEach(item => {
 				items += `<tr><td>${
-					[item.name,item.color,item.linea,item.presentacion,`${item.contenido ? (""+item.contenido) : ""}`].filter(Boolean).join("|")
+					[item.name,item.color,item.linea,item.presentacion,`${item.contenido ? (""+item.contenido) : ""}`].filter(Boolean).join(" | ")
 					}</td> 
 					<td style="text-align: center">${item.lista}</td> 
 					<td style="text-align: center">${item.code}</td> 
 					<td style="text-align: center">${item.qty}</td> 
-					<td style="text-align: center">${parseFloat(typeof item.iva === "string" ? item.iva.replace(/,/g, '.') : item.iva)}</td> 
+					<td style="text-align: center">${parseFloat(typeof item.iva === "string" ? item.iva.replace(/,/g, '.') : item.iva)}%</td> 
 					<td style="text-align: center">${item.price ? item.price : item.usd*dolar}</td></tr>`
 			})
 			let suma=0;
 			for (const item of carrito) {
 				let precio = item.price ? item.price : item.usd*dolar
-				suma=ccyFormat(parseFloat(item.qty)*parseFloat(precio)+parseFloat(suma))
+				suma=parseFloat(item.qty)*parseFloat(precio)+parseFloat(suma)
 			}			
 			let sumaIva=0;
 			for (const item of carrito) {
@@ -54,9 +54,9 @@ class Correo {
 				let IVA=parseFloat(typeof item.iva === "string" ? item.iva.replace(/,/g, '.') : item.iva);
 				let PRICE = parseFloat(item.price ? item.price : item.usd*dolar);
 				let QTY=parseFloat(item.qty);
-				sumaIva=ccyFormat(QTY*PRICE*IVA/100)+parseFloat(sumaIva);
+				sumaIva=parseFloat(QTY*PRICE*IVA/100)+parseFloat(sumaIva);
 			}
-			let sumaTotal = ccyFormat(parseFloat(suma+sumaIva))
+			let sumaTotal = parseFloat(suma+sumaIva)
 			const option = {
 				from: `BRMTOOLS - Orden de compra <${userEmail}>`,
 				to: `${user.email}`,
@@ -76,7 +76,7 @@ class Correo {
 								<tr>
 									<th scope="col">Producto</th>
 									<th scope="col">Lista</th>
-									<th scope="col">Codigo</th>
+									<th scope="col">Código</th>
 									<th scope="col">Cantidad</th>
 									<th scope="col">iva</th>
 									<th scope="col">Price</th>
@@ -85,9 +85,9 @@ class Correo {
 							<tbody id="tablaProductos">
 								<tr>
 									${items} 
-									<tr><td colspan="2" style="text-align: right">Subtotal</td><td style="text-align: center">${suma}</td></tr>
-									<tr><td colspan="2" style="text-align: right">IVA</td><td style="text-align: center">${sumaIva}</td></tr>
-									<tr><td colspan="2" style="text-align: right">TOTAL</td><td style="text-align: center">${sumaTotal}</td></tr>
+									<tr><td colspan="2" style="text-align: right">Subtotal</td><td style="text-align: center">${ccyFormat(suma)}</td></tr>
+									<tr><td colspan="2" style="text-align: right">IVA</td><td style="text-align: center">${ccyFormat(sumaIva)}</td></tr>
+									<tr><td colspan="2" style="text-align: right">TOTAL</td><td style="text-align: center">${ccyFormat(sumaTotal)}</td></tr>
 								</tr>			 
 							</tbody>
 						</table>

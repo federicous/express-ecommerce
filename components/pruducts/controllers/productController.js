@@ -101,6 +101,20 @@ class Element {
         }
     }
 
+    async updateAllElement(req, res, next){
+        try {
+            let element = req.body;
+            let response = await elementService.modifyAll(element);
+            res.status(200).json({
+                result:'ok',
+                new: req.body
+            })
+        } catch (error) {
+            pino.error(`Se produjo un error: ${error}`);
+            res.status(400).render('error');
+        }
+    }
+
     async deleteElement(req, res, next){
         try {
             let id = req.params.id
