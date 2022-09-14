@@ -8,7 +8,7 @@ module.exports = app => {
     ordenRouter.get("/", Autenticacion.administrador, ordenController.getAllElement);
     ordenRouter.get("/id/:id", Autenticacion.administrador, ordenController.getElement);
     ordenRouter.get("/user", Autenticacion.usuario, ordenController.getAllElementUser);
-    ordenRouter.post("/", Autenticacion.administrador, ordenController.createElement);
+    ordenRouter.post("/", Autenticacion.usuario, ordenController.createElement);
     ordenRouter.delete("/:id", Autenticacion.administrador, ordenController.deleteElement);
 }
 
