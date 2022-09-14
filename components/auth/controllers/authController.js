@@ -83,7 +83,7 @@ class Element {
             // // res.send(req.file)
             // console.log(req.file.filename);
             // console.log(req.body.email);
-            let avatar = req.file.filename ? req.file.filename : "avatar-generico.jpg";
+            let avatar = req.file ? req.file.filename : "avatar-generico.jpg";
             let element = req.body;
             let response = await elementService.createUser(element,avatar);
             if (response.message) {

@@ -16,6 +16,10 @@ const pino = require('../../../utils/logger/pino');
 				table.string('email')
 				table.string('phone')
 				table.string('avatar')
+				table.string('cuit')
+				table.string('provincia')
+				table.string('localidad')
+				table.string('ferreteria')
 				table.timestamp('timestamp').defaultTo(knex.fn.now())
 				table.uuid('uuid')
 
