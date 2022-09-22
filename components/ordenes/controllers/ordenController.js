@@ -43,6 +43,25 @@ class Element {
         }
     }
 
+    async createElementUser(req, res, next){
+        try {
+            const token = req.cookies.token;
+            let payload = await JWT.decode(token);
+            let usuario = req.body
+            let carritoId = await carritoService.save(payload);
+            let carrito = await carritoService.getSubElementsById(carritoId);
+            let ordenId = await elementService.saveUser(payload,carrito,usuario);
+            let message = `Orden generada, ID: ${ordenId}`;
+            await Nodemailer.orden(payload,carrito);
+            let borrarCarrito = await carritoService.deleteById(carritoId);
+            // res.status(200).render('verProductos',{message: message,productos, carritoId});	
+            res.status(200).json({message: message, carritoId, ordenId: ordenId});
+        } catch (error) {
+            pino.error(`Se produjo un error: ${error}`);
+            res.status(400).json({message: "Se produjo un error"});
+        }
+    }
+
     // async createElementReact(req, res, next){
     //     try {
     //         const token = req.cookies.token;

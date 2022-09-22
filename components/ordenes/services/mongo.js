@@ -24,6 +24,23 @@ class MongoDB {
 		}
 	}
 
+	async saveUser(payload, element, usuario) {
+		try {
+			let nuevoElementoModel= new ElementoModel();
+			nuevoElementoModel.id=v4();
+			nuevoElementoModel.timestamp = Date.now();   
+			nuevoElementoModel.email=usuario.email;
+			nuevoElementoModel.state=usuario.state;
+			nuevoElementoModel.productList=element;
+			let nuevoElemento = await nuevoElementoModel.save();
+			return(nuevoElemento._id)	
+			
+		} catch (error) {
+			pino.error(`Se produjo un error: ${error}`)
+			
+		}
+	}
+
 	async modify(elemento,id) {
 		try {
 			let modificar = await ElementoModel.findByIdAndUpdate(id, elemento);
