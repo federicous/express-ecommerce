@@ -28,7 +28,7 @@ class Correo {
 		}
 	}
 
-	async orden(user, carrito) {
+	async orden(user, carrito, descuento) {
 		try {
 			let items = ''
 			carrito.forEach(item => {
@@ -87,7 +87,14 @@ class Correo {
 									${items} 
 									<tr><td colspan="2" style="text-align: right">Subtotal</td><td style="text-align: center">${ccyFormat(suma)}</td></tr>
 									<tr><td colspan="2" style="text-align: right">IVA</td><td style="text-align: center">${ccyFormat(sumaIva)}</td></tr>
-									<tr><td colspan="2" style="text-align: right">TOTAL</td><td style="text-align: center">${ccyFormat(sumaTotal)}</td></tr>
+									${descuento?
+										`<div>
+										<tr><td colspan="2" style="text-align: right">Desc. (${parseFloat(descuento)}%)</td><td style="text-align: center">-${ccyFormat(suma*parseFloat(descuento)/100)}</td></tr>
+										<tr><td colspan="2" style="text-align: right">TOTAL</td><td style="text-align: center">${ccyFormat(sumaTotal-(suma*parseFloat(descuento)/100))}</td></tr>
+										</div>`
+										:
+										`<tr><td colspan="2" style="text-align: right">TOTAL</td><td style="text-align: center">${ccyFormat(sumaTotal)}</td></tr>`
+									}
 								</tr>			 
 							</tbody>
 						</table>

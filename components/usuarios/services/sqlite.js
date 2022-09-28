@@ -21,6 +21,7 @@ const pino = require('../../../utils/logger/pino');
 				table.string('localidad')
 				table.string('ferreteria')
 				table.timestamp('timestamp').defaultTo(knex.fn.now())
+				table.string('descuento')
 				table.uuid('uuid')
 
 			});	  

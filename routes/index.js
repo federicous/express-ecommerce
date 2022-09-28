@@ -10,6 +10,7 @@ const apiAuth = require("../components/auth");
 const apiCategorias = require("../components/categorias");
 const apiSearch = require("../components/search");
 const apiPermisos = require("../components/permisos");
+const apiDescuento = require("../components/descuento");
 
 function serverRoutes(app) {
     apiProductos(app);
@@ -24,6 +25,7 @@ function serverRoutes(app) {
     apiCategorias(app);
     apiSearch(app);
     apiPermisos(app);
+    apiDescuento(app);
 
     app.get("/", (req, res, next)=>{
         res.redirect('login');

@@ -52,7 +52,7 @@ class Element {
             let carrito = await carritoService.getSubElementsById(carritoId);
             let ordenId = await elementService.saveUser(payload,carrito,usuario);
             let message = `Orden generada, ID: ${ordenId}`;
-            await Nodemailer.orden(payload,carrito);
+            await Nodemailer.orden(payload,carrito,usuario.descuento);
             let borrarCarrito = await carritoService.deleteById(carritoId);
             // res.status(200).render('verProductos',{message: message,productos, carritoId});	
             res.status(200).json({message: message, carritoId, ordenId: ordenId});

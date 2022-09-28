@@ -17,6 +17,7 @@ let cuit = Joi.string().min(3);
 let ferreteria = Joi.string().min(3);
 let avatar = Joi.string().min(3);
 let timestamp = Joi.string().min(3);
+let descuento = Joi.string().min(3);
 let isAdmin = Joi.boolean();
 
 
@@ -34,6 +35,7 @@ const usuarioSchema = {
     	ferreteria: ferreteria.required(),
 	avatar: avatar.required(),
 	timestamp: timestamp.required(),
+	descuento: descuento.required(),
 	isAdmin: isAdmin.required()
 }
 
