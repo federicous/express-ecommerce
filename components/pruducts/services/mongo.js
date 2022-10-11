@@ -8,7 +8,7 @@ const pino = require('../../../utils/logger/pino')
 class MongoDB {
 
 
-	async save(producto) {
+	async save(producto, imageName) {
 		try {
 			if (Array.isArray(producto)) {
 				producto.forEach(async element => {
@@ -31,6 +31,7 @@ class MongoDB {
 					return{message:`ya existe el producto ${producto.code}`}
 				} else {
 					producto.timestamp = Date.now();
+					producto.image = imageName;
 					let agregarProductoModel = new ProductoModel(producto);
 					let agregarProducto = await agregarProductoModel.save();
 					pino.info(agregarProducto);
@@ -60,7 +61,7 @@ class MongoDB {
 		}
 	}
 
-	async modifyAll(producto) {
+	async modifyAll(producto, imageName) {
 		try {
 			// let modificar = await ProductoModel.findByIdAndUpdate(id, producto);
 			// return (modificar)
@@ -84,10 +85,12 @@ class MongoDB {
 				let verificarExistente = await ProductoModel.find({code: `${producto.code}`, lista: `${producto.lista}`})
 				if (verificarExistente.length) {
 					console.log(`ya existe un producto con el mismo código ${producto.code}`);
-					await ProductoModel.findOneAndUpdate({code: `${producto.code}`, lista: `${producto.lista}`}, )
-					return{message:`ya se modificó el producto ${producto.code}`}
+					producto.image = imageName;
+					let updateProduct = await ProductoModel.findOneAndUpdate({code: `${producto.code}`, lista: `${producto.lista}`}, producto )
+					return {message:`ya se modificó el producto ${producto.code}`, resultado:updateProduct}
 				} else {
 					producto.timestamp = Date.now();
+					producto.image = imageName;
 					let agregarProductoModel = new ProductoModel(producto);
 					let agregarProducto = await agregarProductoModel.save();
 					pino.info(agregarProducto);
@@ -197,8 +200,9 @@ class MongoDB {
 
 	async deleteById(id) {
 		try {
+			// let borrar = await ProductoModel.deleteOne({code: `${element.code}`, lista: `${element.lista}`})
 			let borrar = await ProductoModel.findByIdAndDelete(id);
-
+			return borrar
 		} catch (error) {
 			pino.error(`Se produjo un error: ${error}`)
 			throw new Error(error)

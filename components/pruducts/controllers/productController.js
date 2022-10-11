@@ -8,7 +8,8 @@ class Element {
     async createElement(req, res, next){
         try {
             let element = req.body;
-            let response = await elementService.save(element);
+            let imageName= req.imageName;
+            let response = await elementService.save(element, imageName);
             res.status(200).json(response);
         } catch (error) {
             pino.error(`Se produjo un error: ${error}`);
@@ -89,11 +90,13 @@ class Element {
         try {
             let element = req.body;
             let id = req.params.id
-            let response = await elementService.modify(id, element);
+            let imageName= req.imageName;
+            let response = await elementService.modifyAll(id, element, imageName);
             res.status(200).json({
                 result:'ok',
                 id: req.params.id,
-                new: req.body
+                new: req.body,
+                response: response.message,
             })
         } catch (error) {
             pino.error(`Se produjo un error: ${error}`);
@@ -104,10 +107,12 @@ class Element {
     async updateAllElement(req, res, next){
         try {
             let element = req.body;
-            let response = await elementService.modifyAll(element);
+            let imageName= req.imageName;
+            let response = await elementService.modifyAll(element, imageName);
             res.status(200).json({
                 result:'ok',
-                new: req.body
+                new: req.body,
+                response: response.resultado,
             })
         } catch (error) {
             pino.error(`Se produjo un error: ${error}`);
