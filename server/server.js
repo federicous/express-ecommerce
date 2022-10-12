@@ -21,7 +21,8 @@ class Server {
 	    this.viewEngine()
 	}
 	middlewares(){
-	    this.app.use(cors({credentials: true, origin: `${CORS}`}))
+	//     this.app.use(cors({credentials: true, origin: `${CORS}`}))
+	    this.app.use(cors({credentials: true, origin: CORS}))
 	    this.app.use(express.json({limit: '50mb'}))
 	    this.app.use(express.urlencoded({extended: true, limit: '50mb'}))
 	    this.app.use(cookieParser())
