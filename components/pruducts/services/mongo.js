@@ -1,12 +1,18 @@
-let {
-	connection,
-	mongoose
-} = require("../../../config/mongo");
+const fs = require('fs').promises
 let ProductoModel = require('../../../schema/productos')
 const pino = require('../../../utils/logger/pino')
+// var path = require('path');
+
+async function exists (path) {  
+	try {
+	  await fs.access(path)
+	  return true
+	} catch {
+	  return false
+	}
+      }
 
 class MongoDB {
-
 
 	async save(producto, imageName) {
 		try {
@@ -84,8 +90,14 @@ class MongoDB {
 			} else {
 				let verificarExistente = await ProductoModel.find({code: `${producto.code}`, lista: `${producto.lista}`})
 				if (verificarExistente.length) {
-					console.log(`ya existe un producto con el mismo código ${producto.code}`);
-					producto.image = imageName;
+					pino.info(`ya existe un producto con el mismo código ${producto.code}`);
+					if (verificarExistente[0].image!="sin_imagen.jpg" && imageName && await exists(__dirname + `/../../../uploads/${verificarExistente[0].image}` )) {
+						// let imagePath = path.join(__dirname, `../../../uploads/${verificarExistente[0].image}`)
+						await fs.unlink(__dirname + `/../../../uploads/${verificarExistente[0].image}`)	
+					}
+					if (imageName) {
+						producto.image = imageName;
+					}
 					let updateProduct = await ProductoModel.findOneAndUpdate({code: `${producto.code}`, lista: `${producto.lista}`}, producto )
 					return {message:`ya se modificó el producto ${producto.code}`, resultado:updateProduct}
 				} else {
