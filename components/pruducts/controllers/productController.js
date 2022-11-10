@@ -120,6 +120,22 @@ class Element {
         }
     }
 
+    async updateAllElementCode(req, res, next){
+        try {
+            let element = req.body;
+            let imageName= req.imageName;
+            let response = await elementService.modifyAllCode(element, imageName);
+            res.status(200).json({
+                result:'ok',
+                new: req.body,
+                response: response.resultado,
+            })
+        } catch (error) {
+            pino.error(`Se produjo un error: ${error}`);
+            res.status(400).render('error');
+        }
+    }
+
     async deleteElement(req, res, next){
         try {
             let id = req.params.id

@@ -8,6 +8,7 @@ const apiUsuarios = require("../components/usuarios");
 const apiOrdenes = require("../components/ordenes");
 const apiAuth = require("../components/auth");
 const apiCategorias = require("../components/categorias");
+const apiListas = require("../components/listas");
 const apiSearch = require("../components/search");
 const apiPermisos = require("../components/permisos");
 const apiDescuento = require("../components/descuento");
@@ -23,6 +24,7 @@ function serverRoutes(app) {
     apiAuth(app);
     apiOrdenes(app);
     apiCategorias(app);
+    apiListas(app);
     apiSearch(app);
     apiPermisos(app);
     apiDescuento(app);

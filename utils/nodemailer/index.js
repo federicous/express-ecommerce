@@ -38,7 +38,7 @@ class Correo {
 					<td style="text-align: center">${item.lista}</td> 
 					<td style="text-align: center">${item.code}</td> 
 					<td style="text-align: center">${item.qty}</td> 
-					<td style="text-align: center">${parseFloat(typeof item.iva === "string" ? item.iva.replace(/,/g, '.') : item.iva)}%</td> 
+					<td style="text-align: center">${parseFloat(typeof item.iva === "string" ? item.iva.replace(/,/g, '.').replace(/%/g, '') : item.iva)}%</td> 
 					<td style="text-align: center">${item.price ? item.price : item.usd*dolar}</td></tr>`
 			})
 			let suma=0;
@@ -51,7 +51,7 @@ class Correo {
 				// let precio = ccyFormat(item.price ? item.price : item.usd*dolar)
 				// sumaIva=ccyFormat((parseFloat(item.qty)*parseFloat(precio)*parseFloat(item.iva)/100)+parseFloat(sumaIva))
 
-				let IVA=parseFloat(typeof item.iva === "string" ? item.iva.replace(/,/g, '.') : item.iva);
+				let IVA=parseFloat(typeof item.iva === "string" ? item.iva.replace(/,/g, '.').replace(/%/g, '') : item.iva);
 				let PRICE = parseFloat(item.price ? item.price : item.usd*dolar);
 				let QTY=parseFloat(item.qty);
 				sumaIva=parseFloat(QTY*PRICE*IVA/100)+parseFloat(sumaIva);
