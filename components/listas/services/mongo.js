@@ -80,7 +80,7 @@ class MongoDB {
 		}
 	}
 
-	async updateList(listFileName) {
+	async updateList(listFileName, list, categoria) {
 		try {
 
 			// const array = require(__dirname + `/../../../uploads/lista/${listFileName}`)
@@ -110,6 +110,7 @@ class MongoDB {
 			let newProductos = [];
 			for (const item of productos) {
 				let newItem = {};
+				newItem.label=`${categoria}`
 				for (const k in item) {
 					for (const key in object) {
 						if (k == object[key]) {
@@ -117,12 +118,14 @@ class MongoDB {
 							continue
 						}
 					}
+					
 				}
+				newItem.lista=`${list}`
 				newProductos.push(newItem);
 			}
 
 			console.log(newProductos);
-			return
+			return newProductos
 
 			// let modificar = await ProductoModel.findByIdAndUpdate(id, producto);
 			// return (modificar)

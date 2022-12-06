@@ -69,15 +69,14 @@ class Element {
     
     async uploadList(req, res, next){
         try {
-            // let element = req.body;
+            let element = req.body;
             let listName= req.listName;
-            console.log(listName);
-            let response = await elementService.updateList(listName);
-            // res.status(200).json({
-            //     result:'ok',
-            //     new: req.body,
-            //     response: response.resultado,
-            // })
+            let response = await elementService.updateList(listName, element.lista, element.label);
+            res.status(200).json({
+                result:'ok',
+                new: req.body,
+                response: response,
+            })
         } catch (error) {
             pino.error(`Se produjo un error: ${error}`);
             res.status(400).render('error');
