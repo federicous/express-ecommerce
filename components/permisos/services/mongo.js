@@ -8,7 +8,7 @@ class ElementService {
 			let user = await UsuarioModel.findOne({
 				email: payload.email
 			});
-			pino.info(user);
+			// pino.info(user);
 			if (!user) {
 				pino.error(`NO EXISTE EL USUARIO ${payload.email}`);
 				return (false)

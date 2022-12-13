@@ -1,10 +1,10 @@
 let {connection, mongoose} = require("../../../config/mongo");
-let ElementoModel = require('../../../schema/carritos')
+let ElementoModel = require('../../../schema/carritos');
+let ProductoModel = require('../../../schema/productos')
 const { v4 } = require('uuid');
 const pino = require('../../../utils/logger/pino')
 
 class MongoDB {
-
 
 	async save(carrito) {
 		try {
@@ -69,6 +69,54 @@ class MongoDB {
 		}
 	}
 
+	/* Actualizo los datos de los productos en los carritos */
+	async updateProductList() {
+		try {
+			let allCarritos = await ElementoModel.find({});
+
+			allCarritos.forEach( async element => {
+				let carrito=element.productList;
+				console.log(`>>>>>>>>>> carrito de ${element.email}`);
+
+				let carritoUpdated = [];
+				await Promise.all(carrito.map( async item => {
+					// let originalProduct = await ProductoModel.find({_id: `${item._id}`}).select(`-_id`);
+					let originalProduct = await ProductoModel.findById(`${item._id}`).select(`-_id`);
+					let itemUpdated = {};
+					for (let attrname in item) { itemUpdated[attrname] = originalProduct[attrname] ? originalProduct[attrname] : item[attrname]};
+					carritoUpdated.push(itemUpdated)
+				}))
+
+				console.log(`########## sin actualizar`);
+				console.log(carrito);
+				console.log(`########## actualizado`);
+				console.log(carritoUpdated);
+			});
+
+
+			return allCarritos
+
+			// Si es array sobreescribo el carrito
+			if (Array.isArray(subElement)) {
+				let carritoActualizado = await ElementoModel.findById(carritoId);
+				carritoActualizado.productList=subElement;
+				await ElementoModel.findByIdAndUpdate(carritoId, carritoActualizado);					
+				return(carritoActualizado)
+			} else {
+				let carritoActualizado = await ElementoModel.findById(carritoId);
+				let nuevaProductList = carritoActualizado.productList.filter((item) => item.id !== `${subElement.id}`);
+				carritoActualizado.productList=nuevaProductList;
+				carritoActualizado.productList.push(subElement)
+				await ElementoModel.findByIdAndUpdate(carritoId, carritoActualizado);
+				return(carritoActualizado)
+			}
+			
+		} catch (error) {
+			pino.error(`Se produjo un error: ${error}`)
+			
+		}
+	}
+
 
 	async modify(elemento,id) {
 		try {
@@ -105,7 +153,10 @@ class MongoDB {
 	async getSubElementsById(id) {
 		try {
 			let mostrar = await ElementoModel.findById(id);
+			console.log(`#################### Lista de productos ################`);
+			console.log(mostrar.productList);
 			return(mostrar.productList)
+
 		} catch (error) {
 			pino.error(`Se produjo un error: ${error}`)
 			

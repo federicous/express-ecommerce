@@ -35,46 +35,68 @@ class Element {
         }
     }
 
-    async getProducts(req, res, next){
+	/* Actualizo los datos de los productos en los carritos */
+    async updateSubElements(req, res, next){
         try {
-            const token = req.cookies.token
-            let payload = await JWT.decode(token)
-            let carritoId = await elementService.save(payload);
-            let productos = await productService.getAll();
-            let message = '';
-            if (req.session.agregado) {
-                message = 'Producto agregado al carrito'
-            }
-            req.session.agregado = false;
-            // res.status(200).render('verProductos',{message: message,productos, carritoId});	
-            res.status(200).render('categorias',{message: message,productos, carritoId});	
+            let response = await elementService.updateProductList()
 
+            res.status(200).json(response);
 
+            // const token = req.cookies.token;
+            // let payload = await JWT.decode(token);
+            // let carritoId = await elementService.save(payload);
+            // let subElement = req.body;
+            // // let response = await elementService.saveSubElement(carritoId,subElement);
+            // let response = await elementService.updateProductList(carritoId,subElement);
+            // req.session.agregado = true;
+            // res.status(200).redirect('/productos')
+            
         } catch (error) {
             pino.error(`Se produjo un error cart: ${error}`);
             res.status(400).render('error');
         }
     }
 
-    async getSubProducts(req, res, next){
-        try {
-            let id_prod = req.params.id_prod;
-            const token = req.cookies.token
-            let payload = await JWT.decode(token)
-            let carritoId = await elementService.save(payload);
-            let item = await productService.getById(id_prod);
-            let message = '';
-            if (req.session.agregado) {
-                message = 'Producto actualizado'
-            }
-            req.session.agregado = false;
-            res.status(200).render('item',{message: message,item, carritoId});	
+    // async getProducts(req, res, next){
+    //     try {
+    //         const token = req.cookies.token
+    //         let payload = await JWT.decode(token)
+    //         let carritoId = await elementService.save(payload);
+    //         let productos = await productService.getAll();
+    //         let message = '';
+    //         if (req.session.agregado) {
+    //             message = 'Producto agregado al carrito'
+    //         }
+    //         req.session.agregado = false;
+    //         // res.status(200).render('verProductos',{message: message,productos, carritoId});	
+    //         res.status(200).render('categorias',{message: message,productos, carritoId});	
 
-        } catch (error) {
-            pino.error(`Se produjo un error cart: ${error}`);
-            res.status(400).render('error');
-        }
-    }
+
+    //     } catch (error) {
+    //         pino.error(`Se produjo un error cart: ${error}`);
+    //         res.status(400).render('error');
+    //     }
+    // }
+
+    // async getSubProducts(req, res, next){
+    //     try {
+    //         let id_prod = req.params.id_prod;
+    //         const token = req.cookies.token
+    //         let payload = await JWT.decode(token)
+    //         let carritoId = await elementService.save(payload);
+    //         let item = await productService.getById(id_prod);
+    //         let message = '';
+    //         if (req.session.agregado) {
+    //             message = 'Producto actualizado'
+    //         }
+    //         req.session.agregado = false;
+    //         res.status(200).render('item',{message: message,item, carritoId});	
+
+    //     } catch (error) {
+    //         pino.error(`Se produjo un error cart: ${error}`);
+    //         res.status(400).render('error');
+    //     }
+    // }
 
     async getElement(req, res, next){
         try {
@@ -170,15 +192,15 @@ class Element {
         }
     }
 
-    async getChat(req, res, next){
-        try {
-            const token = req.cookies.token;
-            let payload = await JWT.decode(token);
-            res.status(200).render('mensajes',{message: '',payload});	
-        } catch (error) {
-            pino.error(`Se produjo un error cart: ${error}`);
-        }
-    }
+    // async getChat(req, res, next){
+    //     try {
+    //         const token = req.cookies.token;
+    //         let payload = await JWT.decode(token);
+    //         res.status(200).render('mensajes',{message: '',payload});	
+    //     } catch (error) {
+    //         pino.error(`Se produjo un error cart: ${error}`);
+    //     }
+    // }
 }
 
 

@@ -4,7 +4,7 @@ require("dotenv").config();
 let adminEmail = process.env.NODEMAILER_ADMIN;
 let userEmail = process.env.NODEMAILER_USER;
 
-let dolar=147;
+let dolar = process.env.DOLAR;
 
 function ccyFormat(num) {
 	return `${num.toFixed(2)}`;
