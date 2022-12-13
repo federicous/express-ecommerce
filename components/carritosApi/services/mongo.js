@@ -74,7 +74,7 @@ class MongoDB {
 		try {
 			let allCarritos = await ElementoModel.find({});
 
-			allCarritos.forEach( async element => {
+			await Promise.all(allCarritos.map( async element => {
 				let carrito=element.productList;
 				console.log(`>>>>>>>>>> carrito de ${element.email}`);
 
@@ -87,29 +87,22 @@ class MongoDB {
 					carritoUpdated.push(itemUpdated)
 				}))
 
-				console.log(`########## sin actualizar`);
-				console.log(carrito);
-				console.log(`########## actualizado`);
-				console.log(carritoUpdated);
-			});
+				// console.log(`########## sin actualizar`);
+				// console.log(carrito);
+				// console.log(`########## actualizado`);
+				// console.log(carritoUpdated);
 
+				// element.productList = [...carritoUpdated]
+				let carritoId = element["_id"]
+
+				let carritoActualizado = await ElementoModel.findById(carritoId);
+				carritoActualizado.productList=[...carritoUpdated];
+				await ElementoModel.findByIdAndUpdate(carritoId, carritoActualizado);	
+
+			}))
 
 			return allCarritos
-
-			// Si es array sobreescribo el carrito
-			if (Array.isArray(subElement)) {
-				let carritoActualizado = await ElementoModel.findById(carritoId);
-				carritoActualizado.productList=subElement;
-				await ElementoModel.findByIdAndUpdate(carritoId, carritoActualizado);					
-				return(carritoActualizado)
-			} else {
-				let carritoActualizado = await ElementoModel.findById(carritoId);
-				let nuevaProductList = carritoActualizado.productList.filter((item) => item.id !== `${subElement.id}`);
-				carritoActualizado.productList=nuevaProductList;
-				carritoActualizado.productList.push(subElement)
-				await ElementoModel.findByIdAndUpdate(carritoId, carritoActualizado);
-				return(carritoActualizado)
-			}
+			
 			
 		} catch (error) {
 			pino.error(`Se produjo un error: ${error}`)
