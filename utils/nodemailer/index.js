@@ -42,21 +42,42 @@ class Correo {
 					<td style="text-align: center">${item.price ? item.price : item.usd*dolar}</td></tr>`
 			})
 			let suma=0;
-			for (const item of carrito) {
-				let precio = item.price ? item.price : item.usd*dolar
-				suma=parseFloat(item.qty)*parseFloat(precio)+parseFloat(suma)
-			}			
 			let sumaIva=0;
-			for (const item of carrito) {
-				// let precio = ccyFormat(item.price ? item.price : item.usd*dolar)
-				// sumaIva=ccyFormat((parseFloat(item.qty)*parseFloat(precio)*parseFloat(item.iva)/100)+parseFloat(sumaIva))
+			let sumaTotal=0;
 
-				let IVA=parseFloat(typeof item.iva === "string" ? item.iva.replace(/,/g, '.').replace(/%/g, '') : item.iva);
-				let PRICE = parseFloat(item.price ? item.price : item.usd*dolar);
-				let QTY=parseFloat(item.qty);
-				sumaIva=parseFloat(QTY*PRICE*IVA/100)+parseFloat(sumaIva);
+			if (descuento) {
+				for (const item of carrito) {
+					let precio = item.price ? item.price : item.usd*dolar
+					suma=parseFloat(item.qty)*parseFloat(precio)+parseFloat(suma)
+				}			
+				for (const item of carrito) {
+					// let precio = ccyFormat(item.price ? item.price : item.usd*dolar)
+					// sumaIva=ccyFormat((parseFloat(item.qty)*parseFloat(precio)*parseFloat(item.iva)/100)+parseFloat(sumaIva))
+	
+					let IVA=parseFloat(typeof item.iva === "string" ? item.iva.replace(/,/g, '.').replace(/%/g, '') : item.iva);
+					let PRICE = parseFloat(item.price ? item.price : item.usd*dolar);
+					let QTY=parseFloat(item.qty);
+					sumaIva=parseFloat(QTY*(PRICE-PRICE*(parseFloat(descuento)/100))*IVA/100)+parseFloat(sumaIva);
+				}
+				sumaTotal = parseFloat(suma+sumaIva)
+			} else {
+				for (const item of carrito) {
+					let precio = item.price ? item.price : item.usd*dolar
+					suma=parseFloat(item.qty)*parseFloat(precio)+parseFloat(suma)
+				}			
+				for (const item of carrito) {
+					// let precio = ccyFormat(item.price ? item.price : item.usd*dolar)
+					// sumaIva=ccyFormat((parseFloat(item.qty)*parseFloat(precio)*parseFloat(item.iva)/100)+parseFloat(sumaIva))
+	
+					let IVA=parseFloat(typeof item.iva === "string" ? item.iva.replace(/,/g, '.').replace(/%/g, '') : item.iva);
+					let PRICE = parseFloat(item.price ? item.price : item.usd*dolar);
+					let QTY=parseFloat(item.qty);
+					sumaIva=parseFloat(QTY*PRICE*IVA/100)+parseFloat(sumaIva);
+				}
+				sumaTotal = parseFloat(suma+sumaIva)
 			}
-			let sumaTotal = parseFloat(suma+sumaIva)
+
+
 			const option = {
 				from: `BRMTOOLS - Orden de compra <${userEmail}>`,
 				to: `${user.email}`,
