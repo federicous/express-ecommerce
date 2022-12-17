@@ -1,6 +1,7 @@
 const elementService = require('../services');
 const carritoService = require('../../carritosApi/services');
 const productoService = require('../../pruducts/services');
+const dolarService = require('../../dolarAutomatico/services')
 const pino = require('../../../utils/logger/pino');
 const JWT = require("../../../utils/jwt/jwt");
 const Nodemailer = require('../../../utils/nodemailer')
@@ -33,7 +34,8 @@ class Element {
             let carrito = await carritoService.getSubElementsById(carritoId);
             let ordenId = await elementService.save(payload,carrito);
             let message = `Orden generada, ID: ${ordenId}`;
-            await Nodemailer.orden(payload,carrito);
+            let dolar = await dolarService.getPrecio();
+            await Nodemailer.orden(payload,carrito,"",dolar.dolar);
             let borrarCarrito = await carritoService.deleteById(carritoId);
             // res.status(200).render('verProductos',{message: message,productos, carritoId});	
             res.status(200).json({message: message, carritoId, ordenId: ordenId});
@@ -52,7 +54,8 @@ class Element {
             let carrito = await carritoService.getSubElementsById(carritoId);
             let ordenId = await elementService.saveUser(payload,carrito,usuario);
             let message = `Orden generada, ID: ${ordenId}`;
-            await Nodemailer.orden(payload,carrito,usuario.descuento);
+            let dolar = await dolarService.getPrecio();
+            await Nodemailer.orden(payload,carrito,usuario.descuento,dolar.dolar);
             let borrarCarrito = await carritoService.deleteById(carritoId);
             // res.status(200).render('verProductos',{message: message,productos, carritoId});	
             res.status(200).json({message: message, carritoId, ordenId: ordenId});

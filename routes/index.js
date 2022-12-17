@@ -12,7 +12,8 @@ const apiListas = require("../components/listas");
 const apiSearch = require("../components/search");
 const apiPermisos = require("../components/permisos");
 const apiDescuento = require("../components/descuento");
-const apiDolar = require("../components/dolar");
+// const apiDolar = require("../components/dolar");
+const apiDolarAutomatico = require("../components/dolarAutomatico");
 
 function serverRoutes(app) {
     apiProductos(app);
@@ -29,7 +30,8 @@ function serverRoutes(app) {
     apiSearch(app);
     apiPermisos(app);
     apiDescuento(app);
-    apiDolar(app);
+    // apiDolar(app);
+    apiDolarAutomatico(app);
     
     app.get("/", (req, res, next)=>{
         res.redirect('login');

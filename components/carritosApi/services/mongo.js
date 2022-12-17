@@ -146,8 +146,6 @@ class MongoDB {
 	async getSubElementsById(id) {
 		try {
 			let mostrar = await ElementoModel.findById(id);
-			console.log(`#################### Lista de productos ################`);
-			console.log(mostrar.productList);
 			return(mostrar.productList)
 
 		} catch (error) {

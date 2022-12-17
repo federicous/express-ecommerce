@@ -4,6 +4,9 @@ const JWT = require("../../../utils/jwt/jwt");
 const pino = require('../../../utils/logger/pino');
 
 class Element {
+    constructor(){
+        elementService.postPrecioAutomatico({tipo:`bna`})
+    }
 
     async getDolar(req, res, next){
         try {
