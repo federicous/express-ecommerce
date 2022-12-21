@@ -27,6 +27,10 @@ let description = Joi.string().min(3);
 let lista = Joi.string().min(3);
 let marca = Joi.string().min(3);
 let image = Joi.string().min(3);
+let rosca = Joi.string().min(3);
+let cabeza = Joi.string().min(3);
+let punta = Joi.string().min(3);
+let terminacion = Joi.string().min(3);
 let timestamp = Joi.string().min(3);
 let uuid = Joi.string().min(3);
 
@@ -55,6 +59,10 @@ const productoSchema = {
     	lista: lista.required(),
     	marca: marca.required(),
     	image: image.required(),
+    	rosca: rosca.required(),
+    	cabeza: cabeza.required(),
+    	punta: punta.required(),
+    	terminacion: terminacion.required(),
     	timestamp: timestamp.required(),
 	uuid: uuid.required()
 }
