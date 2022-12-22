@@ -43,6 +43,7 @@ class AuthService {
 					name: user.name,
 					email: user.email,
 					isAdmin: user.isAdmin,
+					vendedor: user.vendedor,
 				})
 				return ({
 					email: user.email,
