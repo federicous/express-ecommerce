@@ -66,7 +66,7 @@ class ElementService {
 					let minute = objectDate.getMinutes();
 				      
 					if (day < 10) {day = '0' + day;}
-					if (month < 9) {month = `0${month+1}`;}
+					if (month < 9) {month = `0${month+1}`;} else {month = `${month+1}`;}
 					if (hour < 10) {hour = '0' + hour;}
 					if (minute < 10) {minute = `0${minute}`;}
 				      
