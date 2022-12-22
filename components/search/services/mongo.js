@@ -33,7 +33,7 @@ class MongoDB {
 				$or: 
 				[
 					{name: {$regex: `(^|.*\\s+)(?i)${patron}.*`}}, 
-					{code: { $regex: `^${patron}.*`}},
+					{code: { $regex: `^(?i)${patron}.*`}},
 					{label: { $regex: `(^|\\s+)(?i)${patron}.*`}},
 					{linea: { $regex: `(^|\\s+)(?i)${patron}.*`}},
 					{color: { $regex: `^(?i)${patron}.*`}},
@@ -47,7 +47,7 @@ class MongoDB {
 				$or: 
 				[
 					{name: {$regex: `(^|.*\\s+)(?i)${patron}.*`}}, 
-					{code: { $regex: `^${patron}.*`}},
+					{code: { $regex: `^(?i)${patron}.*`}},
 					{label: { $regex: `(^|\\s+)(?i)${patron}.*`}},
 					{linea: { $regex: `(^|\\s+)(?i)${patron}.*`}},
 					{color: { $regex: `^(?i)${patron}.*`}},
