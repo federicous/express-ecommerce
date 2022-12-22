@@ -91,7 +91,8 @@ class Correo {
 						}
 					</style>
 					<div>
-						<p>Su compra ha sido registrada correctamente, detalles:</p>
+						<p>Su compra ha sido registrada</p>
+						<p>Vendedor: ${user.vendedor}</p>
 						<table>
 							<thead>
 								<tr>
