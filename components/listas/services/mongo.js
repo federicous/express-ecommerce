@@ -1,4 +1,6 @@
 let ProductoModel = require('../../../schema/productos')
+let productService = require('../../pruducts/services')
+let carritosApiService = require('../../carritosApi/services')
 const pino = require('../../../utils/logger/pino')
 const fs = require('fs')
 
@@ -36,6 +38,7 @@ class MongoDB {
 	// 	}
 	// }
 
+	/* NO USAR LA MODIFICACIÓN DE ESTA MANERA PORQUE GENERA PROBLEMAS, PREFERIBLEMENTE ACTUALIZAR CON LOS PRECIOS DE LA LISTA DIRECTAMENTE */
 	async modifyListPrice(lista, categoria, valor) {
 		try {
 			// let allProducts = await ProductoModel.find({lista: `${lista}`, label: `${categoria}`});
@@ -82,6 +85,185 @@ class MongoDB {
 
 	async updateList(listFileName, list, categoria) {
 		try {
+			if (list == "bremen") {
+				var XLSX = require('xlsx');
+				var workbook = XLSX.readFile(__dirname + `/../../../uploads/listas/${listFileName}`);
+				var sheet_name_list = workbook.SheetNames;
+				// console.log(XLSX.utils.sheet_to_json(workbook.Sheets[sheet_name_list[0]]))
+	
+				let productos = XLSX.utils.sheet_to_json(workbook.Sheets[sheet_name_list[0]])
+				let object = {
+					code: "Código",
+					name: "Producto",
+					label: "Categoría",
+					unidades: "Cantidad",
+					plista: "Precio de Lista",
+					pneto: "Precio Neto",
+					price: "Precio de Venta",
+					piva: "Precio con IVA",
+					pvpusd: "PVP",
+					origin: "Origen",
+					iva: "IVA",
+					ucaja: "Unidades  x CAJA",
+					ubulto: "Unidades x BULTO",
+					description: "Información",
+				}
+				let newProductos = [];
+				for (const item of productos) {
+					let newItem = {};
+					// newItem.label=`${categoria}`
+					for (const k in item) {
+						for (const key in object) {
+							if (k == object[key]) {
+								newItem[key] = `${item[k]}`.replace(/\s+/g, ' ')
+								// if (k == object["price"]) {
+								// 	newItem[key] = Number(`${item[k]}`)
+								// }
+								if (k == object["iva"]) {
+									newItem[key] = Number(`${item[k]}`)*100
+								}
+								continue
+							}
+						}
+						
+					}
+					newItem.lista=`${list}`
+					newProductos.push(newItem);
+				}
+	
+				console.log(newProductos);
+
+				/* MODIFICO PRODUCTOS O AGREGO*/
+				let response = await productService.modifyAllCode(newProductos);
+
+				/* ACTUALIZO CARRITOS */
+				carritosApiService.updateProductList()
+				
+
+				return response
+
+			} else if (list == "buloneria bremen") {
+				var XLSX = require('xlsx');
+				var workbook = XLSX.readFile(__dirname + `/../../../uploads/listas/${listFileName}`);
+				var sheet_name_list = workbook.SheetNames;
+				// console.log(XLSX.utils.sheet_to_json(workbook.Sheets[sheet_name_list[0]]))
+	
+				let productos = XLSX.utils.sheet_to_json(workbook.Sheets[sheet_name_list[0]])
+				let object = {
+					code: "CÓDIGO",
+					name: "PRODUCTO",
+					label: "CATEGORÍA",
+					rosca: "Rosca",
+					cabeza: "Cabeza",
+					punta: "Punta",
+					terminacion: "Terminacion",
+					unidades: "Unidades por caja",
+					price: "PRECIO DE VENTA",
+					iva: "IVA",
+				}
+				let newProductos = [];
+				for (const item of productos) {
+					let newItem = {};
+					// newItem.label=`${categoria}`
+					for (const k in item) {
+						for (const key in object) {
+							if (k == object[key]) {
+								newItem[key] = `${item[k]}`.replace(/\s+/g, ' ').replace(/^-$/g,'')
+								continue
+							}
+						}
+						
+					}
+					newItem.lista=`${list}`
+					newProductos.push(newItem);
+				}
+	
+				console.log(newProductos);				
+				return newProductos
+				
+			} else if (list == "kanton") {
+				return
+				var XLSX = require('xlsx');
+				var workbook = XLSX.readFile(__dirname + `/../../../uploads/listas/${listFileName}`);
+				var sheet_name_list = workbook.SheetNames;
+				// console.log(XLSX.utils.sheet_to_json(workbook.Sheets[sheet_name_list[0]]))
+	
+				let productos = XLSX.utils.sheet_to_json(workbook.Sheets[sheet_name_list[0]])
+				let object = {
+					code: "Código Nacional",
+					name: "Descripción",
+					unidades: "Cantidad",
+					price: "Precio de Venta",
+					ucaja: "Unidades  x CAJA",
+					ubulto: "Unidades x BULTO",
+					description: "Información",
+				}
+				let newProductos = [];
+				for (const item of productos) {
+					let newItem = {};
+					newItem.label=`${categoria}`
+					for (const k in item) {
+						for (const key in object) {
+							if (k == object[key]) {
+								newItem[key] = `${item[k]}`.replace(/\s+/g, ' ')
+								continue
+							}
+						}
+						
+					}
+					newItem.lista=`${list}`
+					newProductos.push(newItem);
+				}
+	
+				console.log(newProductos);
+				return newProductos
+
+			} else if (list == "tekbond") {
+				var XLSX = require('xlsx');
+				var workbook = XLSX.readFile(__dirname + `/../../../uploads/listas/${listFileName}`);
+				var sheet_name_list = workbook.SheetNames;
+				// console.log(XLSX.utils.sheet_to_json(workbook.Sheets[sheet_name_list[0]]))
+	
+				let productos = XLSX.utils.sheet_to_json(workbook.Sheets[sheet_name_list[0]])
+				let object = {
+					code: "Codigo",
+					codigobarra : "Cod.Barra PC",
+					linea: "Linea",
+					contenido: "Cont (gr)",
+					presentacion: "Present.",
+					color: "Color",
+					unidades: "Un x Caja",
+					usd: "PRECIO USD",
+					price: "Precio de Venta",
+					pvpusd: "PVP***",
+				}
+				let newProductos = [];
+				for (const item of productos) {
+					let newItem = {};
+					newItem.label=`${categoria}`
+					for (const k in item) {
+						for (const key in object) {
+							if (k == object[key]) {
+								newItem[key] = `${item[k]}`.replace(/\s+/g, ' ')
+								continue
+							}
+						}
+						
+					}
+					newItem.lista=`${list}`
+					newProductos.push(newItem);
+				}
+	
+				console.log(newProductos);
+
+				/* MODIFICO PRODUCTOS */
+				let response = await productService.modifyAllCodeNotAdd(newProductos);
+
+				/* ACTUALIZO CARRITOS */
+				carritosApiService.updateProductList()
+				
+				return newProductos
+			}
 
 			// const array = require(__dirname + `/../../../uploads/lista/${listFileName}`)
 

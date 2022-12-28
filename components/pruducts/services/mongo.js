@@ -165,6 +165,57 @@ class MongoDB {
 			}
 
 
+			/* Para actualizar listas desde el panel, no agrega nuevos productos */
+			async modifyAllCodeNotAdd(producto, imageName) {
+				try {
+					// let modificar = await ProductoModel.findByIdAndUpdate(id, producto);
+					// return (modificar)
+		
+					if (Array.isArray(producto)) {
+						producto.forEach(async element => {
+							let verificarExistente = await ProductoModel.find({code: `${element.code}`})
+							if (verificarExistente.length) {
+								pino.info(`Actualizando producto código ${element.code} en la lista ${element.lista}`);
+								await ProductoModel.findOneAndUpdate({code: `${element.code}`}, element)
+								return{message:`ya se modificó el producto ${element.code} en la lista ${element.lista}`}
+							} else {
+								pino.info(`NO EXISTE un producto con el código ${element.code} en la lista ${element.lista}`);
+								return{message:`NO EXISTE un producto con codigo ${element.code} en la lista ${element.lista}`}
+								// element.timestamp = Date.now();
+								// let agregarProductoModel = new ProductoModel(element);
+								// let agregarProducto = await agregarProductoModel.save();
+								// pino.info(agregarProducto);
+							}
+						});
+		
+					} else {
+						return{message:`El elemento no es un Array}`}
+
+						// let verificarExistente = await ProductoModel.find({code: `${producto.code}`})
+						// if (verificarExistente.length) {
+						// 	pino.info(`ya existe un producto con el mismo código ${producto.code}`);
+						// 	if (verificarExistente[0].image!="sin_imagen.jpg" && imageName && await exists(__dirname + `/../../../uploads/${verificarExistente[0].image}` )) {
+						// 		// let imagePath = path.join(__dirname, `../../../uploads/${verificarExistente[0].image}`)
+						// 		await fs.unlink(__dirname + `/../../../uploads/${verificarExistente[0].image}`)	
+						// 	}
+						// 	if (imageName) {
+						// 		producto.image = imageName;
+						// 	}
+						// 	let updateProduct = await ProductoModel.findOneAndUpdate({code: `${producto.code}`}, producto )
+						// 	return {message:`ya se modificó el producto ${producto.code}`, resultado:updateProduct}
+						// } else {
+						// 	producto.timestamp = Date.now();
+						// 	producto.image = imageName;
+						// 	let agregarProductoModel = new ProductoModel(producto);
+						// 	let agregarProducto = await agregarProductoModel.save();
+						// 	pino.info(agregarProducto);
+						// }
+					}
+				} catch (error) {
+					pino.error(`Se produjo un error: ${error}`)
+					throw new Error(error)
+				}
+			}
 
 
 	async getById(id) {
