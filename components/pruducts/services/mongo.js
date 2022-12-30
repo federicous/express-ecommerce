@@ -76,10 +76,11 @@ class MongoDB {
 				producto.forEach(async element => {
 					let verificarExistente = await ProductoModel.find({code: `${element.code}`, lista: `${element.lista}`})
 					if (verificarExistente.length) {
-						pino.info(`ya existe un producto con el mismo código ${element.code} en la lista ${element.lista}`);
+						pino.info(`ACTUALIZANDO producto código ${element.code} en la lista ${element.lista}`);
 						await ProductoModel.findOneAndUpdate({code: `${element.code}`, lista: `${element.lista}`}, element)
 						return{message:`ya se modificó el producto ${element.code} en la lista ${element.lista}`}
 					} else {
+						pino.info(`AGREGANDO producto NUEVO con código ${element.code} en la lista ${element.lista}`);
 						element.timestamp = Date.now();
 						let agregarProductoModel = new ProductoModel(element);
 						let agregarProducto = await agregarProductoModel.save();
@@ -126,14 +127,16 @@ class MongoDB {
 						producto.forEach(async element => {
 							let verificarExistente = await ProductoModel.find({code: `${element.code}`})
 							if (verificarExistente.length) {
-								pino.info(`ya existe un producto con el mismo código ${element.code} en la lista ${element.lista}`);
+								pino.info(`ACTUALIZANDO producto código ${element.code} en la lista ${element.lista}`);
 								await ProductoModel.findOneAndUpdate({code: `${element.code}`}, element)
 								return{message:`ya se modificó el producto ${element.code} en la lista ${element.lista}`}
 							} else {
+								pino.info(`AGREGANDO producto NUEVO con código ${element.code} en la lista ${element.lista}`);
 								element.timestamp = Date.now();
 								let agregarProductoModel = new ProductoModel(element);
+								agregarProductoModel.isNew = true
 								let agregarProducto = await agregarProductoModel.save();
-								pino.info(agregarProducto);
+								// pino.info(agregarProducto);
 							}
 						});
 		
@@ -173,7 +176,7 @@ class MongoDB {
 		
 					if (Array.isArray(producto)) {
 						producto.forEach(async element => {
-							let verificarExistente = await ProductoModel.find({code: `${element.code}`})
+							let verificarExistente = await ProductoModel.find({code: `${element.code}`, lista: `${element.lista}`})
 							if (verificarExistente.length) {
 								pino.info(`Actualizando producto código ${element.code} en la lista ${element.lista}`);
 								await ProductoModel.findOneAndUpdate({code: `${element.code}`}, element)
@@ -217,6 +220,35 @@ class MongoDB {
 				}
 			}
 
+			// async deleteDuplicated() {
+			// 	try {					
+			// 		/* ELIMINAR DUPLICADOS */
+			// 		let mostrar = await ProductoModel.aggregate([
+			// 			{
+			// 			"$group": {
+			// 				_id: {code: "$code"},
+			// 				codes: { $addToSet: "$_id" } ,
+			// 				count: { $sum : 1 }
+			// 			}
+			// 			},
+			// 			{
+			// 			"$match": {
+			// 				count: { "$gt": 1 }
+			// 			}
+			// 			}
+			// 		]).forEach(function(doc) {
+			// 			doc.codes.shift();
+			// 			ProductoModel.remove({
+			// 			_id: {$in: doc.codes}
+			// 			});
+			// 		})
+			// 		console.log(mostrar);
+			// 		return (mostrar)
+			// 	} catch (error) {
+			// 		pino.error(`Se produjo un error: ${error}`)
+			// 		throw new Error(error)
+			// 	}
+			// }
 
 	async getById(id) {
 		try {
@@ -230,7 +262,20 @@ class MongoDB {
 
 	async getAll() {
 		try {
-			let allProducts = await ProductoModel.find({});
+			let allProducts = await ProductoModel.find({}).sort({name:1});
+			return (allProducts)
+
+		} catch (error) {
+			pino.error(`Se produjo un error: ${error}`)
+			throw new Error(error)
+		}
+	}
+
+
+
+	async getByObject(element) {
+		try {
+			let allProducts = await ProductoModel.find(element,"-_id");
 			return (allProducts)
 
 		} catch (error) {
@@ -269,7 +314,7 @@ class MongoDB {
 		try {
 			const PAGE_SIZE = pageSize; // Similar a 'límite'
 			const skip = (page - 1) * PAGE_SIZE;
-			let allProducts = await ProductoModel.find({label: category}).skip(skip).limit(PAGE_SIZE);
+			let allProducts = await ProductoModel.find({label: category}).sort({name:1, color:1, code:1}).skip(skip).limit(PAGE_SIZE);
 			// let total = await ProductoModel.find({label: category}).countDocuments()
 			let total = await ProductoModel.countDocuments({label: category})
 			return ({allProducts: allProducts,total: total})
@@ -284,7 +329,7 @@ class MongoDB {
 		try {
 			const PAGE_SIZE = pageSize; // Similar a 'límite'
 			const skip = (page - 1) * PAGE_SIZE;
-			let allProducts = await ProductoModel.find({lista: lista, label: category}).skip(skip).limit(PAGE_SIZE);
+			let allProducts = await ProductoModel.find({lista: lista, label: category}).sort({name:1, color:1, code:1}).skip(skip).limit(PAGE_SIZE);
 			// let total = await ProductoModel.find({label: category}).countDocuments()
 			let total = await ProductoModel.countDocuments({lista: lista, label: category})
 			return ({allProducts: allProducts,total: total})
@@ -299,7 +344,7 @@ class MongoDB {
 		try {
 			const PAGE_SIZE = pageSize; // Similar a 'límite'
 			const skip = (page - 1) * PAGE_SIZE;
-			let allProducts = await ProductoModel.find({lista: lista}).skip(skip).limit(PAGE_SIZE);
+			let allProducts = await ProductoModel.find({lista: lista}).sort({name:1, color:1, code:1}).skip(skip).limit(PAGE_SIZE);
 			// let total = await ProductoModel.find({label: category}).countDocuments()
 			let total = await ProductoModel.countDocuments({lista: lista})
 			return ({allProducts: allProducts,total: total})

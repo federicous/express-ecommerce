@@ -81,7 +81,7 @@ class MongoDB {
 				let carritoUpdated = [];
 				await Promise.all(carrito.map( async item => {
 					// let originalProduct = await ProductoModel.find({_id: `${item._id}`}).select(`-_id`);
-					let originalProduct = await ProductoModel.findById(`${item._id}`).select(`-_id`);
+					let originalProduct = await ProductoModel.findById(`${item._id}`);
 					let itemUpdated = {};
 					for (let attrname in item) { itemUpdated[attrname] = originalProduct[attrname] ? originalProduct[attrname] : item[attrname]};
 					carritoUpdated.push(itemUpdated)

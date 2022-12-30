@@ -169,6 +169,9 @@ class MongoDB {
 						for (const key in object) {
 							if (k == object[key]) {
 								newItem[key] = `${item[k]}`.replace(/\s+/g, ' ').replace(/^-$/g,'')
+								if (k == object["iva"]) {
+									newItem[key] = Number(`${item[k]}`.replace(/%/g, ''))*100
+								}
 								continue
 							}
 						}
@@ -178,44 +181,97 @@ class MongoDB {
 					newProductos.push(newItem);
 				}
 	
-				console.log(newProductos);				
+				console.log(newProductos);	
+
+				/* MODIFICO PRODUCTOS O AGREGO*/
+				let response = await productService.modifyAllCodeNotAdd(newProductos);
+
+				/* ACTUALIZO CARRITOS */
+				carritosApiService.updateProductList()
+
 				return newProductos
 				
 			} else if (list == "kanton") {
-				return
+				// return
 				var XLSX = require('xlsx');
 				var workbook = XLSX.readFile(__dirname + `/../../../uploads/listas/${listFileName}`);
 				var sheet_name_list = workbook.SheetNames;
 				// console.log(XLSX.utils.sheet_to_json(workbook.Sheets[sheet_name_list[0]]))
 	
 				let productos = XLSX.utils.sheet_to_json(workbook.Sheets[sheet_name_list[0]])
+				// console.log(productos);
+				// return
 				let object = {
 					code: "Código Nacional",
-					name: "Descripción",
-					unidades: "Cantidad",
-					price: "Precio de Venta",
-					ucaja: "Unidades  x CAJA",
-					ubulto: "Unidades x BULTO",
-					description: "Información",
+					// name: "Descripción",
+					// unidades: "Cantidad",
+					price: "Precio\nOFERTA Unit",
+					pricepack: "Precio  \nOFERTA x Pack "
+					// ucaja: "Unidades  x CAJA",
+					// ubulto: "Unidades x BULTO",
+					// description: "Información",
 				}
 				let newProductos = [];
 				for (const item of productos) {
 					let newItem = {};
-					newItem.label=`${categoria}`
+					// newItem.label=`${categoria}`
 					for (const k in item) {
 						for (const key in object) {
 							if (k == object[key]) {
 								newItem[key] = `${item[k]}`.replace(/\s+/g, ' ')
+
+								if (k == object["iva"]) {
+									newItem[key] = `${item[k]}`.replace(/%/g, '')
+								}
 								continue
 							}
 						}
 						
 					}
 					newItem.lista=`${list}`
+					// let secondItem= {...newItem};
+					// secondItem["code"]=secondItem["code"]+"-12"
+					// secondItem["price"]=secondItem["pricepack"]
+					// secondItem["unidades"]="12 unidades"
 					newProductos.push(newItem);
+					// newProductos.push(secondItem)
 				}
 	
 				console.log(newProductos);
+
+				/* MODIFICO PRODUCTOS */
+				let response = await productService.modifyAllCodeNotAdd(newProductos);
+
+				/* traigo productos actualizados */
+				// let productosPack = [];
+				// for (const item of newProductos) {
+				// 	let itemResponse = await productService.getByObject({code:`${item["code"]}`, lista:`${list}`})
+				// 	let secondItem= itemResponse[0];
+				// 	secondItem["code"]=secondItem["code"]+"P"
+				// 	secondItem["price"]=secondItem["pricepack"]
+				// 	secondItem["name"]=secondItem["name"]+" (Pack 12 unidades) "
+				// 	productosPack.push(secondItem)
+				// }
+
+				let productosPack = [];
+				await Promise.all(newProductos.map( async item => {
+					let itemResponse = await productService.getByObject({code:`${item["code"]}`, lista:`${list}`})
+					let secondItem= itemResponse[0];
+					secondItem["code"]=secondItem["code"]+"P"
+					secondItem["price"]=secondItem["pricepack"]
+					secondItem["name"]=secondItem["name"]+" (Pack 12 unidades) "
+					productosPack.push(secondItem)
+				}))
+
+
+				console.log(productosPack);
+				console.log(`################## Agregar packs`);
+				await productService.modifyAllCodeNotAdd(productosPack);
+
+				/* ACTUALIZO CARRITOS */
+				console.log(`################# Actualizar carritos`);
+				await carritosApiService.updateProductList()
+				console.log(`##################  Final kanton`);				
 				return newProductos
 
 			} else if (list == "tekbond") {
@@ -245,6 +301,9 @@ class MongoDB {
 						for (const key in object) {
 							if (k == object[key]) {
 								newItem[key] = `${item[k]}`.replace(/\s+/g, ' ')
+								if (k == object["code"] && `${item[k]}`.length > 6 ) {
+									newItem[key] = `${item[k]}`.slice(5)
+								}
 								continue
 							}
 						}

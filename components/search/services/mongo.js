@@ -40,7 +40,7 @@ class MongoDB {
 					{contenido: { $regex: `^(?i)${patron}.*`}},
 					{presentacion: { $regex: `^(?i)${patron}.*`}},
 				]
-			})
+			}).sort({name:1, color:1})
 			.skip(skip).limit(PAGE_SIZE);
 			// matchea todo el nombre del producto si el mismo contiene palabras que comienzan con el patron (se debe escapar el "\")
 			let total = await ProductoModel.countDocuments({
@@ -54,7 +54,7 @@ class MongoDB {
 					{contenido: { $regex: `^(?i)${patron}.*`}},
 					{presentacion: { $regex: `^(?i)${patron}.*`}},
 				]
-			})
+			}).sort({name:1, color:1})
 
 			return ({allProducts: allProducts,total: total})
 
@@ -79,7 +79,7 @@ class MongoDB {
 		try {
 			const PAGE_SIZE = pageSize; // Similar a 'límite'
 			const skip = (page - 1) * PAGE_SIZE;
-			let allProducts = await ProductoModel.find({}).skip(skip).limit(PAGE_SIZE);
+			let allProducts = await ProductoModel.find({}).sort({name:1, color:1}).skip(skip).limit(PAGE_SIZE);
 			let total = await ProductoModel.countDocuments({})
 			return ({allProducts: allProducts,total: total})
 
