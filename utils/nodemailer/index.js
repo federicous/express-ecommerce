@@ -39,7 +39,7 @@ class Correo {
 					<td style="text-align: center">${item.code}</td> 
 					<td style="text-align: center">${item.qty}</td> 
 					<td style="text-align: center">${parseFloat(typeof item.iva === "string" ? item.iva.replace(/,/g, '.').replace(/%/g, '') : item.iva)}%</td> 
-					<td style="text-align: center">${item.price ? item.price : item.usd*dolar}</td></tr>`
+					<td style="text-align: center">${ccyFormat(parseFloat((item.price ? item.price : parseFloat(item.usd)*dolar)))}</td></tr>`
 			})
 			let suma=0;
 			let sumaIva=0;
