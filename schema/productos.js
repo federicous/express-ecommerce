@@ -31,6 +31,7 @@ let rosca = Joi.string().min(3);
 let cabeza = Joi.string().min(3);
 let punta = Joi.string().min(3);
 let terminacion = Joi.string().min(3);
+let precioConIva = Joi.string().min(3);
 let timestamp = Joi.string().min(3);
 let uuid = Joi.string().min(3);
 
@@ -63,6 +64,7 @@ const productoSchema = {
     	cabeza: cabeza.required(),
     	punta: punta.required(),
     	terminacion: terminacion.required(),
+    	precioConIva: precioConIva.required(),
     	timestamp: timestamp.required(),
 	uuid: uuid.required()
 }

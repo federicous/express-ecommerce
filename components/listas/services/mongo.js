@@ -131,7 +131,7 @@ class MongoDB {
 					newProductos.push(newItem);
 				}
 	
-				console.log(newProductos);
+				pino.info(newProductos);
 
 				/* MODIFICO PRODUCTOS O AGREGO*/
 				let response = await productService.modifyAllCode(newProductos);
@@ -181,7 +181,7 @@ class MongoDB {
 					newProductos.push(newItem);
 				}
 	
-				console.log(newProductos);	
+				pino.info(newProductos);	
 
 				/* MODIFICO PRODUCTOS O AGREGO*/
 				let response = await productService.modifyAllCodeNotAdd(newProductos);
@@ -205,7 +205,7 @@ class MongoDB {
 					code: "Código Nacional",
 					// name: "Descripción",
 					// unidades: "Cantidad",
-					price: "Precio\nOFERTA Unit",
+					precioConIva: "Precio\nOFERTA Unit",
 					pricepack: "Precio  \nOFERTA x Pack "
 					// ucaja: "Unidades  x CAJA",
 					// ubulto: "Unidades x BULTO",
@@ -237,7 +237,7 @@ class MongoDB {
 					// newProductos.push(secondItem)
 				}
 	
-				console.log(newProductos);
+				pino.info(newProductos);
 
 				/* MODIFICO PRODUCTOS */
 				let response = await productService.modifyAllCodeNotAdd(newProductos);
@@ -253,6 +253,7 @@ class MongoDB {
 				// 	productosPack.push(secondItem)
 				// }
 
+				/* Armo los packs */
 				let productosPack = [];
 				await Promise.all(newProductos.map( async item => {
 					let itemResponse = await productService.getByObject({code:`${item["code"]}`, lista:`${list}`})
@@ -264,14 +265,14 @@ class MongoDB {
 				}))
 
 
-				console.log(productosPack);
-				console.log(`################## Agregar packs`);
+				pino.info(productosPack);
+				pino.info(`################## Agregar packs`);
 				await productService.modifyAllCodeNotAdd(productosPack);
 
 				/* ACTUALIZO CARRITOS */
-				console.log(`################# Actualizar carritos`);
+				pino.info(`################# Actualizar carritos`);
 				await carritosApiService.updateProductList()
-				console.log(`##################  Final kanton`);				
+				pino.info(`##################  Final kanton`);				
 				return newProductos
 
 			} else if (list == "tekbond") {
@@ -313,7 +314,7 @@ class MongoDB {
 					newProductos.push(newItem);
 				}
 	
-				console.log(newProductos);
+				pino.info(newProductos);
 
 				/* MODIFICO PRODUCTOS */
 				let response = await productService.modifyAllCodeNotAdd(newProductos);
@@ -365,7 +366,7 @@ class MongoDB {
 				newProductos.push(newItem);
 			}
 
-			console.log(newProductos);
+			pino.info(newProductos);
 			return newProductos
 
 			// let modificar = await ProductoModel.findByIdAndUpdate(id, producto);
