@@ -85,6 +85,7 @@ class MongoDB {
 
 	async updateList(listFileName, list, categoria) {
 		try {
+			pino.info(`################### ACTUALIZANDO LISTA ${list} ###################`);
 			if (list == "bremen") {
 				var XLSX = require('xlsx');
 				var workbook = XLSX.readFile(__dirname + `/../../../uploads/listas/${listFileName}`);
