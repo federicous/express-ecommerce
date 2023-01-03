@@ -260,6 +260,7 @@ class MongoDB {
 					let secondItem= itemResponse[0];
 					secondItem["code"]=secondItem["code"]+"P"
 					secondItem["price"]=secondItem["pricepack"]
+					secondItem["precioConIva"]=secondItem["pricepack"]
 					secondItem["name"]=secondItem["name"]+" (Pack 12 unidades) "
 					productosPack.push(secondItem)
 				}))
