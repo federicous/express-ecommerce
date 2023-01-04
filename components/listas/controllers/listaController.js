@@ -69,6 +69,7 @@ class Element {
     
     async uploadList(req, res, next){
         try {
+            pino.info(`######### Llamando proceso de actualizacion de lista ${req.body.lista} ###### `)
             let element = req.body;
             let listName= req.listName;
             let response = await elementService.updateList(listName, element.lista, element.label);
