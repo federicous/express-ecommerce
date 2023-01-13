@@ -19,7 +19,58 @@ class Correo {
 				to: `${user.email}`,
 				bcc: `${adminEmail},${bccEmail}`,
 				subject: `Usuario Registrado: ${user.email} - ${user.name}`,
-				text: `El usuario ${user.email} ha sido registrado`
+				text: `El usuario ${user.email} ha sido registrado`,
+				html:`
+				<style>
+	table, th, td {
+	  border: 1px solid black;
+	  border-collapse: collapse;
+	}
+	th, td {
+	  background-color: white;
+	}
+	</style>
+<table style="vertical-align: top;">
+	<thead>
+		<tr>
+			<td style="min-width: 100px;"></td>
+			<td style="text-align: center;min-width: 100px;"><strong>Datos</strong></td>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td><strong>Nombre</strong></td>
+			<td>${user.name}</td>
+		</tr>
+		<tr>
+			<td><strong>Correo</strong></td>
+			<td>${user.email}</td>
+		</tr>
+		<tr>
+			<td><b>Ferreter&iacute;a</b></td>
+			<td>${user.ferreteria}</td>
+		</tr>
+		<tr>
+			<td><b>Tel&eacute;fono</b></td>
+			<td>${user.phone}</td>
+		</tr>
+		<tr>
+			<td><strong>Direcci&oacute;n</strong></td>
+			<td>${user.address}, ${user.provincia}, ${user.localidad}</td>
+		</tr>
+		<tr>
+			<td><strong>CUIT</strong></td>
+			<td>${user.cuit}</td>
+		</tr>
+		<tr>
+			<td><strong>Vendedor</strong></td>
+			<td>${user.vendedor}</td>
+		</tr>
+	</tbody>
+</table>
+				
+				
+				`
 			}
 			const response = await transporter.sendMail(option)
 			pino.info(`Enviando correo a: ${user.email}`)
