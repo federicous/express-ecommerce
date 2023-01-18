@@ -92,7 +92,8 @@ class Correo {
 			let items = ''
 			carrito.forEach(item => {
 				items += `<tr><td>${
-					[item.name,item.color,item.linea,item.presentacion,`${item.contenido ? (""+item.contenido) : ""}`].filter(Boolean).join(" | ")
+					// [item.name,item.color,item.linea,item.presentacion,`${item.contenido ? (""+item.contenido) : ""}`].filter(Boolean).join(" | ")
+					[item.name,item.color,item.linea,item.presentacion,`${(item.unidades!="0" && item.lista=="buloneria bremen") ? (`${item.unidades} unidades`) : ""}`,`${item.contenido ? (""+item.contenido) : ""}`].filter(Boolean).join(" | ")
 					}</td> 
 					<td style="text-align: center">${item.lista}</td> 
 					<td style="text-align: center">${item.code}</td> 
@@ -184,6 +185,11 @@ class Correo {
 								</tr>			 
 							</tbody>
 						</table>
+						<ul>
+							<li style="text-align: justify;"><strong>Debido a los constantes cambios de precios de las marcas, es posible que haya modificaciones y correcciones en el pedido. </strong></li>
+							<li style="text-align: justify;"><strong>Por favor, aseg&uacute;rese de confirmar la disponibilidad y cantidad de los productos con su vendedor asignado antes de proceder con el pedido.</strong></li>
+							<li style="text-align: justify;"><strong> Adem&aacute;s, tenga en cuenta que la aplicaci&oacute;n se encuentra en una etapa de pruebas. </strong><strong>Si encuentra alg&uacute;n error, por favor informe a <a href="mailto:contacto@distribuidorabrmtools.com">contacto@distribuidorabrmtools.com</a>.</strong></li>
+						</ul>
 					</div>
 					`
 			}
