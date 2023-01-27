@@ -53,7 +53,7 @@ class MongoDB {
 			const PAGE_SIZE = pageSize; // Similar a 'límite'
 			const skip = (page - 1) * PAGE_SIZE;
 			let allProducts = await ProductoModel.find({oferta:"si"}).sort({name:1, color:1, code:1}).skip(skip).limit(PAGE_SIZE);
-			let total = await ProductoModel.countDocuments({})
+			let total = await ProductoModel.countDocuments({oferta:"si"})
 			// return (allProducts)
 			return ({allProducts: allProducts,total: total})
 

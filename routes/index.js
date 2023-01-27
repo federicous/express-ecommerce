@@ -15,6 +15,7 @@ const apiDescuento = require("../components/descuento");
 // const apiDolar = require("../components/dolar");
 const apiDolarAutomatico = require("../components/dolarAutomatico");
 const apiOfertas = require("../components/ofertas");
+const apiDescargas = require("../components/descargas");
 
 function serverRoutes(app) {
     apiProductos(app);
@@ -34,6 +35,7 @@ function serverRoutes(app) {
     // apiDolar(app);
     apiDolarAutomatico(app);
     apiOfertas(app);
+    apiDescargas(app);
     
     app.get("/", (req, res, next)=>{
         res.redirect('login');

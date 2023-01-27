@@ -109,6 +109,19 @@ class MongoDB {
 					ubulto: "Unidades x BULTO",
 					description: "Información",
 				}
+				/* Verificación de campos para evitar error de lista */
+				const camposObligatorios = ["Código","Producto","Categoría","Cantidad","Precio de Venta","Origen","IVA",]
+				const comparar = []
+				for (const key in productos[0]) {
+					comparar.push(key)
+				}
+				const contieneTodos = camposObligatorios.every(elemento => comparar.includes(elemento));				
+				if (!contieneTodos) {
+					pino.info(`Lista equivocada, debe ingresar la de BREMEN Gral`)
+					return {result:"error"}
+				}
+				/* FIN Verificación */
+				
 				let newProductos = [];
 				for (const item of productos) {
 					let newItem = {};
@@ -131,11 +144,11 @@ class MongoDB {
 					newItem.lista=`${list}`
 					newProductos.push(newItem);
 				}
-	
 				pino.info(newProductos);
 
 				/* MODIFICO PRODUCTOS O AGREGO*/
-				let response = await productService.modifyAllCode(newProductos);
+				// let response = await productService.modifyAllCode(newProductos);
+				let response = await productService.modifyAllCodeRepeated(newProductos);
 
 				/* ACTUALIZO CARRITOS */
 				carritosApiService.updateProductList()
@@ -162,6 +175,21 @@ class MongoDB {
 					price: "PRECIO DE VENTA",
 					iva: "IVA",
 				}
+
+				/* Verificación de campos para evitar error de lista */
+				const camposObligatorios = ["CÓDIGO","PRODUCTO","CATEGORÍA","Rosca","Cabeza","Punta","Terminacion","Unidades por caja","PRECIO DE VENTA","IVA"]
+				const comparar = []
+				for (const key in productos[0]) {
+					comparar.push(`${key}`)
+				}
+				console.log(camposObligatorios);
+				const contieneTodos = camposObligatorios.every(elemento => comparar.includes(elemento));				
+				if (!contieneTodos) {
+					pino.info(`Lista equivocada, debe ingresar la de BULONERIA BREMEN`)
+					return {result:"error"}
+				}
+				/* FIN Verificación */
+
 				let newProductos = [];
 				for (const item of productos) {
 					let newItem = {};
@@ -185,12 +213,13 @@ class MongoDB {
 				pino.info(newProductos);	
 
 				/* MODIFICO PRODUCTOS O AGREGO*/
-				let response = await productService.modifyAllCodeNotAdd(newProductos);
+				// let response = await productService.modifyAllCodeNotAdd(newProductos);
+				let response = await productService.modifyAllCodeRepeated(newProductos);
 
 				/* ACTUALIZO CARRITOS */
 				carritosApiService.updateProductList()
 
-				return newProductos
+				return response
 				
 			} else if (list == "kanton") {
 				// return
@@ -212,6 +241,21 @@ class MongoDB {
 					// ubulto: "Unidades x BULTO",
 					// description: "Información",
 				}
+
+				/* Verificación de campos para evitar error de lista */
+				const camposObligatorios = ["Código Nacional","Precio\nOFERTA Unit","Precio  \nOFERTA x Pack "]
+				const comparar = []
+				for (const key in productos[0]) {
+					comparar.push(`${key}`)
+				}
+				console.log(camposObligatorios);
+				const contieneTodos = camposObligatorios.every(elemento => comparar.includes(elemento));				
+				if (!contieneTodos) {
+					pino.info(`Lista equivocada, debe ingresar la de KANTON`)
+					return {result:"error"}
+				}
+				/* FIN Verificación */
+
 				let newProductos = [];
 				for (const item of productos) {
 					let newItem = {};
