@@ -340,6 +340,21 @@ class MongoDB {
 					price: "Precio de Venta",
 					pvpusd: "PVP***",
 				}
+
+				/* Verificación de campos para evitar error de lista */
+				const camposObligatorios = ["Codigo","Cod.Barra PC","Linea","Cont (gr)","Present.","Color","Un x Caja","PRECIO USD","Precio de Venta"]
+				const comparar = []
+				for (const key in productos[0]) {
+					comparar.push(`${key}`)
+				}
+				console.log(camposObligatorios);
+				const contieneTodos = camposObligatorios.every(elemento => comparar.includes(elemento));				
+				if (!contieneTodos) {
+					pino.info(`Lista equivocada, debe ingresar la de TEKBOND`)
+					return {result:"error"}
+				}
+				/* FIN Verificación */
+
 				let newProductos = [];
 				for (const item of productos) {
 					let newItem = {};
