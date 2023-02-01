@@ -384,104 +384,66 @@ class MongoDB {
 				carritosApiService.updateProductList()
 				
 				return newProductos
-			}
-
-			// const array = require(__dirname + `/../../../uploads/lista/${listFileName}`)
-
-			var XLSX = require('xlsx');
-			var workbook = XLSX.readFile(__dirname + `/../../../uploads/listas/${listFileName}`);
-			var sheet_name_list = workbook.SheetNames;
-			// console.log(XLSX.utils.sheet_to_json(workbook.Sheets[sheet_name_list[0]]))
-
-			let productos = XLSX.utils.sheet_to_json(workbook.Sheets[sheet_name_list[0]])
-			let object = {
-				code: "Código",
-				name: "Producto",
-				label: "Categoría",
-				unidades: "Cantidad",
-				plista: "Precio de Lista",
-				pneto: "Precio Neto",
-				price: "Precio de Venta",
-				piva: "Precio con IVA",
-				pvpusd: "PVP",
-				origin: "Origen",
-				iva: "IVA",
-				ucaja: "Unidades  x CAJA",
-				ubulto: "Unidades x BULTO",
-				description: "Información",
-			}
-			let newProductos = [];
-			for (const item of productos) {
-				let newItem = {};
-				newItem.label=`${categoria}`
-				for (const k in item) {
-					for (const key in object) {
-						if (k == object[key]) {
-							newItem[key] = `${item[k]}`.replace(/\s+/g, ' ')
-							continue
+			} else if (list == "sinpar") {
+				var XLSX = require('xlsx');
+				var workbook = XLSX.readFile(__dirname + `/../../../uploads/listas/${listFileName}`);
+				var sheet_name_list = workbook.SheetNames;
+				// console.log(XLSX.utils.sheet_to_json(workbook.Sheets[sheet_name_list[0]]))
+	
+				let productos = XLSX.utils.sheet_to_json(workbook.Sheets[sheet_name_list[0]])
+				let object = {
+					code: "CODIGO",
+					name: "PRODUCTO",
+					price: "PRECIO SIN IVA",
+					iva: "IVA",
+					ofertaUno: "OFERTA I",
+					ofertaDos: "OFERTA II",
+					ventaMinima: "VENTA MINIMA",
+					label: "CATEGORIA",
+				}
+				/* Verificación de campos para evitar error de lista */
+				const camposObligatorios = ["CODIGO","PRODUCTO","PRECIO SIN IVA","IVA","VENTA MINIMA"]
+				const comparar = []
+				for (const key in productos[0]) {
+					comparar.push(`${key}`.trim())
+				}
+				console.log(comparar);
+				const contieneTodos = camposObligatorios.every(elemento => comparar.includes(elemento));				
+				if (!contieneTodos) {
+					pino.info(`Lista equivocada, debe ingresar la de ${list}`)
+					return {result:"error"}
+				}
+				/* FIN Verificación */
+				
+				let newProductos = [];
+				for (const item of productos) {
+					let newItem = {};
+					for (const k in item) {
+						for (const key in object) {
+							if (k.trim() == object[key.trim()]) {
+								newItem[key.trim()] = `${item[k]}`.replace(/\s+/g, ' ')
+								if (k == object["iva"]) {
+									newItem[key] = Number(`${item[k]}`)*100
+								}
+								continue
+							}
 						}
 					}
-					
+					newItem.lista=`${list}`
+					newProductos.push(newItem);
 				}
-				newItem.lista=`${list}`
-				newProductos.push(newItem);
+				pino.info(newProductos);
+
+				/* MODIFICO PRODUCTOS O AGREGO*/
+				// let response = await productService.modifyAllCode(newProductos);
+				let response = await productService.modifyAllCodeRepeated(newProductos);
+
+				/* ACTUALIZO CARRITOS */
+				carritosApiService.updateProductList()
+
+				return response
 			}
 
-			pino.info(newProductos);
-			return newProductos
-
-			// let modificar = await ProductoModel.findByIdAndUpdate(id, producto);
-			// return (modificar)
-
-			if (Array.isArray(producto)) {
-				producto.forEach(async element => {
-					let verificarExistente = await ProductoModel.find({
-						code: `${element.code}`
-					})
-					if (verificarExistente.length) {
-						pino.info(`ya existe un producto con el mismo código ${element.code} en la lista ${element.lista}`);
-						await ProductoModel.findOneAndUpdate({
-							code: `${element.code}`
-						}, element)
-						return {
-							message: `ya se modificó el producto ${element.code} en la lista ${element.lista}`
-						}
-					} else {
-						element.timestamp = Date.now();
-						let agregarProductoModel = new ProductoModel(element);
-						let agregarProducto = await agregarProductoModel.save();
-						pino.info(agregarProducto);
-					}
-				});
-
-			} else {
-				let verificarExistente = await ProductoModel.find({
-					code: `${producto.code}`
-				})
-				if (verificarExistente.length) {
-					pino.info(`ya existe un producto con el mismo código ${producto.code}`);
-					if (verificarExistente[0].image != "sin_imagen.jpg" && imageName && await exists(__dirname + `/../../../uploads/${verificarExistente[0].image}`)) {
-						// let imagePath = path.join(__dirname, `../../../uploads/${verificarExistente[0].image}`)
-						await fs.unlink(__dirname + `/../../../uploads/${verificarExistente[0].image}`)
-					}
-					if (imageName) {
-						producto.image = imageName;
-					}
-					let updateProduct = await ProductoModel.findOneAndUpdate({
-						code: `${producto.code}`
-					}, producto)
-					return {
-						message: `ya se modificó el producto ${producto.code}`,
-						resultado: updateProduct
-					}
-				} else {
-					producto.timestamp = Date.now();
-					producto.image = imageName;
-					let agregarProductoModel = new ProductoModel(producto);
-					let agregarProducto = await agregarProductoModel.save();
-					pino.info(agregarProducto);
-				}
-			}
 		} catch (error) {
 			pino.error(`Se produjo un error: ${error}`)
 			throw new Error(error)

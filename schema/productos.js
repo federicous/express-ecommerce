@@ -33,6 +33,9 @@ let punta = Joi.string().min(3);
 let terminacion = Joi.string().min(3);
 let precioConIva = Joi.string().min(3);
 let oferta = Joi.string().min(3);
+let ofertaUno = Joi.string().min(3);
+let ofertaDos = Joi.string().min(3);
+let ventaMinima = Joi.string().min(3)
 let precioOferta = Joi.string().min(3);
 let timestamp = Joi.string().min(3);
 let uuid = Joi.string().min(3);
@@ -68,6 +71,9 @@ const productoSchema = {
     	terminacion: terminacion.required(),
     	precioConIva: precioConIva.required(),
     	oferta: oferta.required(),
+    	ofertaUno: ofertaUno.required(),
+    	ofertaDos: ofertaDos.required(),
+    	ventaMinima: ventaMinima.required(),
     	precioOferta: precioOferta.required(),
     	timestamp: timestamp.required(),
 	uuid: uuid.required()
