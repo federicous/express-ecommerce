@@ -6,7 +6,7 @@ class MongoDB {
 	async getAll(identificador) {
 		try {
 			let allProducts = await ProductoModel.find({}).select(`${identificador} -_id`);
-			return (allProducts)
+			return (allProducts.filter(Boolean))
 
 		} catch (error) {
 			pino.error(`Se produjo un error: ${error}`)
@@ -17,7 +17,7 @@ class MongoDB {
 	async getAllLista(identificador,lista) {
 		try {
 			let allProducts = await ProductoModel.find({lista: `${lista}`}).select(`${identificador} -_id`);
-			return (allProducts)
+			return (allProducts.filter(Boolean))
 
 		} catch (error) {
 			pino.error(`Se produjo un error: ${error}`)

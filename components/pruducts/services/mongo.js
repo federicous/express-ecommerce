@@ -77,6 +77,7 @@ class MongoDB {
 					let verificarExistente = await ProductoModel.find({code: `${element.code}`, lista: `${element.lista}`})
 					if (verificarExistente.length) {
 						pino.info(`ACTUALIZANDO producto código ${element.code} en la lista ${element.lista}`);
+						element.timestamp = Date.now();
 						await ProductoModel.findOneAndUpdate({code: `${element.code}`, lista: `${element.lista}`}, element)
 						return{message:`ya se modificó el producto ${element.code} en la lista ${element.lista}`}
 					} else {
@@ -128,6 +129,7 @@ class MongoDB {
 							let verificarExistente = await ProductoModel.find({code: `${element.code}`})
 							if (verificarExistente.length) {
 								pino.info(`ACTUALIZANDO producto código ${element.code} en la lista ${element.lista}`);
+								element.timestamp = Date.now();
 								await ProductoModel.findOneAndUpdate({code: `${element.code}`}, element)
 								return{message:`ya se modificó el producto ${element.code} en la lista ${element.lista}`}
 							} else {
@@ -190,6 +192,7 @@ class MongoDB {
 							let verificarExistente = await ProductoModel.find({code: `${element.code}`})
 							if (verificarExistente.length && element.code) {
 								pino.info(`ACTUALIZANDO producto código ${element.code} en la lista ${element.lista}`);
+								element.timestamp = Date.now();
 								await ProductoModel.findOneAndUpdate({code: `${element.code}`}, element)
 								return{message:`ya se modificó el producto ${element.code} en la lista ${element.lista}`}
 							} else if (element.code) {
@@ -242,6 +245,7 @@ class MongoDB {
 							let verificarExistente = await ProductoModel.find({code: `${element.code}`, lista: `${element.lista}`})
 							if (verificarExistente.length) {
 								pino.info(`Actualizando producto código ${element.code} en la lista ${element.lista}`);
+								element.timestamp = Date.now();
 								await ProductoModel.findOneAndUpdate({code: `${element.code}`}, element)
 								return{message:`ya se modificó el producto ${element.code} en la lista ${element.lista}`}
 							} else {
