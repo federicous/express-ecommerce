@@ -100,6 +100,7 @@ class MongoDB {
 					if (imageName) {
 						producto.image = imageName;
 					}
+					producto.timestamp = Date.now();
 					let updateProduct = await ProductoModel.findOneAndUpdate({code: `${producto.code}`, lista: `${producto.lista}`}, producto )
 					return {message:`ya se modificó el producto ${producto.code}`, resultado:updateProduct}
 				} else {
@@ -153,6 +154,7 @@ class MongoDB {
 							if (imageName) {
 								producto.image = imageName;
 							}
+							producto.timestamp = Date.now();
 							let updateProduct = await ProductoModel.findOneAndUpdate({code: `${producto.code}`}, producto )
 							return {message:`ya se modificó el producto ${producto.code}`, resultado:updateProduct}
 						} else {
@@ -218,6 +220,7 @@ class MongoDB {
 							if (imageName) {
 								producto.image = imageName;
 							}
+							producto.timestamp = Date.now();
 							let updateProduct = await ProductoModel.findOneAndUpdate({code: `${producto.code}`}, producto )
 							return {message:`ya se modificó el producto ${producto.code}`, resultado:updateProduct}
 						} else {
