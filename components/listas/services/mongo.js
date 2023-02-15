@@ -342,13 +342,13 @@ class MongoDB {
 				}
 
 				/* Verificación de campos para evitar error de lista */
-				const camposObligatorios = ["Codigo","Cod.Barra PC","Linea","Cont (gr)","Present.","Color","Un x Caja","PRECIO USD"]
+				const camposObligatorios = ["Codigo","Cod.Barra PC","Linea","Cont (gr)","Color","Un x Caja","PRECIO USD"]
 				const comparar = []
 				for (const key in productos[0]) {
 					comparar.push(`${key}`)
 				}
-				// console.log(camposObligatorios);
-				// console.log(comparar);
+				console.log(camposObligatorios);
+				console.log(comparar);
 				const contieneTodos = camposObligatorios.every(elemento => comparar.includes(elemento));				
 				if (!contieneTodos) {
 					pino.info(`Lista equivocada, debe ingresar la de TEKBOND`)
