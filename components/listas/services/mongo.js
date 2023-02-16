@@ -322,6 +322,13 @@ class MongoDB {
 				return newProductos
 
 			} else if (list == "tekbond") {
+				let nombreLista=`${listFileName}`.replace(/^\w+-\w+-\w+-/,"").replace(/\.\w+$/,"");
+				if (nombreLista!=categoria) {
+					pino.info("El nombre de la lista no es el mismo que la categoría");					
+					pino.info(`Nombre de la categoría: ${categoria}`);
+					pino.info(`Nombre de la lista: ${nombreLista}`);
+					return
+				}
 				var XLSX = require('xlsx');
 				var workbook = XLSX.readFile(__dirname + `/../../../uploads/listas/${listFileName}`);
 				var sheet_name_list = workbook.SheetNames;
@@ -376,10 +383,12 @@ class MongoDB {
 					newProductos.push(newItem);
 				}
 	
-				pino.info(newProductos);
+				// pino.info(newProductos);
 
 				/* MODIFICO PRODUCTOS */
-				let response = await productService.modifyAllCodeNotAdd(newProductos);
+				// let response = await productService.modifyAllCodeNotAdd(newProductos);
+				let response = await productService.modifyAllCodeRepeated(newProductos);
+
 
 				/* ACTUALIZO CARRITOS */
 				carritosApiService.updateProductList()
