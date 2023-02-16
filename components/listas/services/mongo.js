@@ -322,13 +322,17 @@ class MongoDB {
 				return newProductos
 
 			} else if (list == "tekbond") {
-				let nombreLista=`${listFileName}`.replace(/^\w+-\w+-\w+-/,"").replace(/\.\w+$/,"");
-				if (nombreLista!=categoria) {
+				/* quito los acentos y pongo en minúscula para comparar, el nombre de la lista no debe contener acentos */
+				let nombreLista=decodeURIComponent(encodeURIComponent(`${listFileName}`.replace(/^\w+-\w+-\w+-/,"").replace(/\.\w+$/,""))).normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
+				let nombreCategoria=categoria.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
+				if (nombreLista!=nombreCategoria) {
 					pino.info("El nombre de la lista no es el mismo que la categoría");					
-					pino.info(`Nombre de la categoría: ${categoria}`);
+					pino.info(`Nombre de la categoría: ${nombreCategoria}`);
 					pino.info(`Nombre de la lista: ${nombreLista}`);
 					return
 				}
+				pino.info(`Nombre de la categoría: ${nombreCategoria}`);
+				pino.info(`Nombre de la lista: ${nombreLista}`);
 				var XLSX = require('xlsx');
 				var workbook = XLSX.readFile(__dirname + `/../../../uploads/listas/${listFileName}`);
 				var sheet_name_list = workbook.SheetNames;
