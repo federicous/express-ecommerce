@@ -110,7 +110,7 @@ class MongoDB {
 					description: "Información",
 				}
 				/* Verificación de campos para evitar error de lista */
-				const camposObligatorios = ["Código","Producto","Categoría","Cantidad","Precio de Venta","Origen","IVA",]
+				const camposObligatorios = ["Código","Producto","Categoría","Cantidad","Precio de Venta","IVA",]
 				const comparar = []
 				for (const key in productos[0]) {
 					comparar.push(key)
