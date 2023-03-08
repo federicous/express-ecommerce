@@ -65,6 +65,25 @@ class Element {
             pino.error(`Se produjo un error: ${error}`);
         }
     }
+
+    async deleteFile(req, res, next) {
+        try {
+            const nombreArchivo = req.params.archivo;
+            const filePath = path.resolve(`uploads/listas-descargar/${nombreArchivo}`)
+            const fileName = path.basename(filePath);
+            fs.unlink(filePath, (err) => {
+                if (err) {
+                    console.error(err);
+                    res.status(500).send('Error al eliminar archivo');
+                } else {
+                    res.send(`El archivo ${nombreArchivo} ha sido eliminado exitosamente`);
+                }
+            });
+        } catch (error) {
+            pino.error(`Se produjo un error: ${error}`);
+            res.status(500).send('Error interno del servidor');
+        }
+    }
 }
 
 module.exports = new Element();
