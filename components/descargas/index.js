@@ -5,7 +5,7 @@ const upload = require("../../utils/multer/descargas")
 
 module.exports = app => {
     const descargasRouter = express.Router();
-    app.use("/descargas", descargasRouter);
+    app.use("/api/descargas", descargasRouter);
     descargasRouter.get("/lista/:archivo", Autenticacion.usuario, descargasController.getFile);
     descargasRouter.get("/lista", Autenticacion.usuario, descargasController.getFileList);
     descargasRouter.delete("/lista/:archivo", Autenticacion.administrador, descargasController.deleteFile);
