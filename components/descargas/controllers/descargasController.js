@@ -84,6 +84,22 @@ class Element {
             res.status(500).send('Error interno del servidor');
         }
     }
+
+    async uploadList(req, res, next){
+        try {
+            pino.info(`######### Subiendo lista ${req.body.lista} ###### `)
+            let element = req.body;
+            let listName= req.listName;
+            res.status(200).json({
+                result:'ok',
+                new: req.body,
+                response: {listName},
+            })
+        } catch (error) {
+            pino.error(`Se produjo un error: ${error}`);
+            res.status(400).render('error');
+        }
+    }
 }
 
 module.exports = new Element();
