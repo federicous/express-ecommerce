@@ -35,6 +35,7 @@ let precioConIva = Joi.string().min(3);
 let oferta = Joi.string().min(3);
 let ofertaUno = Joi.string().min(3);
 let ofertaDos = Joi.string().min(3);
+let novedades = Joi.string().min(3);
 let ventaMinima = Joi.string().min(3)
 let precioOferta = Joi.string().min(3);
 let timestamp = Joi.string().min(3);
@@ -73,6 +74,7 @@ const productoSchema = {
     	oferta: oferta.required(),
     	ofertaUno: ofertaUno.required(),
     	ofertaDos: ofertaDos.required(),
+    	novedades: novedades.required(),
     	ventaMinima: ventaMinima.required(),
     	precioOferta: precioOferta.required(),
     	timestamp: timestamp.required(),
