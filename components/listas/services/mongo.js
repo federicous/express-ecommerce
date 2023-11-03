@@ -469,11 +469,12 @@ class MongoDB {
 					presentacion: "PRESENTACIONES",
 					unidades: "Caja",
 					price: "Precio Lista x unidad",
+					usd: "Precio USD",
 					iva: "IVA",
 					label: "CATEGORIA",
 				}
 				/* Verificación de campos para evitar error de lista */
-				const camposObligatorios = ["CODIGO","PRODUCTO","PRESENTACIONES","Caja","Precio Lista x unidad"]
+				const camposObligatorios = ["CODIGO","PRODUCTO","PRESENTACIONES","Caja","Precio USD"]
 				const comparar = []
 				for (const key in productos[0]) {
 					comparar.push(`${key}`.trim())
