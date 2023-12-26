@@ -115,6 +115,8 @@ class MongoDB {
 				for (const key in productos[0]) {
 					comparar.push(key)
 				}
+				pino.info(camposObligatorios);
+				pino.info(comparar);
 				const contieneTodos = camposObligatorios.every(elemento => comparar.includes(elemento));				
 				if (!contieneTodos) {
 					pino.info(`Lista equivocada, debe ingresar la de BREMEN Gral`)
@@ -182,7 +184,8 @@ class MongoDB {
 				for (const key in productos[0]) {
 					comparar.push(`${key}`)
 				}
-				console.log(camposObligatorios);
+				pino.info(camposObligatorios);
+				pino.info(comparar);
 				const contieneTodos = camposObligatorios.every(elemento => comparar.includes(elemento));				
 				if (!contieneTodos) {
 					pino.info(`Lista equivocada, debe ingresar la de BULONERIA BREMEN`)
@@ -248,7 +251,8 @@ class MongoDB {
 				for (const key in productos[0]) {
 					comparar.push(`${key}`)
 				}
-				console.log(camposObligatorios);
+				pino.info(camposObligatorios);
+				pino.info(comparar);
 				const contieneTodos = camposObligatorios.every(elemento => comparar.includes(elemento));				
 				if (!contieneTodos) {
 					pino.info(`Lista equivocada, debe ingresar la de KANTON`)
@@ -358,8 +362,8 @@ class MongoDB {
 				for (const key in productos[0]) {
 					comparar.push(`${key}`)
 				}
-				console.log(camposObligatorios);
-				console.log(comparar);
+				pino.info(camposObligatorios);
+				pino.info(comparar);
 				const contieneTodos = camposObligatorios.every(elemento => comparar.includes(elemento));				
 				if (!contieneTodos) {
 					pino.info(`Lista equivocada, debe ingresar la de TEKBOND`)
@@ -421,7 +425,8 @@ class MongoDB {
 				for (const key in productos[0]) {
 					comparar.push(`${key}`.trim())
 				}
-				console.log(comparar);
+				pino.info(camposObligatorios);
+				pino.info(comparar);
 				const contieneTodos = camposObligatorios.every(elemento => comparar.includes(elemento));				
 				if (!contieneTodos) {
 					pino.info(`Lista equivocada, debe ingresar la de ${list}`)
@@ -479,7 +484,8 @@ class MongoDB {
 				for (const key in productos[0]) {
 					comparar.push(`${key}`.trim())
 				}
-				console.log(comparar);
+				pino.info(camposObligatorios);
+				pino.info(comparar);
 				const contieneTodos = camposObligatorios.every(elemento => comparar.includes(elemento));				
 				if (!contieneTodos) {
 					pino.info(`Lista equivocada, debe ingresar la de ${list}`)
