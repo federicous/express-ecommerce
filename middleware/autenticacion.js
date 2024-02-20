@@ -17,7 +17,7 @@ class Autenticacion {
 		try {
 			const token = req.cookies.token
 			const verification = await JWT.verify(token)
-			console.log(verification);
+			// console.log(verification);
 			if(!verification) { 
 				return res.status(401).clearCookie("token").clearCookie("user").render('authError')
 			}
