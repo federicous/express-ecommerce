@@ -520,6 +520,63 @@ class MongoDB {
 				carritosApiService.updateProductList()
 
 				return response
+
+			} else if (list == "interquim") {
+				var XLSX = require('xlsx');
+				var workbook = XLSX.readFile(__dirname + `/../../../uploads/listas/${listFileName}`);
+				var sheet_name_list = workbook.SheetNames;
+				// console.log(XLSX.utils.sheet_to_json(workbook.Sheets[sheet_name_list[0]]))
+	
+				let productos = XLSX.utils.sheet_to_json(workbook.Sheets[sheet_name_list[0]])
+				let object = {
+					code: "CODIGO",
+					price: "PRECIO SIN IVA",
+					iva: "IVA",
+					name: "PRODUCTO",
+					label: "categoria",
+				}
+				/* Verificación de campos para evitar error de lista */
+				const camposObligatorios = ["CODIGO","PRECIO SIN IVA","IVA","PRODUCTO","categoria"]
+				const comparar = []
+				for (const key in productos[0]) {
+					comparar.push(`${key}`.trim())
+				}
+				pino.info(camposObligatorios);
+				pino.info(comparar);
+				const contieneTodos = camposObligatorios.every(elemento => comparar.includes(elemento));				
+				if (!contieneTodos) {
+					pino.info(`Lista equivocada, debe ingresar la de ${list}`)
+					return {result:"error"}
+				}
+				/* FIN Verificación */
+				
+				let newProductos = [];
+				for (const item of productos) {
+					let newItem = {};
+					for (const k in item) {
+						for (const key in object) {
+							if (k.trim() == object[key.trim()]) {
+								newItem[key.trim()] = `${item[k]}`.replace(/\s+/g, ' ')
+								if (k == object["iva"]) {
+									newItem[key] = Number(`${item[k]}`)*100
+								}
+								continue
+							}
+						}
+					}
+					newItem.lista=`${list}`
+					newProductos.push(newItem);
+				}
+				pino.info(newProductos);
+
+				/* MODIFICO PRODUCTOS O AGREGO*/
+				// let response = await productService.modifyAllCode(newProductos);
+				let response = await productService.modifyAllCodeRepeated(newProductos);
+
+				/* ACTUALIZO CARRITOS */
+				carritosApiService.updateProductList()
+
+				return response
 			} else if (list == "coltec") {
 				var XLSX = require('xlsx');
 				var workbook = XLSX.readFile(__dirname + `/../../../uploads/listas/${listFileName}`);
