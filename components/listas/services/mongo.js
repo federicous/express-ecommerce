@@ -304,6 +304,7 @@ class MongoDB {
 
 				/* Armo los packs */
 				let productosPack = [];
+
 				await Promise.all(newProductos.map( async item => {
 					let itemResponse = await productService.getByObject({code:`${item["code"]}`, lista:`${list}`})
 					let secondItem= itemResponse[0];
