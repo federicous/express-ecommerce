@@ -1,5 +1,5 @@
 const fs = require('fs').promises
-let ProductoModel = require('../../../schema/productos')
+let ElementModel = require('../../../schema/facturaClientes')
 const pino = require('../../../utils/logger/pino')
 // var path = require('path');
 
@@ -14,50 +14,50 @@ async function exists (path) {
 
 class MongoDB {
 
-	async save(producto, imageName) {
+	async save(element, imageName) {
 		try {
-			if (Array.isArray(producto)) {
-				producto.forEach(async element => {
-					let verificarExistente = await ProductoModel.find({code: `${element.code}`, lista: `${element.lista}`})
+			if (Array.isArray(element)) {
+				element.forEach(async element => {
+					let verificarExistente = await ElementModel.find({code: `${element.code}`})
 					if (verificarExistente.length) {
-						pino.info(`ya existe un producto con el mismo código ${element.code} en la lista ${element.lista}`);
-						return{message:`ya existe el producto ${element.code} en la lista ${element.lista}`}
+						pino.info(`ya existe un element con el mismo código ${element.code} en la lista ${element.lista}`);
+						return{message:`ya existe el element ${element.code} en la lista ${element.lista}`}
 					} else {
 						element.timestamp = Date.now();
-						let agregarProductoModel = new ProductoModel(element);
-						let agregarProducto = await agregarProductoModel.save();
-						pino.info(agregarProducto);
+						let agregarElementModel = new ElementModel(element);
+						let agregarElement = await agregarElementModel.save();
+						return {message:`Se agregó el elemento ${element.code}`, resultado:agregarElement}
 					}
 				});
 
 			} else {
-				let verificarExistente = await ProductoModel.find({code: `${producto.code}`, lista: `${producto.lista}`})
+				let verificarExistente = await ElementModel.find({code: `${element.code}`})
 				if (verificarExistente.length) {
-					console.log(`ya existe un producto con el mismo código ${producto.code}`);
-					return{message:`ya existe el producto ${producto.code}`}
+					console.log(`ya existe un element con el mismo código ${element.code}`);
+					return{message:`ya existe el element ${element.code}`}
 				} else {
-					producto.timestamp = Date.now();
-					producto.image = imageName;
-					let agregarProductoModel = new ProductoModel(producto);
-					let agregarProducto = await agregarProductoModel.save();
-					pino.info(agregarProducto);
+					element.timestamp = Date.now();
+					element.image = imageName;
+					let agregarElementModel = new ElementModel(element);
+					let agregarElement = await agregarElementModel.save();
+					return {message:`Se agregó el elemento ${element.code}`, resultado:agregarElement}
 				}
 			}
 
 
-			// producto.timestamp=Date.now();
-			// let agregarProductoModel= new ProductoModel(producto);
-			// let agregarProducto = await agregarProductoModel.save();
-			// pino.info(agregarProducto);		
+			// element.timestamp=Date.now();
+			// let agregarElementModel= new ElementModel(element);
+			// let agregarElement = await agregarElementModel.save();
+			// pino.info(agregarElement);		
 
 		} catch (error) {
 			pino.error(`Se produjo un error: ${error}`)
 			throw new Error(error)
 		}
 	}
-	async modify(producto, id) {
+	async modify(element, id) {
 		try {
-			let modificar = await ProductoModel.findByIdAndUpdate(id, producto);
+			let modificar = await ElementModel.findByIdAndUpdate(id, element);
 			return (modificar)
 
 
@@ -67,48 +67,44 @@ class MongoDB {
 		}
 	}
 
-	async modifyAll(producto, imageName) {
+	async modifyAll(element) {
 		try {
-			// let modificar = await ProductoModel.findByIdAndUpdate(id, producto);
+			// let modificar = await ElementModel.findByIdAndUpdate(id, element);
 			// return (modificar)
 
-			if (Array.isArray(producto)) {
-				producto.forEach(async element => {
-					let verificarExistente = await ProductoModel.find({code: `${element.code}`, lista: `${element.lista}`})
+			if (Array.isArray(element)) {
+				element.forEach(async element => {
+					let verificarExistente = await ElementModel.find({code: `${element.code}`, lista: `${element.lista}`})
 					if (verificarExistente.length) {
-						pino.info(`ACTUALIZANDO producto código ${element.code} en la lista ${element.lista}`);
+						pino.info(`ACTUALIZANDO element código ${element.code} en la lista ${element.lista}`);
 						element.timestamp = Date.now();
-						await ProductoModel.findOneAndUpdate({code: `${element.code}`, lista: `${element.lista}`}, element)
-						return{message:`ya se modificó el producto ${element.code} en la lista ${element.lista}`}
+						await ElementModel.findOneAndUpdate({code: `${element.code}`, lista: `${element.lista}`}, element)
+						return{message:`ya se modificó el element ${element.code} en la lista ${element.lista}`}
 					} else {
-						pino.info(`AGREGANDO producto NUEVO con código ${element.code} en la lista ${element.lista}`);
+						pino.info(`AGREGANDO element NUEVO con código ${element.code} en la lista ${element.lista}`);
 						element.timestamp = Date.now();
-						let agregarProductoModel = new ProductoModel(element);
-						let agregarProducto = await agregarProductoModel.save();
-						pino.info(agregarProducto);
+						let agregarElementModel = new ElementModel(element);
+						let agregarElement = await agregarElementModel.save();
+						return {message:`Se agregó el elemento ${element.code}`, resultado:agregarElement}
+						// pino.info(agregarElement);
 					}
 				});
 
 			} else {
-				let verificarExistente = await ProductoModel.find({code: `${producto.code}`, lista: `${producto.lista}`})
+				let verificarExistente = await ElementModel.find({code: `${element.code}`, cliente: `${element.cliente}`})
 				if (verificarExistente.length) {
-					pino.info(`ya existe un producto con el mismo código ${producto.code}`);
-					if (verificarExistente[0].image!="sin_imagen.jpg" && imageName && await exists(__dirname + `/../../../uploads/${verificarExistente[0].image}` )) {
-						// let imagePath = path.join(__dirname, `../../../uploads/${verificarExistente[0].image}`)
-						await fs.unlink(__dirname + `/../../../uploads/${verificarExistente[0].image}`)	
-					}
-					if (imageName) {
-						producto.image = imageName;
-					}
-					producto.timestamp = Date.now();
-					let updateProduct = await ProductoModel.findOneAndUpdate({code: `${producto.code}`, lista: `${producto.lista}`}, producto )
-					return {message:`ya se modificó el producto ${producto.code}`, resultado:updateProduct}
+					pino.info(`ya existe un element con el mismo código ${element.code}`);
+
+					element.timestamp = Date.now();
+					let updateProduct = await ElementModel.findOneAndUpdate({code: `${element.code}`, cliente: `${element.cliente}`}, element )
+					return {message:`ya se modificó el element ${element.code}`, resultado:updateProduct}
 				} else {
-					producto.timestamp = Date.now();
-					producto.image = imageName;
-					let agregarProductoModel = new ProductoModel(producto);
-					let agregarProducto = await agregarProductoModel.save();
-					pino.info(agregarProducto);
+					element.timestamp = Date.now();
+					element.image = imageName;
+					let agregarElementModel = new ElementModel(element);
+					let agregarElement = await agregarElementModel.save();
+					return {message:`Se agregó el elemento ${element.code}`, resultado:agregarElement}
+					// pino.info(agregarElement);
 				}
 			}
 
@@ -120,49 +116,49 @@ class MongoDB {
 	}
 
 
-			async modifyAllCode(producto, imageName) {
+			async modifyAllCode(element, imageName) {
 				try {
-					// let modificar = await ProductoModel.findByIdAndUpdate(id, producto);
+					// let modificar = await ElementModel.findByIdAndUpdate(id, element);
 					// return (modificar)
 		
-					if (Array.isArray(producto)) {
-						producto.forEach(async element => {
-							let verificarExistente = await ProductoModel.find({code: `${element.code}`})
+					if (Array.isArray(element)) {
+						element.forEach(async element => {
+							let verificarExistente = await ElementModel.find({code: `${element.code}`})
 							if (verificarExistente.length) {
-								pino.info(`ACTUALIZANDO producto código ${element.code} en la lista ${element.lista}`);
+								pino.info(`ACTUALIZANDO element código ${element.code} en la lista ${element.lista}`);
 								element.timestamp = Date.now();
-								await ProductoModel.findOneAndUpdate({code: `${element.code}`}, element)
-								return{message:`ya se modificó el producto ${element.code} en la lista ${element.lista}`}
+								await ElementModel.findOneAndUpdate({code: `${element.code}`}, element)
+								return{message:`ya se modificó el element ${element.code} en la lista ${element.lista}`}
 							} else {
-								pino.info(`AGREGANDO producto NUEVO con código ${element.code} en la lista ${element.lista}`);
+								pino.info(`AGREGANDO element NUEVO con código ${element.code} en la lista ${element.lista}`);
 								element.timestamp = Date.now();
-								let agregarProductoModel = new ProductoModel(element);
-								agregarProductoModel.isNew = true
-								let agregarProducto = await agregarProductoModel.save();
-								// pino.info(agregarProducto);
+								let agregarElementModel = new ElementModel(element);
+								agregarElementModel.isNew = true
+								let agregarElement = await agregarElementModel.save();
+								// pino.info(agregarElement);
 							}
 						});
 		
 					} else {
-						let verificarExistente = await ProductoModel.find({code: `${producto.code}`})
+						let verificarExistente = await ElementModel.find({code: `${element.code}`})
 						if (verificarExistente.length) {
-							pino.info(`ya existe un producto con el mismo código ${producto.code}`);
+							pino.info(`ya existe un element con el mismo código ${element.code}`);
 							if (verificarExistente[0].image!="sin_imagen.jpg" && imageName && await exists(__dirname + `/../../../uploads/${verificarExistente[0].image}` )) {
 								// let imagePath = path.join(__dirname, `../../../uploads/${verificarExistente[0].image}`)
 								await fs.unlink(__dirname + `/../../../uploads/${verificarExistente[0].image}`)	
 							}
 							if (imageName) {
-								producto.image = imageName;
+								element.image = imageName;
 							}
-							producto.timestamp = Date.now();
-							let updateProduct = await ProductoModel.findOneAndUpdate({code: `${producto.code}`}, producto )
-							return {message:`ya se modificó el producto ${producto.code}`, resultado:updateProduct}
+							element.timestamp = Date.now();
+							let updateProduct = await ElementModel.findOneAndUpdate({code: `${element.code}`}, element )
+							return {message:`ya se modificó el element ${element.code}`, resultado:updateProduct}
 						} else {
-							producto.timestamp = Date.now();
-							producto.image = imageName;
-							let agregarProductoModel = new ProductoModel(producto);
-							let agregarProducto = await agregarProductoModel.save();
-							pino.info(agregarProducto);
+							element.timestamp = Date.now();
+							element.image = imageName;
+							let agregarElementModel = new ElementModel(element);
+							let agregarElement = await agregarElementModel.save();
+							pino.info(agregarElement);
 						}
 					}
 				} catch (error) {
@@ -172,15 +168,15 @@ class MongoDB {
 			}
 
 
-			async modifyAllCodeRepeated(producto, imageName) {
+			async modifyAllCodeRepeated(element, imageName) {
 				try {
-					// let modificar = await ProductoModel.findByIdAndUpdate(id, producto);
+					// let modificar = await ElementModel.findByIdAndUpdate(id, element);
 					// return (modificar)
 		
-					if (Array.isArray(producto)) {
-						pino.info(`Cantidad de productos con repetidos: ${producto.length}`)
+					if (Array.isArray(element)) {
+						pino.info(`Cantidad de elements con repetidos: ${element.length}`)
 						/* Crear array sin codigos repetidos elegiendo el de menor cantidad */
-						const uniqueProducts = producto.reduce((hashMap, product) => {
+						const uniqueProducts = element.reduce((hashMap, product) => {
 						if (!hashMap[product.code] || hashMap[product.code].unidades > product.unidades) {
 							hashMap[product.code] = product;
 						}
@@ -188,47 +184,47 @@ class MongoDB {
 						}, {});
 
 						const finalProducts = Object.values(uniqueProducts);
-						pino.info(`Cantidad de productos sin repetidos: ${finalProducts.length}`)
+						pino.info(`Cantidad de elements sin repetidos: ${finalProducts.length}`)
 
 						finalProducts.forEach(async element => {
-							let verificarExistente = await ProductoModel.find({code: `${element.code}`})
+							let verificarExistente = await ElementModel.find({code: `${element.code}`})
 							if (verificarExistente.length && element.code) {
-								pino.info(`ACTUALIZANDO producto código ${element.code} en la lista ${element.lista}`);
+								pino.info(`ACTUALIZANDO element código ${element.code} en la lista ${element.lista}`);
 								element.timestamp = Date.now();
-								await ProductoModel.findOneAndUpdate({code: `${element.code}`}, element)
-								return{message:`ya se modificó el producto ${element.code} en la lista ${element.lista}`}
+								await ElementModel.findOneAndUpdate({code: `${element.code}`}, element)
+								return{message:`ya se modificó el element ${element.code} en la lista ${element.lista}`}
 							} else if (element.code) {
-								pino.info(`AGREGANDO producto NUEVO con código ${element.code} en la lista ${element.lista}`);
+								pino.info(`AGREGANDO element NUEVO con código ${element.code} en la lista ${element.lista}`);
 								element.timestamp = Date.now();
-								let agregarProductoModel = new ProductoModel(element);
-								agregarProductoModel.isNew = true
-								let agregarProducto = await agregarProductoModel.save();
-								// pino.info(agregarProducto);
+								let agregarElementModel = new ElementModel(element);
+								agregarElementModel.isNew = true
+								let agregarElement = await agregarElementModel.save();
+								// pino.info(agregarElement);
 							}
 						});
 
 						return finalProducts
 		
 					} else {
-						let verificarExistente = await ProductoModel.find({code: `${producto.code}`})
+						let verificarExistente = await ElementModel.find({code: `${element.code}`})
 						if (verificarExistente.length) {
-							pino.info(`ya existe un producto con el mismo código ${producto.code}`);
+							pino.info(`ya existe un element con el mismo código ${element.code}`);
 							if (verificarExistente[0].image!="sin_imagen.jpg" && imageName && await exists(__dirname + `/../../../uploads/${verificarExistente[0].image}` )) {
 								// let imagePath = path.join(__dirname, `../../../uploads/${verificarExistente[0].image}`)
 								await fs.unlink(__dirname + `/../../../uploads/${verificarExistente[0].image}`)	
 							}
 							if (imageName) {
-								producto.image = imageName;
+								element.image = imageName;
 							}
-							producto.timestamp = Date.now();
-							let updateProduct = await ProductoModel.findOneAndUpdate({code: `${producto.code}`}, producto )
-							return {message:`ya se modificó el producto ${producto.code}`, resultado:updateProduct}
+							element.timestamp = Date.now();
+							let updateProduct = await ElementModel.findOneAndUpdate({code: `${element.code}`}, element )
+							return {message:`ya se modificó el element ${element.code}`, resultado:updateProduct}
 						} else {
-							producto.timestamp = Date.now();
-							producto.image = imageName;
-							let agregarProductoModel = new ProductoModel(producto);
-							let agregarProducto = await agregarProductoModel.save();
-							pino.info(agregarProducto);
+							element.timestamp = Date.now();
+							element.image = imageName;
+							let agregarElementModel = new ElementModel(element);
+							let agregarElement = await agregarElementModel.save();
+							pino.info(agregarElement);
 						}
 					}
 				} catch (error) {
@@ -237,51 +233,51 @@ class MongoDB {
 				}
 			}
 
-			/* Para actualizar listas desde el panel, no agrega nuevos productos */
-			async modifyAllCodeNotAdd(producto, imageName) {
+			/* Para actualizar listas desde el panel, no agrega nuevos elements */
+			async modifyAllCodeNotAdd(element, imageName) {
 				try {
-					// let modificar = await ProductoModel.findByIdAndUpdate(id, producto);
+					// let modificar = await ElementModel.findByIdAndUpdate(id, element);
 					// return (modificar)
 		
-					if (Array.isArray(producto)) {
-						producto.forEach(async element => {
-							let verificarExistente = await ProductoModel.find({code: `${element.code}`, lista: `${element.lista}`})
+					if (Array.isArray(element)) {
+						element.forEach(async element => {
+							let verificarExistente = await ElementModel.find({code: `${element.code}`, lista: `${element.lista}`})
 							if (verificarExistente.length) {
-								pino.info(`Actualizando producto código ${element.code} en la lista ${element.lista}`);
+								pino.info(`Actualizando element código ${element.code} en la lista ${element.lista}`);
 								element.timestamp = Date.now();
-								await ProductoModel.findOneAndUpdate({code: `${element.code}`}, element)
-								return{message:`ya se modificó el producto ${element.code} en la lista ${element.lista}`}
+								await ElementModel.findOneAndUpdate({code: `${element.code}`}, element)
+								return{message:`ya se modificó el element ${element.code} en la lista ${element.lista}`}
 							} else {
-								pino.info(`NO EXISTE un producto con el código ${element.code} en la lista ${element.lista}`);
-								return{message:`NO EXISTE un producto con codigo ${element.code} en la lista ${element.lista}`}
+								pino.info(`NO EXISTE un element con el código ${element.code} en la lista ${element.lista}`);
+								return{message:`NO EXISTE un element con codigo ${element.code} en la lista ${element.lista}`}
 								// element.timestamp = Date.now();
-								// let agregarProductoModel = new ProductoModel(element);
-								// let agregarProducto = await agregarProductoModel.save();
-								// pino.info(agregarProducto);
+								// let agregarElementModel = new ElementModel(element);
+								// let agregarElement = await agregarElementModel.save();
+								// pino.info(agregarElement);
 							}
 						});
 		
 					} else {
 						return{message:`El elemento no es un Array}`}
 
-						// let verificarExistente = await ProductoModel.find({code: `${producto.code}`})
+						// let verificarExistente = await ElementModel.find({code: `${element.code}`})
 						// if (verificarExistente.length) {
-						// 	pino.info(`ya existe un producto con el mismo código ${producto.code}`);
+						// 	pino.info(`ya existe un element con el mismo código ${element.code}`);
 						// 	if (verificarExistente[0].image!="sin_imagen.jpg" && imageName && await exists(__dirname + `/../../../uploads/${verificarExistente[0].image}` )) {
 						// 		// let imagePath = path.join(__dirname, `../../../uploads/${verificarExistente[0].image}`)
 						// 		await fs.unlink(__dirname + `/../../../uploads/${verificarExistente[0].image}`)	
 						// 	}
 						// 	if (imageName) {
-						// 		producto.image = imageName;
+						// 		element.image = imageName;
 						// 	}
-						// 	let updateProduct = await ProductoModel.findOneAndUpdate({code: `${producto.code}`}, producto )
-						// 	return {message:`ya se modificó el producto ${producto.code}`, resultado:updateProduct}
+						// 	let updateProduct = await ElementModel.findOneAndUpdate({code: `${element.code}`}, element )
+						// 	return {message:`ya se modificó el element ${element.code}`, resultado:updateProduct}
 						// } else {
-						// 	producto.timestamp = Date.now();
-						// 	producto.image = imageName;
-						// 	let agregarProductoModel = new ProductoModel(producto);
-						// 	let agregarProducto = await agregarProductoModel.save();
-						// 	pino.info(agregarProducto);
+						// 	element.timestamp = Date.now();
+						// 	element.image = imageName;
+						// 	let agregarElementModel = new ElementModel(element);
+						// 	let agregarElement = await agregarElementModel.save();
+						// 	pino.info(agregarElement);
 						// }
 					}
 				} catch (error) {
@@ -293,7 +289,7 @@ class MongoDB {
 			// async deleteDuplicated() {
 			// 	try {					
 			// 		/* ELIMINAR DUPLICADOS */
-			// 		let mostrar = await ProductoModel.aggregate([
+			// 		let mostrar = await ElementModel.aggregate([
 			// 			{
 			// 			"$group": {
 			// 				_id: {code: "$code"},
@@ -308,7 +304,7 @@ class MongoDB {
 			// 			}
 			// 		]).forEach(function(doc) {
 			// 			doc.codes.shift();
-			// 			ProductoModel.remove({
+			// 			ElementModel.remove({
 			// 			_id: {$in: doc.codes}
 			// 			});
 			// 		})
@@ -322,8 +318,31 @@ class MongoDB {
 
 	async getById(id) {
 		try {
-			let mostrar = await ProductoModel.findById(id);
+			let mostrar = await ElementModel.findById(id);
 			return (mostrar)
+		} catch (error) {
+			pino.error(`Se produjo un error: ${error}`)
+			throw new Error(error)
+		}
+	}
+
+	// async getAll() {
+	// 	try {
+	// 		let allProducts = await ElementModel.find({}).sort({name:1});
+	// 		return (allProducts)
+
+	// 	} catch (error) {
+	// 		pino.error(`Se produjo un error: ${error}`)
+	// 		throw new Error(error)
+	// 	}
+	// }
+
+
+	async getByObject(element) {
+		try {
+			let allProducts = await ElementModel.find(element,"-_id");
+			return (allProducts)
+
 		} catch (error) {
 			pino.error(`Se produjo un error: ${error}`)
 			throw new Error(error)
@@ -332,36 +351,9 @@ class MongoDB {
 
 	async getAll() {
 		try {
-			let allProducts = await ProductoModel.find({}).sort({name:1});
-			return (allProducts)
-
-		} catch (error) {
-			pino.error(`Se produjo un error: ${error}`)
-			throw new Error(error)
-		}
-	}
-
-
-
-	async getByObject(element) {
-		try {
-			let allProducts = await ProductoModel.find(element,"-_id");
-			return (allProducts)
-
-		} catch (error) {
-			pino.error(`Se produjo un error: ${error}`)
-			throw new Error(error)
-		}
-	}
-
-	async getAllPage(page,pageSize) {
-		try {
-			const PAGE_SIZE = pageSize; // Similar a 'límite'
-			const skip = (page - 1) * PAGE_SIZE;
-			let allProducts = await ProductoModel.find({}).skip(skip).limit(PAGE_SIZE);
-			let total = await ProductoModel.countDocuments({})
+			let allElements = await ElementModel.find({});
 			// return (allProducts)
-			return ({allProducts: allProducts,total: total})
+			return ({resultado: allElements})
 
 		} catch (error) {
 			pino.error(`Se produjo un error: ${error}`)
@@ -371,7 +363,7 @@ class MongoDB {
 
 	async getAllCategory(category) {
 		try {
-			let allProducts = await ProductoModel.find({label: category})
+			let allProducts = await ElementModel.find({label: category})
 			return (allProducts)
 
 		} catch (error) {
@@ -384,9 +376,9 @@ class MongoDB {
 		try {
 			const PAGE_SIZE = pageSize; // Similar a 'límite'
 			const skip = (page - 1) * PAGE_SIZE;
-			let allProducts = await ProductoModel.find({label: category}).sort({name:1, color:1, code:1}).skip(skip).limit(PAGE_SIZE);
-			// let total = await ProductoModel.find({label: category}).countDocuments()
-			let total = await ProductoModel.countDocuments({label: category})
+			let allProducts = await ElementModel.find({label: category}).sort({name:1, color:1, code:1}).skip(skip).limit(PAGE_SIZE);
+			// let total = await ElementModel.find({label: category}).countDocuments()
+			let total = await ElementModel.countDocuments({label: category})
 			return ({allProducts: allProducts,total: total})
 
 		} catch (error) {
@@ -399,9 +391,9 @@ class MongoDB {
 		try {
 			const PAGE_SIZE = pageSize; // Similar a 'límite'
 			const skip = (page - 1) * PAGE_SIZE;
-			let allProducts = await ProductoModel.find({lista: lista, label: category}).sort({name:1, color:1, code:1}).skip(skip).limit(PAGE_SIZE);
-			// let total = await ProductoModel.find({label: category}).countDocuments()
-			let total = await ProductoModel.countDocuments({lista: lista, label: category})
+			let allProducts = await ElementModel.find({lista: lista, label: category}).sort({name:1, color:1, code:1}).skip(skip).limit(PAGE_SIZE);
+			// let total = await ElementModel.find({label: category}).countDocuments()
+			let total = await ElementModel.countDocuments({lista: lista, label: category})
 			return ({allProducts: allProducts,total: total})
 
 		} catch (error) {
@@ -414,9 +406,9 @@ class MongoDB {
 		try {
 			const PAGE_SIZE = pageSize; // Similar a 'límite'
 			const skip = (page - 1) * PAGE_SIZE;
-			let allProducts = await ProductoModel.find({lista: lista}).sort({name:1, color:1, code:1}).skip(skip).limit(PAGE_SIZE);
-			// let total = await ProductoModel.find({label: category}).countDocuments()
-			let total = await ProductoModel.countDocuments({lista: lista})
+			let allProducts = await ElementModel.find({lista: lista}).sort({name:1, color:1, code:1}).skip(skip).limit(PAGE_SIZE);
+			// let total = await ElementModel.find({label: category}).countDocuments()
+			let total = await ElementModel.countDocuments({lista: lista})
 			return ({allProducts: allProducts,total: total})
 
 		} catch (error) {
@@ -427,8 +419,8 @@ class MongoDB {
 
 	async deleteById(id) {
 		try {
-			// let borrar = await ProductoModel.deleteOne({code: `${element.code}`, lista: `${element.lista}`})
-			let borrar = await ProductoModel.findByIdAndDelete(id);
+			// let borrar = await ElementModel.deleteOne({code: `${element.code}`, lista: `${element.lista}`})
+			let borrar = await ElementModel.findByIdAndDelete(id);
 			return borrar
 		} catch (error) {
 			pino.error(`Se produjo un error: ${error}`)
@@ -438,7 +430,7 @@ class MongoDB {
 
 	async deleteAll() {
 		try {
-			const contenido = await ProductoModel.deleteMany({});
+			const contenido = await ElementModel.deleteMany({});
 
 		} catch (error) {
 			throw new Error(error)

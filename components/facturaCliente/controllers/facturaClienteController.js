@@ -8,9 +8,12 @@ class Element {
     async createElement(req, res, next){
         try {
             let element = req.body;
-            let imageName= req.imageName;
-            let response = await elementService.save(element, imageName);
-            res.status(200).json(response);
+            let response = await elementService.save(element);
+            res.status(200).json({
+                result:'ok',
+                new: req.body,
+                response: response.resultado,
+            })
         } catch (error) {
             pino.error(`Se produjo un error: ${error}`);
             res.status(400).render('error');
@@ -30,10 +33,7 @@ class Element {
 
     async getAllElement(req, res, next){
         try {
-             // let response = await elementService.getAll();
-             let page = req.query.page;
-             let pageSize = req.query.pageSize
-             let response = await elementService.getAllPage(page,pageSize);
+            let response = await elementService.getAll();
             res.status(200).json(response);
 
         } catch (error) {
@@ -107,8 +107,8 @@ class Element {
     async updateAllElement(req, res, next){
         try {
             let element = req.body;
-            let imageName= req.imageName;
-            let response = await elementService.modifyAll(element, imageName);
+            console.log(element);
+            let response = await elementService.modifyAll(element);
             res.status(200).json({
                 result:'ok',
                 new: req.body,
