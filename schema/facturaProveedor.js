@@ -2,11 +2,11 @@ const mongoose = require("mongoose");
 let {Schema, model} = mongoose;
 
 
-// Schema del facturaCliente
+// Schema del facturaProveedor
 const Joi = require("joi");
 let id = Joi.string().min(3);
 let code = Joi.string().min(3);
-let cliente = Joi.string().min(3);
+let proveedor = Joi.string().min(3);
 let vendedor = Joi.string().min(3);
 let monto = Joi.string().min(3);
 let fecha = Joi.string().min(3);
@@ -18,10 +18,10 @@ let name = Joi.string().min(3);
 let email = Joi.string().min(3);
 
 
-const facturaClienteSchema = {
+const facturaProveedorSchema = {
 	id: id.required(),
 	code: code.required(),
-	cliente: cliente.required(),
+	proveedor: proveedor.required(),
 	vendedor: vendedor.required(),
 	monto: monto.required(),
 	fecha: fecha.required(),
@@ -33,7 +33,7 @@ const facturaClienteSchema = {
 	email: email.required(),
 }
 
-let facturaClienteSchemaModel = new Schema(facturaClienteSchema);
-let FacturaClienteModel = new model('facturaClientes', facturaClienteSchemaModel);
+let facturaProveedorSchemaModel = new Schema(facturaProveedorSchema);
+let FacturaProveedorModel = new model('facturaProveedor', facturaProveedorSchemaModel);
 
-module.exports= FacturaClienteModel;
+module.exports= FacturaProveedorModel;
