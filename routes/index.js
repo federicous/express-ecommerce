@@ -23,7 +23,9 @@ const apiCobroCliente = require("../components/cobroCliente");
 const apiDevoluciones = require("../components/devoluciones");
 const apiPendientes = require("../components/pendientes");
 const apiCheques = require("../components/cheques");
-const apiFacturaProveedor = require("../components/facturaProveedor")
+const apiFacturaProveedor = require("../components/facturaProveedor");
+const apiPagos = require("../components/pagos");
+const apiGastos = require("../components/gastos");
 
 
 
@@ -54,6 +56,8 @@ function serverRoutes(app) {
     apiPendientes(app);
     apiCheques(app);
     apiFacturaProveedor(app);
+    apiPagos(app);
+    apiGastos(app);
     
     app.get("/", (req, res, next)=>{
         res.redirect('login');
