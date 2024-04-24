@@ -13,7 +13,7 @@ let CORS_CLIENT=["http://localhost:3000", "http://localhost:3001"];
 
 if (process.env.NODE_ENV === 'production') {
 	// CORS_CLIENT= "http://app.distribuidorabrmtools.com"
-	CORS_CLIENT= ["http://app.distribuidorabrmtools.com","http://app.distribuidorabrmtools.com:8081","https://app.distribuidorabrmtools.com","https://app.distribuidorabrmtools.com:8081","https://app.distribuidorabrmtools.com:8082"]
+	CORS_CLIENT= ["http://app.distribuidorabrmtools.com","http://app.distribuidorabrmtools.com:8081","https://app.distribuidorabrmtools.com","https://app.distribuidorabrmtools.com:8081","http://app.distribuidorabrmtools.com:8082","https://app.distribuidorabrmtools.com:8082"]
       }
 
 console.log(CORS_CLIENT);
