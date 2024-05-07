@@ -4,7 +4,7 @@ const pino = require('../utils/logger/pino')
 class Autenticacion {
 	async usuario(req, res, next) {
 		try {
-			const token = req.cookies.token
+			const token = req.cookies.token || req.headers.authorization?.split(' ')[1];
 			const payload = await JWT.verify(token)
 			if (!payload) return res.status(401).clearCookie("token").clearCookie("user").render('authError')
 			next()
@@ -15,7 +15,7 @@ class Autenticacion {
 
 	async administrador(req, res, next) {
 		try {
-			const token = req.cookies.token
+			const token = req.cookies.token || req.headers.authorization?.split(' ')[1];
 			const verification = await JWT.verify(token)
 			// console.log(verification);
 			if(!verification) { 
