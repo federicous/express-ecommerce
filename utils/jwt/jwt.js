@@ -14,7 +14,6 @@ class JWT {
         }
     }
     async verify(token){
-        console.log(`TOKEN VERIFY: ${token}`);
         try {
             return await jwt.verify(token, autenticacion.JWT_SECRET, {
                 algorithm: [autenticacion.JWT_ALG]
@@ -24,7 +23,6 @@ class JWT {
         }
     }
     async decode(token){
-        console.log(`TOKEN DECODE: ${token}`);
         try {
             return await jwt.decode(token, autenticacion.JWT_SECRET, {
                 algorithm: [autenticacion.JWT_ALG]

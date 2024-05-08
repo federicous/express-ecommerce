@@ -17,7 +17,7 @@ module.exports = app => {
     // // chequeRouter.put("/", Autenticacion.administrador, upload.single('myFile'), chequeController.updateAllElement);
     // chequeRouter.put("/:id", Autenticacion.administrador, upload.single('image'), chequeController.updateElement);
     chequeRouter.put("/", Autenticacion.administrador, upload.single('image'), chequeController.updateAllElement);
-    // chequeRouter.delete("/:id", Autenticacion.administrador, chequeController.deleteElement);
+    chequeRouter.delete("/:id", Autenticacion.administrador, chequeController.deleteElement);
     // chequeRouter.delete("/delete/all", Autenticacion.administrador, chequeController.deleteAllElement);
 }
 

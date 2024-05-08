@@ -17,7 +17,7 @@ module.exports = app => {
     // // pagosRouter.put("/", Autenticacion.administrador, upload.single('myFile'), pagosController.updateAllElement);
     // pagosRouter.put("/:id", Autenticacion.administrador, upload.single('image'), pagosController.updateElement);
     pagosRouter.put("/", Autenticacion.administrador, upload.single('image'), pagosController.updateAllElement);
-    // pagosRouter.delete("/:id", Autenticacion.administrador, pagosController.deleteElement);
+    pagosRouter.delete("/:id", Autenticacion.administrador, pagosController.deleteElement);
     // pagosRouter.delete("/delete/all", Autenticacion.administrador, pagosController.deleteAllElement);
 }
 

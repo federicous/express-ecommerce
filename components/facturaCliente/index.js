@@ -17,7 +17,7 @@ module.exports = app => {
     // // facturaClienteRouter.put("/", Autenticacion.administrador, upload.single('myFile'), facturaClienteController.updateAllElement);
     // facturaClienteRouter.put("/:id", Autenticacion.administrador, upload.single('image'), facturaClienteController.updateElement);
     facturaClienteRouter.put("/", Autenticacion.administrador, upload.single('image'), facturaClienteController.updateAllElement);
-    // facturaClienteRouter.delete("/:id", Autenticacion.administrador, facturaClienteController.deleteElement);
+    facturaClienteRouter.delete("/:id", Autenticacion.administrador, facturaClienteController.deleteElement);
     // facturaClienteRouter.delete("/delete/all", Autenticacion.administrador, facturaClienteController.deleteAllElement);
 }
 

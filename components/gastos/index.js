@@ -17,7 +17,7 @@ module.exports = app => {
     // // gastosRouter.put("/", Autenticacion.administrador, upload.single('myFile'), gastosController.updateAllElement);
     // gastosRouter.put("/:id", Autenticacion.administrador, upload.single('image'), gastosController.updateElement);
     gastosRouter.put("/", Autenticacion.administrador, upload.single('image'), gastosController.updateAllElement);
-    // gastosRouter.delete("/:id", Autenticacion.administrador, gastosController.deleteElement);
+    gastosRouter.delete("/:id", Autenticacion.administrador, gastosController.deleteElement);
     // gastosRouter.delete("/delete/all", Autenticacion.administrador, gastosController.deleteAllElement);
 }
 

@@ -17,7 +17,7 @@ module.exports = app => {
     // // pendientesRouter.put("/", Autenticacion.administrador, upload.single('myFile'), pendientesController.updateAllElement);
     // pendientesRouter.put("/:id", Autenticacion.administrador, upload.single('image'), pendientesController.updateElement);
     pendientesRouter.put("/", Autenticacion.administrador, upload.single('image'), pendientesController.updateAllElement);
-    // pendientesRouter.delete("/:id", Autenticacion.administrador, pendientesController.deleteElement);
+    pendientesRouter.delete("/:id", Autenticacion.administrador, pendientesController.deleteElement);
     // pendientesRouter.delete("/delete/all", Autenticacion.administrador, pendientesController.deleteAllElement);
 }
 

@@ -17,7 +17,7 @@ module.exports = app => {
     // // devolucionesRouter.put("/", Autenticacion.administrador, upload.single('myFile'), devolucionesController.updateAllElement);
     // devolucionesRouter.put("/:id", Autenticacion.administrador, upload.single('image'), devolucionesController.updateElement);
     devolucionesRouter.put("/", Autenticacion.administrador, upload.single('image'), devolucionesController.updateAllElement);
-    // devolucionesRouter.delete("/:id", Autenticacion.administrador, devolucionesController.deleteElement);
+    devolucionesRouter.delete("/:id", Autenticacion.administrador, devolucionesController.deleteElement);
     // devolucionesRouter.delete("/delete/all", Autenticacion.administrador, devolucionesController.deleteAllElement);
 }
 

@@ -17,7 +17,7 @@ module.exports = app => {
     // // cobroClienteRouter.put("/", Autenticacion.administrador, upload.single('myFile'), cobroClienteController.updateAllElement);
     // cobroClienteRouter.put("/:id", Autenticacion.administrador, upload.single('image'), cobroClienteController.updateElement);
     cobroClienteRouter.put("/", Autenticacion.administrador, upload.single('image'), cobroClienteController.updateAllElement);
-    // cobroClienteRouter.delete("/:id", Autenticacion.administrador, cobroClienteController.deleteElement);
+    cobroClienteRouter.delete("/:id", Autenticacion.administrador, cobroClienteController.deleteElement);
     // cobroClienteRouter.delete("/delete/all", Autenticacion.administrador, cobroClienteController.deleteAllElement);
 }
 
