@@ -11,6 +11,7 @@ let vendedor = Joi.string().min(3);
 let monto = Joi.string().min(3);
 let fecha = Joi.string().min(3);
 let banco = Joi.string().min(3);
+let bancoOtro = Joi.string().min(3);
 let emisor = Joi.string().min(3);
 let timestamp = Joi.string().min(3);
 let estado = Joi.string().min(3);
@@ -24,6 +25,7 @@ const chequeSchema = {
 	monto: monto.required(),
 	fecha: fecha.required(),
 	banco: banco.required(),
+	bancoOtro: bancoOtro.required(),
 	emisor: emisor.required(),
 	timestamp: timestamp.required(),
 	estado: estado.required(),
