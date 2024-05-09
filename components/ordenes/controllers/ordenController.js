@@ -10,7 +10,7 @@ class Element {
 
     // async createElement(req, res, next){
     //     try {
-    //         const token = req.cookies.token;
+    //         const token = req.cookies.token || req.headers.authorization?.split(' ')[1];
     //         let payload = await JWT.decode(token);
     //         let carritoId = await carritoService.save(payload);
     //         let carrito = await carritoService.getSubElementsById(carritoId);
@@ -28,7 +28,7 @@ class Element {
 
     async createElement(req, res, next){
         try {
-            const token = req.cookies.token;
+            const token = req.cookies.token || req.headers.authorization?.split(' ')[1];
             let payload = await JWT.decode(token);
             let carritoId = await carritoService.save(payload);
             let carrito = await carritoService.getSubElementsById(carritoId);
@@ -47,7 +47,7 @@ class Element {
 
     async createElementUser(req, res, next){
         try {
-            const token = req.cookies.token;
+            const token = req.cookies.token || req.headers.authorization?.split(' ')[1];
             let payload = await JWT.decode(token);
             let usuario = req.body
             let carritoId = await carritoService.save(payload);
@@ -67,7 +67,7 @@ class Element {
 
     // async createElementReact(req, res, next){
     //     try {
-    //         const token = req.cookies.token;
+    //         const token = req.cookies.token || req.headers.authorization?.split(' ')[1];
     //         let payload = await JWT.decode(token);
     //         let carrito = req.body
     //         let ordenId = await elementService.save(payload,carrito);
@@ -105,7 +105,7 @@ class Element {
 
     async getAllElementUser(req, res, next){
         try {
-            const token = req.cookies.token;
+            const token = req.cookies.token || req.headers.authorization?.split(' ')[1];
             let payload = await JWT.decode(token);
             let response = await elementService.getAllUser(payload);
             res.status(200).json(response);

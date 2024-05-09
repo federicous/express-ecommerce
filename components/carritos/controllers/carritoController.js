@@ -8,7 +8,7 @@ class Element {
     async createElement(req, res, next){
         try {
             let element = req.body; // En el body recibe email y dirección
-            const token = req.cookies.token;
+            const token = req.cookies.token || req.headers.authorization?.split(' ')[1];
             let payload = await JWT.decode(token);
             let carritoId = await elementService.save(payload);
               res.status(200).json(carritoId);
@@ -20,7 +20,7 @@ class Element {
 
     async createSubElement(req, res, next){
         try {
-            const token = req.cookies.token;
+            const token = req.cookies.token || req.headers.authorization?.split(' ')[1];
             let payload = await JWT.decode(token);
             let carritoId = await elementService.save(payload);
             let subElement = req.body;
@@ -37,7 +37,7 @@ class Element {
 
     async getProducts(req, res, next){
         try {
-            const token = req.cookies.token
+            const token = req.cookies.token || req.headers.authorization?.split(' ')[1];
             let payload = await JWT.decode(token)
             let carritoId = await elementService.save(payload);
             let productos = await productService.getAll();
@@ -59,7 +59,7 @@ class Element {
     async getSubProducts(req, res, next){
         try {
             let id_prod = req.params.id_prod;
-            const token = req.cookies.token
+            const token = req.cookies.token || req.headers.authorization?.split(' ')[1];
             let payload = await JWT.decode(token)
             let carritoId = await elementService.save(payload);
             let item = await productService.getById(id_prod);
@@ -78,7 +78,7 @@ class Element {
 
     async getElement(req, res, next){
         try {
-            const token = req.cookies.token;
+            const token = req.cookies.token || req.headers.authorization?.split(' ')[1];
             let payload = await JWT.decode(token);
             let carritoId = await elementService.save(payload);
             let response = await elementService.getById(carritoId);
@@ -91,7 +91,7 @@ class Element {
 
     async getSubElement(req, res, next){
         try {
-            const token = req.cookies.token;
+            const token = req.cookies.token || req.headers.authorization?.split(' ')[1];
             let payload = await JWT.decode(token);
             let carritoId = await elementService.save(payload);
             let carrito = await elementService.getSubElementsById(carritoId);
@@ -117,7 +117,7 @@ class Element {
     async updateElement(req, res, next){
         try {
             let { element } = req.body;
-            const token = req.cookies.token;
+            const token = req.cookies.token || req.headers.authorization?.split(' ')[1];
             let payload = await JWT.decode(token);
             let carritoId = await elementService.save(payload);
             let response = await elementService.modify(carritoId, element);
@@ -134,7 +134,7 @@ class Element {
     async deleteElement(req, res, next){
         try {
 
-            const token = req.cookies.token;
+            const token = req.cookies.token || req.headers.authorization?.split(' ')[1];
             let payload = await JWT.decode(token);
             let carritoId = await elementService.save(payload);
             let response = await elementService.deleteById(carritoId);
@@ -147,7 +147,7 @@ class Element {
 
     async deleteSubElement(req, res, next){
         try {
-            const token = req.cookies.token;
+            const token = req.cookies.token || req.headers.authorization?.split(' ')[1];
             let payload = await JWT.decode(token);
             let carritoId = await elementService.save(payload);
             let id_prod = req.params.id_prod;
@@ -171,7 +171,7 @@ class Element {
 
     async getChat(req, res, next){
         try {
-            const token = req.cookies.token;
+            const token = req.cookies.token || req.headers.authorization?.split(' ')[1];
             let payload = await JWT.decode(token);
             res.status(200).render('mensajes',{message: '',payload});	
         } catch (error) {

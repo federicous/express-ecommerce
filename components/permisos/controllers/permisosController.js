@@ -7,7 +7,7 @@ class Element {
 
     async getPermiso(req, res, next){
         try {
-            const token = req.cookies.token;
+            const token = req.cookies.token || req.headers.authorization?.split(' ')[1];
             let payload = await JWT.decode(token);
             let userLevel = await elementService.getLevel(payload);
             res.status(200).json(userLevel)

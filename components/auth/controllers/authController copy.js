@@ -10,7 +10,7 @@ class Element {
 
     async getLogin(req, res, next){
         try {
-            const token = req.cookies.token
+            const token = req.cookies.token || req.headers.authorization?.split(' ')[1];
             let verification;
             if (token) {
                 verification = await JWT.verify(token) 
@@ -79,7 +79,7 @@ class Element {
 
     async postRegister(req, res, next){
         try {
-            // const token = req.cookies.token;
+            // const token = req.cookies.token || req.headers.authorization?.split(' ')[1];
             // // res.send(req.file)
             // console.log(req.file.filename);
             // console.log(req.body.email);
@@ -102,7 +102,7 @@ class Element {
 
     async getVerProductos(req, res, next){
         try {
-            const token = req.cookies.token
+            const token = req.cookies.token || req.headers.authorization?.split(' ')[1];
             let payload = await JWT.decode(token)
             let carritoId = await carritoService.save(payload);
             let productos = await productService.getAll();
