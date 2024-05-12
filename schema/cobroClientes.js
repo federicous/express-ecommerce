@@ -14,7 +14,7 @@ let vencimiento = Joi.string().min(3);
 let tipo = Joi.string().min(3);
 let timestamp = Joi.string().min(3);
 let medioDePago = Joi.string().min(3);
-
+let cheque = Joi.string().min(3);
 
 const cobroClienteSchema = {
 	id: id.required(),
@@ -27,6 +27,7 @@ const cobroClienteSchema = {
 	tipo: tipo.required(),
 	timestamp: timestamp.required(),
 	medioDePago: medioDePago.required(),
+	cheque: cheque.required(),
 }
 
 let cobroClienteSchemaModel = new Schema(cobroClienteSchema);
