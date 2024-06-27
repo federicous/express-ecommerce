@@ -13,6 +13,8 @@ let fecha = Joi.string().min(3);
 let detalle = Joi.string().min(3);
 let estado = Joi.string().min(3);
 let timestamp = Joi.string().min(3);
+let ferreteria = Joi.string().min(3);
+let name = Joi.string().min(3);
 
 
 const pendientesSchema = {
@@ -25,6 +27,8 @@ const pendientesSchema = {
 	detalle: detalle.required(),
 	estado: estado.required(),
 	timestamp: timestamp.required(),
+	name: name.required(),
+	ferreteria: ferreteria.required(),
 }
 
 let pendientesSchemaModel = new Schema(pendientesSchema);

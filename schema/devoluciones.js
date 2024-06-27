@@ -14,6 +14,8 @@ let detalle = Joi.string().min(3);
 let tipo = Joi.string().min(3);
 let timestamp = Joi.string().min(3);
 let medioDePago = Joi.string().min(3);
+let ferreteria = Joi.string().min(3);
+let name = Joi.string().min(3);
 
 
 const devolucionesSchema = {
@@ -27,6 +29,8 @@ const devolucionesSchema = {
 	tipo: tipo.required(),
 	timestamp: timestamp.required(),
 	medioDePago: medioDePago.required(),
+	name: name.required(),
+	ferreteria: ferreteria.required(),
 }
 
 let devolucionesSchemaModel = new Schema(devolucionesSchema);

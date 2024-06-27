@@ -15,6 +15,9 @@ let bancoOtro = Joi.string().min(3);
 let emisor = Joi.string().min(3);
 let timestamp = Joi.string().min(3);
 let estado = Joi.string().min(3);
+let tipo = Joi.string().min(3);
+let ferreteria = Joi.string().min(3);
+let name = Joi.string().min(3);
 
 
 const chequeSchema = {
@@ -29,6 +32,9 @@ const chequeSchema = {
 	emisor: emisor.required(),
 	timestamp: timestamp.required(),
 	estado: estado.required(),
+	tipo: tipo.required(),
+	name: name.required(),
+	ferreteria: ferreteria.required(),
 }
 
 let chequeSchemaModel = new Schema(chequeSchema);

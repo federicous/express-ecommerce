@@ -15,6 +15,8 @@ let tipo = Joi.string().min(3);
 let timestamp = Joi.string().min(3);
 let medioDePago = Joi.string().min(3);
 let cheque = Joi.string().min(3);
+let ferreteria = Joi.string().min(3);
+let name = Joi.string().min(3);
 
 const cobroClienteSchema = {
 	id: id.required(),
@@ -28,6 +30,8 @@ const cobroClienteSchema = {
 	timestamp: timestamp.required(),
 	medioDePago: medioDePago.required(),
 	cheque: cheque.required(),
+	name: name.required(),
+	ferreteria: ferreteria.required(),
 }
 
 let cobroClienteSchemaModel = new Schema(cobroClienteSchema);
