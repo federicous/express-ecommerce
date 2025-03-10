@@ -3,13 +3,67 @@ const pino = require('../../../utils/logger/pino')
 
 class Element {
 
-    async createElement(req, res, next){
+    // async createElement(req, res, next){
+    //     try {
+    //         let element = req.body;
+    //         let response = await elementService.save(element);
+    //         res.status(200).json(response);
+    //     } catch (error) {
+    //         pino.error(`Se produjo un error: ${error}`);
+    //         res.status(400).render('error');
+    //     }
+    // }
+
+    async postRegister(req, res, next){
         try {
+            // const token = req.cookies.token || req.headers.authorization?.split(' ')[1];
+            // // res.send(req.file)
+            // console.log(req.file.filename);
+            // console.log(req.body.email);
+            let avatar = req.file ? req.file.filename : "avatar-generico.jpg";
             let element = req.body;
-            let response = await elementService.save(element);
-            res.status(200).json(response);
+            let response = await elementService.createUser(element,avatar);
+            // if (response.message) {
+            //     return res.status(404)
+            //     .render('register', {message: response.message});
+            // }
+            // await Nodemailer.registro(response);
+            res.status(200).json({
+                result:'ok',
+                new: req.body,
+                message: response.message,
+            })
+            // .redirect('/login');
+            
         } catch (error) {
-            pino.error(`Se produjo un error: ${error}`);
+            pino.error(`Se produjo un error: ${error}`)
+            res.status(400).render('error');
+        }
+    }
+
+    async deleteRegister(req, res, next){
+        try {
+            // const token = req.cookies.token || req.headers.authorization?.split(' ')[1];
+            // // res.send(req.file)
+            // console.log(req.file.filename);
+            // console.log(req.body.email);
+            // let avatar = req.file ? req.file.filename : "avatar-generico.jpg";
+            let element = req.body;
+            let response = await elementService.deleteUser(element);
+            if (response.message) {
+                return res.status(404)
+                .render('register', {message: response.message});
+            }
+            // await Nodemailer.registro(response);
+            res.status(200).json({
+                result:'ok',
+                new: req.body,
+                message: response.message,
+            })
+            // .redirect('/login');
+            
+        } catch (error) {
+            pino.error(`Se produjo un error: ${error}`)
             res.status(400).render('error');
         }
     }
@@ -38,12 +92,22 @@ class Element {
     async updateElement(req, res, next){
         try {
             let element = req.body;
-            let id = req.params.id
-            let response = await elementService.modify(id, element);
+            console.log(`body:`);
+            console.log(element);
+            pino.info(`request: ${req.originalUrl} [${req.method}] - body: ${req.body}`)                    
+
+            // let email = req.params.email
+            let email = element.email
+
+            console.log(element);
+            console.log(email);
+            // return
+            let response = await elementService.modifyUser(element);
             res.status(200).json({
                 result:'ok',
-                id: req.params.id,
-                new: req.body
+                email: email,
+                new: req.body,
+                message: response.message,
             })
         } catch (error) {
             pino.error(`Se produjo un error: ${error}`);

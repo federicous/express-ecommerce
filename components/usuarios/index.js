@@ -7,8 +7,9 @@ module.exports = app => {
     app.use("/api/users", userRouter);
     userRouter.get("/", Autenticacion.administrador, usuarioController.getAllElement);
     userRouter.get("/:id", Autenticacion.administrador, usuarioController.getElement);
-    userRouter.post("/", Autenticacion.administrador, usuarioController.createElement);
-    userRouter.put("/:id", Autenticacion.administrador, usuarioController.updateElement);
-    userRouter.delete("/:id", Autenticacion.administrador, usuarioController.deleteElement);
+    // userRouter.post("/", Autenticacion.administrador, usuarioController.createElement);
+    userRouter.post("/", Autenticacion.administrador, usuarioController.postRegister);
+    userRouter.put("/", Autenticacion.administrador, usuarioController.updateElement);
+    userRouter.delete("/", Autenticacion.administrador, usuarioController.deleteRegister);
 }
 

@@ -107,6 +107,7 @@ class Element {
     async updateAllElement(req, res, next){
         try {
             let element = req.body;
+            console.log(`body`);
             console.log(element);
             let response = await elementService.modifyAll(element);
             res.status(200).json({
