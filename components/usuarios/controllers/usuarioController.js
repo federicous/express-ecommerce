@@ -28,6 +28,7 @@ class Element {
             //     .render('register', {message: response.message});
             // }
             // await Nodemailer.registro(response);
+            pino.info(`Registrando Usuario: ${element.email} - endpoint: ${req.baseUrl} [${req.method}]`) 
             res.status(200).json({
                 result:'ok',
                 new: req.body,
@@ -50,11 +51,12 @@ class Element {
             // let avatar = req.file ? req.file.filename : "avatar-generico.jpg";
             let element = req.body;
             let response = await elementService.deleteUser(element);
-            if (response.message) {
-                return res.status(404)
-                .render('register', {message: response.message});
-            }
+            // if (response.message) {
+            //     return res.status(404)
+            //     .render('register', {message: response.message});
+            // }
             // await Nodemailer.registro(response);
+            pino.info(`Borrando Usuario: ${element.email} - endpoint: ${req.baseUrl} [${req.method}]`) 
             res.status(200).json({
                 result:'ok',
                 new: req.body,
@@ -94,18 +96,17 @@ class Element {
             let element = req.body;
             console.log(`body:`);
             console.log(element);
-            pino.info(`request: ${req.originalUrl} [${req.method}] - body: ${req.body}`)                    
+            // pino.info(`request: ${req.originalUrl} [${req.method}] - body: ${req.body}`)                    
 
             // let email = req.params.email
-            let email = element.email
-
-            console.log(element);
-            console.log(email);
+            // let email = element.email
+            // console.log(element);
+            // console.log(email);
             // return
+            pino.info(`Modificando Usuario: ${element.email ? element.email : element._id} - endpoint: ${req.baseUrl} [${req.method}]`)                    
             let response = await elementService.modifyUser(element);
             res.status(200).json({
                 result:'ok',
-                email: email,
                 new: req.body,
                 message: response.message,
             })

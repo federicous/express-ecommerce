@@ -19,7 +19,7 @@ class MongoDB {
 			let agregarUsuario = await agregarUsuarioModel.save();
 			pino.info(agregarUsuario);
 			// return {id: agregarUsuario._id, email:usuario.email, message:''}
-			return {id: agregarUsuario._id, ...usuario, message:''}
+			return {id: agregarUsuario._id, ...usuario, message:'Usuario registrado'}
 
 		} catch (error) {
 			pino.error(`Se produjo un error: ${error}`)
@@ -70,6 +70,7 @@ class MongoDB {
 			// let agregarUsuarioModel = new UsuarioModel(usuario);
 			// let agregarUsuario = await agregarUsuarioModel.save();
 			await UsuarioModel.deleteOne({_id: `${usuario._id}`})
+			pino.info(usuario)
 			return{message:`se ELIMINÓ el usuario ${usuario.email}`}
 			// pino.info(agregarUsuario);
 			// return {id: agregarUsuario._id, email:usuario.email, message:''}
