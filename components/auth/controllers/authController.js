@@ -33,10 +33,12 @@ class Element {
             let {email, password} = req.body;
             let response = await elementService.login(email,password);
             if (response.message) {
+                // pino.error(`Error de autenticación: ${email} - endpoint: ${req.originalUrl} [${req.method}] - USUARIO O CONTRASEÑA INCORRECTA: ${password} PARA USUARIO: ${email}`) 
                 pino.info(response);
                 return res.status(404)
                 .render('login', {message: response.message});
             }
+            pino.info(`Usuario autenticado: ${response.email} - endpoint: ${req.originalUrl} [${req.method}]`)                    
             res.status(200)
             .cookie('token', response.token, {maxAge: 3600000})
             .cookie('user', `${response.email}`)
@@ -90,6 +92,7 @@ class Element {
                 return res.status(404)
                 .render('register', {message: response.message});
             }
+            pino.info(`Usuario registrado: ${element.email} - endpoint: ${req.originalUrl} [${req.method}]`)                    
             await Nodemailer.registro(response);
             res.status(200)
             .redirect('/login');

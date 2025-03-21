@@ -31,7 +31,7 @@ class AuthService {
 			let user = await UsuarioModel.findOne({
 				email: email
 			});
-			pino.info(user);
+			// pino.info(user);
 			if (!user) {
 				pino.error(`NO EXISTE EL USUARIO ${email}`);
 				return ({

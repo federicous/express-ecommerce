@@ -83,30 +83,12 @@ class Correo {
 
 	async orden(user, carrito, descuento, dolar) {
 		try {
-			// console.log(user);
-			// console.log(carrito);
-			console.log(descuento);
-			
-			function aplicarDescuento(precio, porcentaje = 0) {
-				precio = Number(precio);
-				porcentaje = Number(porcentaje);
-				console.log(`precio: ${precio} - porcentaje: ${porcentaje}`);
-				
-				if (isNaN(precio) || isNaN(porcentaje)) {
-				    throw new Error('Los parámetros deben ser números válidos.');
-				}
-				
-				const factor = 1 - (porcentaje / 100);
-				return precio * factor;
-			}
-			    
 			function calcularPrecio(precioConIva,iva,precio,usd,qty,oferta,precioOferta) {
 				let price = (oferta && oferta=="si" && precioOferta) ? ccyFormat(precioOferta) : precio
 				/* le saco el iva si viene incluido */
 				// let resultado = (precioConIva ? parseFloat(precioConIva)-parseFloat(precioConIva)*(parseFloat(typeof iva === "string" ? iva.replace(/,/g, '.').replace(/%/g, '') : iva))/100 : (price ? `${price}` : usd*dolar))*(qty ? parseFloat(qty) : 1);
 				let resultado = (precioConIva ? parseFloat(precioConIva)/(1+(parseFloat(typeof iva === "string" ? iva.replace(/,/g, '.').replace(/%/g, '') : iva))/100) : (price ? `${price}` : usd*dolar))*(qty ? parseFloat(qty) : 1)
-				// return resultado
-				return (parseFloat(aplicarDescuento(resultado,descuento)))
+				return resultado
 			}
 			
 			let items = ''
@@ -121,31 +103,30 @@ class Correo {
 					<td style="text-align: center">${parseFloat(typeof item.iva === "string" ? item.iva.replace(/,/g, '.').replace(/%/g, '') : item.iva)}%</td> 
 					<td style="text-align: center">${ccyFormat(calcularPrecio(item.precioConIva,item.iva,item.price,item.usd,1,item.oferta,item.precioOferta))}</td></tr>`
 			})
-
 			let suma=0;
 			let sumaIva=0;
 			let sumaTotal=0;
 
-			// if (descuento) {
-			// 	for (const item of carrito) {
-			// 		let precio = item.price ? item.price : item.usd*dolar
-			// 		// suma=parseFloat(item.qty)*parseFloat(precio)+parseFloat(suma)
-			// 		suma = calcularPrecio(item.precioConIva,item.iva,item.price,item.usd,item.qty,1,item.oferta,item.precioOferta)+parseFloat(suma)
-			// 	}			
-			// 	for (const item of carrito) {
-			// 		// let precio = ccyFormat(item.price ? item.price : item.usd*dolar)
-			// 		// sumaIva=ccyFormat((parseFloat(item.qty)*parseFloat(precio)*parseFloat(item.iva)/100)+parseFloat(sumaIva))
-	
-			// 		let IVA=parseFloat(typeof item.iva === "string" ? item.iva.replace(/,/g, '.').replace(/%/g, '') : item.iva);
-			// 		// let PRICE = parseFloat(item.price ? item.price : item.usd*dolar);
-			// 		let PRICE = calcularPrecio(item.precioConIva,item.iva,item.price,item.usd,1,item.oferta,item.precioOferta)
-			// 		let QTY=parseFloat(item.qty);
-			// 		sumaIva=parseFloat(QTY*(PRICE-PRICE*(parseFloat(descuento)/100))*IVA/100)+parseFloat(sumaIva);
-			// 	}
-			// 	sumaTotal = parseFloat(suma+sumaIva)
-			// } else {
+			if (descuento) {
 				for (const item of carrito) {
-					// let precio = item.price ? item.price : item.usd*dolar
+					let precio = item.price ? item.price : item.usd*dolar
+					// suma=parseFloat(item.qty)*parseFloat(precio)+parseFloat(suma)
+					suma = calcularPrecio(item.precioConIva,item.iva,item.price,item.usd,item.qty,1,item.oferta,item.precioOferta)+parseFloat(suma)
+				}			
+				for (const item of carrito) {
+					// let precio = ccyFormat(item.price ? item.price : item.usd*dolar)
+					// sumaIva=ccyFormat((parseFloat(item.qty)*parseFloat(precio)*parseFloat(item.iva)/100)+parseFloat(sumaIva))
+	
+					let IVA=parseFloat(typeof item.iva === "string" ? item.iva.replace(/,/g, '.').replace(/%/g, '') : item.iva);
+					// let PRICE = parseFloat(item.price ? item.price : item.usd*dolar);
+					let PRICE = calcularPrecio(item.precioConIva,item.iva,item.price,item.usd,1,item.oferta,item.precioOferta)
+					let QTY=parseFloat(item.qty);
+					sumaIva=parseFloat(QTY*(PRICE-PRICE*(parseFloat(descuento)/100))*IVA/100)+parseFloat(sumaIva);
+				}
+				sumaTotal = parseFloat(suma+sumaIva)
+			} else {
+				for (const item of carrito) {
+					let precio = item.price ? item.price : item.usd*dolar
 					// suma=parseFloat(item.qty)*parseFloat(precio)+parseFloat(suma)
 					suma = calcularPrecio(item.precioConIva,item.iva,item.price,item.usd,item.qty,item.oferta,item.precioOferta)+parseFloat(suma)
 				}			
@@ -160,7 +141,7 @@ class Correo {
 					sumaIva=parseFloat(QTY*PRICE*IVA/100)+parseFloat(sumaIva);
 				}
 				sumaTotal = parseFloat(suma+sumaIva)
-			// }
+			}
 
 
 			const option = {
@@ -195,7 +176,14 @@ class Correo {
 									${items} 
 									<tr><td colspan="2" style="text-align: right"><b>Subtotal</b></td><td style="text-align: center">${ccyFormat(suma)}</td></tr>
 									<tr><td colspan="2" style="text-align: right"><b>IVA</b></td><td style="text-align: center">${ccyFormat(sumaIva)}</td></tr>
-									<tr><td colspan="2" style="text-align: right"><b>TOTAL</b></td><td style="text-align: center">${ccyFormat(sumaTotal)}</td></tr>
+									${descuento?
+										`<div>
+										<tr><td colspan="2" style="text-align: right"><b>Desc. (${parseFloat(descuento)}%)</td><td style="text-align: center">-${ccyFormat(suma*parseFloat(descuento)/100)}</b></td></tr>
+										<tr><td colspan="2" style="text-align: right"><b>TOTAL</b></td><td style="text-align: center">${ccyFormat(sumaTotal-(suma*parseFloat(descuento)/100))}</td></tr>
+										</div>`
+										:
+										`<tr><td colspan="2" style="text-align: right"><b>TOTAL</b></td><td style="text-align: center">${ccyFormat(sumaTotal)}</td></tr>`
+									}
 								</tr>			 
 							</tbody>
 						</table>
@@ -209,7 +197,6 @@ class Correo {
 					`
 			}
 			const response = await transporter.sendMail(option)
-			// console.log(option);			
 			pino.info(`Enviando correo a: ${user.email}`)
 			return response
 		} catch (error) {

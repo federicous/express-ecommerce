@@ -1,5 +1,6 @@
 const elementService = require('../services');
 const carritoService = require('../../carritosApi/services');
+const descuentoService = require('../../descuento/services');
 const productoService = require('../../pruducts/services');
 const dolarService = require('../../dolarAutomatico/services')
 const pino = require('../../../utils/logger/pino');
@@ -35,7 +36,8 @@ class Element {
             let ordenId = await elementService.save(payload,carrito);
             let message = `Orden generada, ID: ${ordenId}`;
             let dolar = await dolarService.getPrecio();
-            await Nodemailer.orden(payload,carrito,"",dolar.dolar);
+            let descuento = await descuentoService.getPorcentaje(payload);
+            await Nodemailer.orden(payload,carrito,descuento,dolar.dolar);
             let borrarCarrito = await carritoService.deleteById(carritoId);
             // res.status(200).render('verProductos',{message: message,productos, carritoId});	
             res.status(200).json({message: message, carritoId, ordenId: ordenId});

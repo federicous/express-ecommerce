@@ -3,7 +3,7 @@ const pino = require('../../../utils/logger/pino');
 
 class ElementService {
 
-	async getPorcentaje(payload,email) {
+	async getPorcentaje(payload,email="") {
 		try {
 			let user = await UsuarioModel.findOne({
 				email: email ? email : payload.email
