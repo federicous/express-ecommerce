@@ -7,5 +7,6 @@ module.exports = app => {
     app.use("/permisos", permisosRouter);
     permisosRouter.get("/nivel",Autenticacion.usuario, permisosController.getPermiso);
     permisosRouter.get("/descuento",Autenticacion.usuario, permisosController.getPermiso);
+    permisosRouter.get("/vende", permisosController.getVende); // Sin autenticación
 }
 

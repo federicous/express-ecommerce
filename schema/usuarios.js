@@ -19,7 +19,9 @@ let avatar = Joi.string().min(3);
 let timestamp = Joi.string().min(3);
 let descuento = Joi.string().min(3);
 let vendedor = Joi.string().min(3);
+let IdVendedor = Joi.string().min(3);
 let isAdmin = Joi.boolean();
+let isSeller = Joi.boolean();
 
 
 const usuarioSchema = {
@@ -38,7 +40,9 @@ const usuarioSchema = {
 	timestamp: timestamp.required(),
 	descuento: descuento.required(),
 	vendedor: vendedor.required(),
-	isAdmin: isAdmin.required()
+	IdVendedor: IdVendedor.required(),
+	isAdmin: isAdmin.required(),
+	isSeller: isSeller.required()
 }
 
 let usuarioSchemaModel = new Schema(usuarioSchema);
