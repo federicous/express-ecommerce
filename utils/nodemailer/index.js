@@ -81,7 +81,7 @@ class Correo {
 		}
 	}
 
-	async orden(user, carrito, descuento, dolar) {
+	async orden(user, carrito, descuento, dolar, emailVendedor) {
 		try {
 			// console.log(user);
 			// console.log(carrito);

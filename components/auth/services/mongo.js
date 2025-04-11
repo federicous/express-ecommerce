@@ -15,6 +15,8 @@ class AuthService {
 			usuario.password = passwordHash;
 			usuario.timestamp = Date.now();
 			usuario.avatar= avatar;
+			// Deshablitado por defecto
+			usuario.enable="off";
 			let agregarUsuarioModel = new UsuarioModel(usuario);
 			let agregarUsuario = await agregarUsuarioModel.save();
 			pino.info(agregarUsuario);
@@ -35,7 +37,7 @@ class AuthService {
 			if (!user) {
 				pino.error(`NO EXISTE EL USUARIO ${email}`);
 				return ({
-					message: 'No existe el usuario'
+					message: 'Error de Autenticación'
 				})
 			} else if (bcrypt.compareSync(password, user.password)) {
 				let ID = user._id ? user._id : user.id;
@@ -46,6 +48,12 @@ class AuthService {
 					isAdmin: user.isAdmin,
 					vendedor: user.vendedor,
 				})
+				if (user.enable == "off") {
+					pino.error(`USUARIO NO HABILITADO: ${email}`);
+					return ({
+						message: 'Debe pedir habilitación'
+					})
+				}
 				return ({
 					email: user.email,
 					token
@@ -53,7 +61,7 @@ class AuthService {
 			} else {
 				pino.error(`CONTRASEÑA INCORRECTA: ${password} PARA USUARIO: ${email}`);
 				return ({
-					message: 'contraseña incorrecta'
+					message: 'Error de Autenticación'
 				})
 			}
 		} catch (error) {

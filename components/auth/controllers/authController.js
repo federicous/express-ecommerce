@@ -35,8 +35,9 @@ class Element {
             if (response.message) {
                 // pino.error(`Error de autenticación: ${email} - endpoint: ${req.originalUrl} [${req.method}] - USUARIO O CONTRASEÑA INCORRECTA: ${password} PARA USUARIO: ${email}`) 
                 pino.info(response);
-                return res.status(404)
-                .render('login', {message: response.message});
+                // return res.status(404)
+                // .render('login', {message: response.message});
+                return res.status(404).json({ message: response.message });
             }
             pino.info(`Usuario autenticado: ${response.email} - endpoint: ${req.originalUrl} [${req.method}]`)                    
             res.status(200)
