@@ -47,6 +47,7 @@ class AuthService {
 					email: user.email,
 					isAdmin: user.isAdmin,
 					vendedor: user.vendedor,
+					// IdVendedor: user.IdVendedor,
 				})
 				if (user.enable == "off") {
 					pino.error(`USUARIO NO HABILITADO: ${email}`);
@@ -56,6 +57,7 @@ class AuthService {
 				}
 				return ({
 					email: user.email,
+					IdVendedor: user.IdVendedor || "",
 					token
 				})
 			} else {

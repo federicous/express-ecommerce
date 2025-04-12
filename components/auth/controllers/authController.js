@@ -4,7 +4,9 @@ const JWT = require("../../../utils/jwt/jwt");
 const pino = require('../../../utils/logger/pino');
 const productService = require('../../pruductos/services');
 const carritoService = require('../../carritos/services');
-const Nodemailer = require('../../../utils/nodemailer')
+const Nodemailer = require('../../../utils/nodemailer');
+const usuarioService = require('../../usuarios/services');
+
 
 class Element {
 
@@ -43,6 +45,7 @@ class Element {
             res.status(200)
             .cookie('token', response.token, {maxAge: 3600000})
             .cookie('user', `${response.email}`)
+            .cookie('IdVendedor', `${response.IdVendedor}`)
             .json(response)
             // .redirect('/productos');
 
@@ -93,8 +96,9 @@ class Element {
                 return res.status(404)
                 .render('register', {message: response.message});
             }
-            pino.info(`Usuario registrado: ${element.email} - endpoint: ${req.originalUrl} [${req.method}]`)                    
-            await Nodemailer.registro(response);
+            pino.info(`Usuario registrado: ${element.email} - endpoint: ${req.originalUrl} [${req.method}]`)     
+            let emailVendedor = await usuarioService.getByIdVendedor(element.email); 
+            await Nodemailer.registro(response,emailVendedor);
             res.status(200)
             .redirect('/login');
             

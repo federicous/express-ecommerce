@@ -7,6 +7,7 @@ module.exports = app => {
     app.use("/api/users", userRouter);
     userRouter.get("/", Autenticacion.administrador, usuarioController.getAllElement);
     userRouter.get("/:id", Autenticacion.administrador, usuarioController.getElement);
+    userRouter.get("/idVendedor/:vendedor", Autenticacion.usuario, usuarioController.getElementIdVendedor);
     // userRouter.post("/", Autenticacion.administrador, usuarioController.createElement);
     userRouter.post("/", Autenticacion.administrador, usuarioController.postRegister);
     userRouter.put("/", Autenticacion.administrador, usuarioController.updateElement);

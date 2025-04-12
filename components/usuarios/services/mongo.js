@@ -116,6 +116,19 @@ class MongoDB {
 		}	
 	}
 
+	async getByIdVendedor(id) {
+		try {
+			let regex = new RegExp('^' + id + '$', 'i')
+			let mostrar = await UsuarioModel.find({IdVendedor:regex});
+			// const mostrar = await UsuarioModel.findOne({ IdVendedor: new RegExp('^' + id + '$', 'i') });
+			// console.log(mostrar[0].email);
+			return(mostrar[0]?.email || "")
+		} catch (error) {
+			pino.error(`Se produjo un error: ${error}`)
+			throw new Error(error)
+		}	
+	}
+
 	async getAll() {
 		try {
 			let allUsers = await UsuarioModel.find({});

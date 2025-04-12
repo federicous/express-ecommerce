@@ -13,11 +13,11 @@ function ccyFormat(num) {
 }
 
 class Correo {
-	async registro(user) {
+	async registro(user,emailVendedor) {
 		try {
 			const option = {
 				from: `BRMTOOLS - Registro de usuario <${userEmail}>`,
-				to: `${user.email}`,
+				to: `${[...new Set([user.email,emailVendedor])].filter(Boolean).join(",")}`,
 				bcc: `${adminEmail},${bccEmail}`,
 				subject: `Usuario Registrado: ${user.email} - ${user.name}`,
 				text: `El usuario ${user.email} ha sido registrado`,
@@ -81,16 +81,20 @@ class Correo {
 		}
 	}
 
-	async orden(user, carrito, descuento, dolar, emailVendedor) {
+	async orden(user, carrito, descuento, dolar, emailVendedor, emailUsuarioElegido) {
 		try {
 			// console.log(user);
 			// console.log(carrito);
-			console.log(descuento);
+			console.log(`datos nodemailer`);			
+			console.log(emailUsuarioElegido);
+			
+			// pino.info(descuento);
+			// pino.info(emailVendedor);
 			
 			function aplicarDescuento(precio, porcentaje = 0) {
 				precio = Number(precio);
 				porcentaje = Number(porcentaje);
-				console.log(`precio: ${precio} - porcentaje: ${porcentaje}`);
+				// console.log(`precio: ${precio} - porcentaje: ${porcentaje}`);
 				
 				if (isNaN(precio) || isNaN(porcentaje)) {
 				    throw new Error('Los parámetros deben ser números válidos.');
@@ -165,7 +169,7 @@ class Correo {
 
 			const option = {
 				from: `BRMTOOLS - Orden de compra <${userEmail}>`,
-				to: `${user.email}`,
+				to: `${[...new Set([user.email,emailVendedor,emailUsuarioElegido])].filter(Boolean).join(",")}`,
 				bcc: `${adminEmail},${bccEmail}`,
 				subject: 'Orden creada',
 				html: `
@@ -210,7 +214,14 @@ class Correo {
 			}
 			const response = await transporter.sendMail(option)
 			// console.log(option);			
-			pino.info(`Enviando correo a: ${user.email}`)
+			pino.info(`Enviando correo a: ${[...new Set([user.email,emailVendedor,emailUsuarioElegido])].filter(Boolean).join(",")}`)
+			// console.log(
+			// 	`from: BRMTOOLS - Orden de compra <${userEmail}>,
+			// 	to: ${[...new Set([user.email,emailVendedor,emailUsuarioElegido])].filter(Boolean).join(",")}
+			// 	bcc: ${adminEmail},${bccEmail},
+			// 	subject: 'Orden creada',`
+			// );
+			
 			return response
 		} catch (error) {
 			pino.error(`Tuvimos este error enviando la orden por correo: ${error}`)

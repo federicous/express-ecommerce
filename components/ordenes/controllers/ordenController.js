@@ -1,7 +1,7 @@
 const elementService = require('../services');
 const carritoService = require('../../carritosApi/services');
 const descuentoService = require('../../descuento/services');
-const productoService = require('../../pruducts/services');
+const usuarioService = require('../../usuarios/services');
 const dolarService = require('../../dolarAutomatico/services')
 const pino = require('../../../utils/logger/pino');
 const JWT = require("../../../utils/jwt/jwt");
@@ -37,7 +37,8 @@ class Element {
             let message = `Orden generada, ID: ${ordenId}`;
             let dolar = await dolarService.getPrecio();
             let descuento = await descuentoService.getPorcentaje(payload);
-            await Nodemailer.orden(payload,carrito,descuento,dolar.dolar);
+            let emailVendedor = await usuarioService.getByIdVendedor(payload.email);
+            await Nodemailer.orden(payload,carrito,descuento,dolar.dolar,emailVendedor);
             let borrarCarrito = await carritoService.deleteById(carritoId);
             // res.status(200).render('verProductos',{message: message,productos, carritoId});	
             res.status(200).json({message: message, carritoId, ordenId: ordenId});
@@ -51,13 +52,14 @@ class Element {
         try {
             const token = req.cookies.token || req.headers.authorization?.split(' ')[1];
             let payload = await JWT.decode(token);
-            let usuario = req.body
+            let usuario = req.body;
+            let emailVendedor = await usuarioService.getByIdVendedor(usuario.vendedor);
             let carritoId = await carritoService.save(payload);
             let carrito = await carritoService.getSubElementsById(carritoId);
             let ordenId = await elementService.saveUser(payload,carrito,usuario);
             let message = `Orden generada, ID: ${ordenId}`;
             let dolar = await dolarService.getPrecio();
-            await Nodemailer.orden(payload,carrito,usuario.descuento,dolar.dolar);
+            await Nodemailer.orden(payload,carrito,usuario.descuento,dolar.dolar,emailVendedor,usuario.email);
             let borrarCarrito = await carritoService.deleteById(carritoId);
             // res.status(200).render('verProductos',{message: message,productos, carritoId});	
             res.status(200).json({message: message, carritoId, ordenId: ordenId});

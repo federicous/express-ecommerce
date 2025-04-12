@@ -81,6 +81,19 @@ class Element {
         }
     }
 
+
+    async getElementIdVendedor(req, res, next){
+        try {
+            let id = req.params.idVendedor
+            let response = await elementService.getByIdVendedor(id);
+            res.status(200).json(response);
+        } catch (error) {
+            pino.error(`Se produjo un error: ${error}`);
+            res.status(400).render('error');
+        }
+    }
+
+
     async getAllElement(req, res, next){
         try {
             let response = await elementService.getAll();
