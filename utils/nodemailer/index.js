@@ -86,7 +86,8 @@ class Correo {
 			// console.log(user);
 			// console.log(carrito);
 			console.log(`datos nodemailer`);			
-			console.log(emailUsuarioElegido);
+			// console.log(emailUsuarioElegido);
+			// console.log(emailVendedor);
 			
 			// pino.info(descuento);
 			// pino.info(emailVendedor);

@@ -121,6 +121,7 @@ class MongoDB {
 			let regex = new RegExp('^' + id + '$', 'i')
 			let mostrar = await UsuarioModel.find({IdVendedor:regex});
 			// const mostrar = await UsuarioModel.findOne({ IdVendedor: new RegExp('^' + id + '$', 'i') });
+			// console.log(`getByIdVendedor: ${regex}`);			
 			// console.log(mostrar[0].email);
 			return(mostrar[0]?.email || "")
 		} catch (error) {

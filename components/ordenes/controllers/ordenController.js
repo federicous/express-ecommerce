@@ -37,7 +37,8 @@ class Element {
             let message = `Orden generada, ID: ${ordenId}`;
             let dolar = await dolarService.getPrecio();
             let descuento = await descuentoService.getPorcentaje(payload);
-            let emailVendedor = await usuarioService.getByIdVendedor(payload.email);
+            let emailVendedor = await usuarioService.getByIdVendedor(payload.vendedor);
+            // console.log(`emailVendedor: ${emailVendedor} - ${payload.email}`);            
             await Nodemailer.orden(payload,carrito,descuento,dolar.dolar,emailVendedor);
             let borrarCarrito = await carritoService.deleteById(carritoId);
             // res.status(200).render('verProductos',{message: message,productos, carritoId});	
