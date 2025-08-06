@@ -185,7 +185,13 @@ class Correo {
 					<div>
 						<p>Su compra ha sido registrada</p>
 						<p>Vendedor: ${user.vendedor}</p>
-						<p>Cliente: ${user.name} - ${user.email}</p>
+						${emailUsuarioElegido ? 
+							`<p>Cliente: ${emailUsuarioElegido}</p> 
+							 <p>Pedido generado por: ${user.name} - ${user.email}</p>
+							`
+							 : 
+							`<p>Cliente: ${user.name} - ${user.email}</p>`
+						}
 						<table>
 							<thead>
 								<tr>
