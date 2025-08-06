@@ -1,0 +1,15 @@
+{
+  "watch": [
+    "index.js",
+    "components/**/*.js",
+    "config/**/*.js",
+    "routes/**/*.js"
+  ],
+  "ignore": [
+    "node_modules",
+    "client",
+    "uploads",
+    "DB"
+  ],
+  "ext": "js,json"
+}
