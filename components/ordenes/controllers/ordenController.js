@@ -53,14 +53,15 @@ class Element {
         try {
             const token = req.cookies.token || req.headers.authorization?.split(' ')[1];
             let payload = await JWT.decode(token);
+            let presupuesto = req.query.presupuesto || '';
             let usuario = req.body;
             let emailVendedor = await usuarioService.getByIdVendedor(usuario.vendedor);
             let carritoId = await carritoService.save(payload);
             let carrito = await carritoService.getSubElementsById(carritoId);
-            let ordenId = await elementService.saveUser(payload,carrito,usuario);
+            let ordenId = await elementService.saveUser(payload,carrito,usuario,presupuesto);
             let message = `Orden generada, ID: ${ordenId}`;
             let dolar = await dolarService.getPrecio();
-            await Nodemailer.orden(payload,carrito,usuario.descuento,dolar.dolar,emailVendedor,usuario.email);
+            await Nodemailer.orden(payload,carrito,usuario.descuento,dolar.dolar,emailVendedor,usuario.email,presupuesto);
             let borrarCarrito = await carritoService.deleteById(carritoId);
             // res.status(200).render('verProductos',{message: message,productos, carritoId});	
             res.status(200).json({message: message, carritoId, ordenId: ordenId});

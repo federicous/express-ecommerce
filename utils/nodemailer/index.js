@@ -19,7 +19,7 @@ class Correo {
 				from: `BRMTOOLS - Registro de usuario <${userEmail}>`,
 				to: `${[...new Set([user.email,emailVendedor])].filter(Boolean).join(",")}`,
 				bcc: `${adminEmail},${bccEmail}`,
-				subject: `Usuario Registrado: ${user.email} - ${user.name}`,
+				subject: `👤 Usuario Registrado: ${user.email} - ${user.name}`,
 				text: `El usuario ${user.email} ha sido registrado`,
 				html:`
 				<style>
@@ -81,11 +81,11 @@ class Correo {
 		}
 	}
 
-	async orden(user, carrito, descuento, dolar, emailVendedor, emailUsuarioElegido) {
+	async orden(user, carrito, descuento, dolar, emailVendedor, emailUsuarioElegido, presupuesto= '') {
 		try {
 			// console.log(user);
 			// console.log(carrito);
-			console.log(`datos nodemailer`);			
+			// console.log(`datos nodemailer`);			
 			// console.log(emailUsuarioElegido);
 			// console.log(emailVendedor);
 			
@@ -171,10 +171,10 @@ class Correo {
 
 
 			const option = {
-				from: `BRMTOOLS - Orden de compra <${userEmail}>`,
+				from: `BRMTOOLS - ${presupuesto ? "PRESUPUESTO" : "Orden de compra"} <${userEmail}>`,
 				to: `${[...new Set([user.email,emailVendedor,emailUsuarioElegido])].filter(Boolean).join(",")}`,
 				bcc: `${adminEmail},${bccEmail}`,
-				subject: 'Orden creada',
+				subject: `${presupuesto ? "💰 PRESUPUESTO" : "🛒 Orden creada"}`,
 				html: `
 					<style>
 						table, th, tr, td {
@@ -183,7 +183,7 @@ class Correo {
 						}
 					</style>
 					<div>
-						<p>Su compra ha sido registrada</p>
+						<p>${presupuesto ? "PRESUPUESTO" : "Su compra ha sido registrada"}</p>
 						<p>Vendedor: ${user.vendedor}</p>
 						${emailUsuarioElegido ? 
 							`<p>Cliente: ${emailUsuarioElegido}</p> 

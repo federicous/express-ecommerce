@@ -24,7 +24,7 @@ class MongoDB {
 		}
 	}
 
-	async saveUser(payload, element, usuario) {
+	async saveUser(payload, element, usuario, presupuesto) {
 		try {
 			let nuevoElementoModel= new ElementoModel();
 			nuevoElementoModel.id=v4();
@@ -32,6 +32,7 @@ class MongoDB {
 			nuevoElementoModel.email=usuario.email;
 			nuevoElementoModel.state=usuario.state;
 			nuevoElementoModel.productList=element;
+			nuevoElementoModel.presupuesto=presupuesto || '';
 			let nuevoElemento = await nuevoElementoModel.save();
 			return(nuevoElemento._id)	
 			
