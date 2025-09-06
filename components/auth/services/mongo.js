@@ -47,6 +47,8 @@ class AuthService {
 					email: user.email,
 					isAdmin: user.isAdmin,
 					vendedor: user.vendedor,
+					descargas: user.descargas,
+					descuento: user.descuento,
 					// IdVendedor: user.IdVendedor,
 				})
 				if (user.enable == "off") {

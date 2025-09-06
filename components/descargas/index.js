@@ -8,6 +8,7 @@ module.exports = app => {
     app.use("/api/descargas", descargasRouter);
     descargasRouter.get("/lista/:archivo", Autenticacion.usuario, descargasController.getFile);
     descargasRouter.get("/lista", Autenticacion.usuario, descargasController.getFileList);
+    descargasRouter.get("/permiso", Autenticacion.usuario, descargasController.getPermiso);
     descargasRouter.delete("/lista/:archivo", Autenticacion.administrador, descargasController.deleteFile);
     descargasRouter.post("/lista", Autenticacion.administrador, upload.single('lista'), descargasController.uploadList);
 }

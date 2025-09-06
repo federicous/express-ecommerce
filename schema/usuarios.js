@@ -23,6 +23,7 @@ let IdVendedor = Joi.string().min(3);
 let isAdmin = Joi.boolean();
 let isSeller = Joi.boolean();
 let enable = Joi.boolean();
+let descargas = Joi.string().min(3);
 
 
 const usuarioSchema = {
@@ -45,6 +46,7 @@ const usuarioSchema = {
 	isAdmin: isAdmin.required(),
 	isSeller: isSeller.required(),
 	enable: enable.required(),
+	descargas: descargas.required(),
 }
 
 let usuarioSchemaModel = new Schema(usuarioSchema);
