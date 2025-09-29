@@ -40,7 +40,14 @@ let ventaMinima = Joi.string().min(3)
 let precioOferta = Joi.string().min(3);
 let timestamp = Joi.string().min(3);
 let uuid = Joi.string().min(3);
-
+let multiplicador = Joi.number().min(1);
+let ean = Joi.string().min(3);
+let precio_sugerido_6 = Joi.number().min(1);
+let precio_sugerido_iva = Joi.number().min(1);
+let precio_sugerido_mas_6 = Joi.number().min(1);
+let tipo = Joi.string().min(3);
+let modelo = Joi.string().min(3);
+let categoria = Joi.string().min(3);
 
 const productoSchema = {
 	id: id.required(),
@@ -78,7 +85,15 @@ const productoSchema = {
     	ventaMinima: ventaMinima.required(),
     	precioOferta: precioOferta.required(),
     	timestamp: timestamp.required(),
-	uuid: uuid.required()
+		uuid: uuid.required(),
+		multiplicador: multiplicador.required(),
+		ean: ean.required(),
+		precio_sugerido_6: precio_sugerido_6.required(),
+		precio_sugerido_iva: precio_sugerido_iva.required(),
+		precio_sugerido_mas_6: precio_sugerido_mas_6.required(),
+		tipo: tipo.required(),
+		modelo: modelo.required(),
+		categoria: categoria.required()
 }
 
 let productoSchemaModel = new Schema(productoSchema);

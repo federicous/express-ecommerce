@@ -636,6 +636,167 @@ class MongoDB {
 				carritosApiService.updateProductList()
 
 				return response
+			} else if (list == "einhell") {
+				var XLSX = require('xlsx');
+				// Leer archivo Excel
+				var workbook = XLSX.readFile(__dirname + `/../../../uploads/listas/${listFileName}`);
+				// Obtener la primera hoja del archivo
+				var sheet_name_list = workbook.SheetNames;
+				
+				// Imprimir en consola los nombres de los campos para verificar cual es el correcto
+				// console.log(Object.keys(XLSX.utils.sheet_to_json(workbook.Sheets[sheet_name_list[0]])[0]))
+				// Imprimir en consola la primera fila de la hoja para ver los nombres de las columnas
+				// console.log(XLSX.utils.sheet_to_json(workbook.Sheets[sheet_name_list[0]])[0])
+
+				// Nombre de la hoja a utilizar
+				let worksheet = workbook.Sheets[sheet_name_list[0]];
+				// Imprimir el nombre de la hoja
+				console.log(sheet_name_list[0]);
+				// Imprimir los nombres de todas las hojas
+				console.log(sheet_name_list);
+				
+				// Recorrer y procesar cada hoja
+				sheet_name_list.forEach(async (item) => {
+					// Si el nombre de la hoja es el que queremos utilizar
+					if (item === 'EIHHELL' || item === 'BATERÍAS Y CARGADORES' || item === 'EINHELL E-COMMERCE' || item === 'DISCONTINUOS EINHELL') {
+						// Obtener la hoja
+						let worksheet = workbook.Sheets[item];
+						// Filtrar los productos que no tienen tipo
+						let productos = XLSX.utils.sheet_to_json(worksheet);
+						productos = productos.filter(item => item['TIPO']);
+						console.log(productos);
+
+						let object = {
+							code: 'CÓDIGO',
+							name: 'HERRAMIENTA',
+							modelo: 'MODELO',
+							label: 'CATEGORÍA',
+							description: 'DESCRIPCIÓN',
+							price: 'PRECIO DE LISTA $ARS',
+							iva: '% IVA',
+							precio_sugerido_iva: 'PRECIO SUGERIDO IVA incluido',
+							precio_sugerido_6: 'PRECIO SUGERIDO  HASTA 6 CUOTAS 13,8%',
+							precio_sugerido_mas_6: 'PRECIO SUGERIDO  MÁS DE 6 CUOTAS 35%',
+							ean: 'EAN',
+							tipo: 'TIPO',
+						}
+						/* Verificación de campos para evitar error de lista */
+						const camposObligatorios = ['CÓDIGO','PRECIO DE LISTA $ARS','PRECIO SUGERIDO IVA incluido','EAN','MODELO','TIPO']
+						const comparar = []
+						for (const key in productos[0]) {
+							comparar.push(`${key}`.trim())
+						}
+						pino.info(camposObligatorios);
+						pino.info(comparar);
+						const contieneTodos = camposObligatorios.every(elemento => comparar.includes(elemento));				
+						if (!contieneTodos) {
+							pino.info(`Lista equivocada, debe ingresar la de ${list}`)
+							return {result:"error"}
+						}
+						/* FIN Verificación */
+						
+						let newProductos = [];
+						for (const item of productos) {
+							let newItem = {};
+							for (const k in item) {
+								for (const key in object) {
+									if (k.trim() == object[key.trim()]) {
+										newItem[key.trim()] = `${item[k]}`.replace(/\s+/g, ' ')
+										if (k == object["iva"]) {
+											newItem[key] = Number(`${item[k]}`)*100
+										}
+										continue
+									}
+								}
+							}
+							newItem.lista=`${list}`
+							newProductos.push(newItem);
+						}
+						pino.info(newProductos);
+
+						/* MODIFICO PRODUCTOS O AGREGO*/
+						let response = await productService.modifyAllCodeRepeated(newProductos);
+
+						/* ACTUALIZO CARRITOS */
+						carritosApiService.updateProductList()
+
+						// return response
+
+					} else if (item === 'KWB' || item === 'DISCONTINUOS KWB') {
+						// Obtener la hoja
+						let worksheet = workbook.Sheets[item];
+						// Filtrar los productos que no tienen tipo
+						let productos = XLSX.utils.sheet_to_json(worksheet);
+						productos = productos.filter(item => item['TIPO']);
+						console.log(productos);
+					} 
+
+
+				});
+
+return {result:"error"}
+				
+				// Obtener los datos de la primera hoja
+				let productos = XLSX.utils.sheet_to_json(workbook.Sheets[sheet_name_list[0]])
+				// Filtrar los productos que no tienen tipo
+				productos = productos.filter(item => item['TIPO']);
+				console.log(productos);
+				return {result:"error"}
+				let object = {
+					code: 'CÓDIGO',
+					name: 'HERRAMIENTA',
+					modelo: 'MODELO',
+					label: 'CATEGORÍA',
+					description: 'DESCRIPCIÓN',
+					price: 'PRECIO DE LISTA $ARS',
+					iva: '% IVA',
+					precio_sugerido_iva: 'PRECIO SUGERIDO IVA incluido',
+					precio_sugerido_6: 'PRECIO SUGERIDO  HASTA 6 CUOTAS 13,8%',
+					precio_sugerido_mas_6: 'PRECIO SUGERIDO  MÁS DE 6 CUOTAS 35%',
+					ean: 'EAN',
+					tipo: 'TIPO',
+				}
+				/* Verificación de campos para evitar error de lista */
+				const camposObligatorios = ['CÓDIGO','PRECIO DE LISTA $ARS','PRECIO SUGERIDO IVA incluido','EAN','MODELO','TIPO']
+				const comparar = []
+				for (const key in productos[0]) {
+					comparar.push(`${key}`.trim())
+				}
+				pino.info(camposObligatorios);
+				pino.info(comparar);
+				const contieneTodos = camposObligatorios.every(elemento => comparar.includes(elemento));				
+				if (!contieneTodos) {
+					pino.info(`Lista equivocada, debe ingresar la de ${list}`)
+					return {result:"error"}
+				}
+				/* FIN Verificación */
+				
+				let newProductos = [];
+				for (const item of productos) {
+					let newItem = {};
+					for (const k in item) {
+						for (const key in object) {
+							if (k.trim() == object[key.trim()]) {
+								newItem[key.trim()] = `${item[k]}`.replace(/\s+/g, ' ')
+								if (k == object["iva"]) {
+									newItem[key] = Number(`${item[k]}`)*100
+								}
+								continue
+							}
+						}
+					}
+					newItem.lista=`${list}`
+					newProductos.push(newItem);
+				}
+				pino.info(newProductos);
+
+				/* MODIFICO PRODUCTOS O AGREGO*/
+				let response = await productService.modifyAllCodeRepeated(newProductos);
+
+				/* ACTUALIZO CARRITOS */
+				carritosApiService.updateProductList()
+
+				return response
 			}
 
 		} catch (error) {
