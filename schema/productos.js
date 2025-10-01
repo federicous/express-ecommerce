@@ -40,6 +40,7 @@ let ventaMinima = Joi.string().min(3)
 let precioOferta = Joi.string().min(3);
 let timestamp = Joi.string().min(3);
 let uuid = Joi.string().min(3);
+let multiplicador = Joi.number().min(1);
 
 
 const productoSchema = {
@@ -78,8 +79,9 @@ const productoSchema = {
     	ventaMinima: ventaMinima.required(),
     	precioOferta: precioOferta.required(),
     	timestamp: timestamp.required(),
-	uuid: uuid.required()
-}
+	uuid: uuid.required(),
+	multiplicador: multiplicador.required()
+};
 
 let productoSchemaModel = new Schema(productoSchema);
 let ProductoModel = new model('productos', productoSchemaModel);
