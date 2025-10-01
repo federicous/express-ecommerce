@@ -72,7 +72,7 @@ class MongoDB {
 			// let modificar = await ProductoModel.findByIdAndUpdate(id, producto);
 			// return (modificar)
 
-			if (Array.isArray(producto)) {
+			if (Array.isArray(producto)) { // si es un array de productos
 				producto.forEach(async element => {
 					let verificarExistente = await ProductoModel.find({code: `${element.code}`, lista: `${element.lista}`})
 					if (verificarExistente.length) {
@@ -89,7 +89,7 @@ class MongoDB {
 					}
 				});
 
-			} else {
+			} else { // si es un solo producto
 				let verificarExistente = await ProductoModel.find({code: `${producto.code}`, lista: `${producto.lista}`})
 				if (verificarExistente.length) {
 					pino.info(`ya existe un producto con el mismo código ${producto.code}`);
@@ -100,6 +100,8 @@ class MongoDB {
 					if (imageName) {
 						producto.image = imageName;
 					}
+					console.log("Modificando producto", producto);
+					
 					producto.timestamp = Date.now();
 					let updateProduct = await ProductoModel.findOneAndUpdate({code: `${producto.code}`, lista: `${producto.lista}`}, producto )
 					return {message:`ya se modificó el producto ${producto.code}`, resultado:updateProduct}
