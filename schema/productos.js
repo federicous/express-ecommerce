@@ -49,6 +49,7 @@ let tipo = Joi.string().min(3);
 let modelo = Joi.string().min(3);
 let categoria = Joi.string().min(3);
 
+
 const productoSchema = {
 	id: id.required(),
     	name: name.required(),
