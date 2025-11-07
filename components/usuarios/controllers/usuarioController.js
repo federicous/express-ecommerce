@@ -1,5 +1,6 @@
 const elementService = require('../services')
 const pino = require('../../../utils/logger/pino')
+const JWT = require("../../../utils/jwt/jwt");
 
 class Element {
 
@@ -116,7 +117,11 @@ class Element {
             // console.log(element);
             // console.log(email);
             // return
-            pino.info(`Modificando Usuario: ${element.email ? element.email : element._id} - endpoint: ${req.baseUrl} [${req.method}]`)                    
+
+            // Loguear la accion
+            let token = req.cookies.token || req.headers.authorization?.split(' ')[1];
+            let payload = await JWT.decode(token);
+            pino.info(`Modificando Usuario: ${element.email ? element.email : element._id} - Función: updateElement - endpoint: ${req.baseUrl} [${req.method}] - Editado por: ${payload.email}`);
             let response = await elementService.modifyUser(element);
             res.status(200).json({
                 result:'ok',

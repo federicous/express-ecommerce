@@ -109,6 +109,10 @@ class Element {
             let element = req.body;
             let imageName= req.imageName;
             let response = await elementService.modifyAll(element, imageName);
+            // Loguear la accion
+            let token = req.cookies.token || req.headers.authorization?.split(' ')[1];
+            let payload = await JWT.decode(token);
+            pino.info(`Usuario: ${payload.email} - endpoint: ${req.baseUrl} [${req.method}] - Función: updateAllElement - Elemento actualizado: ${element.id || ''} - mensaje: ${response?.message || ''}`);
             res.status(200).json({
                 result:'ok',
                 new: req.body,

@@ -195,12 +195,12 @@ class MongoDB {
 						finalProducts.forEach(async element => {
 							let verificarExistente = await ProductoModel.find({code: `${element.code}`})
 							if (verificarExistente.length && element.code) {
-								pino.info(`ACTUALIZANDO producto código ${element.code} en la lista ${element.lista}`);
+								// pino.info(`ACTUALIZANDO producto código ${element.code} en la lista ${element.lista}`);
 								element.timestamp = Date.now();
 								await ProductoModel.findOneAndUpdate({code: `${element.code}`}, element)
 								return{message:`ya se modificó el producto ${element.code} en la lista ${element.lista}`}
 							} else if (element.code) {
-								pino.info(`AGREGANDO producto NUEVO con código ${element.code} en la lista ${element.lista}`);
+								// pino.info(`AGREGANDO producto NUEVO con código ${element.code} en la lista ${element.lista}`);
 								element.timestamp = Date.now();
 								let agregarProductoModel = new ProductoModel(element);
 								agregarProductoModel.isNew = true

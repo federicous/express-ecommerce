@@ -1,6 +1,8 @@
 // const elementService = require('../../pruductos/services');
 const elementService = require('../services');
 const pino = require('../../../utils/logger/pino');
+const JWT = require("../../../utils/jwt/jwt");
+
 
 class Element {
 
@@ -58,6 +60,10 @@ class Element {
             let categoria = req.query.categoria;
             let valor = req.query.valor;
             let response = await elementService.modifyListPrice(lista, categoria, valor);
+            // Loguear la accion
+            let token = req.cookies.token || req.headers.authorization?.split(' ')[1];
+            let payload = await JWT.decode(token);
+            pino.info(`Usuario: ${payload.email} - endpoint: ${req.baseUrl} [${req.method}] - Función: modifyList - Lista modificada: ${lista || ''} - mensaje: ${response?.message || ''}`);
 
             res.status(200).json(response);
 
@@ -71,8 +77,13 @@ class Element {
         try {
             pino.info(`######### Llamando proceso de actualizacion de lista ${req.body.lista} ###### `)
             let element = req.body;
-            let listName= req.listName;
+            let listName= req.listName;            
             let response = await elementService.updateList(listName, element.lista, element.label);
+            // Loguear la accion
+            let token = req.cookies.token || req.headers.authorization?.split(' ')[1];
+            let payload = await JWT.decode(token);
+            pino.info(`Usuario: ${payload.email} - endpoint: ${req.baseUrl} [${req.method}] - Función: uploadList - Lista cargada: ${listName} - mensaje: ${response?.message || ''}`);
+
             res.status(200).json({
                 result:'ok',
                 new: req.body,

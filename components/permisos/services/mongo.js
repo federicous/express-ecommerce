@@ -47,7 +47,7 @@ class ElementService {
 			let users = await UsuarioModel.find({
 				isSeller: "on"
 			},{email:1, IdVendedor:1,isSeller:1});
-			pino.info(users);
+			// pino.info(users);
 			return(users)
 			// if (!user) {
 			// 	pino.error(`NO EXISTE EL USUARIO ${payload.email}`);

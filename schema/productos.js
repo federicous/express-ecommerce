@@ -48,6 +48,8 @@ let precio_sugerido_mas_6 = Joi.number().min(1);
 let tipo = Joi.string().min(3);
 let modelo = Joi.string().min(3);
 let categoria = Joi.string().min(3);
+let hoja = Joi.string().min(3);
+let medidas = Joi.string().min(3);
 
 
 const productoSchema = {
@@ -94,7 +96,9 @@ const productoSchema = {
 		precio_sugerido_mas_6: precio_sugerido_mas_6.required(),
 		tipo: tipo.required(),
 		modelo: modelo.required(),
-		categoria: categoria.required()
+		categoria: categoria.required(),
+		hoja: hoja.required(),
+		medidas: medidas.required(),
 }
 
 let productoSchemaModel = new Schema(productoSchema);

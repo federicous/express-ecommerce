@@ -649,59 +649,70 @@ class MongoDB {
 				// console.log(XLSX.utils.sheet_to_json(workbook.Sheets[sheet_name_list[0]])[0])
 
 				// Nombre de la hoja a utilizar
-				let worksheet = workbook.Sheets[sheet_name_list[0]];
+				// let worksheet = workbook.Sheets[sheet_name_list[0]];
 				// Imprimir el nombre de la hoja
-				console.log(sheet_name_list[0]);
+				// console.log(sheet_name_list[0]);
 				// Imprimir los nombres de todas las hojas
 				console.log(sheet_name_list);
 				
+				// Defino los arrays de productos antes para luego unirlos
+				let newProductos = [];
+				let newProductos2 = [];
+
 				// Recorrer y procesar cada hoja
 				sheet_name_list.forEach(async (item) => {
+					let hoja_nombre = item;
 					// Si el nombre de la hoja es el que queremos utilizar
-					if (item === 'EIHHELL' || item === 'BATERÍAS Y CARGADORES' || item === 'EINHELL E-COMMERCE' || item === 'DISCONTINUOS EINHELL') {
-						// Obtener la hoja
+					if (item === 'EINHELL' || item === 'BATERÍAS Y CARGADORES' || item === 'EINHELL E-COMMERCE' || item === 'DISCONTINUOS EINHELL') {
+						// Obtener la hoja por su nombre
 						let worksheet = workbook.Sheets[item];
 						// Filtrar los productos que no tienen tipo
 						let productos = XLSX.utils.sheet_to_json(worksheet);
+						console.log(`Lista: ${item}`);
 						productos = productos.filter(item => item['TIPO']);
-						console.log(productos);
-
+						console.log(`Productos[0]: ${JSON.stringify(productos[0])}`);
+						console.log(`Productos[1]: ${JSON.stringify(productos[1])}`);
+						// Numero de productos cargados
+						console.log(`Total de productos cargados: ${productos.length}`);
+						console.log(`---------------Fin carga de ${item}----------------`);
 						let object = {
 							code: 'CÓDIGO',
 							name: 'HERRAMIENTA',
 							modelo: 'MODELO',
-							label: 'CATEGORÍA',
+							categoria: 'CATEGORÍA',
 							description: 'DESCRIPCIÓN',
+							medidas: 'MEDIDAS',
+							bulto_cerrado: 'BULTO CERRADO',
 							price: 'PRECIO DE LISTA $ARS',
 							iva: '% IVA',
 							precio_sugerido_iva: 'PRECIO SUGERIDO IVA incluido',
 							precio_sugerido_6: 'PRECIO SUGERIDO  HASTA 6 CUOTAS 13,8%',
 							precio_sugerido_mas_6: 'PRECIO SUGERIDO  MÁS DE 6 CUOTAS 35%',
 							ean: 'EAN',
-							tipo: 'TIPO',
+							label: 'TIPO',
 						}
 						/* Verificación de campos para evitar error de lista */
-						const camposObligatorios = ['CÓDIGO','PRECIO DE LISTA $ARS','PRECIO SUGERIDO IVA incluido','EAN','MODELO','TIPO']
+						const camposObligatorios = ['CÓDIGO','PRECIO SUGERIDO IVA incluido','EAN','MODELO','TIPO']
 						const comparar = []
 						for (const key in productos[0]) {
 							comparar.push(`${key}`.trim())
 						}
-						pino.info(camposObligatorios);
-						pino.info(comparar);
-						const contieneTodos = camposObligatorios.every(elemento => comparar.includes(elemento));				
+						pino.info(`Campos obligatorios:\n ${camposObligatorios}`);
+						pino.info(`Campos encontrados:\n ${comparar}`);
+						const contieneTodos = camposObligatorios.every(elemento => comparar.includes(elemento));
 						if (!contieneTodos) {
 							pino.info(`Lista equivocada, debe ingresar la de ${list}`)
 							return {result:"error"}
 						}
 						/* FIN Verificación */
 						
-						let newProductos = [];
+						// let newProductos = [];
 						for (const item of productos) {
 							let newItem = {};
-							for (const k in item) {
-								for (const key in object) {
-									if (k.trim() == object[key.trim()]) {
-										newItem[key.trim()] = `${item[k]}`.replace(/\s+/g, ' ')
+							for (const k in item) { // recorro cada campo del producto
+								for (const key in object) { // recorro el objeto de mapeo
+									if (k.trim() == object[key.trim()]) { // si el campo del producto coincide con el del objeto de mapeo (debo usar trim porque en la lista vienen con espacios)
+										newItem[key.trim()] = `${item[k]}`.replace(/\s+/g, ' ') // asigno el valor al nuevo objeto de producto reemplazando multiples espacios por uno solo
 										if (k == object["iva"]) {
 											newItem[key] = Number(`${item[k]}`)*100
 										}
@@ -710,93 +721,143 @@ class MongoDB {
 								}
 							}
 							newItem.lista=`${list}`
+							newItem.hoja=`${hoja_nombre}`
 							newProductos.push(newItem);
 						}
-						pino.info(newProductos);
+						// pino.info(newProductos);
+
+						// Finalizo la prueba
+						// return {result:"error"};
 
 						/* MODIFICO PRODUCTOS O AGREGO*/
 						let response = await productService.modifyAllCodeRepeated(newProductos);
 
 						/* ACTUALIZO CARRITOS */
-						carritosApiService.updateProductList()
+						// carritosApiService.updateProductList()
 
 						// return response
 
 					} else if (item === 'KWB' || item === 'DISCONTINUOS KWB') {
+						console.log(`Lista: ${item}`);
 						// Obtener la hoja
 						let worksheet = workbook.Sheets[item];
+						// Convertir a JSON, asegurando que las celdas vacías se traten como strings vacíos
+						let productos = XLSX.utils.sheet_to_json(worksheet, {defval:""});
+
+						// Rellenar descripciones faltantes
+						let ultimaDescripcion = "";
+						// IMPORTANTE: Confirma que 'DESCRIPCIÓN' y 'CÓDIGO' son los nombres exactos de las columnas en las hojas KWB.
+						const descripcionColumn = 'DESCRIPCIÓN';
+						productos.forEach(producto => {
+							if (producto[descripcionColumn] && producto[descripcionColumn].trim() !== '') {
+								ultimaDescripcion = producto[descripcionColumn];
+							} else {
+								// Si el producto no tiene descripción, pero sí tiene un código,
+								// le asignamos la última descripción vista.
+								if (producto['CÓDIGO']) {
+									producto[descripcionColumn] = ultimaDescripcion;
+								}
+							}
+						});
+
+						// Rellenar categorías faltantes
+						let ultimaCategoria = "";
+						const categoriaColumn = 'CATEGORIA'; // Sin tilde
+						productos.forEach(producto => {
+							if (producto[categoriaColumn] && producto[categoriaColumn].trim() !== '') {
+								ultimaCategoria = producto[categoriaColumn];
+							} else {
+								// Si el producto no tiene categoría, pero sí tiene un código,
+								// le asignamos la última categoría vista.
+								if (producto['CÓDIGO']) {
+									producto[categoriaColumn] = ultimaCategoria;
+								}
+							}
+						});
+
 						// Filtrar los productos que no tienen tipo
-						let productos = XLSX.utils.sheet_to_json(worksheet);
+
 						productos = productos.filter(item => item['TIPO']);
-						console.log(productos);
+						console.log(`Productos[0]: ${JSON.stringify(productos[0])}`);
+						console.log(`Productos[1]: ${JSON.stringify(productos[1])}`);
+						// Numero de productos cargados
+						console.log(`Total de productos cargados: ${productos.length}`);
+						console.log(`---------------Fin carga de ${item}----------------`);
+
+												let object = {
+							code: 'CÓDIGO',
+							name: 'HERRAMIENTA',
+							modelo: 'MODELO',
+							categoria: 'CATEGORIA', // Sin tilde
+							description: 'DESCRIPCIÓN',
+							medidas: 'MEDIDAS',
+							bulto_cerrado: 'BULTO CERRADO',
+							price: 'Precio lista $ARS',
+							iva: '% IVA',
+							precio_sugerido_iva: 'Precio Sugerido IVA incluido',
+							precio_sugerido_6: 'PRECIO SUGERIDO  HASTA 6 CUOTAS 13,8%',
+							precio_sugerido_mas_6: 'PRECIO SUGERIDO  MÁS DE 6 CUOTAS 35%',
+							ean: 'EAN',
+							label: 'TIPO',
+						}
+						/* Verificación de campos para evitar error de lista */
+						const camposObligatorios = ['CÓDIGO','BULTO CERRADO','EAN','MEDIDAS','TIPO']
+						const comparar = []
+						for (const key in productos[0]) {
+							comparar.push(`${key}`.trim())
+						}
+						pino.info(`Campos obligatorios:\n ${camposObligatorios}`);
+						pino.info(`Campos encontrados:\n ${comparar}`);
+						const contieneTodos = camposObligatorios.every(elemento => comparar.includes(elemento));
+						if (!contieneTodos) {
+							pino.info(`Lista equivocada, debe ingresar la de ${list}`)
+							return {result:"error"}
+						}
+						/* FIN Verificación */
+						
+						// let newProductos2 = [];
+						for (const item of productos) {
+							let newItem = {};
+							for (const k in item) { // recorro cada campo del producto
+								for (const key in object) { // recorro el objeto de mapeo
+									if (k.trim() == object[key.trim()]) { // si el campo del producto coincide con el del objeto de mapeo (debo usar trim porque en la lista vienen con espacios)
+										newItem[key.trim()] = `${item[k]}`.replace(/\s+/g, ' ') // asigno el valor al nuevo objeto de producto reemplazando multiples espacios por uno solo
+										if (k == object["iva"]) {
+											newItem[key] = Number(`${item[k]}`)*100
+										}
+										continue
+									}
+								}
+							}
+							newItem.lista=`${list}`
+							newItem.hoja=`${hoja_nombre}`
+							newProductos2.push(newItem);
+						}
+						// pino.info(newProductos);
+
+						// Finalizo la prueba
+						// return {result:"error"};
+
+						/* MODIFICO PRODUCTOS O AGREGO*/
+						let response = await productService.modifyAllCodeRepeated(newProductos2);
+
+						/* ACTUALIZO CARRITOS */
+						// carritosApiService.updateProductList()
+
+						// return response
 					} 
 
 
 				});
 
-return {result:"error"}
-				
-				// Obtener los datos de la primera hoja
-				let productos = XLSX.utils.sheet_to_json(workbook.Sheets[sheet_name_list[0]])
-				// Filtrar los productos que no tienen tipo
-				productos = productos.filter(item => item['TIPO']);
-				console.log(productos);
-				return {result:"error"}
-				let object = {
-					code: 'CÓDIGO',
-					name: 'HERRAMIENTA',
-					modelo: 'MODELO',
-					label: 'CATEGORÍA',
-					description: 'DESCRIPCIÓN',
-					price: 'PRECIO DE LISTA $ARS',
-					iva: '% IVA',
-					precio_sugerido_iva: 'PRECIO SUGERIDO IVA incluido',
-					precio_sugerido_6: 'PRECIO SUGERIDO  HASTA 6 CUOTAS 13,8%',
-					precio_sugerido_mas_6: 'PRECIO SUGERIDO  MÁS DE 6 CUOTAS 35%',
-					ean: 'EAN',
-					tipo: 'TIPO',
-				}
-				/* Verificación de campos para evitar error de lista */
-				const camposObligatorios = ['CÓDIGO','PRECIO DE LISTA $ARS','PRECIO SUGERIDO IVA incluido','EAN','MODELO','TIPO']
-				const comparar = []
-				for (const key in productos[0]) {
-					comparar.push(`${key}`.trim())
-				}
-				pino.info(camposObligatorios);
-				pino.info(comparar);
-				const contieneTodos = camposObligatorios.every(elemento => comparar.includes(elemento));				
-				if (!contieneTodos) {
-					pino.info(`Lista equivocada, debe ingresar la de ${list}`)
-					return {result:"error"}
-				}
-				/* FIN Verificación */
-				
-				let newProductos = [];
-				for (const item of productos) {
-					let newItem = {};
-					for (const k in item) {
-						for (const key in object) {
-							if (k.trim() == object[key.trim()]) {
-								newItem[key.trim()] = `${item[k]}`.replace(/\s+/g, ' ')
-								if (k == object["iva"]) {
-									newItem[key] = Number(`${item[k]}`)*100
-								}
-								continue
-							}
-						}
-					}
-					newItem.lista=`${list}`
-					newProductos.push(newItem);
-				}
-				pino.info(newProductos);
-
-				/* MODIFICO PRODUCTOS O AGREGO*/
-				let response = await productService.modifyAllCodeRepeated(newProductos);
-
 				/* ACTUALIZO CARRITOS */
 				carritosApiService.updateProductList()
+				// return {result:"error"};
+				// return {response: response, message: "Listas Einhell y KWB procesadas"};
 
-				return response
+				// Unir los productos nuevos
+				let allNewProducts = [...newProductos, ...newProductos2];
+				return allNewProducts || [];
 			}
 
 		} catch (error) {
