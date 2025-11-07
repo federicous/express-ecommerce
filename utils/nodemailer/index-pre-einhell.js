@@ -22,41 +22,50 @@ class Correo {
 				subject: `👤 Usuario Registrado: ${user.email} - ${user.name}`,
 				text: `El usuario ${user.email} ha sido registrado`,
 				html:`
-<table style="vertical-align: top; border-collapse: collapse;">
+				<style>
+	table, th, td {
+	  border: 1px solid black;
+	  border-collapse: collapse;
+	}
+	th, td {
+	  background-color: white;
+	}
+	</style>
+<table style="vertical-align: top;">
 	<thead>
 		<tr>
-			<td style="min-width: 100px; border: 1px solid black; background-color: white;"></td>
-			<td style="text-align: center;min-width: 100px; border: 1px solid black; background-color: white;"><strong>Datos</strong></td>
+			<td style="min-width: 100px;"></td>
+			<td style="text-align: center;min-width: 100px;"><strong>Datos</strong></td>
 		</tr>
 	</thead>
 	<tbody>
 		<tr>
-			<td style="border: 1px solid black; background-color: white;"><strong>Nombre</strong></td>
-			<td style="border: 1px solid black; background-color: white;">${user.name}</td>
+			<td><strong>Nombre</strong></td>
+			<td>${user.name}</td>
 		</tr>
 		<tr>
-			<td style="border: 1px solid black; background-color: white;"><strong>Correo</strong></td>
-			<td style="border: 1px solid black; background-color: white;">${user.email}</td>
+			<td><strong>Correo</strong></td>
+			<td>${user.email}</td>
 		</tr>
 		<tr>
-			<td style="border: 1px solid black; background-color: white;"><b>Ferreter&iacute;a</b></td>
-			<td style="border: 1px solid black; background-color: white;">${user.ferreteria}</td>
+			<td><b>Ferreter&iacute;a</b></td>
+			<td>${user.ferreteria}</td>
 		</tr>
 		<tr>
-			<td style="border: 1px solid black; background-color: white;"><b>Tel&eacute;fono</b></td>
-			<td style="border: 1px solid black; background-color: white;">${user.phone}</td>
+			<td><b>Tel&eacute;fono</b></td>
+			<td>${user.phone}</td>
 		</tr>
 		<tr>
-			<td style="border: 1px solid black; background-color: white;"><strong>Direcci&oacute;n</strong></td>
-			<td style="border: 1px solid black; background-color: white;">${user.address}, ${user.provincia}, ${user.localidad}</td>
+			<td><strong>Direcci&oacute;n</strong></td>
+			<td>${user.address}, ${user.provincia}, ${user.localidad}</td>
 		</tr>
 		<tr>
-			<td style="border: 1px solid black; background-color: white;"><strong>CUIT</strong></td>
-			<td style="border: 1px solid black; background-color: white;">${user.cuit}</td>
+			<td><strong>CUIT</strong></td>
+			<td>${user.cuit}</td>
 		</tr>
 		<tr>
-			<td style="border: 1px solid black; background-color: white;"><strong>Vendedor</strong></td>
-			<td style="border: 1px solid black; background-color: white;">${user.vendedor}</td>
+			<td><strong>Vendedor</strong></td>
+			<td>${user.vendedor}</td>
 		</tr>
 	</tbody>
 </table>
@@ -109,47 +118,55 @@ class Correo {
 			
 			let items = ''
 			carrito.forEach(item => {
-				const description = [
-                    item.name,
-                    item.color,
-                    item.linea,
-                    item.presentacion,
-                    `${(item.unidades!="0" && item.lista=="buloneria bremen") ? (`${item.unidades} unidades`) : ""}`,
-                    `${item.contenido ? (""+item.contenido) : ""}`,
-                    `${(item.lista == "einhell") ? (item.description || "") : ""}`,
-                    `${(item.lista == "einhell") ? (item.medidas || "") : ""}`
-                ].filter(Boolean).join(" | ");
-
-				const displayedDescription = description.length > 70 ? description.substring(0, 70) + '...' : description;
-
-				items += `<tr><td style="border: 1px solid black;">${displayedDescription}</td> 
-					<td style="text-align: center; border: 1px solid black;">${item.lista}</td> 
-					<td style="text-align: center; border: 1px solid black;">${item.code}</td> 
-					<td style="text-align: center; border: 1px solid black;">${item.qty}</td> 
-					<td style="text-align: center; border: 1px solid black;">${parseFloat(typeof item.iva === "string" ? item.iva.replace(/,/g, '.').replace(/%/g, '') : item.iva)}%</td> 
-					<td style="text-align: center; border: 1px solid black;">${ccyFormat(calcularPrecio(item.precioConIva,item.iva,item.price,item.usd,1,item.oferta,item.precioOferta))}</td></tr>`
+				items += `<tr><td>${
+					// [item.name,item.color,item.linea,item.presentacion,`${item.contenido ? (""+item.contenido) : ""}`].filter(Boolean).join(" | ")
+					[item.name,item.color,item.linea,item.presentacion,`${(item.unidades!="0" && item.lista=="buloneria bremen") ? (`${item.unidades} unidades`) : ""}`,`${item.contenido ? (""+item.contenido) : ""}`].filter(Boolean).join(" | ")
+					}</td> 
+					<td style="text-align: center">${item.lista}</td> 
+					<td style="text-align: center">${item.code}</td> 
+					<td style="text-align: center">${item.qty}</td> 
+					<td style="text-align: center">${parseFloat(typeof item.iva === "string" ? item.iva.replace(/,/g, '.').replace(/%/g, '') : item.iva)}%</td> 
+					<td style="text-align: center">${ccyFormat(calcularPrecio(item.precioConIva,item.iva,item.price,item.usd,1,item.oferta,item.precioOferta))}</td></tr>`
 			})
 
 			let suma=0;
 			let sumaIva=0;
 			let sumaTotal=0;
 
-			for (const item of carrito) {
-				// let precio = item.price ? item.price : item.usd*dolar
-				// suma=parseFloat(item.qty)*parseFloat(precio)+parseFloat(suma)
-				suma = calcularPrecio(item.precioConIva,item.iva,item.price,item.usd,item.qty,item.oferta,item.precioOferta)+parseFloat(suma)
-			}			
-			for (const item of carrito) {
-				// let precio = ccyFormat(item.price ? item.price : item.usd*dolar)
-				// sumaIva=ccyFormat((parseFloat(item.qty)*parseFloat(precio)*parseFloat(item.iva)/100)+parseFloat(sumaIva))
-
-				let IVA=parseFloat(typeof item.iva === "string" ? item.iva.replace(/,/g, '.').replace(/%/g, '') : item.iva);
-				// let PRICE = parseFloat(item.price ? item.price : item.usd*dolar);
-				let PRICE = calcularPrecio(item.precioConIva,item.iva,item.price,item.usd,1,item.oferta,item.precioOferta)
-				let QTY=parseFloat(item.qty);
-				sumaIva=parseFloat(QTY*PRICE*IVA/100)+parseFloat(sumaIva);
-			}
-			sumaTotal = parseFloat(suma+sumaIva)
+			// if (descuento) {
+			// 	for (const item of carrito) {
+			// 		let precio = item.price ? item.price : item.usd*dolar
+			// 		// suma=parseFloat(item.qty)*parseFloat(precio)+parseFloat(suma)
+			// 		suma = calcularPrecio(item.precioConIva,item.iva,item.price,item.usd,item.qty,1,item.oferta,item.precioOferta)+parseFloat(suma)
+			// 	}			
+			// 	for (const item of carrito) {
+			// 		// let precio = ccyFormat(item.price ? item.price : item.usd*dolar)
+			// 		// sumaIva=ccyFormat((parseFloat(item.qty)*parseFloat(precio)*parseFloat(item.iva)/100)+parseFloat(sumaIva))
+	
+			// 		let IVA=parseFloat(typeof item.iva === "string" ? item.iva.replace(/,/g, '.').replace(/%/g, '') : item.iva);
+			// 		// let PRICE = parseFloat(item.price ? item.price : item.usd*dolar);
+			// 		let PRICE = calcularPrecio(item.precioConIva,item.iva,item.price,item.usd,1,item.oferta,item.precioOferta)
+			// 		let QTY=parseFloat(item.qty);
+			// 		sumaIva=parseFloat(QTY*(PRICE-PRICE*(parseFloat(descuento)/100))*IVA/100)+parseFloat(sumaIva);
+			// 	}
+			// 	sumaTotal = parseFloat(suma+sumaIva)
+			// } else {
+				for (const item of carrito) {
+					// let precio = item.price ? item.price : item.usd*dolar
+					// suma=parseFloat(item.qty)*parseFloat(precio)+parseFloat(suma)
+					suma = calcularPrecio(item.precioConIva,item.iva,item.price,item.usd,item.qty,item.oferta,item.precioOferta)+parseFloat(suma)
+				}			
+				for (const item of carrito) {
+					// let precio = ccyFormat(item.price ? item.price : item.usd*dolar)
+					// sumaIva=ccyFormat((parseFloat(item.qty)*parseFloat(precio)*parseFloat(item.iva)/100)+parseFloat(sumaIva))
+	
+					let IVA=parseFloat(typeof item.iva === "string" ? item.iva.replace(/,/g, '.').replace(/%/g, '') : item.iva);
+					// let PRICE = parseFloat(item.price ? item.price : item.usd*dolar);
+					let PRICE = calcularPrecio(item.precioConIva,item.iva,item.price,item.usd,1,item.oferta,item.precioOferta)
+					let QTY=parseFloat(item.qty);
+					sumaIva=parseFloat(QTY*PRICE*IVA/100)+parseFloat(sumaIva);
+				}
+				sumaTotal = parseFloat(suma+sumaIva)
 			// }
 
 
@@ -159,6 +176,12 @@ class Correo {
 				bcc: `${adminEmail},${bccEmail}`,
 				subject: `${presupuesto ? "💰 PRESUPUESTO" : "🛒 Orden creada"}`,
 				html: `
+					<style>
+						table, th, tr, td {
+							border: 1px solid black;
+							border-collapse: collapse;
+						}
+					</style>
 					<div>
 						<p>${presupuesto ? "PRESUPUESTO" : "Su compra ha sido registrada"}</p>
 						<p>Vendedor: ${user.vendedor}</p>
@@ -169,31 +192,24 @@ class Correo {
 							 : 
 							`<p>Cliente: ${user.name} - ${user.email}</p>`
 						}
-						<table style="border: 1px solid black; border-collapse: collapse;">
+						<table>
 							<thead>
 								<tr>
-									<th scope="col" style="border: 1px solid black;">Producto</th>
-									<th scope="col" style="border: 1px solid black;">Lista</th>
-									<th scope="col" style="border: 1px solid black;">Código</th>
-									<th scope="col" style="border: 1px solid black;">Cantidad</th>
-									<th scope="col" style="border: 1px solid black;">iva</th>
-									<th scope="col" style="border: 1px solid black;">Price</th>
+									<th scope="col">Producto</th>
+									<th scope="col">Lista</th>
+									<th scope="col">Código</th>
+									<th scope="col">Cantidad</th>
+									<th scope="col">iva</th>
+									<th scope="col">Price</th>
 								</tr>
 							</thead>
 							<tbody id="tablaProductos">
-								${items}
 								<tr>
-									<td colspan="5" style="text-align: right;"><b>Subtotal</b></td>
-									<td style="text-align: center; border: 1px solid black;">${ccyFormat(suma)}</td>
-								</tr>
-								<tr>
-									<td colspan="5" style="text-align: right;"><b>IVA</b></td>
-									<td style="text-align: center; border: 1px solid black;">${ccyFormat(sumaIva)}</td>
-								</tr>
-								<tr>
-									<td colspan="5" style="text-align: right;"><b>TOTAL</b></td>
-									<td style="text-align: center; border: 1px solid black;">${ccyFormat(sumaTotal)}</td>
-								</tr>
+									${items} 
+									<tr><td colspan="2" style="text-align: right"><b>Subtotal</b></td><td style="text-align: center">${ccyFormat(suma)}</td></tr>
+									<tr><td colspan="2" style="text-align: right"><b>IVA</b></td><td style="text-align: center">${ccyFormat(sumaIva)}</td></tr>
+									<tr><td colspan="2" style="text-align: right"><b>TOTAL</b></td><td style="text-align: center">${ccyFormat(sumaTotal)}</td></tr>
+								</tr>			 
 							</tbody>
 						</table>
 						<ul>
