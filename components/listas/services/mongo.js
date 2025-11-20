@@ -722,6 +722,7 @@ class MongoDB {
 							}
 							newItem.lista=`${list}`
 							newItem.hoja=`${hoja_nombre}`
+							newItem.image=`einhell_${newItem.code}.jpg`
 							newProductos.push(newItem);
 						}
 						// pino.info(newProductos);
@@ -831,6 +832,7 @@ class MongoDB {
 							}
 							newItem.lista=`${list}`
 							newItem.hoja=`${hoja_nombre}`
+							newItem.image=`einhell_${newItem.code}.jpg`
 							newProductos2.push(newItem);
 						}
 						// pino.info(newProductos);
