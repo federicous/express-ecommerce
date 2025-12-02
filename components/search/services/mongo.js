@@ -39,6 +39,8 @@ class MongoDB {
 					{color: { $regex: `^(?i)${patron}.*`}},
 					{contenido: { $regex: `^(?i)${patron}.*`}},
 					{presentacion: { $regex: `^(?i)${patron}.*`}},
+					{description: { $regex: `^(?i)${patron}.*`}},
+					{hoja: { $regex: `^(?i)${patron}.*`}},
 				]
 			}).sort({name:1, color:1})
 			.skip(skip).limit(PAGE_SIZE);
@@ -53,6 +55,8 @@ class MongoDB {
 					{color: { $regex: `^(?i)${patron}.*`}},
 					{contenido: { $regex: `^(?i)${patron}.*`}},
 					{presentacion: { $regex: `^(?i)${patron}.*`}},
+					{description: { $regex: `^(?i)${patron}.*`}},
+					{hoja: { $regex: `^(?i)${patron}.*`}},
 				]
 			}).sort({name:1, color:1})
 

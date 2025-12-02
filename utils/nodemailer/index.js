@@ -273,6 +273,7 @@ class Correo {
                         ` : ''}
 
                         <ul>
+                        <li style="text-align: justify;"><strong> Los precios Einhell/KWB son precios de lista, por lo que debe aplicarse un descuento del 23%+5%. </strong></li>
                         <li style="text-align: justify;"><strong>Debido a los constantes cambios de precios de las marcas, es posible que haya modificaciones y correcciones en el pedido. </strong></li>
                         <li style="text-align: justify;"><strong>Considerar que pueda haber faltante de stock de algunos productos. Cualquier duda consulte con su vendedor.</strong></li>
                         <li style="text-align: justify;"><b>TENER EN CUENTA que una vez enviado el pedido pasar&aacute; al &aacute;rea de facturaci&oacute;n directamente, por lo que no se podr&aacute;n realizar cambios al mismo.</b></li>
