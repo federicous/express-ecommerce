@@ -35,6 +35,9 @@ class Element {
             let page = req.query.page;
             let pageSize = req.query.pageSize
             let patron = req.params.patron
+            if (!patron || patron.trim().length < 3) {
+                return res.status(200).json({ allProducts: [], total: 0 });
+            }
             let response = await elementService.getAllNamesPage(patron,page,pageSize);
             res.status(200).json(response);
 
