@@ -8,12 +8,13 @@ class Element {
     async getPermiso(req, res, next){
         try {
             const token = req.cookies.token || req.headers.authorization?.split(' ')[1];
+            if (!token) return res.status(200).json(false);
             let payload = await JWT.decode(token);
+            if (!payload) return res.status(200).json(false);
             let userLevel = await elementService.getLevel(payload);
-            res.status(200).json(userLevel)
+            res.status(200).json(userLevel || false);
         } catch (error) {
-            pino.error(`Se produjo un error: ${error}`);
-            res.status(400).render('error');
+            res.status(200).json(false);
         }
     }
 

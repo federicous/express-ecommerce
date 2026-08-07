@@ -29,7 +29,10 @@ const apiGastos = require("../components/gastos");
 
 
 
+const apiConfiguracion = require("../components/configuracion");
+
 function serverRoutes(app) {
+    apiConfiguracion(app);
     apiProductos(app);
     apiProducts(app);
     apiTekbond(app);

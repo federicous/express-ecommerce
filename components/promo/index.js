@@ -6,11 +6,11 @@ const upload = require("../../utils/multer/promo");
 module.exports = app => {
     const promoRouter = express.Router();
     app.use("/api/promo", promoRouter);
-    promoRouter.get("/", Autenticacion.usuario ,promoController.getElement);
-    promoRouter.get("/category/:category", Autenticacion.usuario ,promoController.getAllElementCategory);
-    promoRouter.get("/brand/:lista", Autenticacion.usuario ,promoController.getAllElementLista);
-    promoRouter.get("/:lista/category/:category", Autenticacion.usuario ,promoController.getAllElementCategoryLista);
-    promoRouter.get("/:id", Autenticacion.usuario, promoController.getElement);
+    promoRouter.get("/", promoController.getElement);
+    promoRouter.get("/category/:category", promoController.getAllElementCategory);
+    promoRouter.get("/brand/:lista", promoController.getAllElementLista);
+    promoRouter.get("/:lista/category/:category", promoController.getAllElementCategoryLista);
+    promoRouter.get("/:id", promoController.getElement);
     promoRouter.post("/", Autenticacion.administrador, upload.single('image'), promoController.createElement);
     promoRouter.post("/code", Autenticacion.administrador, upload.single('image'), promoController.updateAllElementCode);
     // promoRouter.put("/:id", Autenticacion.administrador, upload.single('myFile'), promoController.updateElement);

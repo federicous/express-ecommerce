@@ -6,11 +6,11 @@ const upload = require("../../utils/multer");
 module.exports = app => {
     const prodRouter = express.Router();
     app.use("/api/products", prodRouter);
-    prodRouter.get("/", Autenticacion.usuario ,productController.getAllElement);
-    prodRouter.get("/category/:category", Autenticacion.usuario ,productController.getAllElementCategory);
-    prodRouter.get("/brand/:lista", Autenticacion.usuario ,productController.getAllElementLista);
-    prodRouter.get("/:lista/category/:category", Autenticacion.usuario ,productController.getAllElementCategoryLista);
-    prodRouter.get("/:id", Autenticacion.usuario, productController.getElement);
+    prodRouter.get("/", productController.getAllElement);
+    prodRouter.get("/category/:category", productController.getAllElementCategory);
+    prodRouter.get("/brand/:lista", productController.getAllElementLista);
+    prodRouter.get("/:lista/category/:category", productController.getAllElementCategoryLista);
+    prodRouter.get("/:id", productController.getElement);
     prodRouter.post("/", Autenticacion.administrador, upload.single('image'), productController.createElement);
     prodRouter.post("/code", Autenticacion.administrador, upload.single('image'), productController.updateAllElementCode);
     // prodRouter.put("/:id", Autenticacion.administrador, upload.single('myFile'), productController.updateElement);

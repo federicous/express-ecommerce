@@ -5,9 +5,9 @@ const Autenticacion = require("../../middleware/autenticacion");
 module.exports = app => {
     const categoria = express.Router();
     app.use("/api/categorias", categoria);
-    categoria.get("/:id", Autenticacion.usuario ,categoriaController.getElement);
-    categoria.get("/", Autenticacion.usuario ,categoriaController.getElement);
-    categoria.get("/:lista/:id", Autenticacion.usuario ,categoriaController.getElementLista);
+    categoria.get("/:id", categoriaController.getElement);
+    categoria.get("/", categoriaController.getElement);
+    categoria.get("/:lista/:id", categoriaController.getElementLista);
 
 }
 
