@@ -11,10 +11,10 @@ class Element {
     async getDolar(req, res, next){
         try {
             let dolar = await elementService.getPrecio();
-            res.status(200).json(dolar)
+            res.status(200).json(dolar || { dolar: 0, tipo: "bna" });
         } catch (error) {
             pino.error(`Se produjo un error: ${error}`);
-            res.status(400).render('error');
+            res.status(200).json({ dolar: 0, tipo: "bna" });
         }
     }
 
