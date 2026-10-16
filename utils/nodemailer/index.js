@@ -96,14 +96,14 @@ class Correo {
                 return precio * factor;
             }
                 
-            function calcularPrecio(precioConIva,iva,precio,usd,qty,oferta,precioOferta) {
-                let price = (oferta && oferta=="si" && precioOferta) ? ccyFormat(precioOferta) : precio
+            function calcularPrecio(precioConIva, iva, precio, usd, qty, oferta, precioOferta) {
+                let esOferta = Boolean(oferta && (oferta == "si" || oferta === "SI" || oferta === true));
+                let isOfertaConPrecio = Boolean(esOferta && precioOferta);
+                let price = isOfertaConPrecio ? ccyFormat(precioOferta) : precio;
                 /* le saco el iva si viene incluido */
-                // let resultado = (precioConIva ? parseFloat(precioConIva)-parseFloat(precioConIva)*(parseFloat(typeof iva === "string" ? iva.replace(/,/g, '.').replace(/%/g, '') : iva))/100 : (price ? `${price}` : usd*dolar))*(qty ? parseFloat(qty) : 1);\n\t\t\t\t// let resultado = (precioConIva ? parseFloat(precioConIva)/(1+(parseFloat(typeof iva === "string" ? iva.replace(/,/g, '.').replace(/%/g, '') : iva))/100) : (price ? `${price}` : usd*dolar))*(qty ? parseFloat(qty) : 1)\n\t\t\t\tlet resultado = (precioConIva ? parseFloat(precioConIva) / (1 + (parseFloat(typeof iva === "string" ? iva.replace(/,/g, '.').replace(/%/g, '') : iva)) / 100) : ((usd && `${usd}` != "0") ? usd * dolar : `${price}`)) * (qty ? parseFloat(qty) : 1);
-				let resultado = (precioConIva ? parseFloat(precioConIva) / (1 + (parseFloat(typeof iva === "string" ? iva.replace(/,/g, '.').replace(/%/g, '') : iva)) / 100) : ((usd && `${usd}` != "0") ? usd * dolar : `${price}`)) * (qty ? parseFloat(qty) : 1);
+                let resultado = (precioConIva ? parseFloat(precioConIva) / (1 + (parseFloat(typeof iva === "string" ? iva.replace(/,/g, '.').replace(/%/g, '') : iva)) / 100) : ((!isOfertaConPrecio && usd && `${usd}` != "0") ? usd * dolar : `${price}`)) * (qty ? parseFloat(qty) : 1);
 
-                // return resultado
-                return (parseFloat(aplicarDescuento(resultado,descuento)))
+                return parseFloat(esOferta ? resultado : aplicarDescuento(resultado, descuento));
             }
             
             let itemsOther = '';
