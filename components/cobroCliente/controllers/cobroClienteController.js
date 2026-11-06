@@ -1,23 +1,17 @@
 const elementService = require('../services');
+const crypto = require('node:crypto');
 const pino = require('../../../utils/logger/pino');
-const carritoService = require('../../carritos/services');
-const JWT = require("../../../utils/jwt/jwt");
+const managementCreate = require('../../../utils/managementCreate');
+const managementList = require('../../../utils/managementList');
+const Movement = require('../../../schema/cobroClientes');
 
 class Element {
 
     async createElement(req, res, next){
-        try {
-            let element = req.body;
-            let response = await elementService.save(element);
-            res.status(200).json({
-                result:'ok',
-                new: req.body,
-                response: response.resultado,
-            })
-        } catch (error) {
-            pino.error(`Se produjo un error: ${error}`);
-            res.status(400).render('error');
-        }
+        req.body = req.body || {};
+        req.body.idempotencyKey = req.get('Idempotency-Key') || crypto.randomUUID();
+        req.body.idempotencyActor = req.user?.id || req.user?.email || '';
+        return managementCreate(elementService, req, res);
     }
 
     async getElement(req, res, next){
@@ -32,14 +26,7 @@ class Element {
     }
 
     async getAllElement(req, res, next){
-        try {
-            let response = await elementService.getAll();
-            res.status(200).json(response);
-
-        } catch (error) {
-            pino.error(`Se produjo un error: ${error}`);
-            res.status(400).render('error');
-        }
+        return managementList(elementService, req, res);
     }
 
     async getAllElementCategory(req, res, next){
@@ -139,6 +126,12 @@ class Element {
     async deleteElement(req, res, next){
         try {
             let id = req.params.id
+            const movement = await Movement.findById(id).lean();
+            if (movement && (movement.chequeId || movement.cheque
+              || ['cheque', 'e-cheq'].includes(movement.medioDePago))) {
+              return res.status(409).json({ error: 'cheque_movement_locked',
+                message: 'La eliminación de cobros con cheque requiere un circuito de corrección' });
+            }
             let response = await elementService.deleteById(id);
             res.status(200).json({
                 result:'ok',

@@ -1,8 +1,3 @@
-const {config} = require("../../../config");
-let opcionDB= config.DB;
-const pino = require('../../../utils/logger/pino');
+const MongoService = require('./mongo');
 
-	let gastosDB=require(`../services/${opcionDB}`);
-	pino.info(`>>>>>>>>>>>>>> OPCION gastos: ${opcionDB}`);
-
-module.exports = new gastosDB("gastos");
+module.exports = new MongoService('gastos');

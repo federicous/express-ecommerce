@@ -1,23 +1,17 @@
 const elementService = require('../services');
 const pino = require('../../../utils/logger/pino');
-const carritoService = require('../../carritos/services');
-const JWT = require("../../../utils/jwt/jwt");
+const managementCreate = require('../../../utils/managementCreate');
+const managementList = require('../../../utils/managementList');
+const mongoose = require('mongoose');
+const Cheque = require('../../../schema/cheques');
+const Collection = require('../../../schema/cobroClientes');
+const Payment = require('../../../schema/pagos');
+const removeCheque = require('../../../utils/managementChequeDelete')(Cheque, Collection, Payment);
 
 class Element {
 
     async createElement(req, res, next){
-        try {
-            let element = req.body;
-            let response = await elementService.save(element);
-            res.status(200).json({
-                result:'ok',
-                new: req.body,
-                response: response.resultado,
-            })
-        } catch (error) {
-            pino.error(`Se produjo un error: ${error}`);
-            res.status(400).render('error');
-        }
+        return managementCreate(elementService, req, res);
     }
 
     async getElement(req, res, next){
@@ -32,14 +26,7 @@ class Element {
     }
 
     async getAllElement(req, res, next){
-        try {
-            let response = await elementService.getAll();
-            res.status(200).json(response);
-
-        } catch (error) {
-            pino.error(`Se produjo un error: ${error}`);
-            res.status(400).render('error');
-        }
+        return managementList(elementService, req, res);
     }
 
     async getAllElementCategory(req, res, next){
@@ -138,15 +125,29 @@ class Element {
 
     async deleteElement(req, res, next){
         try {
-            let id = req.params.id
-            let response = await elementService.deleteById(id);
-            res.status(200).json({
+            const id = req.params.id;
+            if (typeof id !== 'string' || !/^[a-f\d]{24}$/i.test(id) || !mongoose.isValidObjectId(id)) {
+                return res.status(400).json({ error: 'invalid_id', message: 'El identificador no es válido' });
+            }
+            const outcome = await removeCheque(id);
+            const errors = {
+                not_found: [404, 'No existe el cheque'],
+                linked_cheque: [409, 'El cheque tiene cobros o pagos vinculados'],
+                stale_cheque: [409, 'El cheque cambió; recargá la lista'],
+                atomicity_unavailable: [503, 'No se puede borrar el cheque: la base necesita soporte transaccional'],
+            };
+            if (outcome.error) {
+                const rejection = errors[outcome.error];
+                if (!rejection) throw new Error('No se pudo confirmar el borrado del cheque');
+                return res.status(rejection[0]).json({ error: outcome.error, message: rejection[1] });
+            }
+            return res.status(200).json({
                 result:'ok',
-                id: req.params.id      
+                id,
             })
         } catch (error) {
             pino.error(`Se produjo un error: ${error}`);
-            res.status(400).render('error');
+            return res.status(500).json({ error: 'internal_error', message: 'No se pudo borrar el cheque' });
         }
     }
 

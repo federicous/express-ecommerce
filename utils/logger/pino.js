@@ -1,4 +1,8 @@
-const pino = require("pino")({
+// Immutable production releases must never write logs inside the artifact.
+// JSON stdout is collected by the process manager; dev keeps the legacy pretty transport.
+module.exports = process.env.NODE_ENV === 'production'
+    ? require('pino')()
+    : require("pino")({
 	transport: {
 	    targets: [
 		{
@@ -14,6 +18,4 @@ const pino = require("pino")({
 		}
 	    ]
 	}
-    })
-    
-    module.exports = pino
+    });

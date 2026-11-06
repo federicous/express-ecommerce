@@ -1,6 +1,6 @@
 const elementService = require('../services')
 const pino = require('../../../utils/logger/pino')
-const JWT = require("../../../utils/jwt/jwt");
+const { publicUser } = require('../services/publicUser');
 
 class Element {
 
@@ -8,10 +8,10 @@ class Element {
     //     try {
     //         let element = req.body;
     //         let response = await elementService.save(element);
-    //         res.status(200).json(response);
+    //         res.status(200).json(Array.isArray(response) ? response.map(publicUser) : publicUser(response));
     //     } catch (error) {
-    //         pino.error(`Se produjo un error: ${error}`);
-    //         res.status(400).render('error');
+    //         pino.error('Error en operación de usuarios');
+    //         res.status(error.status || 500).json({ ...(error.code ? { code: error.code } : {}), message: error.status ? error.message : 'No se pudo completar la operación de usuarios' });
     //     }
     // }
 
@@ -32,14 +32,14 @@ class Element {
             pino.info(`Registrando Usuario: ${element.email} - endpoint: ${req.baseUrl} [${req.method}]`) 
             res.status(200).json({
                 result:'ok',
-                new: req.body,
+                new: publicUser(response.user || response),
                 message: response.message,
             })
             // .redirect('/login');
             
         } catch (error) {
-            pino.error(`Se produjo un error: ${error}`)
-            res.status(400).render('error');
+            pino.error('Error en operación de usuarios')
+            res.status(error.status || 500).json({ ...(error.code ? { code: error.code } : {}), message: error.status ? error.message : 'No se pudo completar la operación de usuarios' });
         }
     }
 
@@ -60,14 +60,14 @@ class Element {
             pino.info(`Borrando Usuario: ${element.email} - endpoint: ${req.baseUrl} [${req.method}]`) 
             res.status(200).json({
                 result:'ok',
-                new: req.body,
+                new: { _id: element._id },
                 message: response.message,
             })
             // .redirect('/login');
             
         } catch (error) {
-            pino.error(`Se produjo un error: ${error}`)
-            res.status(400).render('error');
+            pino.error('Error en operación de usuarios')
+            res.status(error.status || 500).json({ ...(error.code ? { code: error.code } : {}), message: error.status ? error.message : 'No se pudo completar la operación de usuarios' });
         }
     }
 
@@ -75,10 +75,10 @@ class Element {
         try {
             let id = req.params.id
             let response = await elementService.getById(id);
-            res.status(200).json(response);
+            res.status(200).json(Array.isArray(response) ? response.map(publicUser) : publicUser(response));
         } catch (error) {
-            pino.error(`Se produjo un error: ${error}`);
-            res.status(400).render('error');
+            pino.error('Error en operación de usuarios');
+            res.status(error.status || 500).json({ ...(error.code ? { code: error.code } : {}), message: error.status ? error.message : 'No se pudo completar la operación de usuarios' });
         }
     }
 
@@ -87,10 +87,10 @@ class Element {
         try {
             let id = req.params.idVendedor
             let response = await elementService.getByIdVendedor(id);
-            res.status(200).json(response);
+            res.status(200).json(Array.isArray(response) ? response.map(publicUser) : publicUser(response));
         } catch (error) {
-            pino.error(`Se produjo un error: ${error}`);
-            res.status(400).render('error');
+            pino.error('Error en operación de usuarios');
+            res.status(error.status || 500).json({ ...(error.code ? { code: error.code } : {}), message: error.status ? error.message : 'No se pudo completar la operación de usuarios' });
         }
     }
 
@@ -98,39 +98,26 @@ class Element {
     async getAllElement(req, res, next){
         try {
             let response = await elementService.getAll();
-            res.status(200).json(response);
+            res.status(200).json(Array.isArray(response) ? response.map(publicUser) : publicUser(response));
         } catch (error) {
-            pino.error(`Se produjo un error: ${error}`);
-            res.status(400).render('error');
+            pino.error('Error en operación de usuarios');
+            res.status(error.status || 500).json({ ...(error.code ? { code: error.code } : {}), message: error.status ? error.message : 'No se pudo completar la operación de usuarios' });
         }
     }
 
     async updateElement(req, res, next){
         try {
             let element = req.body;
-            console.log(`body:`);
-            console.log(element);
-            // pino.info(`request: ${req.originalUrl} [${req.method}] - body: ${req.body}`)                    
-
-            // let email = req.params.email
-            // let email = element.email
-            // console.log(element);
-            // console.log(email);
-            // return
-
-            // Loguear la accion
-            let token = req.cookies.token || req.headers.authorization?.split(' ')[1];
-            let payload = await JWT.decode(token);
-            pino.info(`Modificando Usuario: ${element.email ? element.email : element._id} - Función: updateElement - endpoint: ${req.baseUrl} [${req.method}] - Editado por: ${payload.email}`);
+            pino.info('Solicitud de modificación de usuario');
             let response = await elementService.modifyUser(element);
             res.status(200).json({
                 result:'ok',
-                new: req.body,
+                new: publicUser(response.user || element),
                 message: response.message,
             })
         } catch (error) {
-            pino.error(`Se produjo un error: ${error}`);
-            res.status(400).render('error');
+            pino.error('Error en operación de usuarios');
+            res.status(error.status || 500).json({ ...(error.code ? { code: error.code } : {}), message: error.status ? error.message : 'No se pudo completar la operación de usuarios' });
         }
     }
 
@@ -143,18 +130,18 @@ class Element {
                 id: req.params.id      
             })
         } catch (error) {
-            pino.error(`Se produjo un error: ${error}`);
-            res.status(400).render('error');
+            pino.error('Error en operación de usuarios');
+            res.status(error.status || 500).json({ ...(error.code ? { code: error.code } : {}), message: error.status ? error.message : 'No se pudo completar la operación de usuarios' });
         }
     }
 
     async deleteAllElement(req, res, next){
         try {
             let response = await elementService.deleteAll();
-            res.status(200).json(response);
+            res.status(200).json(Array.isArray(response) ? response.map(publicUser) : publicUser(response));
         } catch (error) {
-            pino.error(`Se produjo un error: ${error}`);
-            res.status(400).render('error');
+            pino.error('Error en operación de usuarios');
+            res.status(error.status || 500).json({ ...(error.code ? { code: error.code } : {}), message: error.status ? error.message : 'No se pudo completar la operación de usuarios' });
         }
     }
 }

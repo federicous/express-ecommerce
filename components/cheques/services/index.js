@@ -1,8 +1,16 @@
-const {config} = require("../../../config");
-let opcionDB= config.DB;
-const pino = require('../../../utils/logger/pino');
+const MongoService = require('./mongo');
+const { cents } = require('../../../utils/managementMovementCreate');
 
-	let chequesDB=require(`../services/${opcionDB}`);
-	pino.info(`>>>>>>>>>>>>>> OPCION cheque: ${opcionDB}`);
+const service = new MongoService('cheques');
+const legacySave = service.save.bind(service);
+service.save = async (payload) => {
+  if (!payload || typeof payload !== 'object' || Array.isArray(payload)
+    || Object.hasOwn(payload, 'linkVersion')) return { error: 'invalid_cheque_reference' };
+  if (typeof payload.cliente !== 'string' || !payload.cliente.trim()
+    || !['cheque', 'e-cheq'].includes(payload.tipo)) return { error: 'invalid_cheque_record' };
+  const amount = cents(payload.monto);
+  if (amount === null || amount <= 0n) return { error: 'invalid_amount' };
+  return legacySave({ ...payload, linkVersion: 'd04' });
+};
 
-module.exports = new chequesDB("cheques");
+module.exports = service;

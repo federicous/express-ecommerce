@@ -9,7 +9,7 @@ class Element {
         try {
             const token = req.cookies.token || req.headers.authorization?.split(' ')[1];
             if (!token) return res.status(200).json(false);
-            let payload = await JWT.decode(token);
+            let payload = await JWT.verify(token);
             if (!payload) return res.status(200).json(false);
             let userLevel = await elementService.getLevel(payload);
             res.status(200).json(userLevel || false);
@@ -21,7 +21,7 @@ class Element {
     async getDescuento(req, res, next){
         try {
             const token = req.cookies.token || req.headers.authorization?.split(' ')[1];
-            let payload = await JWT.decode(token);
+            let payload = await JWT.verify(token);
             let userLevel = await elementService.getDesc(payload);
             res.status(200).json(userLevel)
         } catch (error) {
@@ -33,7 +33,7 @@ class Element {
     async getVende(req, res, next){
         try {
             const token = req.cookies.token || req.headers.authorization?.split(' ')[1];
-            let payload = await JWT.decode(token);
+            let payload = await JWT.verify(token);
             let userLevel = await elementService.getSell(payload);
             res.status(200).json(userLevel)
         } catch (error) {

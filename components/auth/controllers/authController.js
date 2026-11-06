@@ -1,6 +1,7 @@
 const elementService = require('../services')
 // const jwt = require("jsonwebtoken")
 const JWT = require("../../../utils/jwt/jwt");
+const { authCookieOptions } = require('../../../utils/authCookies');
 const pino = require('../../../utils/logger/pino');
 const productService = require('../../pruductos/services');
 const carritoService = require('../../carritos/services');
@@ -17,7 +18,7 @@ class Element {
             if (token) {
                 verification = await JWT.verify(token) 
             }
-            pino.info(token);
+            pino.info('Verificación de sesión solicitada');
             if (!verification) {
                 pino.info(`sin token`);
                 return res.status(200).clearCookie("token").render('login',{message: ""})
@@ -32,20 +33,30 @@ class Element {
 
     async postLogin(req, res, next){
         try {
-            let {email, password} = req.body;
+            let {email, password} = req.body || {};
+            if (typeof email !== 'string' || !email.trim() || typeof password !== 'string' || !password) {
+                return res.status(400).json({ message: 'Datos de inicio de sesión inválidos' });
+            }
             let response = await elementService.login(email,password);
-            if (response.message) {
-                // pino.error(`Error de autenticación: ${email} - endpoint: ${req.originalUrl} [${req.method}] - USUARIO O CONTRASEÑA INCORRECTA: ${password} PARA USUARIO: ${email}`) 
+            if (response?.message) {
                 pino.info(response);
                 // return res.status(404)
                 // .render('login', {message: response.message});
-                return res.status(404).json({ message: response.message });
+                return res.status(response.code === 'ACCOUNT_PENDING' ? 403 : 401).json({ code: response.code || 'INVALID_CREDENTIALS', message: response.message });
+            }
+            if (typeof response?.token !== 'string' || !response.token) {
+                return res.status(503).json({ message: 'No se pudo iniciar sesión' });
             }
             pino.info(`Usuario autenticado: ${response.email} - endpoint: ${req.originalUrl} [${req.method}]`)                    
+            // Only successful login retires API host-only leftovers. Never
+            // delete a shared cookie in an asynchronous rejection/logout ACK.
+            if (authCookieOptions().domain) {
+                for (const name of ['token', 'user', 'IdVendedor']) res.clearCookie(name, { path: '/', secure: true, sameSite: 'lax' });
+            }
             res.status(200)
-            .cookie('token', response.token, {maxAge: 3600000})
-            .cookie('user', `${response.email}`)
-            .cookie('IdVendedor', `${response.IdVendedor}`)
+            .cookie('token', response.token, authCookieOptions(3600000))
+            .cookie('user', `${response.email}`, authCookieOptions())
+            .cookie('IdVendedor', `${response.IdVendedor}`, authCookieOptions())
             .json(response)
             // .redirect('/productos');
 
@@ -72,6 +83,12 @@ class Element {
             pino.error(`Se produjo un error: ${error}`)
             res.status(400).render('error');
         }
+    }
+
+    async postBrowserLogout(req, res) {
+        const scope = require('../../../utils/sharedCookieScope').browserLogoutScope(req);
+        if (!scope) return res.status(409).json({ error: 'No coincide el alcance configurado para el cierre compartido', code: 'logout_scope_mismatch' });
+        return res.status(200).set('Cache-Control', 'no-store').json(scope);
     }
 
     async getRegister(req, res, next){

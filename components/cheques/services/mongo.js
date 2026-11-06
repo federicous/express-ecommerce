@@ -34,7 +34,7 @@ class MongoDB {
 				let verificarExistente = await ElementModel.find({code: `${element.code}`}) 
 				if (verificarExistente.length) {
 					console.log(`Ya existe un element con el mismo código ${element.code}`);
-					return{message:`Ya existe el element ${element.code}`}
+					return{error:'duplicate_code', message:`Ya existe el element ${element.code}`}
 				} else {
 					element.timestamp = Date.now();
 					element.image = imageName;
@@ -52,7 +52,7 @@ class MongoDB {
 
 		} catch (error) {
 			pino.error(`Se produjo un error: ${error}`)
-			throw new Error(error)
+			throw error
 		}
 	}
 	async modify(element, id) {

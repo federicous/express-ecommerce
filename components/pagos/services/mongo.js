@@ -52,7 +52,7 @@ class MongoDB {
 
 		} catch (error) {
 			pino.error(`Se produjo un error: ${error}`)
-			throw new Error(error)
+			throw error
 		}
 	}
 	async modify(element, id) {

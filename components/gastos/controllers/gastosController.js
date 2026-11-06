@@ -1,23 +1,15 @@
 const elementService = require('../services');
 const pino = require('../../../utils/logger/pino');
-const carritoService = require('../../carritos/services');
-const JWT = require("../../../utils/jwt/jwt");
+const managementCreate = require('../../../utils/managementCreate');
+const managementList = require('../../../utils/managementList');
+
+const expenseEdit = require('../../../utils/managementLinkedInvoice')(
+  require('../../../schema/gastos'), { exists: async () => false }, 'gasto');
 
 class Element {
 
     async createElement(req, res, next){
-        try {
-            let element = req.body;
-            let response = await elementService.save(element);
-            res.status(200).json({
-                result:'ok',
-                new: req.body,
-                response: response.resultado,
-            })
-        } catch (error) {
-            pino.error(`Se produjo un error: ${error}`);
-            res.status(400).render('error');
-        }
+        return managementCreate(elementService, req, res);
     }
 
     async getElement(req, res, next){
@@ -32,14 +24,7 @@ class Element {
     }
 
     async getAllElement(req, res, next){
-        try {
-            let response = await elementService.getAll();
-            res.status(200).json(response);
-
-        } catch (error) {
-            pino.error(`Se produjo un error: ${error}`);
-            res.status(400).render('error');
-        }
+        return managementList(elementService, req, res);
     }
 
     async getAllElementCategory(req, res, next){
@@ -86,38 +71,12 @@ class Element {
         }
     }
 
-    async updateElement(req, res, next){
-        try {
-            let element = req.body;
-            let id = req.params.id
-            let imageName= req.imageName;
-            let response = await elementService.modifyAll(id, element, imageName);
-            res.status(200).json({
-                result:'ok',
-                id: req.params.id,
-                new: req.body,
-                response: response.message,
-            })
-        } catch (error) {
-            pino.error(`Se produjo un error: ${error}`);
-            res.status(400).render('error');
-        }
+    async updateElement(req, res){
+        return expenseEdit.updateById(req, res);
     }
 
-    async updateAllElement(req, res, next){
-        try {
-            let element = req.body;
-            console.log(element);
-            let response = await elementService.modifyAll(element);
-            res.status(200).json({
-                result:'ok',
-                new: req.body,
-                response: response.resultado,
-            })
-        } catch (error) {
-            pino.error(`Se produjo un error: ${error}`);
-            res.status(400).render('error');
-        }
+    async updateAllElement(req, res){
+        return expenseEdit.updateRoot(req, res);
     }
 
     async updateAllElementCode(req, res, next){

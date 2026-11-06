@@ -1,3 +1,4 @@
+const { validateDocument } = require('../../../utils/managementDocumentInput');
 const fs = require('fs').promises
 let ElementModel = require('../../../schema/facturaClientes')
 const pino = require('../../../utils/logger/pino')
@@ -15,6 +16,8 @@ async function exists (path) {
 class MongoDB {
 
 	async save(element, imageName) {
+		const rejection = validateDocument(element);
+		if (rejection) return { error: rejection };
 		try {
 			if (Array.isArray(element)) {
 				element.forEach(async element => {
@@ -34,7 +37,7 @@ class MongoDB {
 				let verificarExistente = await ElementModel.find({code: `${element.code}`})
 				if (verificarExistente.length) {
 					console.log(`ya existe un element con el mismo código ${element.code}`);
-					return{message:`ya existe el element ${element.code}`}
+					return{error:'duplicate_code', message:`ya existe el element ${element.code}`}
 				} else {
 					element.timestamp = Date.now();
 					element.image = imageName;
@@ -52,7 +55,7 @@ class MongoDB {
 
 		} catch (error) {
 			pino.error(`Se produjo un error: ${error}`)
-			throw new Error(error)
+			throw error
 		}
 	}
 	async modify(element, id) {

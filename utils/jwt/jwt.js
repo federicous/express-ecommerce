@@ -1,34 +1,37 @@
-const jwt = require('jsonwebtoken')
-const pino = require('../../utils/logger/pino')
-const {autenticacion} = require('../../config')
+const jwt = require('jsonwebtoken');
+const pino = require('../../utils/logger/pino');
+const { autenticacion } = require('../../config');
 
 class JWT {
-    async generate(payload){
+    async generate(payload) {
         try {
-            return await jwt.sign(payload, autenticacion.JWT_SECRET, {
-                expiresIn:  autenticacion.JWT_EXP,
+            return jwt.sign(payload, autenticacion.JWT_SECRET, {
+                expiresIn: autenticacion.JWT_EXP,
                 algorithm: autenticacion.JWT_ALG
-            })
+            });
         } catch (error) {
-              pino.error(`Se produjo un error: ${error}`)
+            pino.error(`Se produjo un error al generar JWT: ${error}`);
+            return null;
         }
     }
-    async verify(token){
+
+    async verify(token) {
         try {
-            return await jwt.verify(token, autenticacion.JWT_SECRET, {
-                algorithm: [autenticacion.JWT_ALG]
-            })
+            return jwt.verify(token, autenticacion.JWT_SECRET, {
+                algorithms: [autenticacion.JWT_ALG]
+            });
         } catch (error) {
-            pino.error(`Se produjo un error: ${error}`)
+            pino.error(`Se produjo un error al verificar JWT: ${error}`);
+            return null;
         }
     }
-    async decode(token){
+
+    async decode(token) {
         try {
-            return await jwt.decode(token, autenticacion.JWT_SECRET, {
-                algorithm: [autenticacion.JWT_ALG]
-            })
+            return jwt.decode(token);
         } catch (error) {
-            pino.error(`Se produjo un error: ${error}`)
+            pino.error(`Se produjo un error al decodificar JWT: ${error}`);
+            return null;
         }
     }
 }

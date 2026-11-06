@@ -1,3 +1,4 @@
+const { validateDocument } = require('../../../utils/managementDocumentInput');
 const fs = require('fs').promises
 let ElementModel = require('../../../schema/gastos')
 // let ElementModel2 = require('../../../schema/facturaClientes')
@@ -16,6 +17,8 @@ async function exists (path) {
 class MongoDB {
 
 	async save(element, imageName) {
+		const rejection = validateDocument(element);
+		if (rejection) return { error: rejection };
 		try {
 			if (Array.isArray(element)) {
 				element.forEach(async element => {
@@ -52,7 +55,7 @@ class MongoDB {
 
 		} catch (error) {
 			pino.error(`Se produjo un error: ${error}`)
-			throw new Error(error)
+			throw error
 		}
 	}
 	async modify(element, id) {
