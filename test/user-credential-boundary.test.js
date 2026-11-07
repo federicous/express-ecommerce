@@ -53,3 +53,11 @@ test('operators and object fields rejected without writes',async()=>{
  for(const input of [{$set:{password:'hack'}},{name:{$ne:null}},{'name.x':'hack'}])await assert.rejects(()=>service.modifyUser({_id:saved._id,...input}),e=>e.status===400);assert.equal(writes.length,0);
 });
 test('invalid identity rejected before writes',async()=>{await assert.rejects(()=>service.modifyUser({_id:{$ne:null}}),e=>e.status===400);assert.equal(writes.length,0);});
+
+test('management permission is explicitly normalized and rejects ambiguous values',async()=>{
+ await service.modifyUser({_id:saved._id,isManagement:'on'});
+ assert.equal(writes.at(-1).$set.isManagement,'on');
+ await service.modifyUser({_id:saved._id,isManagement:'off'});
+ assert.equal(writes.at(-1).$set.isManagement,'off');
+ for(const isManagement of ['yes',1,null,{}]) await assert.rejects(()=>service.modifyUser({_id:saved._id,isManagement}),e=>e.status===400);
+});

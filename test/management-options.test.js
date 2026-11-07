@@ -8,6 +8,13 @@ const { loadConfig } = require('../config/load');
 const { createManagementOptionsHandler } = require('../routes/managementOptions');
 
 process.env.NODE_ENV = 'test';
+const UsuarioModel = require('../schema/usuarios');
+const managementUsers = new Map([
+  ['operator-a', { enable: 'on', isManagement: 'on' }],
+  ['synthetic', { enable: 'on', isManagement: 'on' }],
+  ['administrator', { enable: 'on', isAdmin: 'on', isManagement: 'off' }],
+]);
+UsuarioModel.findById = id => ({ select: () => ({ lean: async () => managementUsers.get(String(id)) || null }) });
 const auth = require('../middleware/autenticacion');
 const secret = require('../config').autenticacion.JWT_SECRET;
 
@@ -28,15 +35,15 @@ test('invalid catalog configuration fails closed without exposing its contents',
   }
 });
 
-test('options endpoint requires administrator and publishes only catalog names with no cache', async () => {
+test('options endpoint requires management permission and publishes only catalog names with no cache', async () => {
   const app = express();
-  app.get('/api/management/options', auth.administrador, createManagementOptionsHandler({
+  app.get('/api/management/options', auth.gestion, createManagementOptionsHandler({
     MANAGEMENT_SUPPLIERS_JSON: '["Proveedor local"]', MANAGEMENT_SELLERS_JSON: '["Vendedor local"]',
     JWT_SECRET: 'do-not-publish', MONGO_URI: 'do-not-publish',
   }));
   assert.equal((await request(app).get('/api/management/options')).status, 401);
-  for (const [isAdmin, expiresIn, status] of [[false, '1h', 403], [true, -1, 401], [true, '1h', 200]]) {
-    const token = jwt.sign({ id: 'synthetic', isAdmin }, secret, { expiresIn });
+  for (const [id, isAdmin, isManagement, expiresIn, status] of [['administrator', true, false, '1h', 403], ['synthetic', false, true, -1, 401], ['synthetic', false, true, '1h', 200]]) {
+    const token = jwt.sign({ id, isAdmin, isManagement }, secret, { expiresIn });
     const response = await request(app).get('/api/management/options').set('Authorization', `Bearer ${token}`);
     assert.equal(response.status, status);
     if (status === 200) {

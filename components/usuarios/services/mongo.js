@@ -5,7 +5,7 @@ const pino = require('../../../utils/logger/pino');
 const { publicUser, passwordChange } = require('./publicUser');
 function inputChanges(input, required = false) {
  if (!input || typeof input !== 'object' || Array.isArray(input) || Object.keys(input).some(k=>k.startsWith('$')||k.includes('.'))) throw Object.assign(new Error('Datos de usuario inválidos'),{status:400});
- const output={};for(const key of ['name','age','email','address','phone','provincia','localidad','cuit','ferreteria','descuento','vendedor','IdVendedor','isAdmin','isSeller','enable','descargas'])if(Object.hasOwn(input,key)){if(input[key]!==null&&typeof input[key]==='object')throw Object.assign(new Error('Campo de usuario inválido'),{status:400});output[key]=input[key];}
+ const output={};for(const key of ['name','age','email','address','phone','provincia','localidad','cuit','ferreteria','descuento','vendedor','IdVendedor','isAdmin','isSeller','isManagement','enable','descargas'])if(Object.hasOwn(input,key)){if(input[key]!==null&&typeof input[key]==='object')throw Object.assign(new Error('Campo de usuario inválido'),{status:400});if(key==='isManagement'){const value=input[key];if([true,'true','on'].includes(value))output[key]='on';else if([false,'false','off'].includes(value))output[key]='off';else throw Object.assign(new Error('Permiso de gestión inválido'),{status:400});}else output[key]=input[key];}
  const password=passwordChange(input.password,required);if(password!==undefined)output.password=bcrypt.hashSync(password,10);return output;
 }
 function userId(id){if(typeof id!=='string'||!mongoose.isValidObjectId(id))throw Object.assign(new Error('Identidad de usuario inválida'),{status:400});return id;}

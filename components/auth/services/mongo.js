@@ -58,6 +58,7 @@ class AuthService {
 					name: user.name,
 					email: user.email,
 					isAdmin: user.isAdmin,
+					isManagement: user.isManagement,
 					vendedor: user.vendedor,
 					descargas: user.descargas,
 					descuento: user.descuento,

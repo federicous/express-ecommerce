@@ -15,8 +15,11 @@ const states = Object.fromEntries(resources.map(([dir]) => [dir, { calls: 0 }]))
 const controllers = new Map(resources.map(([dir, name]) => [require.resolve(`../components/${dir}/controllers/${name}Controller`), dir]));
 const routers = new Set(resources.map(([dir]) => require.resolve(`../components/${dir}`)));
 const originalLoad = Module._load;
+const authModule = require.resolve('../middleware/autenticacion');
+const users = { manager: { enable: 'on', isManagement: 'on' }, administrator: { enable: 'on', isAdmin: 'on', isManagement: 'off' } };
 Module._load = function syntheticServices(name, parent, isMain) {
   if (name.includes('logger/pino')) return { info() {}, error() {} };
+  if (parent?.filename === authModule && name === '../schema/usuarios') return { findById: id => ({ select: () => ({ lean: async () => users[id] || null }) }) };
   if (controllers.has(parent?.filename) && name === '../services') {
     const state = states[controllers.get(parent.filename)];
     return { async getAll() {
@@ -43,10 +46,10 @@ for (const [dir, route] of resources) {
       return token ? pending.set('Authorization', `Bearer ${token}`) : pending;
     };
     assert.equal((await read()).status, 401);
-    assert.equal((await read(jwt.sign({ isAdmin: false }, secret))).status, 403);
-    assert.equal((await read(jwt.sign({ isAdmin: true }, secret, { expiresIn: -1 }))).status, 401);
+    assert.equal((await read(jwt.sign({ id: 'administrator', isAdmin: true, isManagement: false }, secret))).status, 403);
+    assert.equal((await read(jwt.sign({ id: 'manager', isManagement: true }, secret, { expiresIn: -1 }))).status, 401);
     assert.equal(state.calls, 0);
-    const token = jwt.sign({ isAdmin: true }, secret);
+    const token = jwt.sign({ id: 'manager', isAdmin: false, isManagement: true }, secret);
     for (const outcome of [{ resultado: [] }, { resultado: [{ _id: 'synthetic', code: 'CODE' }], message: 'legacy envelope' }]) {
       state.outcome = outcome;
       const response = await read(token);

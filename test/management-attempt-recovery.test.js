@@ -4,27 +4,34 @@ const express = require('express');
 const request = require('supertest');
 const jwt = require('jsonwebtoken');
 process.env.NODE_ENV = 'test';
+const UsuarioModel = require('../schema/usuarios');
+const managementUsers = new Map([
+  ['operator-a', { enable: 'on', isManagement: 'on' }],
+  ['synthetic', { enable: 'on', isManagement: 'on' }],
+  ['administrator', { enable: 'on', isAdmin: 'on', isManagement: 'off' }],
+]);
+UsuarioModel.findById = id => ({ select: () => ({ lean: async () => managementUsers.get(String(id)) || null }) });
 const auth = require('../middleware/autenticacion');
 const secret = require('../config').autenticacion.JWT_SECRET;
 const { createAttemptRecoveryHandler, classifyAttempt } = require('../routes/managementAttemptRecovery');
 const key = '12345678-1234-4234-8234-123456789abc';
 const url = `/api/management/attempts/cobroClientes/${key}`;
 const token = (actor = 'operator-a', isAdmin = true, expiresIn = '1h') =>
-  jwt.sign({ id: actor, isAdmin }, secret, { expiresIn });
+  jwt.sign({ id: actor, isAdmin, isManagement: actor !== 'administrator' }, secret, { expiresIn });
 function app(reader) {
   const server = express();
-  server.get('/api/management/attempts/:resource/:key', auth.administrador, createAttemptRecoveryHandler(reader));
+  server.get('/api/management/attempts/:resource/:key', auth.gestion, createAttemptRecoveryHandler(reader));
   return server;
 }
 const attempt = { movementId: 'm1', fingerprint: 'a'.repeat(64) };
 const movement = { _id: 'm1', invoiceId: 'i1', code: 'V-1', cliente: 'Client', monto: '40.25', fecha: '2026-10-01', medioDePago: 'efectivo', name: 'private' };
 const invoice = { _id: 'i1', code: 'V-1', cliente: 'Client' };
 
-test('recovery requires current admin session, including expiry and valid actor', async () => {
+test('recovery requires current management session, including expiry and valid actor', async () => {
   let reads = 0;
   const server = app(async () => { reads++; return { status: 'not_confirmed' }; });
   assert.equal((await request(server).get(url)).status, 401);
-  for (const [value, status] of [[token('operator-a', false), 403], [token('operator-a', true, -1), 401], [token(''), 403]]) {
+  for (const [value, status] of [[token('administrator', true), 403], [token('operator-a', true, -1), 401], [token(''), 403]]) {
     assert.equal((await request(server).get(url).set('Authorization', `Bearer ${value}`)).status, status);
   }
   assert.equal(reads, 0);

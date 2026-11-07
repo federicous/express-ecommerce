@@ -12,10 +12,22 @@ const cents=value=>{const m=/^(\d+)(?:\.(\d{1,2}))?$/.exec(String(value));assert
  const health=await api('/health');assert.equal(health.status,200);assert.equal(health.body.service,'brmtools-validation-api');assert.equal((await api('/ready')).status,200);
  dbClient=await MongoClient.connect(u.href,{serverSelectionTimeoutMS:3000});const db=dbClient.db('brmtools_validation');assert.ok((await db.admin().command({hello:1})).setName);
  const suffix=crypto.randomBytes(6).toString('hex'),operator='operator-'+suffix+'@synthetic.test',buyer='buyer-'+suffix+'@synthetic.test';
- await db.collection('usuarios').insertMany([{email:operator,name:'Synthetic operator',password:bcrypt.hashSync(password,10),isAdmin:'on',isSeller:'off',enable:'on',descuento:'0',vendedor:'Synthetic seller',IdVendedor:'synthetic'},{email:buyer,name:'Synthetic buyer',password:bcrypt.hashSync(password,10),isAdmin:'off',isSeller:'off',enable:'on',descuento:'10',vendedor:'Synthetic seller'}]);
+ await db.collection('usuarios').insertMany([{email:operator,name:'Synthetic operator',password:bcrypt.hashSync(password,10),isAdmin:'on',isManagement:'on',isSeller:'off',enable:'on',descuento:'0',vendedor:'Synthetic seller',IdVendedor:'synthetic'},{email:buyer,name:'Synthetic buyer',password:bcrypt.hashSync(password,10),isAdmin:'off',isSeller:'off',enable:'on',descuento:'10',vendedor:'Synthetic seller'}]);
  const login=await api('/login',{method:'POST',body:{email:operator,password}});assert.equal(login.status,200);const token=login.body.token;
  const buyerLogin=await api('/login',{method:'POST',body:{email:buyer,password}});assert.equal(buyerLogin.status,200);
  assert.equal((await api('/api/management/options')).status,401);assert.equal((await api('/api/management/options',{token:buyerLogin.body.token})).status,403);assert.equal((await api('/api/auth/session',{token})).body.user.email,operator);add('BRM-real-login-session-and-management-permissions');
+ const matrixPassword=bcrypt.hashSync(password,10),adminOnly='admin-only-'+suffix+'@synthetic.test',managerOnly='manager-only-'+suffix+'@synthetic.test';
+ await db.collection('usuarios').insertMany([{email:adminOnly,name:'Synthetic admin only',password:matrixPassword,enable:'on',isAdmin:'on',isManagement:'off'},{email:managerOnly,name:'Synthetic management only',password:matrixPassword,enable:'on',isAdmin:'off',isManagement:'on'}]);
+ const adminSession=await api('/login',{method:'POST',body:{email:adminOnly,password}}),managerSession=await api('/login',{method:'POST',body:{email:managerOnly,password}});
+ assert.equal((await api('/api/management/options',{token:adminSession.body.token})).status,403);
+ assert.equal((await api('/api/users/',{token:adminSession.body.token})).status,200);
+ assert.equal((await api('/api/management/options',{token:managerSession.body.token})).status,200);
+ assert.equal((await api('/api/users/',{token:managerSession.body.token})).status,403);
+ await db.collection('usuarios').updateOne({email:managerOnly},{$set:{isManagement:'off'}});
+ assert.equal((await api('/api/management/options',{token:managerSession.body.token})).status,403);
+ await db.collection('usuarios').updateOne({email:managerOnly},{$set:{isManagement:'on'}});
+ assert.equal((await api('/api/management/options',{token:managerSession.body.token})).status,200);
+ add('BRM-independent-management-role-and-live-revocation');
  const documents=[];
  for(const [invoice,movement,party]of [['facturaCliente','cobroCliente','cliente'],['facturaProveedor','pagos','proveedor']]){
   const payload={code:'BRM-ACCEPT-'+invoice+'-'+suffix,monto:'100.50',fecha:'05/11/2026',vencimiento:'05/11/2026',tipo:'factura',[party]:party==='cliente'?'Synthetic buyer':'Synthetic supplier',vendedor:'Synthetic seller'};

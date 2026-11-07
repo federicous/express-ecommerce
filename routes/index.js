@@ -66,8 +66,8 @@ function serverRoutes(app) {
     // La interfaz independiente no habilita estas APIs por sí sola.
     // Cada instancia debe optar explícitamente por gestión en su backend.
     if (clientConfig.featureManagement) {
-        app.get('/api/management/options', Autenticacion.administrador, createManagementOptionsHandler());
-        app.get('/api/management/attempts/:resource/:key', Autenticacion.administrador, createAttemptRecoveryHandler());
+        app.get('/api/management/options', Autenticacion.gestion, createManagementOptionsHandler());
+        app.get('/api/management/attempts/:resource/:key', Autenticacion.gestion, createAttemptRecoveryHandler());
         apiFacturaCliente(app);
         apiCobroCliente(app);
         apiDevoluciones(app);

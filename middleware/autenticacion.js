@@ -1,5 +1,8 @@
 const JWT = require("../utils/jwt/jwt");
 const pino = require('../utils/logger/pino');
+const UsuarioModel = require('../schema/usuarios');
+
+const flagOn = value => value === true || value === 'true' || value === 'on';
 
 function extractToken(req) {
 	if (req.cookies && req.cookies.token) return req.cookies.token;
@@ -65,6 +68,25 @@ class Autenticacion {
 		} catch (error) {
 			pino.error(`Se produjo un error: ${error}`);
 			return res.status(401).json({ error: 'Error de autenticación' });
+		}
+	}
+
+	async gestion(req, res, next) {
+		try {
+			const { payload, error, code } = await verifiedCredentials(req);
+			if (error) return res.status(401).json({ error, ...(code ? { code } : {}) });
+			const user = await UsuarioModel.findById(payload.id).select('enable isManagement').lean();
+			if (!user || !flagOn(user.enable)) {
+				return res.status(403).json({ error: 'La cuenta no está habilitada', code: 'account_disabled' });
+			}
+			if (!flagOn(user.isManagement)) {
+				return res.status(403).json({ error: 'Acceso no autorizado: requiere permiso de gestión', code: 'management_forbidden' });
+			}
+			req.user = { ...payload, isManagement: true };
+			next();
+		} catch (error) {
+			pino.error(`Error al validar acceso de gestión: ${error}`);
+			return res.status(401).json({ error: 'No se pudo validar el acceso' });
 		}
 	}
 }

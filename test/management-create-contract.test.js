@@ -22,8 +22,11 @@ const controllers = new Map(resources.map(([dir, name]) => [
 ]));
 const routers = new Set(resources.map(([dir]) => require.resolve(`../components/${dir}`)));
 const originalLoad = Module._load;
+const authModule = require.resolve('../middleware/autenticacion');
+const users = { manager: { enable: 'on', isManagement: 'on' } };
 Module._load = function isolatedServices(name, parent, isMain) {
   if (name.includes('logger/pino')) return { info() {}, error() {} };
+  if (parent?.filename === authModule && name === '../schema/usuarios') return { findById: id => ({ select: () => ({ lean: async () => users[id] || null }) }) };
   if (controllers.has(parent?.filename) && name === '../services') {
     const resource = controllers.get(parent.filename);
     return { async save() {
@@ -44,7 +47,7 @@ try {
   app.use(express.json());
   for (const router of routers) require(router)(app);
   managementCreate = require('../utils/managementCreate');
-  token = jwt.sign({ isAdmin: true }, require('../config').autenticacion.JWT_SECRET);
+  token = jwt.sign({ id: 'manager', isAdmin: false, isManagement: true }, require('../config').autenticacion.JWT_SECRET);
 } finally {
   Module._load = originalLoad;
 }
