@@ -21,7 +21,8 @@ const ordenSchema = {
 	presupuesto: presupuesto.required()
 }
 
-let ordenSchemaModel = new Schema(ordenSchema);
+let ordenSchemaModel = new Schema({ ...ordenSchema, notification: { type: Schema.Types.Mixed, default: undefined, select: false }, idempotencyKey: { type: String, default: undefined }, requestFingerprint: { type: String, default: undefined } });
+ordenSchemaModel.index({ idempotencyKey: 1 }, { unique: true, sparse: true });
 let OrdenModel = new model('ordenes', ordenSchemaModel);
 
 module.exports= OrdenModel;

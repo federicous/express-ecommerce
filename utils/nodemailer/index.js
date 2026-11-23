@@ -18,7 +18,7 @@ class Correo {
 			const option = {
 				from: `BRMTOOLS - Registro de usuario <${userEmail}>`,
 				to: `${[...new Set([user.email,emailVendedor])].filter(Boolean).join(",")}`,
-				bcc: `${adminEmail},${bccEmail}`,
+				bcc: [adminEmail, bccEmail].filter(Boolean).join(","),
 				subject: `👤 Usuario Registrado: ${user.email} - ${user.name}`,
 				text: `El usuario ${user.email} ha sido registrado`,
 				html:`
@@ -72,7 +72,7 @@ class Correo {
 		}
 	}
 
-	async orden(user, carrito, descuento, dolar, emailVendedor, emailUsuarioElegido, presupuesto= '') {
+	async crearOrden(user, carrito, descuento, dolar, emailVendedor, emailUsuarioElegido, presupuesto= '') {
         try {
             // console.log(user);
             // console.log(carrito);
@@ -196,7 +196,7 @@ class Correo {
             const option = {
                 from: `BRMTOOLS - ${presupuesto ? "PRESUPUESTO" : "Orden de compra"} <${userEmail}>`,
                 to: `${[...new Set([user.email,emailVendedor,emailUsuarioElegido])].filter(Boolean).join(",")}`,
-                bcc: `${adminEmail},${bccEmail}`,
+                bcc: [adminEmail, bccEmail].filter(Boolean).join(","),
                 subject: `${presupuesto ? "💰 PRESUPUESTO" : "🛒 Orden creada"}`,
                 html: `
                     <div>
@@ -282,14 +282,10 @@ class Correo {
                     </div>
                     `
             }
-            const response = await transporter.sendMail(option)
-            // console.log(option);			
-            pino.info(`Enviando correo a: ${[...new Set([user.email,emailVendedor,emailUsuarioElegido])].filter(Boolean).join(",")}`)
-            // console.log(\n\t\t\t// \t`from: BRMTOOLS - Orden de compra <${userEmail}>,\n\t\t\t// \tto: ${[...new Set([user.email,emailVendedor,emailUsuarioElegido])].filter(Boolean).join(",")}\n\t\t\t// \tbcc: ${adminEmail},${bccEmail},\n\t\t\t// \tsubject: 'Orden creada',`\n\t\t\t// );
-            
-            return response
+            return option;
         } catch (error) {
-            pino.error(`Tuvimos este error enviando la orden por correo: ${error}`)
+            pino.error(`No se pudo preparar la orden por correo: ${error}`);
+            throw error;
         }
     }
 }

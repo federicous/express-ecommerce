@@ -6,7 +6,7 @@ const pino = require('../../../utils/logger/pino')
 class MongoDB {
 
 
-	async save(payload, element) {
+	async save(payload, element, notification, idempotencyKey, requestFingerprint) {
 		try {
 			
 			let nuevoElementoModel= new ElementoModel();
@@ -15,16 +15,20 @@ class MongoDB {
 			nuevoElementoModel.email=payload.email;
 			nuevoElementoModel.state=payload.state;
 			nuevoElementoModel.productList=element;
+			nuevoElementoModel.notification=notification;
+			nuevoElementoModel.idempotencyKey=idempotencyKey;
+			nuevoElementoModel.requestFingerprint=requestFingerprint;
 			let nuevoElemento = await nuevoElementoModel.save();
 			return(nuevoElemento._id)	
 			
 		} catch (error) {
 			pino.error(`Se produjo un error: ${error}`)
+			throw error;
 			
 		}
 	}
 
-	async saveUser(payload, element, usuario, presupuesto) {
+	async saveUser(payload, element, usuario, presupuesto, notification, idempotencyKey, requestFingerprint) {
 		try {
 			let nuevoElementoModel= new ElementoModel();
 			nuevoElementoModel.id=v4();
@@ -32,12 +36,16 @@ class MongoDB {
 			nuevoElementoModel.email=usuario.email;
 			nuevoElementoModel.state=usuario.state;
 			nuevoElementoModel.productList=element;
+			nuevoElementoModel.notification=notification;
+			nuevoElementoModel.idempotencyKey=idempotencyKey;
+			nuevoElementoModel.requestFingerprint=requestFingerprint;
 			nuevoElementoModel.presupuesto=presupuesto || '';
 			let nuevoElemento = await nuevoElementoModel.save();
 			return(nuevoElemento._id)	
 			
 		} catch (error) {
 			pino.error(`Se produjo un error: ${error}`)
+			throw error;
 			
 		}
 	}
