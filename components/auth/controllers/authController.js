@@ -2,6 +2,7 @@ const elementService = require('../services')
 // const jwt = require("jsonwebtoken")
 const JWT = require("../../../utils/jwt/jwt");
 const { authCookieOptions } = require('../../../utils/authCookies');
+const { PRIVILEGED_SESSION_SECONDS } = require('../../../utils/sessionLifetime');
 const pino = require('../../../utils/logger/pino');
 const productService = require('../../pruductos/services');
 const carritoService = require('../../carritos/services');
@@ -53,10 +54,11 @@ class Element {
             if (authCookieOptions().domain) {
                 for (const name of ['token', 'user', 'IdVendedor']) res.clearCookie(name, { path: '/', secure: true, sameSite: 'lax' });
             }
-            res.status(200)
-            .cookie('token', response.token, authCookieOptions(3600000))
-            .cookie('user', `${response.email}`, authCookieOptions())
-            .cookie('IdVendedor', `${response.IdVendedor}`, authCookieOptions())
+            const options = authCookieOptions((response.sessionMaxAgeSeconds ?? PRIVILEGED_SESSION_SECONDS) * 1000);
+            res.status(200).set('Cache-Control', 'no-store')
+            .cookie('token', response.token, options)
+            .cookie('user', `${response.email}`, options)
+            .cookie('IdVendedor', `${response.IdVendedor}`, options)
             .json(response)
             // .redirect('/productos');
 

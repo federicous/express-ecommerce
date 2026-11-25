@@ -60,7 +60,7 @@ class Autenticacion {
 			const { payload, error, code } = await verifiedCredentials(req);
 			if (error) return res.status(401).json({ error, ...(code ? { code } : {}) });
 			const isAdmin = payload && (payload.isAdmin === true || payload.isAdmin === 'true' || payload.isAdmin === 'on');
-			if (!payload || !isAdmin) {
+			if (!isAdmin || payload.storefrontOnly === true) {
 				return res.status(403).json({ error: 'Acceso no autorizado: requiere rol administrador' });
 			}
 			req.user = payload;
@@ -79,7 +79,8 @@ class Autenticacion {
 			if (!user || !flagOn(user.enable)) {
 				return res.status(403).json({ error: 'La cuenta no está habilitada', code: 'account_disabled' });
 			}
-			if (!flagOn(user.isManagement)) {
+			// A storefront-only token cannot acquire privileged access after a role change.
+			if (payload.storefrontOnly === true || !flagOn(user.isManagement)) {
 				return res.status(403).json({ error: 'Acceso no autorizado: requiere permiso de gestión', code: 'management_forbidden' });
 			}
 			req.user = { ...payload, isManagement: true };

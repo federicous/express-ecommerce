@@ -1,5 +1,6 @@
 let UsuarioModel = require('../../../schema/usuarios');
 let bcrypt = require("bcryptjs");
+const { loginSessionPolicy } = require('../../../utils/sessionLifetime');
 const JWT = require("../../../utils/jwt/jwt");
 const pino = require('../../../utils/logger/pino');
 
@@ -53,7 +54,9 @@ class AuthService {
 					})
 				}
 				let ID = user._id ? user._id : user.id;
+				const { storefrontOnly, maxAgeSeconds } = loginSessionPolicy(user);
 				const token = await JWT.generate({
+					...(storefrontOnly ? { storefrontOnly: true } : {}),
 					id: ID,
 					name: user.name,
 					email: user.email,
@@ -68,10 +71,11 @@ class AuthService {
 					address: user.address,
 					state: user.state || 'pending',
 					// IdVendedor: user.IdVendedor,
-				})
+				}, maxAgeSeconds)
 				return ({
 					email: user.email,
 					IdVendedor: user.IdVendedor || "",
+					sessionMaxAgeSeconds: maxAgeSeconds,
 					token
 				})
 			} else {

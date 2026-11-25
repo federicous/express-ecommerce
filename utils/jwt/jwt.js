@@ -3,10 +3,10 @@ const pino = require('../../utils/logger/pino');
 const { autenticacion } = require('../../config');
 
 class JWT {
-    async generate(payload) {
+    async generate(payload, expiresIn = autenticacion.JWT_EXP) {
         try {
             return jwt.sign(payload, autenticacion.JWT_SECRET, {
-                expiresIn: autenticacion.JWT_EXP,
+                expiresIn,
                 algorithm: autenticacion.JWT_ALG
             });
         } catch (error) {
