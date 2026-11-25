@@ -1,0 +1,23 @@
+'use strict';
+const {test}=require('node:test');
+const assert=require('node:assert/strict');
+const express=require('express');
+const request=require('supertest');
+const mongoPath=require.resolve('../config/mongo');
+require.cache[mongoPath]={id:mongoPath,filename:mongoPath,loaded:true,exports:{mongoose:require('mongoose'),connection:Promise.resolve()}};
+const jwtPath=require.resolve('../utils/jwt/jwt');
+require.cache[jwtPath]={id:jwtPath,filename:jwtPath,loaded:true,exports:{verify:async token=>token==='admin'?{id:'a',email:'admin@example.test',isAdmin:'on'}:token==='user'?{id:'u',email:'user@example.test'}:null}};
+const controllerPath=require.resolve('../components/ordenes/controllers/ordenController');
+const noop=(_req,res)=>res.sendStatus(204);
+require.cache[controllerPath]={id:controllerPath,filename:controllerPath,loaded:true,exports:Object.fromEntries(['getAllElement','pendingNotifications','notificationStatus','retryNotification','getElement','getAllElementUser','createElement','createElementUser','deleteElement'].map(k=>[k,noop]))};
+const Order=require('../schema/ordenes');
+const original=Order.aggregate;
+Order.aggregate=async()=>[];
+const app=express();app.use((req,res,next)=>{req.cookies={};next()});require('../components/ordenes')(app);
+test('listado administrativo exige autenticación y rol administrador',async()=>{
+  assert.equal((await request(app).get('/api/order/admin/list')).status,401);
+  assert.equal((await request(app).get('/api/order/admin/list').set('Authorization','Bearer user')).status,403);
+  const response=await request(app).get('/api/order/admin/list').set('Authorization','Bearer admin');
+  assert.equal(response.status,200);assert.deepEqual(response.body,{orders:[],nextCursor:null});
+  Order.aggregate=original;
+});
