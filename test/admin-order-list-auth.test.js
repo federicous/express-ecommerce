@@ -21,3 +21,9 @@ test('listado administrativo exige autenticación y rol administrador',async()=>
   assert.equal(response.status,200);assert.deepEqual(response.body,{orders:[],nextCursor:null});
   Order.aggregate=original;
 });
+test('detalle administrativo rechaza anónimos y usuarios comunes',async()=>{
+  const path='/api/order/id/6b03ac423080ded40be349a0';
+  assert.equal((await request(app).get(path)).status,401);
+  assert.equal((await request(app).get(path).set('Authorization','Bearer user')).status,403);
+  assert.equal((await request(app).get(path).set('Authorization','Bearer admin')).status,204);
+});
