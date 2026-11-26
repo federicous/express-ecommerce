@@ -7,10 +7,17 @@ const pino = require('../../../utils/logger/pino');
 const JWT = require("../../../utils/jwt/jwt");
 const Nodemailer = require('../../../utils/nodemailer')
 
+const mongoose = require('mongoose');
 const { checkout } = require('../../../utils/order-notifications/checkout');
+const { createAdminOrderDetailHandler } = require('../../../utils/order-notifications/admin-order-detail');
 const OrderModel = require('../../../schema/ordenes');
 const CartModel = require('../../../schema/carritos');
 const { v4: uuid } = require('uuid');
+
+const adminOrderDetailHandler = createAdminOrderDetailHandler(
+    OrderModel,
+    id => typeof id === 'string' && /^[0-9a-fA-F]{24}$/.test(id) && mongoose.isValidObjectId(id)
+);
 
 async function createOrder(req, res, onBehalf) {
     try {
@@ -131,14 +138,7 @@ class Element {
     // }  
 
     async getElement(req, res, next){
-        try {
-            let id = req.params.id
-            let response = await elementService.getById(id);
-            res.status(200).json(response);
-        } catch (error) {
-            pino.error(`Se produjo un error: ${error}`);
-            res.status(400).render('error');
-        }
+        return adminOrderDetailHandler(req, res, next);
     }
 
     async getAllElement(req, res, next){

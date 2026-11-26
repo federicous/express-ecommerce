@@ -8,9 +8,21 @@ function createAdminOrderListHandler(Order, ObjectId) {
     catch (_) { return res.status(400).json({ message: 'Filtros inválidos' }); }
     try {
       const match = {};
+      const andClauses = [];
       if (input.id) match._id = new ObjectId(input.id);
       if (input.before) match._id = { ...(input.id ? { $eq: new ObjectId(input.id) } : {}), $lt: new ObjectId(input.before) };
       if (input.email) match.email = { $regex: input.email.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), $options: 'i' };
+      if (input.type === 'quote') {
+        andClauses.push({ presupuesto: { $exists: true, $nin: ['', null, false] } });
+      } else if (input.type === 'order') {
+        andClauses.push({ $or: [{ presupuesto: { $exists: false } }, { presupuesto: { $in: ['', null, false] } }] });
+      }
+      if (input.notificationStatus === 'unavailable') {
+        andClauses.push({ $or: [{ 'notification.status': { $exists: false } }, { 'notification.status': { $in: [null, '', 'unavailable'] } }] });
+      } else if (input.notificationStatus) {
+        andClauses.push({ 'notification.status': input.notificationStatus });
+      }
+      if (andClauses.length) match.$and = andClauses;
       const pipeline = [{ $match: match }];
       if (input.from || input.to) {
         // Legacy orders can store epoch milliseconds as numbers or strings.
